@@ -1,0 +1,1019 @@
+{
+  "schema": "site-reforge/failures@1",
+  "items": [
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:46.689Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/specials",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:46.689Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/flower",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:46.689Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/pre-rolls",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:46.689Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/edibles",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:49.351Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/vaporizers",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:49.351Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/concentrates",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:49.351Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/tinctures",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:49.351Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/cbd",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:52.519Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/beverages",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:52.530Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/accessories",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T22:57:52.530Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/shop-cbd",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:00:06.987Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/moony-s-zooties-white-widow-preroll-67fab9201546f400075211e2",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/moony-s-zooties-white-widow-preroll-67fab9201546f400075211e2",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:21.733Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/crumbles-gelato-33-3-5g-67f7cfd55300a00007e32457",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/crumbles-gelato-33-3-5g-67f7cfd55300a00007e32457",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:25.000Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/left-coast-sour-diesel-3-5g-67ded160790766000705ed9b",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/left-coast-sour-diesel-3-5g-67ded160790766000705ed9b",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:25.003Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/generic-af-sweet-island-skunk-510-vape-67ec69486ef5fe000766c150",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/generic-af-sweet-island-skunk-510-vape-67ec69486ef5fe000766c150",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:28.310Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/durban-poison-794-68000b70c46a850007601b63",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/durban-poison-794-68000b70c46a850007601b63",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:28.310Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/ayrloom-pink-rozay-aio-5g-663bc2b896dc9800086a8989",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/ayrloom-pink-rozay-aio-5g-663bc2b896dc9800086a8989",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:28.310Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/rec-roots-lemon-haze-3-5g-67a4f97abe749300079ee244",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/rec-roots-lemon-haze-3-5g-67a4f97abe749300079ee244",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:31.599Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/pineapple-express-melted-diamond-live-resin-vaporizer-1-0g-ready-to-use-19179-66ce3f7189b36100071d3310",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/pineapple-express-melted-diamond-live-resin-vaporizer-1-0g-ready-to-use-19179-66ce3f7189b36100071d3310",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:31.599Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/rythm-durban-zittlez-3-5g-eighth-65fc8dc37c61e200072099db",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/rythm-durban-zittlez-3-5g-eighth-65fc8dc37c61e200072099db",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:31.599Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/smokiez-sour-tropical-fruit-sativa-fruit-chews-100mg-6572586d3975c200072ea5bf",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/smokiez-sour-tropical-fruit-sativa-fruit-chews-100mg-6572586d3975c200072ea5bf",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:31.599Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/jetty-northern-lights-aio-vape-673505d33b5efa00070245d8",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/jetty-northern-lights-aio-vape-673505d33b5efa00070245d8",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:38.143Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/supernaturals-wedding-cake-pre-roll-5pk-66958e0392182400077987cf",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/supernaturals-wedding-cake-pre-roll-5pk-66958e0392182400077987cf",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:00:38.143Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/brands",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:00:41.572Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/brands/ayrloom",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:00:41.572Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/cdn-cgi/l/email-protection",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:00:47.877Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 for this URL; nothing to rebuild.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/menu",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:00:51.727Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/month/2026-12",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:01:13.660Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/2026-11-11",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:01:17.975Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:22.168Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/specials",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:22.168Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/flower",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:22.168Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/pre-rolls",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:22.168Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/edibles",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:25.061Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/vaporizers",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:25.061Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/concentrates",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:25.061Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/tinctures",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:25.061Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/cbd",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:26.802Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/beverages",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:26.802Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/products/accessories",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:26.802Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/shop-cbd",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:26.802Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/moony-s-zooties-white-widow-preroll-67fab9201546f400075211e2",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/moony-s-zooties-white-widow-preroll-67fab9201546f400075211e2",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:29.650Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/crumbles-gelato-33-3-5g-67f7cfd55300a00007e32457",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/crumbles-gelato-33-3-5g-67f7cfd55300a00007e32457",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:29.650Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/left-coast-sour-diesel-3-5g-67ded160790766000705ed9b",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/left-coast-sour-diesel-3-5g-67ded160790766000705ed9b",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:29.650Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/generic-af-sweet-island-skunk-510-vape-67ec69486ef5fe000766c150",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/generic-af-sweet-island-skunk-510-vape-67ec69486ef5fe000766c150",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:29.650Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/durban-poison-794-68000b70c46a850007601b63",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/durban-poison-794-68000b70c46a850007601b63",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:32.855Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/ayrloom-pink-rozay-aio-5g-663bc2b896dc9800086a8989",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/ayrloom-pink-rozay-aio-5g-663bc2b896dc9800086a8989",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:32.855Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/rec-roots-lemon-haze-3-5g-67a4f97abe749300079ee244",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/rec-roots-lemon-haze-3-5g-67a4f97abe749300079ee244",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:32.855Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/pineapple-express-melted-diamond-live-resin-vaporizer-1-0g-ready-to-use-19179-66ce3f7189b36100071d3310",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/pineapple-express-melted-diamond-live-resin-vaporizer-1-0g-ready-to-use-19179-66ce3f7189b36100071d3310",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:32.855Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/rythm-durban-zittlez-3-5g-eighth-65fc8dc37c61e200072099db",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/rythm-durban-zittlez-3-5g-eighth-65fc8dc37c61e200072099db",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:36.055Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/smokiez-sour-tropical-fruit-sativa-fruit-chews-100mg-6572586d3975c200072ea5bf",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/smokiez-sour-tropical-fruit-sativa-fruit-chews-100mg-6572586d3975c200072ea5bf",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:36.055Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/jetty-northern-lights-aio-vape-673505d33b5efa00070245d8",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/jetty-northern-lights-aio-vape-673505d33b5efa00070245d8",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:36.055Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/product/supernaturals-wedding-cake-pre-roll-5pk-66958e0392182400077987cf",
+      "reason": "status 400",
+      "extra": {
+        "chain": [
+          {
+            "from": "https://capitaldistrictcannabis.com/product/supernaturals-wedding-cake-pre-roll-5pk-66958e0392182400077987cf",
+            "status": 301,
+            "to": "https://capitaldistrictcannabis.com/stores/cd-albany-ny/product/1%"
+          }
+        ]
+      },
+      "at": "2026-11-12T23:03:36.055Z",
+      "accepted": true,
+      "acceptedWhy": "Dead product link on the live site (status 400): product pages live on the store menus; not rebuilt.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/brands",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:37.938Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/stores/brands/ayrloom",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:39.627Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/cdn-cgi/l/email-protection",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:41.389Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 for this URL; nothing to rebuild.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/menu",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:41.389Z",
+      "accepted": true,
+      "acceptedWhy": "The live site answers status 404 here (store-less menu links in its nav and footer). The rebuild links every Shop and category button to the store-scoped menu instead; see docs/PITCH-NOTES.md (Fixed 1).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/month/2026-12",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:46.252Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/2026-11-11",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:03:46.252Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/category/cars-canna/2026-12",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:04:15.286Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/category/cars-canna/day/2026-11-11",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:04:19.129Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/category/cycles-canna/2026-12",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:04:23.309Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/category/cycles-canna/day/2026-11-11",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:04:27.271Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/category/events/2026-12",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:04:36.443Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/category/events/day/2026-11-11",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:04:36.444Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/category/vendor-pop-ups/2026-12",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:07:46.819Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "crawl:page",
+      "target": "https://capitaldistrictcannabis.com/events/category/vendor-pop-ups/day/2026-11-11",
+      "reason": "status 404",
+      "extra": {
+        "chain": []
+      },
+      "at": "2026-11-12T23:07:46.821Z",
+      "accepted": true,
+      "acceptedWhy": "Calendar view the live events plugin links but answers status 404; events are rebuilt at /event/<slug>/ and listed on /events/.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "assets:font",
+      "target": "https://capitaldistrictcannabis.com/cf-fonts/v/bitter/5.2.10/cyrillic/wght/normal.woff2",
+      "reason": "status 404",
+      "at": "2026-11-12T23:17:27.089Z",
+      "accepted": true,
+      "acceptedWhy": "A webfont the live CSS references answers status 404; the rebuild self-hosts its own open fonts (Anybody, Work Sans, Sedgwick Ave Display).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "assets:font",
+      "target": "https://capitaldistrictcannabis.com/cf-fonts/v/bitter/5.2.10/cyrillic-ext/wght/normal.woff2",
+      "reason": "status 404",
+      "at": "2026-11-12T23:17:27.493Z",
+      "accepted": true,
+      "acceptedWhy": "A webfont the live CSS references answers status 404; the rebuild self-hosts its own open fonts (Anybody, Work Sans, Sedgwick Ave Display).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "assets:font",
+      "target": "https://capitaldistrictcannabis.com/cf-fonts/v/bitter/5.2.10/latin-ext/wght/normal.woff2",
+      "reason": "status 404",
+      "at": "2026-11-12T23:17:27.878Z",
+      "accepted": true,
+      "acceptedWhy": "A webfont the live CSS references answers status 404; the rebuild self-hosts its own open fonts (Anybody, Work Sans, Sedgwick Ave Display).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "assets:font",
+      "target": "https://capitaldistrictcannabis.com/cf-fonts/v/bitter/5.2.10/vietnamese/wght/normal.woff2",
+      "reason": "status 404",
+      "at": "2026-11-12T23:17:28.383Z",
+      "accepted": true,
+      "acceptedWhy": "A webfont the live CSS references answers status 404; the rebuild self-hosts its own open fonts (Anybody, Work Sans, Sedgwick Ave Display).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "assets:font",
+      "target": "https://capitaldistrictcannabis.com/cf-fonts/v/bitter/5.2.10/latin/wght/normal.woff2",
+      "reason": "status 404",
+      "at": "2026-11-12T23:17:28.706Z",
+      "accepted": true,
+      "acceptedWhy": "A webfont the live CSS references answers status 404; the rebuild self-hosts its own open fonts (Anybody, Work Sans, Sedgwick Ave Display).",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    },
+    {
+      "stage": "assets:image",
+      "target": "https://cdn.jsdelivr.net//npm//lightgallery@2.7.2//css//images//loading.gif",
+      "reason": "status 404",
+      "at": "2026-11-12T23:22:10.807Z",
+      "accepted": true,
+      "acceptedWhy": "Asset the live site no longer serves (status 404); not used by the rebuild.",
+      "acceptedAt": "2026-11-13T00:48:03.832Z"
+    }
+  ]
+}

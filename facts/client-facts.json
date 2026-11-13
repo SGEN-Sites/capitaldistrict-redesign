@@ -1,0 +1,44 @@
+{
+  "schema": "site-reforge/client-facts@1",
+  "note": "Declared facts. ONLY facts recorded here or present in audit/content-inventory.json may appear as claims on the rebuild. Everything else is a fabrication and sr-fabrication.mjs fails the gate. Every value below was read from the live site on 2026-11-13 (source named per entry) or from the operator's brief.",
+  "legalName": "Capital District Cannabis & Wellness Inc.",
+  "brand": "Capital District Cannabis & Wellness",
+  "founded": { "value": "2022", "source": "the round badge logo on the live site reads EST. 2022" },
+  "phone": ["(518) 487-4591", "(518) 901-0010", "(518) 901-7107"],
+  "email": [],
+  "addresses": [
+    "997 Central Ave, Albany, NY 12205",
+    "1508 US-9, Clifton Park, NY 12065",
+    "1650 Crane St, Schenectady, NY 12303"
+  ],
+  "hours": "Monday to Saturday 9 AM to 9 PM, Sunday 10 AM to 6 PM, all three stores (store pages); pre-orders until 30 minutes before close (store selector: Open, Order until 8:30 pm)",
+  "licences": [
+    "OCM-CAURD-23-000028 (Albany)",
+    "OCM-CAURD-23-000025 (Clifton Park)",
+    "OCM-RETL-24-000138 (Schenectady)"
+  ],
+  "certifications": ["New York State licensed adult-use cannabis retailer (home FAQ)"],
+  "awards": [],
+  "statistics": [
+    "3 stores (store selector, locations page)",
+    "40 towns and destinations with their own Visit Us pages (sitemap)",
+    "New York purchase limit: 3 ounces of flower and 24 grams of concentrates (home FAQ)",
+    "Adults 21 and older (age gate, FAQs)"
+  ],
+  "testimonials": ["Google reviews published on the live site's home, store and town pages, rendered as captured"],
+  "clients": [],
+  "guarantees": [],
+  "pricing": [],
+  "services": [
+    "In-store shopping and online pre-order for pickup at each store (store selector, Visit Us FAQ)",
+    "Payment: Cash, Debit, and Dutchie Pay (store FAQs)",
+    "Loyalty program at all three stores: points on every purchase, redeemable for discounts, product perks and members-only highlights (Loyalty Program page, Visit Us FAQ)",
+    "Delivery: 'Order online for pickup and free delivery today' (Clifton Park and Schenectady FAQs); 'Dispensary & Delivery' (Albany H1). Terms unconfirmed: see docs/PITCH-NOTES.md",
+    "Events: car meets, boat parties, grand openings, brand pop-ups, a customer appreciation smokeout (event pages)"
+  ],
+  "brief": {
+    "source": "operator brief, 2026-11-13",
+    "inStoreIdentity": "hip-hop and street culture: graffiti murals, 'got bud?' tees, The Chronic on the wall (the album art is not reproduced anywhere)",
+    "areaCode": "518 (every store phone number)"
+  }
+}

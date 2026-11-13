@@ -1,0 +1,2806 @@
+{
+  "schema": "site-reforge/fabrication-report@1",
+  "generated": "2026-11-13T00:50:09.022Z",
+  "rebuildDir": "dist",
+  "filesScanned": 157,
+  "claimsChecked": 1108,
+  "sourceCorpusChars": 1585580,
+  "declaredFactsChars": 2066,
+  "counts": {
+    "blocker": 214,
+    "major": 65
+  },
+  "verdict": "FABRICATION",
+  "findings": [
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "We believe in a unified cannabis marketplace—one that connects consumers, cultivators, and communities—and we’re proud to be part of that movement.",
+      "file": "about/index.html",
+      "line": 121,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "In store The graffiti mural wall, next to the shelves",
+      "file": "about/index.html",
+      "line": 121,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Albany The mural behind the counter",
+      "file": "about/index.html",
+      "line": 121,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "In store A “got bud?” tee at the counter, and a crowd by the mural",
+      "file": "about/index.html",
+      "line": 121,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Clifton Park Tin ceiling, a timber table and glass cases",
+      "file": "about/index.html",
+      "line": 121,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "On the shelves Tinctures and topicals, drinks and concentrates, edibles",
+      "file": "about/index.html",
+      "line": 121,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "At the counter Customers under the round EST. 2022 badge",
+      "file": "about/index.html",
+      "line": 121,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Cannabis for 4/20 \n 02 What to Do for 4/20 in the",
+      "file": "blog/albanys-best-4-20-deals-activities-cannabis-pairings/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Cannabis with the Season \n 04 Celebrate 4/20 at C",
+      "file": "blog/albanys-best-4-20-deals-activities-cannabis-pairings/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Strains \n \n Shop Edibles\n\n Shopping Albany, NY",
+      "file": "blog/best-edibles-for-sleep-relaxation/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Strains \n \n \n Looking for something to help you m",
+      "file": "blog/best-edibles-for-sleep-relaxation/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Holiday Weed Deals & Festive Cannabis Finds Dec 0",
+      "file": "blog/category/deals/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Weed In Albany\n \n Capital’s Education\n\n Elevate Y",
+      "file": "blog/elevate-your-new-years-eve-with-the-best-weed-in-albany/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Holiday Weed Deals & Festive Cannabis Finds Dec 0",
+      "file": "blog/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Cannabis Picks to Match\n \n Capital’s Education",
+      "file": "blog/ready-for-the-4th-of-july-in-albany/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Weed Brands at Capital District Cannabis \n \n Shop",
+      "file": "blog/shop-nys-best-cannabis-brands-at-capital-district-dispensaries/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Weed Brands at Capital District Cannabis \n \n \n Th",
+      "file": "blog/shop-nys-best-cannabis-brands-at-capital-district-dispensaries/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Cannabis Options\n \n Capital’s Education\n\n Stock U",
+      "file": "blog/stock-up-for-the-phish-show-at-spac-albanys-best-cannabis-options/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Pre-Rolls? \n \n Shop Pre-Rolls\n\n Shopping Albany,",
+      "file": "blog/top-pre-rolls-in-upstate-ny-convenient-potent-ready-to-go/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Pre-Rolls? \n \n \n Some products earn their place b",
+      "file": "blog/top-pre-rolls-in-upstate-ny-convenient-potent-ready-to-go/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Holiday Weed Deals & Festive Cannabis Finds\n \n Ca",
+      "file": "blog/upstate-nys-best-holiday-weed-deals-festive-cannabis-finds/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Brunch Spots and Cannabis Pairings\n \n Capital’s E",
+      "file": "blog/wake-bake-brunch-albanys-best-brunch-spots-and-cannabis-pairings/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Cannabis for Memorial Day in Upstate NY\n \n Capita",
+      "file": "blog/your-guide-to-the-best-cannabis-for-memorial-day-in-upstate-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Albany The mural behind the counter",
+      "file": "careers/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "At the counter Customers under the round EST. 2022 badge",
+      "file": "careers/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "On the shelves Tinctures and topicals, drinks and concentrates, edibles",
+      "file": "careers/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "In store The graffiti mural wall, next to the shelves",
+      "file": "careers/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "A 997 Central Ave, Albany",
+      "file": "deals/index.html",
+      "line": 143,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "C From the Clifton Park store FAQ Does your dispensary have a loyalty program or specials? We regularly offer deals and seasonal promotions, and our loyalty pro",
+      "file": "deals/index.html",
+      "line": 143,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "S From the Schenectady store FAQ Does your dispensary have a loyalty program or specials? We regularly offer deals and seasonal promotions, and our loyalty prog",
+      "file": "deals/index.html",
+      "line": 143,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:credential",
+      "title": "Unsourced a credential",
+      "claim": "licensed dispensaries across the Capital Region: Albany, Clifton Par",
+      "file": "index.html",
+      "line": 104,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "In store: the mural wall",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very nice people, the general manager CJ went out of his way to help me resolve a situation so I thank them for that. Good selection of products and priced well",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Fantastic store, everyone here is friendly. It’s professional and clean, and they have GREAT product. Thank you especially to Trevor who took the time to explai",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I used to drive to Mass and thank God I don’t have to anymore. This location always has something new for me to try. I find the prices are reasonable and the st",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Everyone at this location is so friendly! I used to drive to mass but now I’m so happy I don’t have too! It is so convenient and they have a super wide collecti",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Tim, Big Andy, and Omar made it all work for me. Best customer service I’ve ever experienced in a dispensary!! Rose via Google Review",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "My first time visiting the store today and i will definitely be back. Tim made the experience great ⭐⭐⭐⭐⭐. He was extremely knowledgeable, helpful and courteous",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "The new shop exceeded expectations with its outstanding customer service and a friendly, knowledgeable staff that readily shares information about products. The",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I had an amazing experience at capital, thanks to Alaina! She was super helpful, knowledgeable, and friendly, taking the time to answer all my questions and mak",
+      "file": "index.html",
+      "line": 346,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Albany, NY Dispensary? \n \n A Albany, NY\n Mon–Sat",
+      "file": "location/albany/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Albany, NY Albany Dispensary Hours | Open Early & Late: Mon–Sat 9 AM–9 PM · Sun 10 AM–6 PM Store hours, Albany, NY Monday – Saturday 9 AM – 9 PM Sunday 10 AM – ",
+      "file": "location/albany/index.html",
+      "line": 250,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "A 997 Central Ave Specials",
+      "file": "location/albany/index.html",
+      "line": 250,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "My favorite dispensary in the capitol region. Ive gone here 6 times, and the amazing products and staff keep bringing me back. I wouldn’t recommend any other pl",
+      "file": "location/albany/index.html",
+      "line": 250,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "It was our first time in ny security is really friendly and welcoming. Lee helped us with all the questions we had, we had a lot of questions. Capital has a lot",
+      "file": "location/albany/index.html",
+      "line": 250,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I absolutely love the staff here! The products are top notch and are always well stocked. Great selection and great customer service! Dan Vaughn via Google Revi",
+      "file": "location/albany/index.html",
+      "line": 250,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Absolutely my favorite dispensary! I walked in not knowing how to order etc. and was immediately helped my a gentleman named, “Lee”. He was friendly, extremely ",
+      "file": "location/albany/index.html",
+      "line": 250,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Clifton Park, NY Open daily Mon–Sat 9 AM–9 PM · Sun 10 AM–6 PM Store hours, Clifton Park, NY Monday – Saturday 9 AM – 9 PM Sunday 10 AM – 6 PM",
+      "file": "location/clifton-park/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "A Albany, NY 997 Central Ave, Albany, NY 12205 Directions",
+      "file": "location/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "C Clifton Park, NY 1508 US-9, Clifton Park, NY 12065 Directions",
+      "file": "location/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "S Schenectady, NY 1650 Crane St, Schenectady, NY 12303 Directions",
+      "file": "location/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Schenectady, NY Open daily Mon–Sat 9 AM–9 PM · Sun 10 AM–6 PM Store hours, Schenectady, NY Monday – Saturday 9 AM – 9 PM Sunday 10 AM – 6 PM",
+      "file": "location/schenectady/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Straight from our store FAQs Do you offer pickup or weed delivery? Yes! Order online for pickup and free delivery today. Clifton Park and Schenectady store page",
+      "file": "pickup/index.html",
+      "line": 116,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very nice people, the general manager CJ went out of his way to help me resolve a situation so I thank them for that. Good selection of products and priced well",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Fantastic store, everyone here is friendly. It’s professional and clean, and they have GREAT product. Thank you especially to Trevor who took the time to explai",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I used to drive to Mass and thank God I don’t have to anymore. This location always has something new for me to try. I find the prices are reasonable and the st",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Everyone at this location is so friendly! I used to drive to mass but now I’m so happy I don’t have too! It is so convenient and they have a super wide collecti",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Tim, Big Andy, and Omar made it all work for me. Best customer service I’ve ever experienced in a dispensary!! Rose via Google Review",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "My first time visiting the store today and i will definitely be back. Tim made the experience great ⭐⭐⭐⭐⭐. He was extremely knowledgeable, helpful and courteous",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "The new shop exceeded expectations with its outstanding customer service and a friendly, knowledgeable staff that readily shares information about products. The",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I had an amazing experience at capital, thanks to Alaina! She was super helpful, knowledgeable, and friendly, taking the time to answer all my questions and mak",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "My favorite dispensary in the capitol region. Ive gone here 6 times, and the amazing products and staff keep bringing me back. I wouldn’t recommend any other pl",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "It was our first time in ny security is really friendly and welcoming. Lee helped us with all the questions we had, we had a lot of questions. Capital has a lot",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I absolutely love the staff here! The products are top notch and are always well stocked. Great selection and great customer service! Dan Vaughn via Google Revi",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Absolutely my favorite dispensary! I walked in not knowing how to order etc. and was immediately helped my a gentleman named, “Lee”. He was friendly, extremely ",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "reviews/index.html",
+      "line": 106,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Weed In Albany \n Green Wednesday vs",
+      "file": "sitemap/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Cannabis Picks to Match \n Shop NY’s Best Cannabis",
+      "file": "sitemap/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Cannabis Options \n THC Drinks in the Capital Regi",
+      "file": "sitemap/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Holiday Weed Deals & Festive Cannabis Finds \n Vap",
+      "file": "sitemap/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "Best Brunch Spots and Cannabis Pairings \n Where to Fin",
+      "file": "sitemap/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Cannabis for Memorial Day in Upstate NY \n Your Lo",
+      "file": "sitemap/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "A Albany, NY 997 Central Ave, Albany, NY 12205 Directions",
+      "file": "store-locator/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "C Clifton Park, NY 1508 US-9, Clifton Park, NY 12065 Directions",
+      "file": "store-locator/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "S Schenectady, NY 1650 Crane St, Schenectady, NY 12303 Directions",
+      "file": "store-locator/index.html",
+      "line": 0,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Hoosick Falls, NY? \n \n C Clifton",
+      "file": "visit-us/cannabis-dispensary-near-hoosick-falls-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/cannabis-dispensary-near-hoosick-falls-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/cannabis-dispensary-near-hoosick-falls-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/cannabis-dispensary-near-hoosick-falls-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/cannabis-dispensary-near-hoosick-falls-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Schuylerville, NY? \n \n C Clifton",
+      "file": "visit-us/cannabis-dispensary-near-schuylerville-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/cannabis-dispensary-near-schuylerville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/cannabis-dispensary-near-schuylerville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/cannabis-dispensary-near-schuylerville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/cannabis-dispensary-near-schuylerville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Altamont? \n \n A Albany, NY\n Mon–S",
+      "file": "visit-us/recreational-cannabis-dispensary-near-altamont-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-altamont-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-altamont-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-altamont-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-altamont-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Ballston Spa? \n \n A Albany, NY\n M",
+      "file": "visit-us/recreational-cannabis-dispensary-near-ballston-spa-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-ballston-spa-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-ballston-spa-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-ballston-spa-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-ballston-spa-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Burnt Hills? \n \n A Albany, NY\n Mo",
+      "file": "visit-us/recreational-cannabis-dispensary-near-burnt-hills-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-burnt-hills-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-burnt-hills-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-burnt-hills-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-burnt-hills-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Colonie? \n \n A Albany, NY\n Mon–Sa",
+      "file": "visit-us/recreational-cannabis-dispensary-near-colonie-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-colonie-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-colonie-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-colonie-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-colonie-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Crossgates Mall? \n \n A Albany, NY",
+      "file": "visit-us/recreational-cannabis-dispensary-near-crossgates-mall-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-crossgates-mall-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-crossgates-mall-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-crossgates-mall-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-crossgates-mall-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Delmar? \n \n A Albany, NY\n Mon–Sat",
+      "file": "visit-us/recreational-cannabis-dispensary-near-delmar-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-delmar-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-delmar-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-delmar-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-delmar-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best East Glenville Cannabis Dispensary? \n \n S Schenec",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-glenville-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-glenville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-glenville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-glenville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-glenville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near East Greenbush? \n \n A Albany, NY",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-greenbush-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-greenbush-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-greenbush-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-greenbush-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-east-greenbush-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Empire Live Albany? \n \n A Albany,",
+      "file": "visit-us/recreational-cannabis-dispensary-near-empire-live-albany/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-empire-live-albany/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-empire-live-albany/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-empire-live-albany/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-empire-live-albany/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-ann/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-ann/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-ann/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-ann/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Fort Hunter? \n \n S Schenectady, N",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-hunter-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-hunter-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-hunter-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-hunter-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-fort-hunter-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Glenmont? \n \n A Albany, NY\n Mon–S",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenmont-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenmont-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenmont-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenmont-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenmont-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Glens Falls? \n \n A Albany, NY\n Mo",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glens-falls-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glens-falls-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glens-falls-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glens-falls-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glens-falls-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Glenville, NY? \n \n S Schenectady,",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenville-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-glenville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Guilderland? \n \n A Albany, NY\n Mo",
+      "file": "visit-us/recreational-cannabis-dispensary-near-guilderland-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-guilderland-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-guilderland-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-guilderland-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-guilderland-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Hudson, NY? \n \n A Albany, NY\n Mon",
+      "file": "visit-us/recreational-cannabis-dispensary-near-hudson-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-hudson-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-hudson-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-hudson-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-hudson-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Kingston? \n \n A Albany, NY\n Mon–S",
+      "file": "visit-us/recreational-cannabis-dispensary-near-kingston-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-kingston-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-kingston-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-kingston-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-kingston-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Lake George? \n \n A Albany, NY\n Mo",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-george-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-george-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-george-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-george-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-george-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Lake Placid, NY? \n \n A Albany, NY",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-placid-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-placid-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-placid-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-placid-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-lake-placid-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Latham? \n \n A Albany, NY\n Mon–Sat",
+      "file": "visit-us/recreational-cannabis-dispensary-near-latham-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-latham-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-latham-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-latham-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-latham-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Malta, NY? \n \n A Albany, NY\n Mon–",
+      "file": "visit-us/recreational-cannabis-dispensary-near-malta-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-malta-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-malta-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-malta-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-malta-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Menands? \n \n A Albany, NY\n Mon–Sa",
+      "file": "visit-us/recreational-cannabis-dispensary-near-menands-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-menands-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-menands-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-menands-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-menands-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near MVP Arena? \n \n A Albany, NY\n Mon–",
+      "file": "visit-us/recreational-cannabis-dispensary-near-mvp-arena/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-mvp-arena/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-mvp-arena/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-mvp-arena/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-mvp-arena/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-new-baltimore-service-area-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-new-baltimore-service-area-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-new-baltimore-service-area-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-new-baltimore-service-area-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Niskayuna? \n \n A Albany, NY\n Mon–",
+      "file": "visit-us/recreational-cannabis-dispensary-near-niskayuna-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-niskayuna-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-niskayuna-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-niskayuna-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-niskayuna-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Queensbury? \n \n A Albany, NY\n Mon",
+      "file": "visit-us/recreational-cannabis-dispensary-near-queensbury-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-queensbury-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-queensbury-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-queensbury-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-queensbury-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Rensselaer? \n \n A Albany, NY\n Mon",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rensselaer-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rensselaer-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rensselaer-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rensselaer-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rensselaer-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Roessleville? \n \n A Albany, NY\n M",
+      "file": "visit-us/recreational-cannabis-dispensary-near-roessleville-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-roessleville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-roessleville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-roessleville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-roessleville-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Rotterdam? \n \n S Schenectady, NY",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rotterdam-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the best recreational dispensary near Rotterdam, NY!\n\n Get",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rotterdam-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rotterdam-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rotterdam-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rotterdam-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-rotterdam-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Saratoga Springs? \n \n A Albany, N",
+      "file": "visit-us/recreational-cannabis-dispensary-near-saratoga-springs-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-saratoga-springs-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-saratoga-springs-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-saratoga-springs-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-saratoga-springs-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Schaghticoke, NY? \n \n C Clifton P",
+      "file": "visit-us/recreational-cannabis-dispensary-near-schaghticoke-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "best dispensary even more memorable!\n\n \n\n \n Dispensary",
+      "file": "visit-us/recreational-cannabis-dispensary-near-schaghticoke-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-schaghticoke-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-schaghticoke-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-schaghticoke-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-schaghticoke-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Scotia? \n \n A Albany, NY\n Mon–Sat",
+      "file": "visit-us/recreational-cannabis-dispensary-near-scotia-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-scotia-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-scotia-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-scotia-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-scotia-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Selkirk, NY? \n \n A Albany, NY\n Mo",
+      "file": "visit-us/recreational-cannabis-dispensary-near-selkirk-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-selkirk-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-selkirk-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-selkirk-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-selkirk-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the best dispensary near Slingerlands, NY, for customers s",
+      "file": "visit-us/recreational-cannabis-dispensary-near-slingerlands-ny/index.html",
+      "line": 199,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Slingerlands? \n \n A Albany, NY\n M",
+      "file": "visit-us/recreational-cannabis-dispensary-near-slingerlands-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-slingerlands-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-slingerlands-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-slingerlands-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-slingerlands-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near SUNY Albany? \n \n A Albany, NY\n Mo",
+      "file": "visit-us/recreational-cannabis-dispensary-near-suny-albany/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-suny-albany/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-suny-albany/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-suny-albany/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-suny-albany/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Troy? \n \n A Albany, NY\n Mon–Sat 9",
+      "file": "visit-us/recreational-cannabis-dispensary-near-troy-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-troy-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-troy-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-troy-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-troy-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Waterford? \n \n A Albany, NY\n Mon–",
+      "file": "visit-us/recreational-cannabis-dispensary-near-waterford-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-waterford-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-waterford-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-waterford-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-waterford-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "major",
+      "code": "fabrication:superlative",
+      "title": "Unsourced a superlative claim",
+      "claim": "the Best Dispensary Near Westmere? \n \n A Albany, NY\n Mon–S",
+      "file": "visit-us/recreational-cannabis-dispensary-near-westmere-ny/index.html",
+      "line": 0,
+      "detail": "This text is on the rebuild but traces to neither the live site capture nor facts/client-facts.json.",
+      "remedy": "Restore the source wording, delete the claim, or record it in facts/client-facts.json with the client as the source."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Very cool place. My spouse and I went recently and as we hoped it is walk-in friendly, casual, and people are ready to answer your questions. FYI there’s a smal",
+      "file": "visit-us/recreational-cannabis-dispensary-near-westmere-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I’ve been coming to CDCW since they opened and I can confidently say I have never ever had a bad experience. Everyone is always so nice and friendly. These guys",
+      "file": "visit-us/recreational-cannabis-dispensary-near-westmere-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "I came in this weekend and was not only wowed by the selection but the level of service. Trey took time to not only make sure I got great products but great pro",
+      "file": "visit-us/recreational-cannabis-dispensary-near-westmere-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    },
+    {
+      "severity": "blocker",
+      "code": "fabrication:testimonial",
+      "title": "Unsourced testimonial",
+      "claim": "Wow! What an awesome place. Trevor is so nice and took his time with me. The bud smells so good and there is a ton of options. Definitely going to be a regular ",
+      "file": "visit-us/recreational-cannabis-dispensary-near-westmere-ny/index.html",
+      "line": 205,
+      "detail": "A testimonial that is not on the source site and not declared in client-facts.json.",
+      "remedy": "Never write a testimonial. Remove it, or record the real one in facts/client-facts.json."
+    }
+  ]
+}

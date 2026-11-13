@@ -1,0 +1,114 @@
+{
+  "fetched": "2026-11-12T23:23:12.375Z",
+  "licence": "SIL Open Font License 1.1 (Google Fonts)",
+  "fonts": [
+    {
+      "family": "anybody",
+      "file": "anybody-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": "50% 150%",
+      "bytes": 15416,
+      "source": "https://fonts.gstatic.com/s/anybody/v13/VuJxdNvK2Ib2ppdWSK7dOaNkaRtlvg.woff2"
+    },
+    {
+      "family": "anybody",
+      "file": "anybody-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": "50% 150%",
+      "bytes": 45672,
+      "source": "https://fonts.gstatic.com/s/anybody/v13/VuJxdNvK2Ib2ppdWSK_dOaNkaRtlvg.woff2"
+    },
+    {
+      "family": "anybody",
+      "file": "anybody-normal.woff2",
+      "style": "normal",
+      "weight": "100 900",
+      "stretch": "50% 150%",
+      "bytes": 56860,
+      "source": "https://fonts.gstatic.com/s/anybody/v13/VuJxdNvK2Ib2ppdWSKHdOaNkaRs.woff2"
+    },
+    {
+      "family": "worksans",
+      "file": "worksans-italic.woff2",
+      "style": "italic",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 11760,
+      "source": "https://fonts.gstatic.com/s/worksans/v24/QGYqz_wNahGAdqQ43Rh_eZDkv_1i4_D2E4A.woff2"
+    },
+    {
+      "family": "worksans",
+      "file": "worksans-italic.woff2",
+      "style": "italic",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 32284,
+      "source": "https://fonts.gstatic.com/s/worksans/v24/QGYqz_wNahGAdqQ43Rh_eZDlv_1i4_D2E4A.woff2"
+    },
+    {
+      "family": "worksans",
+      "file": "worksans-italic.woff2",
+      "style": "italic",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 48264,
+      "source": "https://fonts.gstatic.com/s/worksans/v24/QGYqz_wNahGAdqQ43Rh_eZDrv_1i4_D2.woff2"
+    },
+    {
+      "family": "worksans",
+      "file": "worksans-normal.woff2",
+      "style": "normal",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 11776,
+      "source": "https://fonts.gstatic.com/s/worksans/v24/QGYsz_wNahGAdqQ43Rh_c6DptfpA4cD3.woff2"
+    },
+    {
+      "family": "worksans",
+      "file": "worksans-normal.woff2",
+      "style": "normal",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 35776,
+      "source": "https://fonts.gstatic.com/s/worksans/v24/QGYsz_wNahGAdqQ43Rh_cqDptfpA4cD3.woff2"
+    },
+    {
+      "family": "worksans",
+      "file": "worksans-normal.woff2",
+      "style": "normal",
+      "weight": "400 700",
+      "stretch": null,
+      "bytes": 50524,
+      "source": "https://fonts.gstatic.com/s/worksans/v24/QGYsz_wNahGAdqQ43Rh_fKDptfpA4Q.woff2"
+    },
+    {
+      "family": "sedgwick",
+      "file": "sedgwick-normal.woff2",
+      "style": "normal",
+      "weight": "400",
+      "stretch": null,
+      "bytes": 5336,
+      "source": "https://fonts.gstatic.com/s/sedgwickavedisplay/v23/xfuu0XPgU3jZPUoUo3ScvmPi-NapQ8OxM1c7fecFOCUCv08.woff2"
+    },
+    {
+      "family": "sedgwick",
+      "file": "sedgwick-normal.woff2",
+      "style": "normal",
+      "weight": "400",
+      "stretch": null,
+      "bytes": 16100,
+      "source": "https://fonts.gstatic.com/s/sedgwickavedisplay/v23/xfuu0XPgU3jZPUoUo3ScvmPi-NapQ8OxM1c6fecFOCUCv08.woff2"
+    },
+    {
+      "family": "sedgwick",
+      "file": "sedgwick-normal.woff2",
+      "style": "normal",
+      "weight": "400",
+      "stretch": null,
+      "bytes": 23960,
+      "source": "https://fonts.gstatic.com/s/sedgwickavedisplay/v23/xfuu0XPgU3jZPUoUo3ScvmPi-NapQ8OxM1c0fecFOCUC.woff2"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "schema": "site-reforge/project@1",
+  "name": "capitaldistrictcannabis-com",
+  "targetUrl": "https://capitaldistrictcannabis.com/",
+  "origin": "https://capitaldistrictcannabis.com",
+  "createdAt": "2026-11-12T22:55:03.653Z",
+  "updatedAt": "2026-11-13T00:50:09.774Z",
+  "config": {
+    "maxPages": 300,
+    "concurrency": 4,
+    "includeSubdomains": false,
+    "breakpoints": [
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "pixelDiffThreshold": 0.02,
+    "contentRecallFloor": 0.95,
+    "requestDelayMs": 150,
+    "requestHeaders": {}
+  },
+  "tooling": {
+    "browser": "unknown",
+    "imageGen": "unknown",
+    "detectedAt": null
+  },
+  "stages": {
+    "intake": {
+      "status": "done",
+      "at": "2026-11-12T22:55:03.654Z",
+      "note": "workspace created"
+    },
+    "crawl": {
+      "status": "partial",
+      "at": "2026-11-12T23:13:36.888Z",
+      "note": "900 pages, 38 failed, TRUNCATED at --max"
+    },
+    "extract": {
+      "status": "done",
+      "at": "2026-11-12T23:14:17.113Z",
+      "note": "721 pages extracted"
+    },
+    "assets": {
+      "status": "partial",
+      "at": "2026-11-12T23:22:30.686Z",
+      "note": "724/725 assets on disk"
+    },
+    "capture": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "tokens": {
+      "status": "done",
+      "at": "2026-11-13T00:01:20.713Z",
+      "note": "source-css only (NO browser capture — values are authored, not resolved)"
+    },
+    "motion": {
+      "status": "partial",
+      "at": "2026-11-13T00:01:21.303Z",
+      "note": "14 keyframes, 0 animated elements (SOURCE CSS ONLY)"
+    },
+    "presets": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "ux": {
+      "status": "partial",
+      "at": "2026-11-13T00:01:21.420Z",
+      "note": "4803 rows, 4803 UNSET"
+    },
+    "brand": {
+      "status": "partial",
+      "at": "2026-11-13T00:01:20.713Z",
+      "note": "tokens emitted; brand-system.md still owed"
+    },
+    "implement": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "clone": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "cloneVerify": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "responsive": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "seo": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "performance": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "decontaminate": {
+      "status": "done",
+      "at": "2026-11-13T00:50:07.411Z",
+      "note": "CLEAN (0 traces)"
+    },
+    "parity": {
+      "status": "fail",
+      "at": "2026-11-13T00:50:07.970Z",
+      "note": "DRIFT — 1324 findings"
+    },
+    "fabrication": {
+      "status": "fail",
+      "at": "2026-11-13T00:50:09.024Z",
+      "note": "FABRICATION — 279 findings"
+    },
+    "pixeldiff": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "sweep": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "functional": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    },
+    "gate": {
+      "status": "fail",
+      "at": "2026-11-13T00:50:09.774Z",
+      "note": "NOT-READY — 12/29 passing"
+    },
+    "package": {
+      "status": "pending",
+      "at": null,
+      "note": ""
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,5015 @@
+{
+ "img": {
+  "wall-mural": {
+   "alt": "Abstract graffiti mural in lime, mint and teal under a spotlight on a dark wall",
+   "ai": "generated",
+   "w": 2752,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/wall-mural-900.webp",
+     "w": 900,
+     "h": 502,
+     "bytes": 66472
+    },
+    {
+     "file": "img/wall-mural-1600.webp",
+     "w": 1600,
+     "h": 893,
+     "bytes": 177724
+    },
+    {
+     "file": "img/wall-mural-2752.webp",
+     "w": 2752,
+     "h": 1536,
+     "bytes": 381784
+    }
+   ],
+   "source": "private/gen/out/wall-mural-b.result.json"
+  },
+  "wall-mural-wide": {
+   "alt": "A long dark brick wall with an abstract graffiti mural in lime and teal at night",
+   "ai": "generated",
+   "w": 3136,
+   "h": 1344,
+   "files": [
+    {
+     "file": "img/wall-mural-wide-900.webp",
+     "w": 900,
+     "h": 386,
+     "bytes": 74102
+    },
+    {
+     "file": "img/wall-mural-wide-1600.webp",
+     "w": 1600,
+     "h": 686,
+     "bytes": 189248
+    },
+    {
+     "file": "img/wall-mural-wide-3136.webp",
+     "w": 3136,
+     "h": 1344,
+     "bytes": 482504
+    }
+   ],
+   "source": "private/gen/out/wall-mural-a.result.json"
+  },
+  "alley": {
+   "alt": "A wet city alley at night with lime and teal light on the pavement",
+   "ai": "generated",
+   "w": 3136,
+   "h": 1344,
+   "files": [
+    {
+     "file": "img/alley-900.webp",
+     "w": 900,
+     "h": 386,
+     "bytes": 58526
+    },
+    {
+     "file": "img/alley-1600.webp",
+     "w": 1600,
+     "h": 686,
+     "bytes": 152896
+    },
+    {
+     "file": "img/alley-3136.webp",
+     "w": 3136,
+     "h": 1344,
+     "bytes": 384800
+    }
+   ],
+   "source": "private/gen/out/alley-night.result.json"
+  },
+  "turntable": {
+   "alt": "A silver turntable with a lime-labelled vinyl record on black",
+   "ai": "generated",
+   "w": 2752,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/turntable-900.webp",
+     "w": 900,
+     "h": 502,
+     "bytes": 18488
+    },
+    {
+     "file": "img/turntable-1600.webp",
+     "w": 1600,
+     "h": 893,
+     "bytes": 38020
+    },
+    {
+     "file": "img/turntable-2752.webp",
+     "w": 2752,
+     "h": 1536,
+     "bytes": 75710
+    }
+   ],
+   "source": "private/gen/out/turntable.result.json"
+  },
+  "cat-flower": {
+   "alt": "A frosty cannabis flower with orange pistils on black",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-flower-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 41042
+    },
+    {
+     "file": "img/cat-flower-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 98190
+    },
+    {
+     "file": "img/cat-flower-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 239466
+    }
+   ],
+   "source": "private/gen/out/cat-flower.result.json"
+  },
+  "cat-prerolls": {
+   "alt": "Three cannabis pre-roll cones on black slate",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-prerolls-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 20192
+    },
+    {
+     "file": "img/cat-prerolls-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 54970
+    },
+    {
+     "file": "img/cat-prerolls-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 141718
+    }
+   ],
+   "source": "private/gen/out/cat-prerolls-b.result.json"
+  },
+  "cat-edibles": {
+   "alt": "Sugar-dusted fruit chews on a black dish",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-edibles-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 23510
+    },
+    {
+     "file": "img/cat-edibles-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 54064
+    },
+    {
+     "file": "img/cat-edibles-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 133712
+    }
+   ],
+   "source": "private/gen/out/cat-edibles.result.json"
+  },
+  "cat-vapes": {
+   "alt": "A vape pen and an amber oil cartridge on black",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-vapes-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 10608
+    },
+    {
+     "file": "img/cat-vapes-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 26524
+    },
+    {
+     "file": "img/cat-vapes-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 84540
+    }
+   ],
+   "source": "private/gen/out/cat-vapes.result.json"
+  },
+  "cat-concentrates": {
+   "alt": "Amber cannabis shatter and live resin on parchment",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-concentrates-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 31500
+    },
+    {
+     "file": "img/cat-concentrates-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 69876
+    },
+    {
+     "file": "img/cat-concentrates-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 157134
+    }
+   ],
+   "source": "private/gen/out/cat-concentrates.result.json"
+  },
+  "cat-tinctures": {
+   "alt": "An amber dropper bottle with a falling golden drop",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-tinctures-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 8012
+    },
+    {
+     "file": "img/cat-tinctures-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 16068
+    },
+    {
+     "file": "img/cat-tinctures-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 35644
+    }
+   ],
+   "source": "private/gen/out/cat-tinctures.result.json"
+  },
+  "cat-beverages": {
+   "alt": "A blank black drink can with ice and a cannabis leaf",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-beverages-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 19858
+    },
+    {
+     "file": "img/cat-beverages-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 50180
+    },
+    {
+     "file": "img/cat-beverages-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 133538
+    }
+   ],
+   "source": "private/gen/out/cat-beverages.result.json"
+  },
+  "cat-accessories": {
+   "alt": "A black herb grinder and a glass hand pipe on slate",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-accessories-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 22480
+    },
+    {
+     "file": "img/cat-accessories-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 51048
+    },
+    {
+     "file": "img/cat-accessories-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 119350
+    }
+   ],
+   "source": "private/gen/out/cat-accessories.result.json"
+  },
+  "cat-cbd": {
+   "alt": "Hemp flower and leaves on a white dish beside a jar of golden oil",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-cbd-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 14668
+    },
+    {
+     "file": "img/cat-cbd-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 32448
+    },
+    {
+     "file": "img/cat-cbd-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 80708
+    }
+   ],
+   "source": "private/gen/out/cat-cbd-b.result.json"
+  },
+  "cat-topicals": {
+   "alt": "A hemp leaf on a river stone beside a jar of balm",
+   "ai": "generated",
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/cat-topicals-480.webp",
+     "w": 480,
+     "h": 480,
+     "bytes": 15128
+    },
+    {
+     "file": "img/cat-topicals-800.webp",
+     "w": 800,
+     "h": 800,
+     "bytes": 35552
+    },
+    {
+     "file": "img/cat-topicals-1400.webp",
+     "w": 1400,
+     "h": 1400,
+     "bytes": 92362
+    }
+   ],
+   "source": "private/gen/out/cat-cbd.result.json"
+  },
+  "obj-bud-a": {
+   "alt": "A frosty cannabis bud",
+   "ai": "generated",
+   "w": 1075,
+   "h": 1026,
+   "files": [
+    {
+     "file": "img/obj-bud-a-360.webp",
+     "w": 360,
+     "h": 344,
+     "bytes": 67512
+    },
+    {
+     "file": "img/obj-bud-a-640.webp",
+     "w": 640,
+     "h": 611,
+     "bytes": 179692
+    },
+    {
+     "file": "img/obj-bud-a-1075.webp",
+     "w": 1075,
+     "h": 1026,
+     "bytes": 366512
+    }
+   ],
+   "source": "private/gen/out/cut-bud-a.result.json"
+  },
+  "obj-bud-b": {
+   "alt": "A small purple-tinged cannabis nug",
+   "ai": "generated",
+   "w": 752,
+   "h": 1240,
+   "files": [
+    {
+     "file": "img/obj-bud-b-360.webp",
+     "w": 360,
+     "h": 594,
+     "bytes": 85710
+    },
+    {
+     "file": "img/obj-bud-b-640.webp",
+     "w": 640,
+     "h": 1055,
+     "bytes": 214686
+    },
+    {
+     "file": "img/obj-bud-b-752.webp",
+     "w": 752,
+     "h": 1240,
+     "bytes": 257750
+    }
+   ],
+   "source": "private/gen/out/cut-bud-b.result.json"
+  },
+  "obj-spraycan": {
+   "alt": "A black spray paint can with a lime cap and drips",
+   "ai": "generated",
+   "w": 864,
+   "h": 1458,
+   "files": [
+    {
+     "file": "img/obj-spraycan-320.webp",
+     "w": 320,
+     "h": 540,
+     "bytes": 16104
+    },
+    {
+     "file": "img/obj-spraycan-560.webp",
+     "w": 560,
+     "h": 945,
+     "bytes": 32896
+    },
+    {
+     "file": "img/obj-spraycan-864.webp",
+     "w": 864,
+     "h": 1458,
+     "bytes": 59404
+    }
+   ],
+   "source": "private/gen/out/cut-spraycan.result.json"
+  },
+  "obj-boombox": {
+   "alt": "A chrome and black boombox",
+   "ai": "generated",
+   "w": 1360,
+   "h": 823,
+   "files": [
+    {
+     "file": "img/obj-boombox-480.webp",
+     "w": 480,
+     "h": 290,
+     "bytes": 44324
+    },
+    {
+     "file": "img/obj-boombox-800.webp",
+     "w": 800,
+     "h": 484,
+     "bytes": 99470
+    },
+    {
+     "file": "img/obj-boombox-1360.webp",
+     "w": 1360,
+     "h": 823,
+     "bytes": 209848
+    }
+   ],
+   "source": "private/gen/out/cut-boombox.result.json"
+  },
+  "skyline": {
+   "alt": "The Albany skyline at night reflected in the Hudson River",
+   "ai": "edited",
+   "w": 3000,
+   "h": 2946,
+   "files": [
+    {
+     "file": "img/skyline-760.webp",
+     "w": 760,
+     "h": 746,
+     "bytes": 47754
+    },
+    {
+     "file": "img/skyline-1200.webp",
+     "w": 1200,
+     "h": 1178,
+     "bytes": 99652
+    },
+    {
+     "file": "img/skyline-1920.webp",
+     "w": 1920,
+     "h": 1885,
+     "bytes": 193316
+    },
+    {
+     "file": "img/skyline-3000.webp",
+     "w": 3000,
+     "h": 2946,
+     "bytes": 360148
+    }
+   ],
+   "source": "private/gen/out/up-skyline.result.json (Topaz High Fidelity V2 upscale of the client photo, no content change)"
+  },
+  "store-mural": {
+   "alt": "Inside Capital District Cannabis & Wellness: the graffiti mural wall and the product shelves",
+   "ai": "edited",
+   "w": 3200,
+   "h": 1800,
+   "files": [
+    {
+     "file": "img/store-mural-760.webp",
+     "w": 760,
+     "h": 428,
+     "bytes": 59636
+    },
+    {
+     "file": "img/store-mural-1200.webp",
+     "w": 1200,
+     "h": 675,
+     "bytes": 120406
+    },
+    {
+     "file": "img/store-mural-1920.webp",
+     "w": 1920,
+     "h": 1080,
+     "bytes": 255244
+    },
+    {
+     "file": "img/store-mural-3200.webp",
+     "w": 3200,
+     "h": 1800,
+     "bytes": 668738
+    }
+   ],
+   "source": "private/gen/out/up-mural.result.json (Topaz High Fidelity V2 upscale of the client photo, no content change)"
+  },
+  "store-albany": {
+   "alt": "Inside the Albany dispensary: the graffiti mural behind the counter",
+   "ai": "edited",
+   "w": 1528,
+   "h": 2040,
+   "files": [
+    {
+     "file": "img/store-albany-520.webp",
+     "w": 520,
+     "h": 694,
+     "bytes": 77246
+    },
+    {
+     "file": "img/store-albany-900.webp",
+     "w": 900,
+     "h": 1202,
+     "bytes": 194066
+    },
+    {
+     "file": "img/store-albany-1528.webp",
+     "w": 1528,
+     "h": 2040,
+     "bytes": 468404
+    }
+   ],
+   "source": "private/gen/out/up-albany.result.json (Topaz High Fidelity V2 upscale of the client photo, no content change)"
+  },
+  "m-2024-06-1271851a8965248a7f523021872ea520": {
+   "alt": "",
+   "ai": false,
+   "w": 1600,
+   "h": 900,
+   "files": [
+    {
+     "file": "img/m-2024-06-1271851a8965248a7f523021872ea520-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 34032
+    },
+    {
+     "file": "img/m-2024-06-1271851a8965248a7f523021872ea520-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 85758
+    },
+    {
+     "file": "img/m-2024-06-1271851a8965248a7f523021872ea520-1600.webp",
+     "w": 1600,
+     "h": 900,
+     "bytes": 259194
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com//wp-content//uploads//2024//06//1271851a8965248a7f523021872ea520.png"
+  },
+  "m-2024-05-category": {
+   "alt": "",
+   "ai": false,
+   "w": 2211,
+   "h": 1355,
+   "files": [
+    {
+     "file": "img/m-2024-05-category-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 58288
+    },
+    {
+     "file": "img/m-2024-05-category-960.webp",
+     "w": 960,
+     "h": 588,
+     "bytes": 144614
+    },
+    {
+     "file": "img/m-2024-05-category-1600.webp",
+     "w": 1600,
+     "h": 981,
+     "bytes": 388998
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/05/Category.png"
+  },
+  "m-2024-05-image-1": {
+   "alt": "",
+   "ai": false,
+   "w": 928,
+   "h": 470,
+   "files": [
+    {
+     "file": "img/m-2024-05-image-1-540.webp",
+     "w": 540,
+     "h": 273,
+     "bytes": 21952
+    },
+    {
+     "file": "img/m-2024-05-image-1-928.webp",
+     "w": 928,
+     "h": 470,
+     "bytes": 50902
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/05/Image-1-300x152.png"
+  },
+  "m-2024-05-istock-1186403297": {
+   "alt": "Marijuana Sour Gummy Candies",
+   "ai": false,
+   "w": 2000,
+   "h": 1500,
+   "files": [
+    {
+     "file": "img/m-2024-05-istock-1186403297-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 36084
+    },
+    {
+     "file": "img/m-2024-05-istock-1186403297-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 75850
+    },
+    {
+     "file": "img/m-2024-05-istock-1186403297-1600.webp",
+     "w": 1600,
+     "h": 1200,
+     "bytes": 141108
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/05/iStock-1186403297-1024x768.jpg"
+  },
+  "m-2024-05-istock-1189236721": {
+   "alt": "",
+   "ai": false,
+   "w": 2121,
+   "h": 1414,
+   "files": [
+    {
+     "file": "img/m-2024-05-istock-1189236721-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 19928
+    },
+    {
+     "file": "img/m-2024-05-istock-1189236721-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 52094
+    },
+    {
+     "file": "img/m-2024-05-istock-1189236721-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 187172
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/05/iStock-1189236721.jpg"
+  },
+  "m-2024-05-istock-1271639998": {
+   "alt": "",
+   "ai": false,
+   "w": 2121,
+   "h": 1414,
+   "files": [
+    {
+     "file": "img/m-2024-05-istock-1271639998-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 51110
+    },
+    {
+     "file": "img/m-2024-05-istock-1271639998-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 137420
+    },
+    {
+     "file": "img/m-2024-05-istock-1271639998-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 308066
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/05/iStock-1271639998.jpg"
+  },
+  "m-2024-05-istock-1354913424": {
+   "alt": "",
+   "ai": false,
+   "w": 2560,
+   "h": 960,
+   "files": [
+    {
+     "file": "img/m-2024-05-istock-1354913424-540.webp",
+     "w": 540,
+     "h": 202,
+     "bytes": 29054
+    },
+    {
+     "file": "img/m-2024-05-istock-1354913424-960.webp",
+     "w": 960,
+     "h": 360,
+     "bytes": 73240
+    },
+    {
+     "file": "img/m-2024-05-istock-1354913424-1600.webp",
+     "w": 1600,
+     "h": 600,
+     "bytes": 150672
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/05/iStock-1354913424-scaled.jpg"
+  },
+  "m-2024-05-pipes": {
+   "alt": "",
+   "ai": false,
+   "w": 898,
+   "h": 516,
+   "files": [
+    {
+     "file": "img/m-2024-05-pipes-540.webp",
+     "w": 540,
+     "h": 310,
+     "bytes": 58058
+    },
+    {
+     "file": "img/m-2024-05-pipes-898.webp",
+     "w": 898,
+     "h": 516,
+     "bytes": 140360
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/05/pipes.png"
+  },
+  "m-2024-06-img": {
+   "alt": "",
+   "ai": false,
+   "w": 1000,
+   "h": 982,
+   "files": [
+    {
+     "file": "img/m-2024-06-img-540.webp",
+     "w": 540,
+     "h": 530,
+     "bytes": 27334
+    },
+    {
+     "file": "img/m-2024-06-img-960.webp",
+     "w": 960,
+     "h": 943,
+     "bytes": 70336
+    },
+    {
+     "file": "img/m-2024-06-img-1000.webp",
+     "w": 1000,
+     "h": 982,
+     "bytes": 79656
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/Img-300x295.png"
+  },
+  "m-2024-06-untitled": {
+   "alt": "",
+   "ai": false,
+   "w": 1377,
+   "h": 975,
+   "files": [
+    {
+     "file": "img/m-2024-06-untitled-540.webp",
+     "w": 540,
+     "h": 382,
+     "bytes": 37766
+    },
+    {
+     "file": "img/m-2024-06-untitled-960.webp",
+     "w": 960,
+     "h": 680,
+     "bytes": 84626
+    },
+    {
+     "file": "img/m-2024-06-untitled-1377.webp",
+     "w": 1377,
+     "h": 975,
+     "bytes": 137862
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/Untitled-1024x725.png"
+  },
+  "m-2024-06-a-razgie2pa": {
+   "alt": "",
+   "ai": false,
+   "w": 1600,
+   "h": 1074,
+   "files": [
+    {
+     "file": "img/m-2024-06-a-razgie2pa-540.webp",
+     "w": 540,
+     "h": 362,
+     "bytes": 40410
+    },
+    {
+     "file": "img/m-2024-06-a-razgie2pa-960.webp",
+     "w": 960,
+     "h": 644,
+     "bytes": 88836
+    },
+    {
+     "file": "img/m-2024-06-a-razgie2pa-1600.webp",
+     "w": 1600,
+     "h": 1074,
+     "bytes": 161306
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/a-razgie2pa-1024x687.jpg"
+  },
+  "m-2024-06-bdnls2xb6k-edited": {
+   "alt": "",
+   "ai": false,
+   "w": 1443,
+   "h": 902,
+   "files": [
+    {
+     "file": "img/m-2024-06-bdnls2xb6k-edited-540.webp",
+     "w": 540,
+     "h": 338,
+     "bytes": 20018
+    },
+    {
+     "file": "img/m-2024-06-bdnls2xb6k-edited-960.webp",
+     "w": 960,
+     "h": 600,
+     "bytes": 43226
+    },
+    {
+     "file": "img/m-2024-06-bdnls2xb6k-edited-1443.webp",
+     "w": 1443,
+     "h": 902,
+     "bytes": 77824
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/bdnls2xb6k-edited-1024x640.jpg"
+  },
+  "m-2024-06-cdcw-albany": {
+   "alt": "The interior of Capital District Cannabis & Wellness Albany Dispensary",
+   "ai": false,
+   "w": 382,
+   "h": 510,
+   "files": [
+    {
+     "file": "img/m-2024-06-cdcw-albany-382.webp",
+     "w": 382,
+     "h": 510,
+     "bytes": 49026
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/cdcw-albany-225x300.jpeg"
+  },
+  "m-2024-06-cropped-favicon": {
+   "alt": "",
+   "ai": false,
+   "w": 512,
+   "h": 512,
+   "files": [
+    {
+     "file": "img/m-2024-06-cropped-favicon-512.webp",
+     "w": 512,
+     "h": 512,
+     "bytes": 23132
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/cropped-favicon-180x180.png"
+  },
+  "m-2024-06-ghvbptksqfs-edited": {
+   "alt": "",
+   "ai": false,
+   "w": 1600,
+   "h": 1000,
+   "files": [
+    {
+     "file": "img/m-2024-06-ghvbptksqfs-edited-540.webp",
+     "w": 540,
+     "h": 338,
+     "bytes": 41018
+    },
+    {
+     "file": "img/m-2024-06-ghvbptksqfs-edited-960.webp",
+     "w": 960,
+     "h": 600,
+     "bytes": 104820
+    },
+    {
+     "file": "img/m-2024-06-ghvbptksqfs-edited-1600.webp",
+     "w": 1600,
+     "h": 1000,
+     "bytes": 218152
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/ghvbptksqfs-edited-1024x640.jpg"
+  },
+  "m-2024-06-istock-1148947744": {
+   "alt": "Concentrated THC/CBD extract (aka shatter/wax) on non stick paper with trimmed marijuana buds. An alternative method of smoking cannabinoids extracted from cannabis plant, for medical & recreational use in legal states/countries.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2024-06-istock-1148947744-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 42378
+    },
+    {
+     "file": "img/m-2024-06-istock-1148947744-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 107214
+    },
+    {
+     "file": "img/m-2024-06-istock-1148947744-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 161284
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/iStock-1148947744-1024x683.jpg"
+  },
+  "m-2024-06-istock-1409745277-2": {
+   "alt": "golden cannabis wax in female hands in a box, strong thc extract.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2024-06-istock-1409745277-2-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 17544
+    },
+    {
+     "file": "img/m-2024-06-istock-1409745277-2-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 40184
+    },
+    {
+     "file": "img/m-2024-06-istock-1409745277-2-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 58786
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/iStock-1409745277-2-1024x683.jpg"
+  },
+  "m-2024-06-istock-1448007178": {
+   "alt": "cannabis live resin on dab stick with high thc.",
+   "ai": false,
+   "w": 1366,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2024-06-istock-1448007178-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 14766
+    },
+    {
+     "file": "img/m-2024-06-istock-1448007178-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 30620
+    },
+    {
+     "file": "img/m-2024-06-istock-1448007178-1366.webp",
+     "w": 1366,
+     "h": 768,
+     "bytes": 48482
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/iStock-1448007178-1024x576.jpg"
+  },
+  "m-2024-06-istock-2237015918": {
+   "alt": "Shot of the process for making live rosin from dry hash and cannabis trichomes. Shot inside of a cannabis processing laboratory in Oregon, USA.",
+   "ai": false,
+   "w": 1253,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2024-06-istock-2237015918-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 36386
+    },
+    {
+     "file": "img/m-2024-06-istock-2237015918-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 95318
+    },
+    {
+     "file": "img/m-2024-06-istock-2237015918-1253.webp",
+     "w": 1253,
+     "h": 836,
+     "bytes": 142174
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/iStock-2237015918-1024x683.jpg"
+  },
+  "m-2024-06-ponljpk9t5g": {
+   "alt": "",
+   "ai": false,
+   "w": 1600,
+   "h": 1067,
+   "files": [
+    {
+     "file": "img/m-2024-06-ponljpk9t5g-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 19254
+    },
+    {
+     "file": "img/m-2024-06-ponljpk9t5g-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 40628
+    },
+    {
+     "file": "img/m-2024-06-ponljpk9t5g-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 68692
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/ponljpk9t5g-1024x683.jpg"
+  },
+  "m-2024-06-vzxlsu2ja3a": {
+   "alt": "gummies and cannabis flower",
+   "ai": false,
+   "w": 1600,
+   "h": 1067,
+   "files": [
+    {
+     "file": "img/m-2024-06-vzxlsu2ja3a-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 39090
+    },
+    {
+     "file": "img/m-2024-06-vzxlsu2ja3a-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 85394
+    },
+    {
+     "file": "img/m-2024-06-vzxlsu2ja3a-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 144946
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/vzxlsu2ja3a-1024x683.jpg"
+  },
+  "m-2024-06-xccnzplieww": {
+   "alt": "",
+   "ai": false,
+   "w": 1600,
+   "h": 1067,
+   "files": [
+    {
+     "file": "img/m-2024-06-xccnzplieww-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 13996
+    },
+    {
+     "file": "img/m-2024-06-xccnzplieww-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 31608
+    },
+    {
+     "file": "img/m-2024-06-xccnzplieww-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 52340
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/06/xccnzplieww-1024x683.jpg"
+  },
+  "m-2024-07-beverages": {
+   "alt": "THC Beverages",
+   "ai": false,
+   "w": 600,
+   "h": 600,
+   "files": [
+    {
+     "file": "img/m-2024-07-beverages-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 12640
+    },
+    {
+     "file": "img/m-2024-07-beverages-600.webp",
+     "w": 600,
+     "h": 600,
+     "bytes": 15916
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/07/Beverages-150x150.png"
+  },
+  "m-2024-07-istock-1128667482-1-1": {
+   "alt": "",
+   "ai": false,
+   "w": 264,
+   "h": 260,
+   "files": [
+    {
+     "file": "img/m-2024-07-istock-1128667482-1-1-264.webp",
+     "w": 264,
+     "h": 260,
+     "bytes": 6460
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/07/iStock-1128667482-1-1.png"
+  },
+  "m-2024-07-istock-1157798943-1-1": {
+   "alt": "",
+   "ai": false,
+   "w": 381,
+   "h": 239,
+   "files": [
+    {
+     "file": "img/m-2024-07-istock-1157798943-1-1-381.webp",
+     "w": 381,
+     "h": 239,
+     "bytes": 10686
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/07/iStock-1157798943-1-1.png"
+  },
+  "m-2024-07-istock-1401939957-1-1": {
+   "alt": "",
+   "ai": false,
+   "w": 262,
+   "h": 292,
+   "files": [
+    {
+     "file": "img/m-2024-07-istock-1401939957-1-1-262.webp",
+     "w": 262,
+     "h": 292,
+     "bytes": 10302
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/07/iStock-1401939957-1-1.png"
+  },
+  "m-2024-07-istock-1482404312-1-1": {
+   "alt": "",
+   "ai": false,
+   "w": 264,
+   "h": 302,
+   "files": [
+    {
+     "file": "img/m-2024-07-istock-1482404312-1-1-264.webp",
+     "w": 264,
+     "h": 302,
+     "bytes": 13852
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/07/iStock-1482404312-1-1.png"
+  },
+  "m-2024-12-istock-1219012271": {
+   "alt": "Cropped shot of two handsome young man having a chat while hanging out together at home",
+   "ai": false,
+   "w": 2121,
+   "h": 1414,
+   "files": [
+    {
+     "file": "img/m-2024-12-istock-1219012271-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 35596
+    },
+    {
+     "file": "img/m-2024-12-istock-1219012271-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 74416
+    },
+    {
+     "file": "img/m-2024-12-istock-1219012271-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 145346
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2024/12/iStock-1219012271-1024x683.jpg"
+  },
+  "m-2025-03-cannabis-buds": {
+   "alt": "Weed, buds and blunt on drug table, cannabis and thc benefit for mental health or cbd. Herbal pharmaceutical, 420 joint and hallucinogenic in smoking ganja plant, marijuana and holistic stress relief",
+   "ai": false,
+   "w": 1247,
+   "h": 840,
+   "files": [
+    {
+     "file": "img/m-2025-03-cannabis-buds-540.webp",
+     "w": 540,
+     "h": 364,
+     "bytes": 22692
+    },
+    {
+     "file": "img/m-2025-03-cannabis-buds-960.webp",
+     "w": 960,
+     "h": 647,
+     "bytes": 53232
+    },
+    {
+     "file": "img/m-2025-03-cannabis-buds-1247.webp",
+     "w": 1247,
+     "h": 840,
+     "bytes": 81298
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/03/Cannabis-Buds-1024x690.jpg"
+  },
+  "m-2025-03-clifton-park-interior": {
+   "alt": "The interior of Capital District Cannabis Clifton Park",
+   "ai": false,
+   "w": 1360,
+   "h": 1020,
+   "files": [
+    {
+     "file": "img/m-2025-03-clifton-park-interior-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 60672
+    },
+    {
+     "file": "img/m-2025-03-clifton-park-interior-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 169732
+    },
+    {
+     "file": "img/m-2025-03-clifton-park-interior-1360.webp",
+     "w": 1360,
+     "h": 1020,
+     "bytes": 301324
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/03/Clifton-Park-interior-1024x768.jpeg"
+  },
+  "m-2025-03-istock-1219012306": {
+   "alt": "Cropped shot of a handsome young man smoking cannabis while sitting with his friend at home",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-03-istock-1219012306-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 28462
+    },
+    {
+     "file": "img/m-2025-03-istock-1219012306-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 57400
+    },
+    {
+     "file": "img/m-2025-03-istock-1219012306-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 80918
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/03/iStock-1219012306-1024x683.jpg"
+  },
+  "m-2025-03-istock-1482404318-1": {
+   "alt": "Man smoking marijuana while friends chat",
+   "ai": false,
+   "w": 768,
+   "h": 511,
+   "files": [
+    {
+     "file": "img/m-2025-03-istock-1482404318-1-540.webp",
+     "w": 540,
+     "h": 359,
+     "bytes": 22918
+    },
+    {
+     "file": "img/m-2025-03-istock-1482404318-1-768.webp",
+     "w": 768,
+     "h": 511,
+     "bytes": 33496
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/03/iStock-1482404318-1-300x200.jpg"
+  },
+  "m-2025-03-istock-1829241109": {
+   "alt": "",
+   "ai": false,
+   "w": 2125,
+   "h": 1411,
+   "files": [
+    {
+     "file": "img/m-2025-03-istock-1829241109-540.webp",
+     "w": 540,
+     "h": 359,
+     "bytes": 74860
+    },
+    {
+     "file": "img/m-2025-03-istock-1829241109-960.webp",
+     "w": 960,
+     "h": 637,
+     "bytes": 204262
+    },
+    {
+     "file": "img/m-2025-03-istock-1829241109-1600.webp",
+     "w": 1600,
+     "h": 1062,
+     "bytes": 489792
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/03/iStock-1829241109-1024x680.jpg"
+  },
+  "m-2025-04-istock-2208556880": {
+   "alt": "",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-04-istock-2208556880-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 27234
+    },
+    {
+     "file": "img/m-2025-04-istock-2208556880-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 57910
+    },
+    {
+     "file": "img/m-2025-04-istock-2208556880-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 84032
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/04/iStock-2208556880-1024x683.jpg"
+  },
+  "m-2025-05-img-8838": {
+   "alt": "",
+   "ai": false,
+   "w": 1170,
+   "h": 1153,
+   "files": [
+    {
+     "file": "img/m-2025-05-img-8838-540.webp",
+     "w": 540,
+     "h": 532,
+     "bytes": 41328
+    },
+    {
+     "file": "img/m-2025-05-img-8838-960.webp",
+     "w": 960,
+     "h": 946,
+     "bytes": 81808
+    },
+    {
+     "file": "img/m-2025-05-img-8838-1170.webp",
+     "w": 1170,
+     "h": 1153,
+     "bytes": 102312
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/05/IMG_8838-1024x1009.jpeg"
+  },
+  "m-2025-05-untitled-project-10": {
+   "alt": "",
+   "ai": false,
+   "w": 720,
+   "h": 1280,
+   "files": [
+    {
+     "file": "img/m-2025-05-untitled-project-10-540.webp",
+     "w": 540,
+     "h": 960,
+     "bytes": 155352
+    },
+    {
+     "file": "img/m-2025-05-untitled-project-10-720.webp",
+     "w": 720,
+     "h": 1280,
+     "bytes": 253146
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/05/Untitled-Project-10-169x300.jpg"
+  },
+  "m-2025-05-untitled-project-5": {
+   "alt": "",
+   "ai": false,
+   "w": 2560,
+   "h": 2560,
+   "files": [
+    {
+     "file": "img/m-2025-05-untitled-project-5-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 55576
+    },
+    {
+     "file": "img/m-2025-05-untitled-project-5-960.webp",
+     "w": 960,
+     "h": 960,
+     "bytes": 112782
+    },
+    {
+     "file": "img/m-2025-05-untitled-project-5-1600.webp",
+     "w": 1600,
+     "h": 1600,
+     "bytes": 205512
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/05/Untitled-Project-5-1024x1024.jpg"
+  },
+  "m-2025-05-istock-1494782831": {
+   "alt": "",
+   "ai": false,
+   "w": 2121,
+   "h": 1414,
+   "files": [
+    {
+     "file": "img/m-2025-05-istock-1494782831-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 29454
+    },
+    {
+     "file": "img/m-2025-05-istock-1494782831-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 59226
+    },
+    {
+     "file": "img/m-2025-05-istock-1494782831-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 109766
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/05/iStock-1494782831-1024x683.jpg"
+  },
+  "m-2025-06-istock-1044035432": {
+   "alt": "",
+   "ai": false,
+   "w": 2560,
+   "h": 1708,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-1044035432-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 76522
+    },
+    {
+     "file": "img/m-2025-06-istock-1044035432-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 193172
+    },
+    {
+     "file": "img/m-2025-06-istock-1044035432-1600.webp",
+     "w": 1600,
+     "h": 1068,
+     "bytes": 418388
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-1044035432-1024x683.jpg"
+  },
+  "m-2025-06-istock-1127033942": {
+   "alt": "Macro detail of dab tool with cannabis concentrate aka rosin isolated over black background, medical marijuana extraction concept",
+   "ai": false,
+   "w": 1254,
+   "h": 837,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-1127033942-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 5418
+    },
+    {
+     "file": "img/m-2025-06-istock-1127033942-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 11198
+    },
+    {
+     "file": "img/m-2025-06-istock-1127033942-1254.webp",
+     "w": 1254,
+     "h": 837,
+     "bytes": 14554
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-1127033942-1024x683.jpg"
+  },
+  "m-2025-06-istock-1292494333": {
+   "alt": "Macro detail of cannabis oil concentrate aka shatter isolated over white background",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-1292494333-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 19104
+    },
+    {
+     "file": "img/m-2025-06-istock-1292494333-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 44140
+    },
+    {
+     "file": "img/m-2025-06-istock-1292494333-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 63338
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-1292494333-1024x683.jpg"
+  },
+  "m-2025-06-istock-1389845778": {
+   "alt": "",
+   "ai": false,
+   "w": 2560,
+   "h": 1707,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-1389845778-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 22568
+    },
+    {
+     "file": "img/m-2025-06-istock-1389845778-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 55086
+    },
+    {
+     "file": "img/m-2025-06-istock-1389845778-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 115248
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-1389845778-1024x683.jpg"
+  },
+  "m-2025-06-istock-1410458206": {
+   "alt": "golden cannabis  dab in glass container, wax extract on yellow background.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-1410458206-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 13676
+    },
+    {
+     "file": "img/m-2025-06-istock-1410458206-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 30126
+    },
+    {
+     "file": "img/m-2025-06-istock-1410458206-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 43198
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-1410458206-1024x683.jpg"
+  },
+  "m-2025-06-istock-1414127941-2": {
+   "alt": "710 cannabis wax day concept, golden dab text in hand.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-1414127941-2-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 11630
+    },
+    {
+     "file": "img/m-2025-06-istock-1414127941-2-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 29734
+    },
+    {
+     "file": "img/m-2025-06-istock-1414127941-2-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 48052
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-1414127941-2-1024x683.jpg"
+  },
+  "m-2025-06-istock-1448007178": {
+   "alt": "cannabis live resin on dab stick with high thc.",
+   "ai": false,
+   "w": 1366,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-1448007178-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 14766
+    },
+    {
+     "file": "img/m-2025-06-istock-1448007178-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 30620
+    },
+    {
+     "file": "img/m-2025-06-istock-1448007178-1366.webp",
+     "w": 1366,
+     "h": 768,
+     "bytes": 48482
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-1448007178-1024x576.jpg"
+  },
+  "m-2025-06-istock-2159023552": {
+   "alt": "",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-2159023552-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 32208
+    },
+    {
+     "file": "img/m-2025-06-istock-2159023552-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 101210
+    },
+    {
+     "file": "img/m-2025-06-istock-2159023552-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 201628
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-2159023552-1024x683.jpg"
+  },
+  "m-2025-06-istock-2191391622": {
+   "alt": "Photo of a diverse group of people snacking, tasting variety of wines and enjoying an outdoors dinner party together",
+   "ai": false,
+   "w": 1284,
+   "h": 816,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-2191391622-540.webp",
+     "w": 540,
+     "h": 343,
+     "bytes": 23126
+    },
+    {
+     "file": "img/m-2025-06-istock-2191391622-960.webp",
+     "w": 960,
+     "h": 610,
+     "bytes": 46168
+    },
+    {
+     "file": "img/m-2025-06-istock-2191391622-1284.webp",
+     "w": 1284,
+     "h": 816,
+     "bytes": 64974
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-2191391622-1024x651.jpg"
+  },
+  "m-2025-06-istock-2221922631": {
+   "alt": "Flag at with Independence Day parade in background",
+   "ai": false,
+   "w": 768,
+   "h": 511,
+   "files": [
+    {
+     "file": "img/m-2025-06-istock-2221922631-540.webp",
+     "w": 540,
+     "h": 359,
+     "bytes": 34390
+    },
+    {
+     "file": "img/m-2025-06-istock-2221922631-768.webp",
+     "w": 768,
+     "h": 511,
+     "bytes": 48648
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/06/iStock-2221922631-300x200.jpg"
+  },
+  "m-2025-07-5113190398-a35e96787d-k": {
+   "alt": "",
+   "ai": false,
+   "w": 2048,
+   "h": 1371,
+   "files": [
+    {
+     "file": "img/m-2025-07-5113190398-a35e96787d-k-540.webp",
+     "w": 540,
+     "h": 361,
+     "bytes": 39002
+    },
+    {
+     "file": "img/m-2025-07-5113190398-a35e96787d-k-960.webp",
+     "w": 960,
+     "h": 643,
+     "bytes": 112634
+    },
+    {
+     "file": "img/m-2025-07-5113190398-a35e96787d-k-1600.webp",
+     "w": 1600,
+     "h": 1071,
+     "bytes": 267326
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/07/5113190398_a35e96787d_k-1024x686.jpg"
+  },
+  "m-2025-07-updated-boat-party": {
+   "alt": "",
+   "ai": false,
+   "w": 1656,
+   "h": 2560,
+   "files": [
+    {
+     "file": "img/m-2025-07-updated-boat-party-540.webp",
+     "w": 540,
+     "h": 835,
+     "bytes": 86436
+    },
+    {
+     "file": "img/m-2025-07-updated-boat-party-960.webp",
+     "w": 960,
+     "h": 1484,
+     "bytes": 176884
+    },
+    {
+     "file": "img/m-2025-07-updated-boat-party-1600.webp",
+     "w": 1600,
+     "h": 2473,
+     "bytes": 318592
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/07/Updated-boat-party-1325x2048.jpg"
+  },
+  "m-2025-07-istock-1021709806": {
+   "alt": "",
+   "ai": false,
+   "w": 2121,
+   "h": 1414,
+   "files": [
+    {
+     "file": "img/m-2025-07-istock-1021709806-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 55840
+    },
+    {
+     "file": "img/m-2025-07-istock-1021709806-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 155000
+    },
+    {
+     "file": "img/m-2025-07-istock-1021709806-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 364186
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/07/iStock-1021709806-1024x683.jpg"
+  },
+  "m-2025-07-image1-1": {
+   "alt": "",
+   "ai": false,
+   "w": 375,
+   "h": 268,
+   "files": [
+    {
+     "file": "img/m-2025-07-image1-1-375.webp",
+     "w": 375,
+     "h": 268,
+     "bytes": 19312
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/07/image1-1-300x214.jpeg"
+  },
+  "m-2025-07-qr-code": {
+   "alt": "",
+   "ai": false,
+   "w": 1113,
+   "h": 1113,
+   "files": [
+    {
+     "file": "img/m-2025-07-qr-code-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 20410
+    },
+    {
+     "file": "img/m-2025-07-qr-code-960.webp",
+     "w": 960,
+     "h": 960,
+     "bytes": 25240
+    },
+    {
+     "file": "img/m-2025-07-qr-code-1113.webp",
+     "w": 1113,
+     "h": 1113,
+     "bytes": 16972
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/07/qr-code-1024x1024.png"
+  },
+  "m-2025-08-image-1": {
+   "alt": "Capital District",
+   "ai": false,
+   "w": 928,
+   "h": 470,
+   "files": [
+    {
+     "file": "img/m-2025-08-image-1-540.webp",
+     "w": 540,
+     "h": 273,
+     "bytes": 22744
+    },
+    {
+     "file": "img/m-2025-08-image-1-928.webp",
+     "w": 928,
+     "h": 470,
+     "bytes": 65860
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/08/Image-1-300x152.png"
+  },
+  "m-2025-08-schenectady-smokeout": {
+   "alt": "",
+   "ai": false,
+   "w": 1500,
+   "h": 2100,
+   "files": [
+    {
+     "file": "img/m-2025-08-schenectady-smokeout-540.webp",
+     "w": 540,
+     "h": 756,
+     "bytes": 63548
+    },
+    {
+     "file": "img/m-2025-08-schenectady-smokeout-960.webp",
+     "w": 960,
+     "h": 1344,
+     "bytes": 128542
+    },
+    {
+     "file": "img/m-2025-08-schenectady-smokeout-1500.webp",
+     "w": 1500,
+     "h": 2100,
+     "bytes": 224572
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/08/Schenectady-smokeout-1097x1536.jpg"
+  },
+  "m-2025-08-istock-1187414585": {
+   "alt": "",
+   "ai": false,
+   "w": 2000,
+   "h": 1500,
+   "files": [
+    {
+     "file": "img/m-2025-08-istock-1187414585-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 26160
+    },
+    {
+     "file": "img/m-2025-08-istock-1187414585-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 55864
+    },
+    {
+     "file": "img/m-2025-08-istock-1187414585-1600.webp",
+     "w": 1600,
+     "h": 1200,
+     "bytes": 110586
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/08/iStock-1187414585.jpg"
+  },
+  "m-2025-08-istock-1250579263": {
+   "alt": "",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-08-istock-1250579263-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 12860
+    },
+    {
+     "file": "img/m-2025-08-istock-1250579263-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 28686
+    },
+    {
+     "file": "img/m-2025-08-istock-1250579263-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 39558
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/08/iStock-1250579263-1024x683.jpg"
+  },
+  "m-2025-08-istock-2163952659": {
+   "alt": "",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-08-istock-2163952659-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 32108
+    },
+    {
+     "file": "img/m-2025-08-istock-2163952659-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 81138
+    },
+    {
+     "file": "img/m-2025-08-istock-2163952659-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 124692
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/08/iStock-2163952659-1024x683.jpg"
+  },
+  "m-2025-09-istock-1278724322": {
+   "alt": "",
+   "ai": false,
+   "w": 1367,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2025-09-istock-1278724322-540.webp",
+     "w": 540,
+     "h": 303,
+     "bytes": 65626
+    },
+    {
+     "file": "img/m-2025-09-istock-1278724322-960.webp",
+     "w": 960,
+     "h": 539,
+     "bytes": 192298
+    },
+    {
+     "file": "img/m-2025-09-istock-1278724322-1367.webp",
+     "w": 1367,
+     "h": 768,
+     "bytes": 356188
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/09/iStock-1278724322-1024x575.jpg"
+  },
+  "m-2025-09-istock-2211502564": {
+   "alt": "",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-09-istock-2211502564-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 62360
+    },
+    {
+     "file": "img/m-2025-09-istock-2211502564-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 167598
+    },
+    {
+     "file": "img/m-2025-09-istock-2211502564-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 265388
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/09/iStock-2211502564-1024x683.jpg"
+  },
+  "m-2025-09-istock-504640832": {
+   "alt": "",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-09-istock-504640832-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 49592
+    },
+    {
+     "file": "img/m-2025-09-istock-504640832-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 101980
+    },
+    {
+     "file": "img/m-2025-09-istock-504640832-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 140436
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/09/iStock-504640832-1024x683.jpg"
+  },
+  "m-2025-09-istock-808689080": {
+   "alt": "Albany is the capital of the U.S. state of New York and the seat of Albany County.",
+   "ai": false,
+   "w": 1255,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-09-istock-808689080-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 49744
+    },
+    {
+     "file": "img/m-2025-09-istock-808689080-960.webp",
+     "w": 960,
+     "h": 639,
+     "bytes": 144774
+    },
+    {
+     "file": "img/m-2025-09-istock-808689080-1255.webp",
+     "w": 1255,
+     "h": 836,
+     "bytes": 226584
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/09/iStock-808689080-1024x682.jpg"
+  },
+  "m-2025-09-istock-993537896": {
+   "alt": "Silhouette of hemp and marijuana before harvest in sunlight. Ganja, cannabis blurred background with warm shades of setting sun",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-09-istock-993537896-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 23032
+    },
+    {
+     "file": "img/m-2025-09-istock-993537896-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 45138
+    },
+    {
+     "file": "img/m-2025-09-istock-993537896-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 64926
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/09/iStock-993537896-1024x683.jpg"
+  },
+  "m-2025-10-img-6709": {
+   "alt": "",
+   "ai": false,
+   "w": 2560,
+   "h": 1920,
+   "files": [
+    {
+     "file": "img/m-2025-10-img-6709-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 55760
+    },
+    {
+     "file": "img/m-2025-10-img-6709-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 148896
+    },
+    {
+     "file": "img/m-2025-10-img-6709-1600.webp",
+     "w": 1600,
+     "h": 1200,
+     "bytes": 346512
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/10/IMG_6709-1024x768.jpeg"
+  },
+  "m-2025-10-img-6712": {
+   "alt": "",
+   "ai": false,
+   "w": 2560,
+   "h": 1920,
+   "files": [
+    {
+     "file": "img/m-2025-10-img-6712-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 48914
+    },
+    {
+     "file": "img/m-2025-10-img-6712-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 113180
+    },
+    {
+     "file": "img/m-2025-10-img-6712-1600.webp",
+     "w": 1600,
+     "h": 1200,
+     "bytes": 218188
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/10/IMG_6712-1024x768.jpeg"
+  },
+  "m-2025-10-istock-1385864406-1": {
+   "alt": "Cannabis leaf carved into pumpkin",
+   "ai": false,
+   "w": 2048,
+   "h": 1365,
+   "files": [
+    {
+     "file": "img/m-2025-10-istock-1385864406-1-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 26176
+    },
+    {
+     "file": "img/m-2025-10-istock-1385864406-1-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 58654
+    },
+    {
+     "file": "img/m-2025-10-istock-1385864406-1-1600.webp",
+     "w": 1600,
+     "h": 1066,
+     "bytes": 117062
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/10/iStock-1385864406-1-1024x683.jpg"
+  },
+  "m-2025-10-istock-2157949170": {
+   "alt": "",
+   "ai": false,
+   "w": 2121,
+   "h": 1414,
+   "files": [
+    {
+     "file": "img/m-2025-10-istock-2157949170-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 25698
+    },
+    {
+     "file": "img/m-2025-10-istock-2157949170-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 68500
+    },
+    {
+     "file": "img/m-2025-10-istock-2157949170-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 242594
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/10/iStock-2157949170-1024x683.jpg"
+  },
+  "m-2025-10-image1-2": {
+   "alt": "",
+   "ai": false,
+   "w": 1327,
+   "h": 2360,
+   "files": [
+    {
+     "file": "img/m-2025-10-image1-2-540.webp",
+     "w": 540,
+     "h": 960,
+     "bytes": 55020
+    },
+    {
+     "file": "img/m-2025-10-image1-2-960.webp",
+     "w": 960,
+     "h": 1707,
+     "bytes": 112218
+    },
+    {
+     "file": "img/m-2025-10-image1-2-1327.webp",
+     "w": 1327,
+     "h": 2360,
+     "bytes": 139890
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/10/image1-2-1152x2048.jpeg"
+  },
+  "m-2025-11-untitled-project-35": {
+   "alt": "",
+   "ai": false,
+   "w": 1024,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/m-2025-11-untitled-project-35-540.webp",
+     "w": 540,
+     "h": 810,
+     "bytes": 58138
+    },
+    {
+     "file": "img/m-2025-11-untitled-project-35-960.webp",
+     "w": 960,
+     "h": 1440,
+     "bytes": 125368
+    },
+    {
+     "file": "img/m-2025-11-untitled-project-35-1024.webp",
+     "w": 1024,
+     "h": 1536,
+     "bytes": 137898
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/11/Untitled-Project-35-200x300.jpg"
+  },
+  "m-2025-11-istock-1129030926-8": {
+   "alt": "Hands with Purple Latex Gloves Holding Marijuana Buds",
+   "ai": false,
+   "w": 1239,
+   "h": 847,
+   "files": [
+    {
+     "file": "img/m-2025-11-istock-1129030926-8-540.webp",
+     "w": 540,
+     "h": 369,
+     "bytes": 43720
+    },
+    {
+     "file": "img/m-2025-11-istock-1129030926-8-960.webp",
+     "w": 960,
+     "h": 656,
+     "bytes": 98054
+    },
+    {
+     "file": "img/m-2025-11-istock-1129030926-8-1239.webp",
+     "w": 1239,
+     "h": 847,
+     "bytes": 136358
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/11/iStock-1129030926-8-1024x700.jpg"
+  },
+  "m-2025-11-istock-1478352830": {
+   "alt": "Gummy fruits lie in a square in the center, dry buds of medical marijuana and joints lie to the right and left. Cannabis treatment, On a blue-green background, copy space, flatlay",
+   "ai": false,
+   "w": 1024,
+   "h": 694,
+   "files": [
+    {
+     "file": "img/m-2025-11-istock-1478352830-540.webp",
+     "w": 540,
+     "h": 366,
+     "bytes": 29162
+    },
+    {
+     "file": "img/m-2025-11-istock-1478352830-960.webp",
+     "w": 960,
+     "h": 651,
+     "bytes": 77392
+    },
+    {
+     "file": "img/m-2025-11-istock-1478352830-1024.webp",
+     "w": 1024,
+     "h": 694,
+     "bytes": 81774
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/11/iStock-1478352830-1024x694.jpg"
+  },
+  "m-2025-11-istock-2248780512": {
+   "alt": "Crowd gathered in front of a store for a big sale event. CGI (all objects in the scene are 3D)",
+   "ai": false,
+   "w": 1365,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2025-11-istock-2248780512-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 52392
+    },
+    {
+     "file": "img/m-2025-11-istock-2248780512-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 112794
+    },
+    {
+     "file": "img/m-2025-11-istock-2248780512-1365.webp",
+     "w": 1365,
+     "h": 768,
+     "bytes": 170420
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/11/iStock-2248780512-1024x576.jpg"
+  },
+  "m-2025-11-istock-642546596": {
+   "alt": "Full frame of purple and yellow cannabis / hemp leafs.",
+   "ai": false,
+   "w": 1255,
+   "h": 835,
+   "files": [
+    {
+     "file": "img/m-2025-11-istock-642546596-540.webp",
+     "w": 540,
+     "h": 359,
+     "bytes": 77820
+    },
+    {
+     "file": "img/m-2025-11-istock-642546596-960.webp",
+     "w": 960,
+     "h": 639,
+     "bytes": 196286
+    },
+    {
+     "file": "img/m-2025-11-istock-642546596-1255.webp",
+     "w": 1255,
+     "h": 835,
+     "bytes": 293330
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/11/iStock-642546596-1024x681.jpg"
+  },
+  "m-2025-12-blaze-za-halls-postcard-us": {
+   "alt": "",
+   "ai": false,
+   "w": 1650,
+   "h": 1275,
+   "files": [
+    {
+     "file": "img/m-2025-12-blaze-za-halls-postcard-us-540.webp",
+     "w": 540,
+     "h": 417,
+     "bytes": 42504
+    },
+    {
+     "file": "img/m-2025-12-blaze-za-halls-postcard-us-960.webp",
+     "w": 960,
+     "h": 742,
+     "bytes": 93748
+    },
+    {
+     "file": "img/m-2025-12-blaze-za-halls-postcard-us-1600.webp",
+     "w": 1600,
+     "h": 1236,
+     "bytes": 206574
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/12/Blaze-Za-Halls-Postcard-US-1024x791.png"
+  },
+  "m-2025-12-istock-1248482465": {
+   "alt": "CBD cocktail infusion made with cannabis infused tincture",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-12-istock-1248482465-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 27044
+    },
+    {
+     "file": "img/m-2025-12-istock-1248482465-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 56636
+    },
+    {
+     "file": "img/m-2025-12-istock-1248482465-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 78642
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/12/iStock-1248482465-1024x683.jpg"
+  },
+  "m-2025-12-istock-1319779742-5": {
+   "alt": "Shopping trolley and leaves of marijuana on yellow background. Legal cannabis concept",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-12-istock-1319779742-5-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 16294
+    },
+    {
+     "file": "img/m-2025-12-istock-1319779742-5-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 35088
+    },
+    {
+     "file": "img/m-2025-12-istock-1319779742-5-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 49114
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/12/iStock-1319779742-5-1024x683.jpg"
+  },
+  "m-2025-12-istock-1355417185": {
+   "alt": "A woman in a white dress gives money and receives a bag of marijuana. Courier delivers the order of pharmacy cannabis",
+   "ai": false,
+   "w": 2121,
+   "h": 1414,
+   "files": [
+    {
+     "file": "img/m-2025-12-istock-1355417185-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 12284
+    },
+    {
+     "file": "img/m-2025-12-istock-1355417185-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 23974
+    },
+    {
+     "file": "img/m-2025-12-istock-1355417185-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 46204
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/12/iStock-1355417185-1024x683.jpg"
+  },
+  "m-2025-12-istock-1424077381-1": {
+   "alt": "Dry January Calendar Reminder",
+   "ai": false,
+   "w": 1365,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2025-12-istock-1424077381-1-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 15834
+    },
+    {
+     "file": "img/m-2025-12-istock-1424077381-1-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 33638
+    },
+    {
+     "file": "img/m-2025-12-istock-1424077381-1-1365.webp",
+     "w": 1365,
+     "h": 768,
+     "bytes": 52208
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/12/iStock-1424077381-1-1024x576.jpg"
+  },
+  "m-2025-12-istock-1425014795": {
+   "alt": "Female hand holding marijuana bud in glass jar with white ribbon on yellow background, close up",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-12-istock-1425014795-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 11624
+    },
+    {
+     "file": "img/m-2025-12-istock-1425014795-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 26984
+    },
+    {
+     "file": "img/m-2025-12-istock-1425014795-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 38798
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/12/iStock-1425014795-1024x683.jpg"
+  },
+  "m-2025-12-istock-1722664344": {
+   "alt": "Young man walks across sand dune at sunrise",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-12-istock-1722664344-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 6392
+    },
+    {
+     "file": "img/m-2025-12-istock-1722664344-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 13666
+    },
+    {
+     "file": "img/m-2025-12-istock-1722664344-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 15330
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/12/iStock-1722664344-1024x683.jpg"
+  },
+  "m-2025-12-istock-876858628": {
+   "alt": "santa red Christmas hat with marijuana",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2025-12-istock-876858628-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 35580
+    },
+    {
+     "file": "img/m-2025-12-istock-876858628-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 76796
+    },
+    {
+     "file": "img/m-2025-12-istock-876858628-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 108058
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2025/12/iStock-876858628-1024x683.jpg"
+  },
+  "m-2026-01-schenectady-toke-and-teach-1": {
+   "alt": "",
+   "ai": false,
+   "w": 2012,
+   "h": 1484,
+   "files": [
+    {
+     "file": "img/m-2026-01-schenectady-toke-and-teach-1-540.webp",
+     "w": 540,
+     "h": 398,
+     "bytes": 65904
+    },
+    {
+     "file": "img/m-2026-01-schenectady-toke-and-teach-1-960.webp",
+     "w": 960,
+     "h": 708,
+     "bytes": 160256
+    },
+    {
+     "file": "img/m-2026-01-schenectady-toke-and-teach-1-1600.webp",
+     "w": 1600,
+     "h": 1180,
+     "bytes": 322324
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/01/Schenectady-toke-and-teach_1-1024x755.jpg"
+  },
+  "m-2026-01-untitled-project-47": {
+   "alt": "",
+   "ai": false,
+   "w": 1024,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/m-2026-01-untitled-project-47-540.webp",
+     "w": 540,
+     "h": 810,
+     "bytes": 132858
+    },
+    {
+     "file": "img/m-2026-01-untitled-project-47-960.webp",
+     "w": 960,
+     "h": 1440,
+     "bytes": 289010
+    },
+    {
+     "file": "img/m-2026-01-untitled-project-47-1024.webp",
+     "w": 1024,
+     "h": 1536,
+     "bytes": 305770
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/01/Untitled-Project-47-200x300.jpg"
+  },
+  "m-2026-01-istock-1197802179": {
+   "alt": "Jars with dried cannabis",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-01-istock-1197802179-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 19620
+    },
+    {
+     "file": "img/m-2026-01-istock-1197802179-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 38974
+    },
+    {
+     "file": "img/m-2026-01-istock-1197802179-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 54678
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/01/iStock-1197802179-1024x683.jpg"
+  },
+  "m-2026-01-istock-1392772565": {
+   "alt": "",
+   "ai": false,
+   "w": 1255,
+   "h": 835,
+   "files": [
+    {
+     "file": "img/m-2026-01-istock-1392772565-540.webp",
+     "w": 540,
+     "h": 359,
+     "bytes": 36252
+    },
+    {
+     "file": "img/m-2026-01-istock-1392772565-960.webp",
+     "w": 960,
+     "h": 639,
+     "bytes": 78332
+    },
+    {
+     "file": "img/m-2026-01-istock-1392772565-1255.webp",
+     "w": 1255,
+     "h": 835,
+     "bytes": 108520
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/01/iStock-1392772565-1024x681.jpg"
+  },
+  "m-2026-01-istock-1453800246": {
+   "alt": "Closeup selective focus on addictive processed cannabis flower in jar ready to be rolled into cigarette",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-01-istock-1453800246-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 47002
+    },
+    {
+     "file": "img/m-2026-01-istock-1453800246-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 104658
+    },
+    {
+     "file": "img/m-2026-01-istock-1453800246-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 150458
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/01/iStock-1453800246-1024x683.jpg"
+  },
+  "m-2026-02-istock-1025085796": {
+   "alt": "Multiple strains of marijuana flower ground up on a joint paper to roll up and smoke for recreational and medical use.",
+   "ai": false,
+   "w": 300,
+   "h": 226,
+   "files": [
+    {
+     "file": "img/m-2026-02-istock-1025085796-300.webp",
+     "w": 300,
+     "h": 226,
+     "bytes": 10566
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/02/iStock-1025085796-300x226.jpg"
+  },
+  "m-2026-02-istock-1194556486": {
+   "alt": "Pre-Rolled Marijuana Joints",
+   "ai": false,
+   "w": 1183,
+   "h": 887,
+   "files": [
+    {
+     "file": "img/m-2026-02-istock-1194556486-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 24496
+    },
+    {
+     "file": "img/m-2026-02-istock-1194556486-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 49210
+    },
+    {
+     "file": "img/m-2026-02-istock-1194556486-1183.webp",
+     "w": 1183,
+     "h": 887,
+     "bytes": 61872
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/02/iStock-1194556486-1024x768.jpg"
+  },
+  "m-2026-02-istock-1199449796": {
+   "alt": "THC and CBD flower buds of Cannabis recreational and medical marijuana , jars of weed overflowing out of glass jar and more weed in the background",
+   "ai": false,
+   "w": 1253,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-02-istock-1199449796-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 39248
+    },
+    {
+     "file": "img/m-2026-02-istock-1199449796-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 95666
+    },
+    {
+     "file": "img/m-2026-02-istock-1199449796-1253.webp",
+     "w": 1253,
+     "h": 836,
+     "bytes": 136620
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/02/iStock-1199449796-1024x683.jpg"
+  },
+  "m-2026-02-istock-1254505672": {
+   "alt": "Closeup of a young man grinding up some weed while getting high in his living room at home",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-02-istock-1254505672-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 42650
+    },
+    {
+     "file": "img/m-2026-02-istock-1254505672-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 97286
+    },
+    {
+     "file": "img/m-2026-02-istock-1254505672-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 145316
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/02/iStock-1254505672-1024x683.jpg"
+  },
+  "m-2026-02-istock-1273409579": {
+   "alt": "Pre-Rolls Cannabis Joints and dried flower marijuana on a clear background",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-02-istock-1273409579-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 21008
+    },
+    {
+     "file": "img/m-2026-02-istock-1273409579-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 50810
+    },
+    {
+     "file": "img/m-2026-02-istock-1273409579-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 75516
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/02/iStock-1273409579-1024x683.jpg"
+  },
+  "m-2026-02-istock-1338722382-1": {
+   "alt": "Rolled spliff with legal recreational weed resting on jar filled with flower. Macro close up with focus on joint.",
+   "ai": false,
+   "w": 1254,
+   "h": 837,
+   "files": [
+    {
+     "file": "img/m-2026-02-istock-1338722382-1-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 18790
+    },
+    {
+     "file": "img/m-2026-02-istock-1338722382-1-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 41770
+    },
+    {
+     "file": "img/m-2026-02-istock-1338722382-1-1254.webp",
+     "w": 1254,
+     "h": 837,
+     "bytes": 61240
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/02/iStock-1338722382-1-1024x683.jpg"
+  },
+  "m-2026-02-istock-1409340655-1": {
+   "alt": "Close up of a ripe blooming female marijuana flower with visible trichomes of THC. Shallow depth of field and blurred background.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-02-istock-1409340655-1-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 28144
+    },
+    {
+     "file": "img/m-2026-02-istock-1409340655-1-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 59346
+    },
+    {
+     "file": "img/m-2026-02-istock-1409340655-1-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 86718
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/02/iStock-1409340655-1-1024x683.jpg"
+  },
+  "m-2026-02-istock-2223739041": {
+   "alt": "A budtender works inside of a retail cannabis shop in Oregon.",
+   "ai": false,
+   "w": 1411,
+   "h": 744,
+   "files": [
+    {
+     "file": "img/m-2026-02-istock-2223739041-540.webp",
+     "w": 540,
+     "h": 285,
+     "bytes": 20786
+    },
+    {
+     "file": "img/m-2026-02-istock-2223739041-960.webp",
+     "w": 960,
+     "h": 506,
+     "bytes": 41632
+    },
+    {
+     "file": "img/m-2026-02-istock-2223739041-1411.webp",
+     "w": 1411,
+     "h": 744,
+     "bytes": 72222
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/02/iStock-2223739041-1024x540.jpg"
+  },
+  "m-2026-03-accessories-resized": {
+   "alt": "",
+   "ai": false,
+   "w": 800,
+   "h": 490,
+   "files": [
+    {
+     "file": "img/m-2026-03-accessories-resized-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 56634
+    },
+    {
+     "file": "img/m-2026-03-accessories-resized-800.webp",
+     "w": 800,
+     "h": 490,
+     "bytes": 93840
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/accessories-resized.jpg"
+  },
+  "m-2026-03-beverages-resized": {
+   "alt": "",
+   "ai": false,
+   "w": 800,
+   "h": 490,
+   "files": [
+    {
+     "file": "img/m-2026-03-beverages-resized-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 12244
+    },
+    {
+     "file": "img/m-2026-03-beverages-resized-800.webp",
+     "w": 800,
+     "h": 490,
+     "bytes": 18644
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/beverages-resized.jpg"
+  },
+  "m-2026-03-concentrates-resized": {
+   "alt": "",
+   "ai": false,
+   "w": 800,
+   "h": 490,
+   "files": [
+    {
+     "file": "img/m-2026-03-concentrates-resized-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 34546
+    },
+    {
+     "file": "img/m-2026-03-concentrates-resized-800.webp",
+     "w": 800,
+     "h": 490,
+     "bytes": 56632
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/concentrates-resized.jpg"
+  },
+  "m-2026-03-edibles-resized": {
+   "alt": "",
+   "ai": false,
+   "w": 800,
+   "h": 490,
+   "files": [
+    {
+     "file": "img/m-2026-03-edibles-resized-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 31844
+    },
+    {
+     "file": "img/m-2026-03-edibles-resized-800.webp",
+     "w": 800,
+     "h": 490,
+     "bytes": 50424
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/edibles-resized.jpg"
+  },
+  "m-2026-03-flower-resized": {
+   "alt": "",
+   "ai": false,
+   "w": 800,
+   "h": 490,
+   "files": [
+    {
+     "file": "img/m-2026-03-flower-resized-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 57938
+    },
+    {
+     "file": "img/m-2026-03-flower-resized-800.webp",
+     "w": 800,
+     "h": 490,
+     "bytes": 93648
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/flower-resized.jpg"
+  },
+  "m-2026-03-istock-1127872473": {
+   "alt": "Marijuana joint and cannabis buds on dark marble against a black background with gold, glass jar filled with cannabis as a part of the background.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-03-istock-1127872473-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 17970
+    },
+    {
+     "file": "img/m-2026-03-istock-1127872473-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 39644
+    },
+    {
+     "file": "img/m-2026-03-istock-1127872473-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 58370
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/iStock-1127872473-1024x683.jpg"
+  },
+  "m-2026-03-istock-1311171701": {
+   "alt": "Pink soda cans in water drops, top view",
+   "ai": false,
+   "w": 1252,
+   "h": 838,
+   "files": [
+    {
+     "file": "img/m-2026-03-istock-1311171701-540.webp",
+     "w": 540,
+     "h": 361,
+     "bytes": 43760
+    },
+    {
+     "file": "img/m-2026-03-istock-1311171701-960.webp",
+     "w": 960,
+     "h": 643,
+     "bytes": 114274
+    },
+    {
+     "file": "img/m-2026-03-istock-1311171701-1252.webp",
+     "w": 1252,
+     "h": 838,
+     "bytes": 176144
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/iStock-1311171701-1024x685.jpg"
+  },
+  "m-2026-03-istock-1341820804": {
+   "alt": "Marijuana oil in a bowl with leaves.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-03-istock-1341820804-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 21982
+    },
+    {
+     "file": "img/m-2026-03-istock-1341820804-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 45018
+    },
+    {
+     "file": "img/m-2026-03-istock-1341820804-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 63274
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/iStock-1341820804-1024x683.jpg"
+  },
+  "m-2026-03-istock-2223739039": {
+   "alt": "A budtender works inside of a retail cannabis shop in Oregon.",
+   "ai": false,
+   "w": 1411,
+   "h": 744,
+   "files": [
+    {
+     "file": "img/m-2026-03-istock-2223739039-540.webp",
+     "w": 540,
+     "h": 285,
+     "bytes": 22048
+    },
+    {
+     "file": "img/m-2026-03-istock-2223739039-960.webp",
+     "w": 960,
+     "h": 506,
+     "bytes": 46404
+    },
+    {
+     "file": "img/m-2026-03-istock-2223739039-1411.webp",
+     "w": 1411,
+     "h": 744,
+     "bytes": 77482
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/iStock-2223739039-1024x540.jpg"
+  },
+  "m-2026-03-istock-2223740106": {
+   "alt": "Shot of the marijuana pre-roll making process. Shot inside of a cannabis processing laboratory in Oregon, USA.",
+   "ai": false,
+   "w": 1411,
+   "h": 744,
+   "files": [
+    {
+     "file": "img/m-2026-03-istock-2223740106-540.webp",
+     "w": 540,
+     "h": 285,
+     "bytes": 5590
+    },
+    {
+     "file": "img/m-2026-03-istock-2223740106-960.webp",
+     "w": 960,
+     "h": 506,
+     "bytes": 11328
+    },
+    {
+     "file": "img/m-2026-03-istock-2223740106-1411.webp",
+     "w": 1411,
+     "h": 744,
+     "bytes": 16478
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/iStock-2223740106-1024x540.jpg"
+  },
+  "m-2026-03-istock-481009254": {
+   "alt": "A young man drinking a can.",
+   "ai": false,
+   "w": 1254,
+   "h": 837,
+   "files": [
+    {
+     "file": "img/m-2026-03-istock-481009254-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 14680
+    },
+    {
+     "file": "img/m-2026-03-istock-481009254-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 29858
+    },
+    {
+     "file": "img/m-2026-03-istock-481009254-1254.webp",
+     "w": 1254,
+     "h": 837,
+     "bytes": 39170
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/iStock-481009254-1024x683.jpg"
+  },
+  "m-2026-03-istock-604363212": {
+   "alt": "Detail fo man holding a joint in Amsterdam, typical dutch houses in background, Amsterdam, The Netherlands.",
+   "ai": false,
+   "w": 1254,
+   "h": 837,
+   "files": [
+    {
+     "file": "img/m-2026-03-istock-604363212-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 20376
+    },
+    {
+     "file": "img/m-2026-03-istock-604363212-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 39188
+    },
+    {
+     "file": "img/m-2026-03-istock-604363212-1254.webp",
+     "w": 1254,
+     "h": 837,
+     "bytes": 53018
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/iStock-604363212-1024x683.jpg"
+  },
+  "m-2026-03-pre-rolls-resized-1": {
+   "alt": "",
+   "ai": false,
+   "w": 800,
+   "h": 490,
+   "files": [
+    {
+     "file": "img/m-2026-03-pre-rolls-resized-1-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 43400
+    },
+    {
+     "file": "img/m-2026-03-pre-rolls-resized-1-800.webp",
+     "w": 800,
+     "h": 490,
+     "bytes": 72740
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/pre-rolls-resized-1.jpg"
+  },
+  "m-2026-03-tincture-resized": {
+   "alt": "",
+   "ai": false,
+   "w": 800,
+   "h": 490,
+   "files": [
+    {
+     "file": "img/m-2026-03-tincture-resized-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 17806
+    },
+    {
+     "file": "img/m-2026-03-tincture-resized-800.webp",
+     "w": 800,
+     "h": 490,
+     "bytes": 28042
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/tincture-resized.jpg"
+  },
+  "m-2026-03-vapes-resized": {
+   "alt": "vapes",
+   "ai": false,
+   "w": 800,
+   "h": 490,
+   "files": [
+    {
+     "file": "img/m-2026-03-vapes-resized-540.webp",
+     "w": 540,
+     "h": 331,
+     "bytes": 22848
+    },
+    {
+     "file": "img/m-2026-03-vapes-resized-800.webp",
+     "w": 800,
+     "h": 490,
+     "bytes": 35720
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/03/vapes-resized-300x184.jpg"
+  },
+  "m-2026-04-breezybus-jamz-3": {
+   "alt": "",
+   "ai": false,
+   "w": 935,
+   "h": 525,
+   "files": [
+    {
+     "file": "img/m-2026-04-breezybus-jamz-3-540.webp",
+     "w": 540,
+     "h": 303,
+     "bytes": 22286
+    },
+    {
+     "file": "img/m-2026-04-breezybus-jamz-3-935.webp",
+     "w": 935,
+     "h": 525,
+     "bytes": 40522
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/BREEZYBUS-JAMZ-3-300x168.jpg"
+  },
+  "m-2026-04-istock-1018991042-2": {
+   "alt": "african american woman opening bottle of legal marijuana from dispensary close up with selective focus on weed",
+   "ai": false,
+   "w": 1253,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-1018991042-2-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 16138
+    },
+    {
+     "file": "img/m-2026-04-istock-1018991042-2-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 33770
+    },
+    {
+     "file": "img/m-2026-04-istock-1018991042-2-1253.webp",
+     "w": 1253,
+     "h": 836,
+     "bytes": 46734
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-1018991042-2-1024x683.jpg"
+  },
+  "m-2026-04-istock-1126458311-2": {
+   "alt": "Glass jar full of Cannabis Sativa for sale at a market stall.",
+   "ai": false,
+   "w": 1233,
+   "h": 850,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-1126458311-2-540.webp",
+     "w": 540,
+     "h": 372,
+     "bytes": 47904
+    },
+    {
+     "file": "img/m-2026-04-istock-1126458311-2-960.webp",
+     "w": 960,
+     "h": 662,
+     "bytes": 115976
+    },
+    {
+     "file": "img/m-2026-04-istock-1126458311-2-1233.webp",
+     "w": 1233,
+     "h": 850,
+     "bytes": 164394
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-1126458311-2-1024x706.jpg"
+  },
+  "m-2026-04-istock-1150999630": {
+   "alt": "Musicians are playing guitar on stage.",
+   "ai": false,
+   "w": 1265,
+   "h": 829,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-1150999630-540.webp",
+     "w": 540,
+     "h": 354,
+     "bytes": 18702
+    },
+    {
+     "file": "img/m-2026-04-istock-1150999630-960.webp",
+     "w": 960,
+     "h": 629,
+     "bytes": 34942
+    },
+    {
+     "file": "img/m-2026-04-istock-1150999630-1265.webp",
+     "w": 1265,
+     "h": 829,
+     "bytes": 49400
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-1150999630-1024x671.jpg"
+  },
+  "m-2026-04-istock-1177916350": {
+   "alt": "Cannabis plant with USA flag in the background",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-1177916350-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 33116
+    },
+    {
+     "file": "img/m-2026-04-istock-1177916350-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 69122
+    },
+    {
+     "file": "img/m-2026-04-istock-1177916350-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 94210
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-1177916350-1024x683.jpg"
+  },
+  "m-2026-04-istock-1349268384": {
+   "alt": "Cbd candy - Woman eating edible cannabis leaf for anxiety treatment - Marijuana alternative medicine",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-1349268384-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 13352
+    },
+    {
+     "file": "img/m-2026-04-istock-1349268384-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 28360
+    },
+    {
+     "file": "img/m-2026-04-istock-1349268384-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 41920
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-1349268384-1024x683.jpg"
+  },
+  "m-2026-04-istock-2191379192-2": {
+   "alt": "rich in cannabinoids like THC and CBD, used therapeutically for various health condition",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-2191379192-2-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 24308
+    },
+    {
+     "file": "img/m-2026-04-istock-2191379192-2-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 58902
+    },
+    {
+     "file": "img/m-2026-04-istock-2191379192-2-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 86210
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-2191379192-2-1024x683.jpg"
+  },
+  "m-2026-04-istock-2203742403": {
+   "alt": "Man sitting on camping chair with an empty chair beside. Unrecognizable crowds listen to the music concert in the park. Auckland.",
+   "ai": false,
+   "w": 1024,
+   "h": 667,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-2203742403-540.webp",
+     "w": 540,
+     "h": 352,
+     "bytes": 37796
+    },
+    {
+     "file": "img/m-2026-04-istock-2203742403-960.webp",
+     "w": 960,
+     "h": 625,
+     "bytes": 75944
+    },
+    {
+     "file": "img/m-2026-04-istock-2203742403-1024.webp",
+     "w": 1024,
+     "h": 667,
+     "bytes": 75984
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-2203742403-1024x667.jpg"
+  },
+  "m-2026-04-istock-534911698": {
+   "alt": "A field of hundreds of American flags. Commemorating veteran's day, memorial day or 9/11.",
+   "ai": false,
+   "w": 1390,
+   "h": 755,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-534911698-540.webp",
+     "w": 540,
+     "h": 293,
+     "bytes": 30200
+    },
+    {
+     "file": "img/m-2026-04-istock-534911698-960.webp",
+     "w": 960,
+     "h": 521,
+     "bytes": 70628
+    },
+    {
+     "file": "img/m-2026-04-istock-534911698-1390.webp",
+     "w": 1390,
+     "h": 755,
+     "bytes": 119982
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-534911698-1024x556.jpg"
+  },
+  "m-2026-04-istock-898872944": {
+   "alt": "hand rolled cannabis joint",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-04-istock-898872944-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 19954
+    },
+    {
+     "file": "img/m-2026-04-istock-898872944-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 42476
+    },
+    {
+     "file": "img/m-2026-04-istock-898872944-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 64024
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/04/iStock-898872944-1024x683.jpg"
+  },
+  "m-2026-05-untitled-project-63": {
+   "alt": "Untitled Project (63)",
+   "ai": false,
+   "w": 591,
+   "h": 760,
+   "files": [
+    {
+     "file": "img/m-2026-05-untitled-project-63-540.webp",
+     "w": 540,
+     "h": 694,
+     "bytes": 54812
+    },
+    {
+     "file": "img/m-2026-05-untitled-project-63-591.webp",
+     "w": 591,
+     "h": 760,
+     "bytes": 59852
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/05/Untitled-Project-63-233x300.jpg"
+  },
+  "m-2026-05-istock-1093003322": {
+   "alt": "Full gram cartridges with cannabis oil and terpenes inside. An alternative method of smoking marijuana, medical & recreational.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-05-istock-1093003322-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 28982
+    },
+    {
+     "file": "img/m-2026-05-istock-1093003322-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 67898
+    },
+    {
+     "file": "img/m-2026-05-istock-1093003322-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 93548
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/05/iStock-1093003322-1024x683.jpg"
+  },
+  "m-2026-05-istock-1125515786": {
+   "alt": "Full gram cartridges with cannabis oil and terpenes inside. With weed leaf on white background. An alternative method of smoking medical marijuana.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-05-istock-1125515786-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 23842
+    },
+    {
+     "file": "img/m-2026-05-istock-1125515786-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 47848
+    },
+    {
+     "file": "img/m-2026-05-istock-1125515786-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 69064
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/05/iStock-1125515786-1024x683.jpg"
+  },
+  "m-2026-05-istock-1127039351": {
+   "alt": "Cannabinoid oil in plastic vape cartridge up close isolated on white background.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-05-istock-1127039351-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 9910
+    },
+    {
+     "file": "img/m-2026-05-istock-1127039351-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 21388
+    },
+    {
+     "file": "img/m-2026-05-istock-1127039351-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 28358
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/05/iStock-1127039351-1024x683.jpg"
+  },
+  "m-2026-05-istock-1189236721": {
+   "alt": "Legal California Cannabis Vapes",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-05-istock-1189236721-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 19694
+    },
+    {
+     "file": "img/m-2026-05-istock-1189236721-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 45954
+    },
+    {
+     "file": "img/m-2026-05-istock-1189236721-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 69862
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/05/iStock-1189236721-1024x683.jpg"
+  },
+  "m-2026-05-istock-2217305968": {
+   "alt": "Young man vaping in Newcastle City Centre, sitting on a wall in a public area while he uses his mobile phone. He is using a disposable plastic vape pen.",
+   "ai": false,
+   "w": 1253,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-05-istock-2217305968-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 18362
+    },
+    {
+     "file": "img/m-2026-05-istock-2217305968-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 38102
+    },
+    {
+     "file": "img/m-2026-05-istock-2217305968-1253.webp",
+     "w": 1253,
+     "h": 836,
+     "bytes": 55800
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/05/iStock-2217305968-1024x683.jpg"
+  },
+  "m-2026-06-pride-flyer": {
+   "alt": "Pride flyer",
+   "ai": false,
+   "w": 1054,
+   "h": 1492,
+   "files": [
+    {
+     "file": "img/m-2026-06-pride-flyer-540.webp",
+     "w": 540,
+     "h": 764,
+     "bytes": 81172
+    },
+    {
+     "file": "img/m-2026-06-pride-flyer-960.webp",
+     "w": 960,
+     "h": 1359,
+     "bytes": 175738
+    },
+    {
+     "file": "img/m-2026-06-pride-flyer-1054.webp",
+     "w": 1054,
+     "h": 1492,
+     "bytes": 184624
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/06/Pride-flyer-212x300.jpg"
+  },
+  "m-2026-06-white-and-green-modern-golf-tournament-flyer": {
+   "alt": "White And Green Modern Golf Tournament Flyer",
+   "ai": false,
+   "w": 1546,
+   "h": 2000,
+   "files": [
+    {
+     "file": "img/m-2026-06-white-and-green-modern-golf-tournament-flyer-540.webp",
+     "w": 540,
+     "h": 699,
+     "bytes": 58300
+    },
+    {
+     "file": "img/m-2026-06-white-and-green-modern-golf-tournament-flyer-960.webp",
+     "w": 960,
+     "h": 1242,
+     "bytes": 116650
+    },
+    {
+     "file": "img/m-2026-06-white-and-green-modern-golf-tournament-flyer-1546.webp",
+     "w": 1546,
+     "h": 2000,
+     "bytes": 224294
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/06/White-And-Green-Modern-Golf-Tournament-Flyer-1187x1536.png"
+  },
+  "m-2026-06-ayrup-beverages-vanillacola-0524web": {
+   "alt": "vanilla cola",
+   "ai": false,
+   "w": 1946,
+   "h": 1946,
+   "files": [
+    {
+     "file": "img/m-2026-06-ayrup-beverages-vanillacola-0524web-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 33896
+    },
+    {
+     "file": "img/m-2026-06-ayrup-beverages-vanillacola-0524web-960.webp",
+     "w": 960,
+     "h": 960,
+     "bytes": 85784
+    },
+    {
+     "file": "img/m-2026-06-ayrup-beverages-vanillacola-0524web-1600.webp",
+     "w": 1600,
+     "h": 1600,
+     "bytes": 192058
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/06/ayrUP_beverages_vanillacola_0524web-1024x1024.webp"
+  },
+  "m-2026-06-ayr-thcgummies-islandtime-4074web": {
+   "alt": "gummies",
+   "ai": false,
+   "w": 2048,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/m-2026-06-ayr-thcgummies-islandtime-4074web-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 27452
+    },
+    {
+     "file": "img/m-2026-06-ayr-thcgummies-islandtime-4074web-960.webp",
+     "w": 960,
+     "h": 960,
+     "bytes": 64908
+    },
+    {
+     "file": "img/m-2026-06-ayr-thcgummies-islandtime-4074web-1600.webp",
+     "w": 1600,
+     "h": 1600,
+     "bytes": 130862
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/06/ayr_thcgummies_islandtime_4074web-1024x1024.webp"
+  },
+  "m-2026-06-ayrloom-logo": {
+   "alt": "ayrloom logo",
+   "ai": false,
+   "w": 768,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2026-06-ayrloom-logo-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 8556
+    },
+    {
+     "file": "img/m-2026-06-ayrloom-logo-768.webp",
+     "w": 768,
+     "h": 768,
+     "bytes": 13400
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/06/ayrloom-logo-150x150.jpg"
+  },
+  "m-2026-06-dsc01456-edit-6831b8d312cea": {
+   "alt": "ayrloom product",
+   "ai": false,
+   "w": 1901,
+   "h": 2376,
+   "files": [
+    {
+     "file": "img/m-2026-06-dsc01456-edit-6831b8d312cea-540.webp",
+     "w": 540,
+     "h": 675,
+     "bytes": 46022
+    },
+    {
+     "file": "img/m-2026-06-dsc01456-edit-6831b8d312cea-960.webp",
+     "w": 960,
+     "h": 1200,
+     "bytes": 111754
+    },
+    {
+     "file": "img/m-2026-06-dsc01456-edit-6831b8d312cea-1600.webp",
+     "w": 1600,
+     "h": 2000,
+     "bytes": 240754
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/06/dsc01456-edit-6831b8d312cea-1229x1536.webp"
+  },
+  "m-2026-06-pineapple": {
+   "alt": "pineapple flavor",
+   "ai": false,
+   "w": 1950,
+   "h": 2048,
+   "files": [
+    {
+     "file": "img/m-2026-06-pineapple-540.webp",
+     "w": 540,
+     "h": 567,
+     "bytes": 13870
+    },
+    {
+     "file": "img/m-2026-06-pineapple-960.webp",
+     "w": 960,
+     "h": 1008,
+     "bytes": 29860
+    },
+    {
+     "file": "img/m-2026-06-pineapple-1600.webp",
+     "w": 1600,
+     "h": 1680,
+     "bytes": 58158
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/06/pineapple-1463x1536.jpg"
+  },
+  "m-2026-07-chatgpt-image-jul-22-2026-01-03-05-pm": {
+   "alt": "ChatGPT Image Jul 22, 2026, 01_03_05 PM",
+   "ai": false,
+   "w": 1023,
+   "h": 1537,
+   "files": [
+    {
+     "file": "img/m-2026-07-chatgpt-image-jul-22-2026-01-03-05-pm-540.webp",
+     "w": 540,
+     "h": 811,
+     "bytes": 119296
+    },
+    {
+     "file": "img/m-2026-07-chatgpt-image-jul-22-2026-01-03-05-pm-960.webp",
+     "w": 960,
+     "h": 1442,
+     "bytes": 301936
+    },
+    {
+     "file": "img/m-2026-07-chatgpt-image-jul-22-2026-01-03-05-pm-1023.webp",
+     "w": 1023,
+     "h": 1537,
+     "bytes": 353464
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/ChatGPT-Image-Jul-22-2026-01_03_05-PM-200x300.png"
+  },
+  "m-2026-07-chatgpt-image-jun-28-2026-11-43-36-am": {
+   "alt": "ChatGPT Image Jun 28, 2026, 11_43_36 AM",
+   "ai": false,
+   "w": 1024,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/m-2026-07-chatgpt-image-jun-28-2026-11-43-36-am-540.webp",
+     "w": 540,
+     "h": 810,
+     "bytes": 115490
+    },
+    {
+     "file": "img/m-2026-07-chatgpt-image-jun-28-2026-11-43-36-am-960.webp",
+     "w": 960,
+     "h": 1440,
+     "bytes": 279750
+    },
+    {
+     "file": "img/m-2026-07-chatgpt-image-jun-28-2026-11-43-36-am-1024.webp",
+     "w": 1024,
+     "h": 1536,
+     "bytes": 317034
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/ChatGPT-Image-Jun-28-2026-11_43_36-AM-200x300.png"
+  },
+  "m-2026-07-untitled-project-58": {
+   "alt": "Untitled Project (58)",
+   "ai": false,
+   "w": 1024,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/m-2026-07-untitled-project-58-540.webp",
+     "w": 540,
+     "h": 810,
+     "bytes": 134322
+    },
+    {
+     "file": "img/m-2026-07-untitled-project-58-960.webp",
+     "w": 960,
+     "h": 1440,
+     "bytes": 332246
+    },
+    {
+     "file": "img/m-2026-07-untitled-project-58-1024.webp",
+     "w": 1024,
+     "h": 1536,
+     "bytes": 363884
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/Untitled-Project-58-200x300.jpg"
+  },
+  "m-2026-07-hashtag-honey-bluedream": {
+   "alt": "vape",
+   "ai": false,
+   "w": 540,
+   "h": 540,
+   "files": [
+    {
+     "file": "img/m-2026-07-hashtag-honey-bluedream-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 22776
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/hashtag-honey-bluedream.avif"
+  },
+  "m-2026-07-hashtag-honey-flower": {
+   "alt": "",
+   "ai": false,
+   "w": 1536,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/m-2026-07-hashtag-honey-flower-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 34738
+    },
+    {
+     "file": "img/m-2026-07-hashtag-honey-flower-960.webp",
+     "w": 960,
+     "h": 960,
+     "bytes": 76622
+    },
+    {
+     "file": "img/m-2026-07-hashtag-honey-flower-1536.webp",
+     "w": 1536,
+     "h": 1536,
+     "bytes": 122054
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/hashtag-honey-flower-1024x1024.jpg"
+  },
+  "m-2026-07-hashtag-honey-logo": {
+   "alt": "hashtag honey logo",
+   "ai": false,
+   "w": 2000,
+   "h": 2000,
+   "files": [
+    {
+     "file": "img/m-2026-07-hashtag-honey-logo-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 28656
+    },
+    {
+     "file": "img/m-2026-07-hashtag-honey-logo-960.webp",
+     "w": 960,
+     "h": 960,
+     "bytes": 54006
+    },
+    {
+     "file": "img/m-2026-07-hashtag-honey-logo-1600.webp",
+     "w": 1600,
+     "h": 1600,
+     "bytes": 97380
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/hashtag-honey-logo.avif"
+  },
+  "m-2026-07-hashtag-honey-nyc": {
+   "alt": "vape",
+   "ai": false,
+   "w": 540,
+   "h": 540,
+   "files": [
+    {
+     "file": "img/m-2026-07-hashtag-honey-nyc-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 22810
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/hashtag-honey-nyc.avif"
+  },
+  "m-2026-07-istock-1054439456-1": {
+   "alt": "Potent cannabis oil filled cartridge up close.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-07-istock-1054439456-1-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 34686
+    },
+    {
+     "file": "img/m-2026-07-istock-1054439456-1-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 82810
+    },
+    {
+     "file": "img/m-2026-07-istock-1054439456-1-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 121534
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/iStock-1054439456-1-1024x683.jpg"
+  },
+  "m-2026-07-istock-1089531880": {
+   "alt": "THC/CBD oil filled into cartridge attached to a battery to heat up and smoke the cannabis oil.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-07-istock-1089531880-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 32120
+    },
+    {
+     "file": "img/m-2026-07-istock-1089531880-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 70030
+    },
+    {
+     "file": "img/m-2026-07-istock-1089531880-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 103338
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/iStock-1089531880-1024x683.jpg"
+  },
+  "m-2026-07-istock-1171628825": {
+   "alt": "Vape pen isolated up close. Full gram cartridge of cannabis oil. Alternative method of smoking the THC extracted from marijuana plants.",
+   "ai": false,
+   "w": 1365,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2026-07-istock-1171628825-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 30572
+    },
+    {
+     "file": "img/m-2026-07-istock-1171628825-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 77428
+    },
+    {
+     "file": "img/m-2026-07-istock-1171628825-1365.webp",
+     "w": 1365,
+     "h": 768,
+     "bytes": 131372
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/iStock-1171628825-1024x576.jpg"
+  },
+  "m-2026-07-istock-1199449700-1": {
+   "alt": "THC , CBD , medical marijuana at recreational dispensary selling cannabis or weed or pot",
+   "ai": false,
+   "w": 1253,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-07-istock-1199449700-1-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 43200
+    },
+    {
+     "file": "img/m-2026-07-istock-1199449700-1-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 97338
+    },
+    {
+     "file": "img/m-2026-07-istock-1199449700-1-1253.webp",
+     "w": 1253,
+     "h": 836,
+     "bytes": 141404
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/iStock-1199449700-1-1024x683.jpg"
+  },
+  "m-2026-07-istock-1221734333-3": {
+   "alt": "Full gram cartridge with cannabis extracted oil and terpenes. An alternative method of smoking marijuana, medical & recreational.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-07-istock-1221734333-3-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 23562
+    },
+    {
+     "file": "img/m-2026-07-istock-1221734333-3-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 49328
+    },
+    {
+     "file": "img/m-2026-07-istock-1221734333-3-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 70214
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/iStock-1221734333-3-1024x683.jpg"
+  },
+  "m-2026-07-istock-2219500056-1": {
+   "alt": "A diverse crowd dances and cheers at an outdoor concert under the sunset. Friends share joyful moments while reveling in the music and festive atmosphere, embodying celebration and fun.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-07-istock-2219500056-1-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 32358
+    },
+    {
+     "file": "img/m-2026-07-istock-2219500056-1-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 68962
+    },
+    {
+     "file": "img/m-2026-07-istock-2219500056-1-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 96824
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/iStock-2219500056-1-1024x683.jpg"
+  },
+  "m-2026-07-istock-2281295070": {
+   "alt": "Cannabis buds scattered from an amber medical container on rustic wooden surface. Medical cannabis and alternative treatment concept.",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-07-istock-2281295070-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 19274
+    },
+    {
+     "file": "img/m-2026-07-istock-2281295070-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 41254
+    },
+    {
+     "file": "img/m-2026-07-istock-2281295070-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 58364
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/iStock-2281295070-1024x683.jpg"
+  },
+  "m-2026-07-unicorn-piss": {
+   "alt": "unicorn piss",
+   "ai": false,
+   "w": 540,
+   "h": 540,
+   "files": [
+    {
+     "file": "img/m-2026-07-unicorn-piss-540.webp",
+     "w": 540,
+     "h": 540,
+     "bytes": 16898
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/07/unicorn-piss-e1783440282614.avif"
+  },
+  "m-2026-08-istock-1060217990-1": {
+   "alt": "Marijuana buds and plastic wrapped THC/CBD infused hard candies",
+   "ai": false,
+   "w": 768,
+   "h": 549,
+   "files": [
+    {
+     "file": "img/m-2026-08-istock-1060217990-1-540.webp",
+     "w": 540,
+     "h": 386,
+     "bytes": 32218
+    },
+    {
+     "file": "img/m-2026-08-istock-1060217990-1-768.webp",
+     "w": 768,
+     "h": 549,
+     "bytes": 47370
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/08/iStock-1060217990-1-300x214.jpg"
+  },
+  "m-2026-08-istock-1140391706": {
+   "alt": "Marijuana buds and joint lie on a dark gray background. Marijuana is medicine.",
+   "ai": false,
+   "w": 1365,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2026-08-istock-1140391706-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 24870
+    },
+    {
+     "file": "img/m-2026-08-istock-1140391706-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 68428
+    },
+    {
+     "file": "img/m-2026-08-istock-1140391706-1365.webp",
+     "w": 1365,
+     "h": 768,
+     "bytes": 121030
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/08/iStock-1140391706-1024x576.jpg"
+  },
+  "m-2026-08-istock-1187031628-4": {
+   "alt": "Vibrant colored marijuana gummy candies set on a white background",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-08-istock-1187031628-4-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 23136
+    },
+    {
+     "file": "img/m-2026-08-istock-1187031628-4-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 54676
+    },
+    {
+     "file": "img/m-2026-08-istock-1187031628-4-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 77508
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/08/iStock-1187031628-4-1024x683.jpg"
+  },
+  "m-2026-08-istock-1358834195-2": {
+   "alt": "Cbd candy - Woman holding edible cannabis leaf for anxiety treatment - Marijuana alternative medicine",
+   "ai": false,
+   "w": 1365,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2026-08-istock-1358834195-2-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 8630
+    },
+    {
+     "file": "img/m-2026-08-istock-1358834195-2-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 17578
+    },
+    {
+     "file": "img/m-2026-08-istock-1358834195-2-1365.webp",
+     "w": 1365,
+     "h": 768,
+     "bytes": 26740
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/08/iStock-1358834195-2-1024x576.jpg"
+  },
+  "m-2026-08-istock-2223739051": {
+   "alt": "A budtender works inside of a retail cannabis shop in Oregon.",
+   "ai": false,
+   "w": 1411,
+   "h": 744,
+   "files": [
+    {
+     "file": "img/m-2026-08-istock-2223739051-540.webp",
+     "w": 540,
+     "h": 285,
+     "bytes": 22190
+    },
+    {
+     "file": "img/m-2026-08-istock-2223739051-960.webp",
+     "w": 960,
+     "h": 506,
+     "bytes": 42886
+    },
+    {
+     "file": "img/m-2026-08-istock-2223739051-1411.webp",
+     "w": 1411,
+     "h": 744,
+     "bytes": 70978
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/08/iStock-2223739051-1024x540.jpg"
+  },
+  "m-2026-08-istock-2276678562": {
+   "alt": "Jars of cannabis joints displayed in a legal weed shop, ready for purchase",
+   "ai": false,
+   "w": 1365,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2026-08-istock-2276678562-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 27682
+    },
+    {
+     "file": "img/m-2026-08-istock-2276678562-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 56878
+    },
+    {
+     "file": "img/m-2026-08-istock-2276678562-1365.webp",
+     "w": 1365,
+     "h": 768,
+     "bytes": 86900
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/08/iStock-2276678562-1024x576.jpg"
+  },
+  "m-2026-09-istock-1277453803-1": {
+   "alt": "This is a stock photograph involving cannabis, marijuana and its implications in America has just slowly been legalized and used for medicinal and medical purposes and what that means to our economy and culture.",
+   "ai": false,
+   "w": 1264,
+   "h": 830,
+   "files": [
+    {
+     "file": "img/m-2026-09-istock-1277453803-1-540.webp",
+     "w": 540,
+     "h": 355,
+     "bytes": 22996
+    },
+    {
+     "file": "img/m-2026-09-istock-1277453803-1-960.webp",
+     "w": 960,
+     "h": 630,
+     "bytes": 51076
+    },
+    {
+     "file": "img/m-2026-09-istock-1277453803-1-1264.webp",
+     "w": 1264,
+     "h": 830,
+     "bytes": 71210
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/09/iStock-1277453803-1-1024x672.jpg"
+  },
+  "m-2026-09-istock-1418548223": {
+   "alt": "Young man during class in the university",
+   "ai": false,
+   "w": 1253,
+   "h": 837,
+   "files": [
+    {
+     "file": "img/m-2026-09-istock-1418548223-540.webp",
+     "w": 540,
+     "h": 361,
+     "bytes": 28026
+    },
+    {
+     "file": "img/m-2026-09-istock-1418548223-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 54574
+    },
+    {
+     "file": "img/m-2026-09-istock-1418548223-1253.webp",
+     "w": 1253,
+     "h": 837,
+     "bytes": 73852
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/09/iStock-1418548223-1024x684.jpg"
+  },
+  "m-2026-09-istock-2237015970": {
+   "alt": "A budtender weighs weed nuggets in a retail cannabis shop in Oregon.",
+   "ai": false,
+   "w": 1253,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-09-istock-2237015970-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 32458
+    },
+    {
+     "file": "img/m-2026-09-istock-2237015970-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 81026
+    },
+    {
+     "file": "img/m-2026-09-istock-2237015970-1253.webp",
+     "w": 1253,
+     "h": 836,
+     "bytes": 121614
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/09/iStock-2237015970-1024x683.jpg"
+  },
+  "m-2026-09-istock-2258657960-2": {
+   "alt": "Close view of hands holding a prescription pill bottle on a wooden table, healthcare scene.",
+   "ai": false,
+   "w": 1253,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-09-istock-2258657960-2-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 11830
+    },
+    {
+     "file": "img/m-2026-09-istock-2258657960-2-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 26174
+    },
+    {
+     "file": "img/m-2026-09-istock-2258657960-2-1253.webp",
+     "w": 1253,
+     "h": 836,
+     "bytes": 37186
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/09/iStock-2258657960-2-1024x683.jpg"
+  },
+  "m-2026-10-istock-1164001497": {
+   "alt": "supermarket trolley marijuana medical cannabis cbd",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-10-istock-1164001497-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 25126
+    },
+    {
+     "file": "img/m-2026-10-istock-1164001497-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 56658
+    },
+    {
+     "file": "img/m-2026-10-istock-1164001497-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 81022
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/iStock-1164001497-1024x683.jpg"
+  },
+  "m-2026-10-istock-1198304413-5": {
+   "alt": "Rolling Marijuana Joints",
+   "ai": false,
+   "w": 2000,
+   "h": 1500,
+   "files": [
+    {
+     "file": "img/m-2026-10-istock-1198304413-5-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 25630
+    },
+    {
+     "file": "img/m-2026-10-istock-1198304413-5-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 52666
+    },
+    {
+     "file": "img/m-2026-10-istock-1198304413-5-1600.webp",
+     "w": 1600,
+     "h": 1200,
+     "bytes": 100436
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/iStock-1198304413-5-1024x768.jpg"
+  },
+  "m-2026-10-istock-1213258764-1": {
+   "alt": "Package delivery with marijuana, payment terminal. Use and storage medical marijuana. Legalized narcotic herb. Treating pain, stress and insomnia. Registered medical hemp delivery agent",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-10-istock-1213258764-1-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 14032
+    },
+    {
+     "file": "img/m-2026-10-istock-1213258764-1-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 29374
+    },
+    {
+     "file": "img/m-2026-10-istock-1213258764-1-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 44344
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/iStock-1213258764-1-1024x683.jpg"
+  },
+  "m-2026-10-istock-1419182473-14": {
+   "alt": "New Marijuana Vape Pen Cartridge with radiant rainbow lighting and dark background.",
+   "ai": false,
+   "w": 1253,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-10-istock-1419182473-14-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 6168
+    },
+    {
+     "file": "img/m-2026-10-istock-1419182473-14-960.webp",
+     "w": 960,
+     "h": 641,
+     "bytes": 13924
+    },
+    {
+     "file": "img/m-2026-10-istock-1419182473-14-1253.webp",
+     "w": 1253,
+     "h": 836,
+     "bytes": 18488
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/iStock-1419182473-14-1024x683.jpg"
+  },
+  "m-2026-10-istock-1449279794-1": {
+   "alt": "Marijuana buds in a bowl, medical or recreative, copy space",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-10-istock-1449279794-1-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 38186
+    },
+    {
+     "file": "img/m-2026-10-istock-1449279794-1-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 86104
+    },
+    {
+     "file": "img/m-2026-10-istock-1449279794-1-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 125494
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/iStock-1449279794-1-1024x683.jpg"
+  },
+  "m-2026-10-istock-2225646022-5": {
+   "alt": "Two young women smiling and enjoying each other's company in a kitchen, holding a cannabis joint and container, radiating happiness",
+   "ai": false,
+   "w": 1274,
+   "h": 823,
+   "files": [
+    {
+     "file": "img/m-2026-10-istock-2225646022-5-540.webp",
+     "w": 540,
+     "h": 349,
+     "bytes": 16330
+    },
+    {
+     "file": "img/m-2026-10-istock-2225646022-5-960.webp",
+     "w": 960,
+     "h": 620,
+     "bytes": 31298
+    },
+    {
+     "file": "img/m-2026-10-istock-2225646022-5-1274.webp",
+     "w": 1274,
+     "h": 823,
+     "bytes": 43824
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/iStock-2225646022-5-1024x662.jpg"
+  },
+  "m-2026-10-istock-2273985664": {
+   "alt": "glass jars containing labeled cannabis flowers displayed in organized retail setting representing regulated product packaging, botanical inventory management and emerging legal plant based consumer industry environment.",
+   "ai": false,
+   "w": 1365,
+   "h": 768,
+   "files": [
+    {
+     "file": "img/m-2026-10-istock-2273985664-540.webp",
+     "w": 540,
+     "h": 304,
+     "bytes": 20508
+    },
+    {
+     "file": "img/m-2026-10-istock-2273985664-960.webp",
+     "w": 960,
+     "h": 540,
+     "bytes": 44194
+    },
+    {
+     "file": "img/m-2026-10-istock-2273985664-1365.webp",
+     "w": 1365,
+     "h": 768,
+     "bytes": 70882
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/iStock-2273985664-1024x576.jpg"
+  },
+  "m-2026-10-istock-628542060-2": {
+   "alt": "a macro shot of marijuana edible candy",
+   "ai": false,
+   "w": 1254,
+   "h": 836,
+   "files": [
+    {
+     "file": "img/m-2026-10-istock-628542060-2-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 67646
+    },
+    {
+     "file": "img/m-2026-10-istock-628542060-2-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 161542
+    },
+    {
+     "file": "img/m-2026-10-istock-628542060-2-1254.webp",
+     "w": 1254,
+     "h": 836,
+     "bytes": 229040
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/iStock-628542060-2-1024x683.jpg"
+  },
+  "m-2026-10-image1-7": {
+   "alt": "image1 (7)",
+   "ai": false,
+   "w": 853,
+   "h": 1280,
+   "files": [
+    {
+     "file": "img/m-2026-10-image1-7-540.webp",
+     "w": 540,
+     "h": 810,
+     "bytes": 77950
+    },
+    {
+     "file": "img/m-2026-10-image1-7-853.webp",
+     "w": 853,
+     "h": 1280,
+     "bytes": 126234
+    }
+   ],
+   "source": "https://capitaldistrictcannabis.com/wp-content/uploads/2026/10/image1-7-200x300.png"
+  },
+  "loop-turntable": {
+   "alt": "Illustration: first frame of a generated turntable loop",
+   "ai": "generated",
+   "w": 1600,
+   "h": 890,
+   "files": [
+    {
+     "file": "img/loop-turntable-1600.webp",
+     "w": 1600,
+     "h": 890,
+     "bytes": 28370
+    }
+   ],
+   "source": "private/gen/out/loop-turntable.result.json"
+  },
+  "loop-mural": {
+   "alt": "Illustration: first frame of a generated mural loop",
+   "ai": "generated",
+   "w": 1600,
+   "h": 890,
+   "files": [
+    {
+     "file": "img/loop-mural-1600.webp",
+     "w": 1600,
+     "h": 890,
+     "bytes": 94426
+    }
+   ],
+   "source": "private/gen/out/loop-mural.result.json"
+  }
+ },
+ "media": {
+  "2024/06/1271851a8965248a7f523021872ea520.png": "m-2024-06-1271851a8965248a7f523021872ea520",
+  "2024/05/category.png": "m-2024-05-category",
+  "2024/05/image-1.png": "m-2024-05-image-1",
+  "2024/05/istock-1186403297.jpg": "m-2024-05-istock-1186403297",
+  "2024/05/istock-1189236721.jpg": "m-2024-05-istock-1189236721",
+  "2024/05/istock-1271639998.jpg": "m-2024-05-istock-1271639998",
+  "2024/05/istock-1354913424.jpg": "m-2024-05-istock-1354913424",
+  "2024/05/pipes.png": "m-2024-05-pipes",
+  "2024/06/img.png": "m-2024-06-img",
+  "2024/06/untitled.png": "m-2024-06-untitled",
+  "2024/06/a-razgie2pa.jpg": "m-2024-06-a-razgie2pa",
+  "2024/06/bdnls2xb6k-edited.jpg": "m-2024-06-bdnls2xb6k-edited",
+  "2024/06/cdcw-albany.jpeg": "m-2024-06-cdcw-albany",
+  "2024/06/cropped-favicon.png": "m-2024-06-cropped-favicon",
+  "2024/06/ghvbptksqfs-edited.jpg": "m-2024-06-ghvbptksqfs-edited",
+  "2024/06/istock-1148947744.jpg": "m-2024-06-istock-1148947744",
+  "2024/06/istock-1409745277-2.jpg": "m-2024-06-istock-1409745277-2",
+  "2024/06/istock-1448007178.jpg": "m-2024-06-istock-1448007178",
+  "2024/06/istock-2237015918.jpg": "m-2024-06-istock-2237015918",
+  "2024/06/ponljpk9t5g.jpg": "m-2024-06-ponljpk9t5g",
+  "2024/06/vzxlsu2ja3a.jpg": "m-2024-06-vzxlsu2ja3a",
+  "2024/06/xccnzplieww.jpg": "m-2024-06-xccnzplieww",
+  "2024/07/beverages.png": "m-2024-07-beverages",
+  "2024/07/istock-1128667482-1-1.png": "m-2024-07-istock-1128667482-1-1",
+  "2024/07/istock-1157798943-1-1.png": "m-2024-07-istock-1157798943-1-1",
+  "2024/07/istock-1401939957-1-1.png": "m-2024-07-istock-1401939957-1-1",
+  "2024/07/istock-1482404312-1-1.png": "m-2024-07-istock-1482404312-1-1",
+  "2024/12/istock-1219012271.jpg": "m-2024-12-istock-1219012271",
+  "2025/03/cannabis-buds.jpg": "m-2025-03-cannabis-buds",
+  "2025/03/clifton-park-interior.jpeg": "m-2025-03-clifton-park-interior",
+  "2025/03/istock-1219012306.jpg": "m-2025-03-istock-1219012306",
+  "2025/03/istock-1482404318-1.jpg": "m-2025-03-istock-1482404318-1",
+  "2025/03/istock-1829241109.jpg": "m-2025-03-istock-1829241109",
+  "2025/04/istock-2208556880.jpg": "m-2025-04-istock-2208556880",
+  "2025/05/img_8838.jpeg": "m-2025-05-img-8838",
+  "2025/05/untitled-project-10.jpg": "m-2025-05-untitled-project-10",
+  "2025/05/untitled-project-5.jpg": "m-2025-05-untitled-project-5",
+  "2025/05/istock-1494782831.jpg": "m-2025-05-istock-1494782831",
+  "2025/06/istock-1044035432.jpg": "m-2025-06-istock-1044035432",
+  "2025/06/istock-1127033942.jpg": "m-2025-06-istock-1127033942",
+  "2025/06/istock-1292494333.jpg": "m-2025-06-istock-1292494333",
+  "2025/06/istock-1389845778.jpg": "m-2025-06-istock-1389845778",
+  "2025/06/istock-1410458206.jpg": "m-2025-06-istock-1410458206",
+  "2025/06/istock-1414127941-2.jpg": "m-2025-06-istock-1414127941-2",
+  "2025/06/istock-1448007178.jpg": "m-2025-06-istock-1448007178",
+  "2025/06/istock-2159023552.jpg": "m-2025-06-istock-2159023552",
+  "2025/06/istock-2191391622.jpg": "m-2025-06-istock-2191391622",
+  "2025/06/istock-2221922631.jpg": "m-2025-06-istock-2221922631",
+  "2025/07/5113190398_a35e96787d_k.jpg": "m-2025-07-5113190398-a35e96787d-k",
+  "2025/07/updated-boat-party.jpg": "m-2025-07-updated-boat-party",
+  "2025/07/istock-1021709806.jpg": "m-2025-07-istock-1021709806",
+  "2025/07/image1-1.jpeg": "m-2025-07-image1-1",
+  "2025/07/qr-code.png": "m-2025-07-qr-code",
+  "2025/08/image-1.png": "m-2025-08-image-1",
+  "2025/08/schenectady-smokeout.jpg": "m-2025-08-schenectady-smokeout",
+  "2025/08/istock-1187414585.jpg": "m-2025-08-istock-1187414585",
+  "2025/08/istock-1250579263.jpg": "m-2025-08-istock-1250579263",
+  "2025/08/istock-2163952659.jpg": "m-2025-08-istock-2163952659",
+  "2025/09/istock-1278724322.jpg": "m-2025-09-istock-1278724322",
+  "2025/09/istock-2211502564.jpg": "m-2025-09-istock-2211502564",
+  "2025/09/istock-504640832.jpg": "m-2025-09-istock-504640832",
+  "2025/09/istock-808689080.jpg": "m-2025-09-istock-808689080",
+  "2025/09/istock-993537896.jpg": "m-2025-09-istock-993537896",
+  "2025/10/img_6709.jpeg": "m-2025-10-img-6709",
+  "2025/10/img_6712.jpeg": "m-2025-10-img-6712",
+  "2025/10/istock-1385864406-1.jpg": "m-2025-10-istock-1385864406-1",
+  "2025/10/istock-2157949170.jpg": "m-2025-10-istock-2157949170",
+  "2025/10/image1-2.jpeg": "m-2025-10-image1-2",
+  "2025/11/untitled-project-35.jpg": "m-2025-11-untitled-project-35",
+  "2025/11/istock-1129030926-8.jpg": "m-2025-11-istock-1129030926-8",
+  "2025/11/istock-1478352830.jpg": "m-2025-11-istock-1478352830",
+  "2025/11/istock-2248780512.jpg": "m-2025-11-istock-2248780512",
+  "2025/11/istock-642546596.jpg": "m-2025-11-istock-642546596",
+  "2025/12/blaze-za-halls-postcard-us.png": "m-2025-12-blaze-za-halls-postcard-us",
+  "2025/12/istock-1248482465.jpg": "m-2025-12-istock-1248482465",
+  "2025/12/istock-1319779742-5.jpg": "m-2025-12-istock-1319779742-5",
+  "2025/12/istock-1355417185.jpg": "m-2025-12-istock-1355417185",
+  "2025/12/istock-1424077381-1.jpg": "m-2025-12-istock-1424077381-1",
+  "2025/12/istock-1425014795.jpg": "m-2025-12-istock-1425014795",
+  "2025/12/istock-1722664344.jpg": "m-2025-12-istock-1722664344",
+  "2025/12/istock-876858628.jpg": "m-2025-12-istock-876858628",
+  "2026/01/schenectady-toke-and-teach_1.jpg": "m-2026-01-schenectady-toke-and-teach-1",
+  "2026/01/untitled-project-47.jpg": "m-2026-01-untitled-project-47",
+  "2026/01/istock-1197802179.jpg": "m-2026-01-istock-1197802179",
+  "2026/01/istock-1392772565.jpg": "m-2026-01-istock-1392772565",
+  "2026/01/istock-1453800246.jpg": "m-2026-01-istock-1453800246",
+  "2026/02/istock-1025085796.jpg": "m-2026-02-istock-1025085796",
+  "2026/02/istock-1194556486.jpg": "m-2026-02-istock-1194556486",
+  "2026/02/istock-1199449796.jpg": "m-2026-02-istock-1199449796",
+  "2026/02/istock-1254505672.jpg": "m-2026-02-istock-1254505672",
+  "2026/02/istock-1273409579.jpg": "m-2026-02-istock-1273409579",
+  "2026/02/istock-1338722382-1.jpg": "m-2026-02-istock-1338722382-1",
+  "2026/02/istock-1409340655-1.jpg": "m-2026-02-istock-1409340655-1",
+  "2026/02/istock-2223739041.jpg": "m-2026-02-istock-2223739041",
+  "2026/03/accessories-resized.jpg": "m-2026-03-accessories-resized",
+  "2026/03/beverages-resized.jpg": "m-2026-03-beverages-resized",
+  "2026/03/concentrates-resized.jpg": "m-2026-03-concentrates-resized",
+  "2026/03/edibles-resized.jpg": "m-2026-03-edibles-resized",
+  "2026/03/flower-resized.jpg": "m-2026-03-flower-resized",
+  "2026/03/istock-1127872473.jpg": "m-2026-03-istock-1127872473",
+  "2026/03/istock-1311171701.jpg": "m-2026-03-istock-1311171701",
+  "2026/03/istock-1341820804.jpg": "m-2026-03-istock-1341820804",
+  "2026/03/istock-2223739039.jpg": "m-2026-03-istock-2223739039",
+  "2026/03/istock-2223740106.jpg": "m-2026-03-istock-2223740106",
+  "2026/03/istock-481009254.jpg": "m-2026-03-istock-481009254",
+  "2026/03/istock-604363212.jpg": "m-2026-03-istock-604363212",
+  "2026/03/pre-rolls-resized-1.jpg": "m-2026-03-pre-rolls-resized-1",
+  "2026/03/tincture-resized.jpg": "m-2026-03-tincture-resized",
+  "2026/03/vapes-resized.jpg": "m-2026-03-vapes-resized",
+  "2026/04/breezybus-jamz-3.jpg": "m-2026-04-breezybus-jamz-3",
+  "2026/04/istock-1018991042-2.jpg": "m-2026-04-istock-1018991042-2",
+  "2026/04/istock-1126458311-2.jpg": "m-2026-04-istock-1126458311-2",
+  "2026/04/istock-1150999630.jpg": "m-2026-04-istock-1150999630",
+  "2026/04/istock-1177916350.jpg": "m-2026-04-istock-1177916350",
+  "2026/04/istock-1349268384.jpg": "m-2026-04-istock-1349268384",
+  "2026/04/istock-2191379192-2.jpg": "m-2026-04-istock-2191379192-2",
+  "2026/04/istock-2203742403.jpg": "m-2026-04-istock-2203742403",
+  "2026/04/istock-534911698.jpg": "m-2026-04-istock-534911698",
+  "2026/04/istock-898872944.jpg": "m-2026-04-istock-898872944",
+  "2026/05/untitled-project-63.jpg": "m-2026-05-untitled-project-63",
+  "2026/05/istock-1093003322.jpg": "m-2026-05-istock-1093003322",
+  "2026/05/istock-1125515786.jpg": "m-2026-05-istock-1125515786",
+  "2026/05/istock-1127039351.jpg": "m-2026-05-istock-1127039351",
+  "2026/05/istock-1189236721.jpg": "m-2026-05-istock-1189236721",
+  "2026/05/istock-2217305968.jpg": "m-2026-05-istock-2217305968",
+  "2026/06/pride-flyer.jpg": "m-2026-06-pride-flyer",
+  "2026/06/white-and-green-modern-golf-tournament-flyer.png": "m-2026-06-white-and-green-modern-golf-tournament-flyer",
+  "2026/06/ayrup_beverages_vanillacola_0524web.webp": "m-2026-06-ayrup-beverages-vanillacola-0524web",
+  "2026/06/ayr_thcgummies_islandtime_4074web.webp": "m-2026-06-ayr-thcgummies-islandtime-4074web",
+  "2026/06/ayrloom-logo.jpg": "m-2026-06-ayrloom-logo",
+  "2026/06/dsc01456-edit-6831b8d312cea.webp": "m-2026-06-dsc01456-edit-6831b8d312cea",
+  "2026/06/pineapple.jpg": "m-2026-06-pineapple",
+  "2026/07/chatgpt-image-jul-22-2026-01_03_05-pm.png": "m-2026-07-chatgpt-image-jul-22-2026-01-03-05-pm",
+  "2026/07/chatgpt-image-jun-28-2026-11_43_36-am.png": "m-2026-07-chatgpt-image-jun-28-2026-11-43-36-am",
+  "2026/07/untitled-project-58.jpg": "m-2026-07-untitled-project-58",
+  "2026/07/hashtag-honey-bluedream.jpg": "m-2026-07-hashtag-honey-bluedream",
+  "2026/07/hashtag-honey-bluedream.avif": "m-2026-07-hashtag-honey-bluedream",
+  "2026/07/hashtag-honey-flower.jpg": "m-2026-07-hashtag-honey-flower",
+  "2026/07/hashtag-honey-logo.jpg": "m-2026-07-hashtag-honey-logo",
+  "2026/07/hashtag-honey-logo.avif": "m-2026-07-hashtag-honey-logo",
+  "2026/07/hashtag-honey-nyc.jpg": "m-2026-07-hashtag-honey-nyc",
+  "2026/07/hashtag-honey-nyc.avif": "m-2026-07-hashtag-honey-nyc",
+  "2026/07/istock-1054439456-1.jpg": "m-2026-07-istock-1054439456-1",
+  "2026/07/istock-1089531880.jpg": "m-2026-07-istock-1089531880",
+  "2026/07/istock-1171628825.jpg": "m-2026-07-istock-1171628825",
+  "2026/07/istock-1199449700-1.jpg": "m-2026-07-istock-1199449700-1",
+  "2026/07/istock-1221734333-3.jpg": "m-2026-07-istock-1221734333-3",
+  "2026/07/istock-2219500056-1.jpg": "m-2026-07-istock-2219500056-1",
+  "2026/07/istock-2281295070.jpg": "m-2026-07-istock-2281295070",
+  "2026/07/unicorn-piss.jpg": "m-2026-07-unicorn-piss",
+  "2026/07/unicorn-piss.avif": "m-2026-07-unicorn-piss",
+  "2026/08/istock-1060217990-1.jpg": "m-2026-08-istock-1060217990-1",
+  "2026/08/istock-1140391706.jpg": "m-2026-08-istock-1140391706",
+  "2026/08/istock-1187031628-4.jpg": "m-2026-08-istock-1187031628-4",
+  "2026/08/istock-1358834195-2.jpg": "m-2026-08-istock-1358834195-2",
+  "2026/08/istock-2223739051.jpg": "m-2026-08-istock-2223739051",
+  "2026/08/istock-2276678562.jpg": "m-2026-08-istock-2276678562",
+  "2026/09/istock-1277453803-1.jpg": "m-2026-09-istock-1277453803-1",
+  "2026/09/istock-1418548223.jpg": "m-2026-09-istock-1418548223",
+  "2026/09/istock-2237015970.jpg": "m-2026-09-istock-2237015970",
+  "2026/09/istock-2258657960-2.jpg": "m-2026-09-istock-2258657960-2",
+  "2026/10/istock-1164001497.jpg": "m-2026-10-istock-1164001497",
+  "2026/10/istock-1198304413-5.jpg": "m-2026-10-istock-1198304413-5",
+  "2026/10/istock-1213258764-1.jpg": "m-2026-10-istock-1213258764-1",
+  "2026/10/istock-1419182473-14.jpg": "m-2026-10-istock-1419182473-14",
+  "2026/10/istock-1449279794-1.jpg": "m-2026-10-istock-1449279794-1",
+  "2026/10/istock-2225646022-5.jpg": "m-2026-10-istock-2225646022-5",
+  "2026/10/istock-2273985664.jpg": "m-2026-10-istock-2273985664",
+  "2026/10/istock-628542060-2.jpg": "m-2026-10-istock-628542060-2",
+  "2026/10/image1-7.png": "m-2026-10-image1-7"
+ }
+}

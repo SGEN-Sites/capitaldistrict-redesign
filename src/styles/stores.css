@@ -1,0 +1,268 @@
+/* stores.css: the STORES lane (locations hub, the three store pages, store locator, Visit Us, the 40 town pages).
+   Prefix st-. Frames and positions the shared components; a shared class is only varied inside an st- wrapper. */
+
+/* ---------- hero variants ---------- */
+/* breadcrumb links get a 44 px tap height on this lane's heroes (the shared crumbs are 15 px tall: reported) */
+.st-hero .crumbs ol { margin-bottom: 8px; align-items: center; }
+.st-hero .crumbs a { display: inline-flex; align-items: center; min-height: 44px; }
+.st-ph .ph__h1 { font-size: clamp(2.2rem, .9rem + 4.3vw, 5.3rem); max-width: 17ch; }
+.st-ph--long .ph__h1 { font-size: clamp(1.6rem, .78rem + 3.25vw, 4.05rem); max-width: 21ch; }
+.st-ph .ph__lede { max-width: 64ch; }
+.st-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 22px; font-size: 16px; }
+.st-meta .status { min-height: 44px; }
+.st-meta a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--text); text-decoration: none; font-weight: 500; }
+.st-meta a:hover { color: var(--lime); }
+.st-meta .ico { color: var(--lime); }
+
+/* ---------- prose rhythm inside this lane: the shared ".prose p { margin: 0 }" outranks ".prose > * + *", so the
+   paragraph gap is restored here, on the lane's own wrapper class (reported for components.css) ---------- */
+.prose.st-prose > * + * { margin-top: 1em; }
+.prose.st-prose > h3 { margin-top: 1.6em; }
+.prose.st-prose > h4 { margin-top: 1.4em; font-size: clamp(1.05rem, .98rem + .35vw, 1.22rem); color: var(--lime); text-transform: uppercase; letter-spacing: .02em; }
+
+/* ---------- map well: a street-grid ground with a lit pin behind the (transparent until loaded) map iframe, so the
+   frame never reads as an empty box while Google Maps loads or when it is blocked ---------- */
+.st-mapbox .map { background:
+  radial-gradient(circle at 50% 47%, var(--lime) 0 5px, rgba(161, 207, 110, .28) 6px 16px, rgba(161, 207, 110, .08) 17px 46px, transparent 47px),
+  linear-gradient(115deg, transparent 47.4%, rgba(161, 207, 110, .14) 47.6% 49.2%, transparent 49.4%),
+  linear-gradient(28deg, transparent 61%, rgba(223, 236, 231, .07) 61.2% 62.4%, transparent 62.6%),
+  linear-gradient(rgba(223, 236, 231, .045) 1px, transparent 1px) 0 0 / 38px 38px,
+  linear-gradient(90deg, rgba(223, 236, 231, .045) 1px, transparent 1px) 0 0 / 38px 38px,
+  var(--ink-2); }
+
+/* ---------- town grids: the shared area links, given a little more room per town ---------- */
+.st-areas .areas { grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); }
+
+/* ---------- backdrops: art in the clipped back plane, a shade so glass and type stay legible ---------- */
+.st-bd { opacity: .62; }
+.st-shade { position: absolute; inset: 0; background:
+  radial-gradient(70% 80% at 85% 20%, transparent 0%, rgba(20, 26, 25, .55) 70%),
+  linear-gradient(180deg, var(--night) 0%, rgba(20, 26, 25, .35) 22%, rgba(20, 26, 25, .45) 70%, var(--night) 100%); }
+
+/* ---------- store pages: at a glance (photo + hours glass + words + map) ---------- */
+.st-glance { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 96px); align-items: start; }
+.st-photo { position: relative; margin: 0 0 64px; }
+.st-photo__img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r-l); box-shadow: var(--shadow-2); }
+.st-photo__tag { position: absolute; left: 18px; top: 18px; }
+.st-hours { position: absolute; left: clamp(-26px, -1.6vw, -8px); right: 14%; bottom: -54px; padding: 18px 22px 10px; background: linear-gradient(150deg, rgba(20, 26, 25, .86), rgba(20, 26, 25, .66)); }
+.st-hours__h { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; font: 800 15px/1.2 var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: .02em; }
+.st-hours__h .ico { color: var(--lime); }
+.st-hours .status { margin-bottom: 4px; }
+.st-glance__body .dh { margin-bottom: 26px; }
+.st-glance__prose { max-width: 64ch; }
+.st-glance__prose > p:first-child { font-size: clamp(1.1rem, 1rem + .4vw, 1.3rem); color: var(--text); line-height: 1.6; }
+.st-glance__prose h3 { margin-top: 1.4em; }
+.st-glance .btns { margin: 26px 0 30px; }
+@media (max-width: 900px) {
+  .st-glance { grid-template-columns: minmax(0, 1fr); }
+  .st-photo { max-width: 560px; margin-bottom: 0; }
+  .st-photo__img { aspect-ratio: 4 / 3.4; }
+  /* on a phone the hours card sits under the photo, overlapping only its bottom edge */
+  .st-hours { position: relative; left: auto; right: auto; bottom: auto; margin: -44px 12px 0; }
+}
+/* cut-outs cross seams on wide screens; on a phone they would sit on the hero buttons */
+@media (max-width: 760px) { .st-float { display: none; } }
+
+/* ---------- crate band head note ---------- */
+.st-note { display: inline-flex; align-items: center; gap: 8px; margin: 0; color: var(--text-2); font-size: 15px; }
+.st-note .ico { color: var(--lime); }
+
+/* ---------- deals (the mint "lights on" band): words + a taped print ---------- */
+.st-deals { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(36px, 6vw, 96px); align-items: center; }
+.st-deals .prose { color: var(--text-ink-2); max-width: 62ch; }
+.st-deals .prose a { color: #3d6b16; }
+.st-deals .btns { margin-top: 28px; }
+.st-print-wrap { justify-self: center; width: min(100%, 400px); }
+.st-print { position: relative; margin: 0; padding: 14px 14px 16px; background: #fbfdfc; border-radius: 6px; rotate: 2.5deg; box-shadow: 0 40px 60px -32px rgba(20, 26, 25, .6), 0 2px 0 rgba(20, 26, 25, .06); }
+.st-print img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; }
+.st-print figcaption { display: flex; align-items: center; gap: 10px; padding: 14px 2px 0; font: 850 15px/1.1 var(--f-display); font-stretch: 110%; text-transform: uppercase; color: var(--text-ink); }
+.st-print figcaption .bullet { width: 32px; height: 32px; font-size: 14px; }
+.st-print__tape { position: absolute; left: 50%; top: -14px; width: 116px; height: 30px; translate: -50% 0; rotate: -6deg; background: rgba(161, 207, 110, .78); box-shadow: 0 2px 6px rgba(0, 0, 0, .18); }
+.st-print__sticker { position: absolute; right: -16px; top: 26px; }
+@media (max-width: 860px) { .st-deals { grid-template-columns: minmax(0, 1fr); } .st-print-wrap { width: min(86%, 360px); } .st-print__sticker { right: -6px; } }
+
+/* ---------- glass cards and panels over imagery ---------- */
+.st-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px 40px; margin-bottom: clamp(30px, 4vw, 54px); }
+.st-head .dh { margin: 0; max-width: 20ch; }
+.st-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
+.st-cards .gcard a { color: var(--lime); }
+.st-panel { max-width: 780px; padding: clamp(26px, 4vw, 56px); }
+.st-panel .prose { max-width: none; font-size: 17px; }
+.st-panel .btns { margin-top: 28px; }
+@media (max-width: 1000px) { .st-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .st-cards { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- reader: a prose column beside a sticky aside ---------- */
+.st-read { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 100px); align-items: start; }
+.st-read__aside { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 28px); display: grid; gap: 24px; }
+.st-read__aside .dh { margin: 0; }
+.st-read__aside .kicker { margin: 0; }
+.st-read__main { max-width: 68ch; }
+.st-read__main > :first-child { margin-top: 0; }
+.st-callout { font-size: clamp(1.2rem, 1rem + .8vw, 1.6rem); color: var(--lime) !important; }
+.st-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.st-links .tlink { min-height: 44px; }
+@media (max-width: 900px) { .st-read { grid-template-columns: minmax(0, 1fr); } .st-read__aside { position: static; } }
+
+/* the store pass (aside on readers, beside town text) */
+.st-pass { display: grid; gap: 14px; padding: 22px; border-radius: var(--r-l); border: 1px solid var(--line); background: linear-gradient(160deg, rgba(161, 207, 110, .1), rgba(13, 18, 17, .6) 55%); }
+.st-pass__top { display: flex; align-items: center; gap: 14px; }
+.st-pass__name { margin: 0 0 4px; font: 850 20px/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+.st-pass__addr { display: flex; gap: 10px; margin: 0; color: var(--text-2); }
+.st-pass__addr .ico { color: var(--lime); margin-top: 4px; }
+.st-pass__cta { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ---------- things to do / places to stay: glass over a backdrop ---------- */
+.st-things { display: grid; gap: 16px; }
+.st-things + .st-things { margin-top: clamp(40px, 5vw, 70px); }
+.st-things__intro { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(18px, 4vw, 64px); align-items: start; padding: clamp(24px, 3.4vw, 50px); }
+.st-things__intro .dh, .st-things__bare .dh { margin: 0; }
+.st-things__intro .kicker { margin-bottom: 14px; }
+.st-things__intro .prose { font-size: 17px; max-width: none; }
+.st-things__intro--long { grid-template-columns: minmax(0, 1fr); }
+.st-things__intro--long .dh { max-width: 26ch; }
+.st-things__intro--long .prose { columns: 2 24em; column-gap: clamp(28px, 4vw, 56px); }
+.st-things__intro--long .prose > p { break-inside: avoid-column; }
+.st-things__bare { margin-bottom: 4px; }
+.st-things__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.st-things__grid--n1 { grid-template-columns: minmax(0, 1fr); }
+.st-things__grid--n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.st-things__grid--n4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .st-things__grid--n3, .st-things__grid--n4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 860px) { .st-things__intro { grid-template-columns: minmax(0, 1fr); } }
+.st-tip { display: grid; gap: 10px; align-content: start; padding: 22px 22px 24px; }
+.st-tip__t { margin: 0; font: 850 19px/1.08 var(--f-display); font-stretch: 110%; text-transform: uppercase; }
+.st-tip p { margin: 0; color: var(--text-2); font-size: 16px; line-height: 1.6; }
+.st-tip p + p { margin-top: .7em; }
+.st-tip a { color: var(--lime); }
+.st-tip p > a:first-child > b, .st-tip p > a:first-child > strong, .st-tip p > b:first-child, .st-tip p > strong:first-child { color: var(--text); font-weight: 700; font-size: 1.06em; }
+@media (max-width: 640px) { .st-things__grid, .st-things__grid--n3, .st-things__grid--n4 { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- getting here: a route of numbered stops + the map ---------- */
+.st-routeband { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+.st-routeband--solo { grid-template-columns: minmax(0, 1fr); }
+.st-routeband .prose { max-width: 64ch; }
+.st-routeband .btns { margin-top: 26px; }
+.st-routeband__map { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 28px); display: grid; gap: 14px; }
+.st-routeband__addr { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--text-2); font-size: 15px; }
+.st-routeband__addr > span:not(.bullet) { display: grid; }
+.st-routeband__addr b { color: var(--text); }
+.st-route__h { margin: 34px 0 10px; font: 850 clamp(1.2rem, 1rem + .6vw, 1.5rem)/1.1 var(--f-display); font-stretch: 108%; text-transform: uppercase; }
+.st-route { list-style: none; margin: 26px 0; padding: 0; counter-reset: st-step; }
+.st-route > li { position: relative; padding: 8px 0 24px 62px; min-height: 52px; color: var(--text-2); counter-increment: st-step; }
+.st-route > li::before { content: counter(st-step, decimal-leading-zero); position: absolute; left: 0; top: 0; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--night); color: var(--lime); box-shadow: inset 0 0 0 2px var(--lime), 0 0 18px -6px var(--lime); font: 850 13px/1 var(--f-display); font-stretch: 100%; }
+.st-route > li::after { content: ''; position: absolute; left: 20px; top: 48px; bottom: 4px; width: 2px; background: linear-gradient(var(--lime-32), rgba(161, 207, 110, .04)); }
+.st-route > li:last-child::after { display: none; }
+.st-route > li.st-route__note { counter-increment: none; padding-left: 62px; }
+.st-route > li.st-route__note::before { content: none; }
+.st-route strong, .st-route b { color: var(--text); }
+.st-route a { color: var(--lime); }
+/* the same steps as cards (store pages, whose map already sits in the first band) */
+.st-route--cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.st-route--cards > li { padding: 76px 22px 22px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .5); }
+.st-route--cards > li::before { left: 22px; top: 20px; }
+.st-route--cards > li::after { display: none; }
+.st-route--cards strong { display: block; margin-bottom: 6px; font: 850 18px/1.15 var(--f-display); font-stretch: 108%; text-transform: uppercase; }
+@media (max-width: 900px) { .st-routeband { grid-template-columns: minmax(0, 1fr); } .st-routeband__map { position: static; } }
+@media (max-width: 640px) { .st-route--cards { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- FAQ: heading aside + the shared accordion ---------- */
+.st-faq { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
+.st-faq__head { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 28px); }
+.st-faq__head .dh { margin-bottom: 14px; }
+.st-faq__sub { margin: 18px 0 0; font: 800 17px/1.2 var(--f-display); font-stretch: 108%; text-transform: uppercase; color: var(--text-2); }
+.band--mint .st-faq__sub { color: var(--text-ink-2); }
+@media (max-width: 900px) { .st-faq { grid-template-columns: minmax(0, 1fr); } .st-faq__head { position: static; } }
+
+/* ---------- visit us today: one glass card over a photo ---------- */
+.st-visit { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 64px); padding: clamp(26px, 4vw, 58px); }
+.st-visit__words .prose { max-width: 60ch; font-size: 17px; }
+.st-visit__words .prose h3 { margin-top: 1.5em; }
+.st-visit__facts { display: grid; gap: 14px; align-content: start; align-self: start; padding: clamp(20px, 2.4vw, 30px); border-radius: var(--r-m); background: rgba(13, 18, 17, .5); border: 1px solid var(--line); }
+.st-visit__facts p { margin: 0; }
+.st-visit__find, .st-visit__label { display: flex; gap: 10px; align-items: flex-start; }
+.st-visit__find .ico, .st-visit__label .ico { color: var(--lime); margin-top: 4px; }
+.st-visit__find a { color: var(--text); }
+.st-visit__label { font: 800 15px/1.3 var(--f-display); font-stretch: 110%; text-transform: uppercase; }
+.st-visit__hours { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.st-visit__hours li { padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--text); }
+.st-visit__facts .btns { margin-top: 6px; }
+@media (max-width: 900px) { .st-visit { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- towns we serve, grouped by nearest store ---------- */
+.st-towns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(34px, 4vw, 52px) clamp(20px, 3vw, 40px); }
+.st-towns__grp--wide { grid-column: 1 / -1; }
+.st-towns__head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.st-towns__head h3 { margin: 0; font: 850 clamp(18px, 1.2vw + 12px, 23px)/1.05 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+.st-towns__n { color: var(--text-3); font-size: 14px; }
+.st-towns__head .tlink { margin-left: auto; min-height: 44px; }
+.band--mint .st-towns__head { border-color: rgba(42, 49, 48, .16); }
+@media (max-width: 860px) { .st-towns { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- store card rows ---------- */
+.st-stores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 26px); align-items: start; }
+.st-stores--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 1060px) { .st-stores { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .st-stores, .st-stores--two { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- map row ---------- */
+.st-maps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
+.st-mapc { margin: 0; display: grid; gap: 14px; align-content: start; }
+.st-mapc figcaption { display: flex; align-items: center; gap: 12px; }
+.st-mapc figcaption > span:not(.bullet) { flex: 1; display: grid; min-width: 0; }
+.st-mapc b { font: 850 17px/1.1 var(--f-display); font-stretch: 110%; text-transform: uppercase; }
+.st-mapc small { color: var(--text-3); font-size: 14px; }
+@media (max-width: 900px) { .st-maps { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- licence strip ---------- */
+.st-lic { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; margin: clamp(28px, 4vw, 44px) 0 0; padding: 14px 20px; border-radius: var(--r-m); border: 1px dashed var(--line-2); color: var(--text-2); font-size: 15px; }
+.st-lic span { display: inline-flex; align-items: center; gap: 8px; }
+.st-lic .ico { color: var(--lime); }
+.st-lic b { color: var(--text); letter-spacing: .03em; }
+
+/* ---------- town pages ---------- */
+.st-frame { position: relative; margin: 0; }
+.st-frame__img { aspect-ratio: 4 / 3; box-shadow: var(--shadow-2); }
+.st-frame__tag { position: absolute; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 10px; padding: 7px 18px 7px 7px; border-radius: var(--pill); background: rgba(13, 18, 17, .74); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font-weight: 600; font-size: 15px; }
+.st-why .prose { font-size: 17px; }
+.st-why .btns { margin-top: 26px; }
+.st-near { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+.st-near__words .prose { max-width: 60ch; font-size: 17px; }
+.st-near__words .btns { margin-top: 26px; }
+.st-plate { display: flex; align-items: flex-start; gap: 14px; margin: 24px 0 0; padding: 18px 20px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .45); color: var(--text-2); }
+.st-plate > span:not(.bullet) { display: grid; gap: 2px; }
+.st-plate b { color: var(--text); font-weight: 650; }
+.st-near__h { margin: 26px 0 10px; font: 850 clamp(1.15rem, 1rem + .5vw, 1.4rem)/1.1 var(--f-display); font-stretch: 108%; text-transform: uppercase; }
+@media (max-width: 900px) { .st-near { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- store locator ---------- */
+.st-loc { display: grid; gap: 18px; }
+.st-loc__search { max-width: 680px; }
+.st-loc__search .field { font-size: 15px; }
+.st-loc__search .field input { min-height: 64px; padding-left: 54px; font-size: 18px; background: rgba(13, 18, 17, .65) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1cf6e' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='m16 16 4 4'/%3E%3C/svg%3E") no-repeat 18px center / 22px 22px; }
+.st-loc__hint { margin: 0; color: var(--text-3); font-size: 14px; }
+.st-loc__empty { margin: 0; padding: 18px 20px; border-radius: var(--r-m); border: 1px solid var(--lime-32); background: var(--lime-08); color: var(--text); }
+.st-loc__empty a { color: var(--lime); }
+.st-results { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.st-res--store { display: grid; gap: 12px; align-content: start; padding: 22px; border-radius: var(--r-l); border: 1px solid var(--lime-32); background: linear-gradient(160deg, rgba(161, 207, 110, .12), rgba(13, 18, 17, .55) 60%); }
+.st-res__top { display: flex; align-items: center; gap: 14px; }
+.st-res__name { margin: 0 0 4px; font: 850 20px/1.05 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+.st-res__addr { display: flex; gap: 10px; margin: 0; color: var(--text-2); }
+.st-res__addr .ico { color: var(--lime); margin-top: 4px; }
+.st-res__acts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+.st-res--town { display: grid; gap: 10px; align-content: start; height: 100%; padding: 18px 20px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .45); text-decoration: none; transition: border-color var(--d-1), background var(--d-1); }
+.st-res--town:hover { border-color: var(--lime-32); background: rgba(13, 18, 17, .75); }
+.st-res--town .st-res__name { font-size: 19px; }
+.st-res__near { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-2); }
+.st-res__near .bullet { width: 28px; height: 28px; font-size: 13px; }
+.st-res__drive { font-size: 15px; line-height: 1.5; color: var(--text-2); }
+.st-res__go { display: inline-flex; align-items: center; gap: 6px; color: var(--lime); font-weight: 600; font-size: 14px; }
+.st-res__go .ico { width: 15px; height: 15px; transition: transform var(--d-2) var(--ease); }
+.st-res--town:hover .st-res__go .ico { transform: translateX(4px); }
+@media (max-width: 1060px) { .st-results { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .st-results { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- visit us: plan cards ---------- */
+.st-plan { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 1180px) { .st-plan { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .st-plan { grid-template-columns: minmax(0, 1fr); } }

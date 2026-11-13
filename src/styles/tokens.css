@@ -1,0 +1,102 @@
+/* tokens.css: "Capital Cypher". The Albany skyline after dark, a graffiti hall of fame behind museum glass, and a
+   record that never stops spinning. Brand hexes measured from the live site's :root on 2026-11-13 (--Primary #a1cf6e,
+   --Base-Black #2a3130, --Accent-1 #1f2926, surface #404a49, --colors-neutral #dfece7); the rest is derived.
+   Values may be tuned here; nobody renames or removes a token, and nothing is re-typed at a call site.
+   (The site-reforge baseline generated from the live CSS is kept as evidence in audit/sr-generated-tokens.css.) */
+:root {
+  /* brand (measured) */
+  --lime: #a1cf6e;          /* on --night about 9.8:1, on --ink about 7.4:1 */
+  --ink: #2a3130;           /* text on lime about 7.4:1 */
+  --ink-2: #1f2926;
+  --slate: #404a49;
+  --mint: #dfece7;          /* on --night about 14.5:1 */
+  /* derived */
+  --lime-hi: #c8f09b;       /* glow, hover: decorative */
+  --lime-lo: #86b553;
+  --lime-08: rgba(161, 207, 110, .08);
+  --lime-16: rgba(161, 207, 110, .16);
+  --lime-32: rgba(161, 207, 110, .32);
+  --night: #141a19;         /* the deepest ground */
+  --night-2: #0d1211;
+  --paper: #eef5f1;
+  --text: #edf4f0;          /* body on --night about 15:1 */
+  --text-2: #b9c7c1;        /* secondary on --night about 10:1, on --ink about 7:1 */
+  --text-3: #8fa09a;        /* meta on --night about 6.4:1, on --ink about 4.9:1: 14px and up */
+  --text-ink: #1c2322;      /* body on mint/lime */
+  --text-ink-2: #3c4846;    /* secondary on mint about 8:1 */
+  --line: rgba(223, 236, 231, .14);
+  --line-2: rgba(223, 236, 231, .28);
+  --teal: #2f8f86;          /* the mural's teal: decorative only */
+  --chrome: linear-gradient(135deg, #f4f8f6 0%, #9aa7a3 22%, #eef3f1 40%, #6f7b78 62%, #dfe6e3 80%, #a8b3b0 100%);
+  --foil: linear-gradient(100deg, var(--lime) 0%, var(--lime-hi) 30%, #ffffff 46%, var(--lime-hi) 60%, var(--lime) 100%);
+
+  /* type: Anybody (variable width + weight) stands in for the live site's Adobe "scale-variable"; Work Sans is the
+     live body face; Sedgwick Ave Display is the tag hand (one word per heading at most) */
+  --f-display: 'Anybody', 'Arial Black', 'Helvetica Neue', Impact, sans-serif;
+  --f-body: 'Work Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --f-tag: 'Sedgwick Ave Display', 'Marker Felt', 'Comic Sans MS', cursive;
+  --fs-body: 17px;
+  --lh-body: 1.65;
+  --fs-mega: clamp(3.2rem, 1rem + 8.4vw, 9.4rem);
+  --fs-xl: clamp(2.7rem, 1.2rem + 5.6vw, 6.6rem);
+  --fs-lg: clamp(2.3rem, 1.2rem + 4vw, 5.2rem);
+  --fs-md: clamp(1.9rem, 1.15rem + 2.5vw, 3.5rem);
+  --fs-sm: clamp(1.45rem, 1.1rem + 1.1vw, 2.15rem);
+  --fs-xs: clamp(1.15rem, 1rem + .5vw, 1.4rem);
+  --wdth: 118%;             /* display width at rest */
+  --wdth-in: 64%;           /* display width before its reveal */
+  --lh-display: .88;
+
+  /* space */
+  --wrap: 1280px;
+  --wrap-wide: 1440px;
+  --wrap-narrow: 820px;
+  --gutter: clamp(18px, 4vw, 48px);
+  --sec: clamp(76px, 9vw, 148px);
+  --r-s: 10px;
+  --r-m: 18px;
+  --r-l: 28px;
+  --r-xl: 40px;
+  --pill: 999px;
+
+  /* glass (mid plane) */
+  --glass-bg: linear-gradient(135deg, rgba(223, 236, 231, .14), rgba(223, 236, 231, .05) 55%, rgba(161, 207, 110, .06));
+  --glass-solid: rgba(26, 33, 32, .94);
+  --glass-blur: blur(18px) saturate(150%);
+  --glass-edge: linear-gradient(140deg, rgba(255, 255, 255, .6), rgba(255, 255, 255, .08) 38%, rgba(255, 255, 255, .04) 60%, rgba(161, 207, 110, .55));
+  --shadow-1: inset 0 1px 0 rgba(255, 255, 255, .08), 0 18px 40px -18px rgba(0, 0, 0, .65);
+  --shadow-2: inset 0 1px 0 rgba(255, 255, 255, .12), 0 40px 80px -30px rgba(0, 0, 0, .8), 0 0 0 1px rgba(255, 255, 255, .03);
+  --shadow-lime: 0 0 0 1px rgba(161, 207, 110, .35), 0 18px 50px -12px rgba(161, 207, 110, .45);
+
+  /* light (back plane): one key light per band, positioned by --lx / --ly on the band */
+  --key: radial-gradient(58% 60% at var(--lx, 72%) var(--ly, 18%), rgba(161, 207, 110, .2), rgba(161, 207, 110, .06) 42%, transparent 72%);
+  --key-white: radial-gradient(50% 55% at var(--lx, 72%) var(--ly, 18%), rgba(237, 244, 240, .12), transparent 70%);
+  --beam: linear-gradient(112deg, transparent 32%, rgba(223, 236, 231, .07) 46%, transparent 62%);
+  --vignette: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, .55) 100%);
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+
+  /* motion */
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --ease-io: cubic-bezier(.65, 0, .35, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --d-1: .25s;
+  --d-2: .5s;
+  --d-3: .95s;
+  --d-slow: 2.4s;
+
+  /* chrome */
+  --topbar-h: 36px;
+  --hdr-h: 78px;
+  --bottom-stack: 0px;
+  --z-float: 5;
+  --z-bar: 55;
+  --z-hdr: 60;
+  --z-drawer: 70;
+  --z-modal: 90;
+  --z-gate: 100;
+}
+@media (max-width: 1099px) { :root { --hdr-h: 68px; } }
+@media (max-width: 760px) {
+  :root { --fs-body: 16px; --hdr-h: 62px; --topbar-h: 0px; --glass-blur: blur(12px) saturate(140%); --r-l: 22px; --r-xl: 28px; }
+}
+@media (prefers-reduced-motion: reduce) { :root { --d-1: 0s; --d-2: 0s; --d-3: 0s; --d-slow: 0s; } }
