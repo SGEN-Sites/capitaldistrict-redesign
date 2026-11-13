@@ -34,6 +34,7 @@ node src/build.mjs --preview --out dist-preview --base /capitaldistrict-redesign
 |---|---|---|
 | every Shop, Specials and category destination (3 stores x 12) shows products, prices and a cart | 36/36 pass | `audit/menu-verification.json` |
 | site-reforge gate | 12 pass, 14 fail, 3 unproven | `audit/gate.json`, `docs/PUBLISH.md` |
+| the live preview: pages answer 200 with noindex; gate, store switch and pickup bar work | 12/12 pass | `audit/preview-smoke.json` |
 
 ## Imagery and marks
 

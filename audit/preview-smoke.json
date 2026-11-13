@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-13T00:53:28.006Z",
+  "url": "https://sgen-sites.github.io/capitaldistrict-redesign/",
+  "pass": 12,
+  "total": 12,
+  "results": [
+    {
+      "name": "every page answers 200 with its own title and noindex (141 pages, 15 redirect stubs skipped)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "assets/css/site.css answers 200",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "assets/js/site.js answers 200",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "assets/fonts/anybody-normal.woff2 answers 200",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "robots.txt answers 200",
+      "ok": true,
+      "detail": "200 User-agent: * Disallow: / "
+    },
+    {
+      "name": "21+ gate shows on first visit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "\"Yes, I Am\" leads to the store step",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "picking a store closes the gate",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pickup bar hidden over the hero, shown past it, inside the screen",
+      "ok": true,
+      "detail": "{\"on\":true,\"top\":766,\"bottom\":830}"
+    },
+    {
+      "name": "pickup bar points Shop now, Call and Directions at Clifton Park",
+      "ok": true,
+      "detail": "{\"on\":true,\"top\":766,\"bottom\":830,\"vh\":844,\"store\":\"clifton-park\",\"name\":\"Clifton Park, NY\",\"shop\":\"https://capitaldistrictcannabis.com/stores/cd-clifton-park-ny\",\"call\":\"tel:5189010010\",\"maps\":\"https://maps.app.goo.gl/qzwVeWkQn3QM7ydDA\"}"
+    },
+    {
+      "name": "category sleeves follow the chosen store (Beverages -> Clifton Park drinks shelf)",
+      "ok": true,
+      "detail": "https://capitaldistrictcannabis.com/stores/cd-clifton-park-ny/products/edibles/drinks"
+    },
+    {
+      "name": "no script errors on the live preview (phone)",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

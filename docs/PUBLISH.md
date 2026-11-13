@@ -51,3 +51,12 @@ handoff package is ready, and no package was made. The preview is a pitch. The 1
 
 UNPROVEN: C12 (no preset library was used), C22 (pixel comparison: a redesign is meant to differ) and C23 (the
 breakpoint sweep was not run; the render checks above stand in for it).
+
+## Deploy (2026-11-13)
+
+| step | result |
+|---|---|
+| repository | `SGEN-Sites/capitaldistrict-redesign`, public; `main` commit 5987caa (source), scanned clean before the push |
+| preview | `gh-pages` commit e4a2798; GitHub Pages reported `built e4a2798` about 30 s after the push |
+| the live preview | 12/12 pass at https://sgen-sites.github.io/capitaldistrict-redesign/: all 141 pages answer 200 with their own title and `noindex` (15 redirect stubs forward); the CSS, JS, a font and robots.txt answer; on a phone the 21+ gate shows, "Yes, I Am" leads to the store step, picking Clifton Park closes it and points the pickup bar's Shop now, Call and Directions at Clifton Park, the Beverages sleeve opens Clifton Park's Drinks shelf; no script errors (`audit/preview-smoke.json`) |
+| the fal key in the public repository | a fresh mirror clone, 934 git objects, every commit searched: 0 hits, whole or in part; no operator identity or machine path |
