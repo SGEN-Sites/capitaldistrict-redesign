@@ -82,15 +82,21 @@
 .h-stores__more { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 30px 0 0; }
 
 /* ---------- 5. shop ahead ---------- */
-.h-ahead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+.h-ahead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
 .h-ahead .tracks { margin: 8px 0 30px; }
-.h-tt { position: relative; aspect-ratio: 16 / 9; }
-.h-tt video { position: absolute; left: -62%; top: -34%; width: 168%; height: 168%; object-fit: cover; mix-blend-mode: screen; -webkit-mask-image: radial-gradient(70% 70% at 56% 52%, #000 55%, transparent 100%); mask-image: radial-gradient(70% 70% at 56% 52%, #000 55%, transparent 100%); }
-.h-tt__btn { position: absolute; right: 6%; bottom: 8%; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-2); background: rgba(13, 18, 17, .6); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+/* the turntable stage: a contained, rounded frame (nothing spills onto the steps), the loop framed on the record player */
+.h-tt { position: relative; aspect-ratio: 1 / 1; border-radius: var(--r-xl); overflow: hidden; background: #000; isolation: isolate; box-shadow: var(--shadow-2), 0 40px 90px -40px rgba(161, 207, 110, .35); }
+.h-tt video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 100% 50%; transform: scale(1.14); transform-origin: 82% 54%; }
+.h-tt::before { /* a lit 1px rim, brightest on the key-light side */
+  content: ''; position: absolute; inset: 0; z-index: 3; border-radius: inherit; padding: 1px; pointer-events: none; background: linear-gradient(140deg, rgba(161, 207, 110, .7), rgba(255, 255, 255, .08) 40%, rgba(255, 255, 255, .04) 70%, rgba(161, 207, 110, .35));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.h-tt::after { /* vignette and a lime key light from the top */
+  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(70% 55% at 62% 0%, rgba(161, 207, 110, .16), transparent 70%), radial-gradient(95% 85% at 62% 56%, transparent 55%, rgba(0, 0, 0, .62) 100%); }
+.h-tt__btn { position: absolute; z-index: 2; right: 20px; bottom: 20px; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-2); background: rgba(13, 18, 17, .6); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .h-tt__btn:hover { border-color: var(--lime); color: var(--lime); }
-.h-tt__k { position: absolute; left: 6%; top: 6%; }
-.h-tt__k { padding: 8px 14px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font: 800 12px/1 var(--f-display); font-stretch: 112%; letter-spacing: .08em; text-transform: uppercase; rotate: -4deg; box-shadow: 0 0 0 3px #f6faf7; }
-@media (max-width: 1000px) { .h-ahead { grid-template-columns: 1fr; } .h-ahead__media { order: -1; max-width: 640px; } }
+.h-tt__k { position: absolute; z-index: 2; left: 22px; top: 24px; padding: 8px 14px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font: 800 12px/1 var(--f-display); font-stretch: 112%; letter-spacing: .08em; text-transform: uppercase; rotate: -4deg; box-shadow: 0 0 0 3px #f6faf7; }
+@media (max-width: 1000px) { .h-ahead { grid-template-columns: 1fr; } .h-ahead__media { max-width: 640px; } }
 
 /* ---------- 6. specials ---------- */
 .h-flyers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 34px); padding-top: 14px; }
@@ -150,7 +156,7 @@
 @media (max-width: 1000px) { .h-faq { grid-template-columns: 1fr; } .h-faq__head { position: static; } .h-faq__vinyl { display: none; } }
 
 /* ---------- phone pass: long rows become swipe rows ---------- */
-@media (max-width: 1000px) { .h-tt video { left: -12%; top: -10%; width: 124%; height: 120%; } }
+@media (max-width: 1000px) { .h-tt { aspect-ratio: 4 / 3; } .h-tt video { object-position: 100% 50%; transform: scale(1.06); } }
 @media (max-width: 760px) {
   .h-stores, .h-flyers, .h-events, #h-learn .grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: calc(-1 * var(--gutter)); padding: 22px var(--gutter) 26px; scrollbar-width: none; }
   .h-stores::-webkit-scrollbar, .h-flyers::-webkit-scrollbar, .h-events::-webkit-scrollbar, #h-learn .grid::-webkit-scrollbar { display: none; }
