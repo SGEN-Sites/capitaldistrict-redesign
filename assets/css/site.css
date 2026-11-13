@@ -458,8 +458,8 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 @media (max-width: 640px) { .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; } }
 .crate { position: relative; perspective: 1400px; }
 .crate__row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); }
-.sleeve { position: relative; display: block; aspect-ratio: 1; text-decoration: none; color: var(--text); transform-style: preserve-3d; }
-.sleeve__card { position: absolute; inset: 0; border-radius: 14px; overflow: hidden; background: #050707; box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 24px 40px -22px rgba(0, 0, 0, .9); transform: rotateX(0) translateZ(0); transform-origin: bottom center; transition: transform .7s var(--ease), box-shadow .7s var(--ease); z-index: 2; }
+.sleeve { position: relative; display: block; aspect-ratio: 1; text-decoration: none; color: var(--text); }
+.sleeve__card { position: absolute; inset: 0; border-radius: 14px; overflow: hidden; background: #050707; box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 24px 40px -22px rgba(0, 0, 0, .9); transform: perspective(900px) rotateX(0) translateY(0); transform-origin: bottom center; transition: transform .7s var(--ease), box-shadow .7s var(--ease); z-index: 2; }
 .sleeve__art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 1.1s var(--ease), filter .7s var(--ease); filter: saturate(.92) brightness(.92); }
 .sleeve__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 7, 7, 0) 40%, rgba(5, 7, 7, .92)); }
 .sleeve__no { position: absolute; left: 14px; top: 12px; font: 700 12px/1 var(--f-body); letter-spacing: .18em; color: var(--text-3); }
@@ -472,7 +472,7 @@ html.gate-open, html.gate-open body { overflow: hidden; }
  box-shadow: 0 0 0 1px rgba(255, 255, 255, .05), 0 18px 30px -12px rgba(0, 0, 0, .9); transform: translateY(0) rotate(0); transition: transform .8s var(--ease);
 }
 .sleeve__lbl { position: absolute; inset: 34%; border-radius: 50%; background: radial-gradient(circle, #0d0f0f 0 9%, var(--lime) 10% 100%); box-shadow: 0 0 0 2px rgba(0, 0, 0, .4) inset; }
-.sleeve:hover .sleeve__card, .sleeve:focus-visible .sleeve__card { transform: rotateX(8deg) translateY(10px); box-shadow: 0 1px 0 rgba(255, 255, 255, .1) inset, 0 34px 50px -24px rgba(0, 0, 0, .95), 0 0 0 1px var(--lime-32); }
+.sleeve:hover .sleeve__card, .sleeve:focus-visible .sleeve__card { transform: perspective(900px) rotateX(8deg) translateY(10px); box-shadow: 0 1px 0 rgba(255, 255, 255, .1) inset, 0 34px 50px -24px rgba(0, 0, 0, .95), 0 0 0 1px var(--lime-32); }
 .sleeve:hover .sleeve__disc, .sleeve:focus-visible .sleeve__disc { transform: translateY(-38%) rotate(160deg); }
 .sleeve:hover .sleeve__art { transform: scale(1.12); filter: saturate(1.08) brightness(1.02); }
 .sleeve:hover .sleeve__go { opacity: 1; gap: 10px; }
