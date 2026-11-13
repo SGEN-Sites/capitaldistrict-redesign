@@ -17,7 +17,8 @@ const OUT = path.join(ROOT, 'private/shots/crate'); fs.mkdirSync(OUT, { recursiv
 const TYPES = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.mp4': 'video/mp4' };
 const server = http.createServer((req, res) => { let p = decodeURIComponent(req.url.split('?')[0]); if (p.endsWith('/')) p += 'index.html'; const f = path.join(DIR, p); if (!f.startsWith(DIR) || !fs.existsSync(f)) { res.writeHead(404); res.end(); return; } res.writeHead(200, { 'content-type': TYPES[path.extname(f)] || 'application/octet-stream' }); fs.createReadStream(f).pipe(res); });
 await new Promise((r) => server.listen(0, r));
-const base = `http://localhost:${server.address().port}`;
+// --url https://host/base  tests a deployed copy instead of the local build
+const base = (val('--url', '') || `http://localhost:${server.address().port}`).replace(/\/$/, '');
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
 await ctx.route((u) => !String(u).startsWith(base), (r) => r.abort());
