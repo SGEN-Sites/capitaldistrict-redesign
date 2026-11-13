@@ -270,6 +270,7 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
   .ct-wall .flyer__when, .ct-wall .flyer__where { font-size: 12px; }
   .ct-wall .flyer__body { padding-top: 10px; }
 }
+@media (max-width: 359px) { .ct-wall { --pad: 6px; } .ct-wall .flyer__t { font-stretch: 64%; } } /* 320: 4 lines of ~13 characters */
 /* the rotation: the intro across the top, the series two to a row beneath (tracks--2) */
 .ct-rot { display: grid; }
 .ct-rot__p { margin: 0; color: var(--text-ink-2); font-size: 18px; max-width: 40ch; }

@@ -86,6 +86,7 @@
 .sh-quote { position: relative; display: grid; gap: 12px; align-content: start; margin: 0; padding: 26px 26px 24px; border-radius: 26px 26px 26px 6px; background: var(--mint); color: var(--text-ink); box-shadow: 0 30px 50px -30px rgba(0, 0, 0, .9); }
 .sh-quote:nth-child(2) { background: #f6faf8; }
 .sh-quote__who { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-ink-2); }
+@media (max-width: 359px) { .sh-quote { padding: 22px 14px 20px; } } /* 320: the quote's button label and source line had 172-182px */
 .sh-quote__q { margin: 0; font: 850 clamp(1.1rem, 1rem + .4vw, 1.35rem)/1.15 var(--f-display); font-stretch: 108%; color: var(--ink); }
 .sh-quote blockquote { margin: 0; font-size: 17px; color: var(--text-ink-2); }
 .sh-quote blockquote p { margin: 0; }
@@ -296,6 +297,7 @@
 .sh-brand { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 58px; padding: 6px 10px 6px 18px; border-bottom: 1px solid var(--line); }
 .sh-brand:last-child { border-bottom: 0; }
 .sh-brand__name { min-width: 0; font-weight: 600; font-size: 16px; line-height: 1.25; overflow-wrap: anywhere; }
+@media (max-width: 359px) { .sh-brand { padding: 6px 6px 6px 12px; gap: 8px; } .sh-brand__name { font-size: 15px; } } /* 320: long brand names ran 3 lines of ~9 characters */
 .sh-brand__name--go { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--lime); text-decoration: none; }
 .sh-brand__name--go:hover { text-decoration: underline; text-underline-offset: .18em; }
 .sh-brand__name--go .ico { width: 15px; height: 15px; }

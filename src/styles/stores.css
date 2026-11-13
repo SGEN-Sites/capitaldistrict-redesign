@@ -355,6 +355,7 @@
 .st-res--store { display: grid; gap: 12px; align-content: start; padding: 22px; border-radius: var(--r-l); border: 1px solid var(--lime-32); background: linear-gradient(160deg, rgba(161, 207, 110, .12), rgba(13, 18, 17, .55) 60%); }
 .st-res__top { display: flex; align-items: center; gap: 14px; }
 .st-res__name { margin: 0 0 4px; font: 850 20px/1.05 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+@media (max-width: 359px) { .st-res__name { font-size: 18px; } } /* 320: "Schenectady, NY" ran 9px past its box */
 .st-res__addr { display: flex; gap: 10px; margin: 0; color: var(--text-2); }
 .st-res__addr .ico { color: var(--lime); margin-top: 4px; }
 .st-res__acts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }

@@ -64,7 +64,7 @@ function nowShopping(o = {}) {
     <span class="sh-now__rec" aria-hidden="true"><span class="bullet" data-store-letter>${esc(d.letter)}</span></span>
     <div class="sh-now__who">
       <p class="sh-now__k">You’re shopping&nbsp;at</p>
-      <p class="sh-now__name" data-store-name>${esc(d.name)}</p>
+      <p class="sh-now__name" data-store-name>${esc(d.name).replace(/ (\S{1,4})$/, '&nbsp;$1')}</p>
       ${statusCurrent()}
     </div>
   </div>

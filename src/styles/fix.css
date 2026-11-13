@@ -19,6 +19,9 @@
   .cta-measure { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; }
   .cta-measure > .btn { flex: none !important; width: max-content !important; min-width: 0 !important; max-width: none !important; white-space: nowrap !important; }
 }
+/* the smallest phones (320): a little less side padding keeps the longest labels ("Ayrloom Cannabis Website", "Follow on
+   Instagram", "Shop Clifton Park Deals") on one line */
+@media (max-width: 359px) { .btn { padding-inline: 18px; } .btn--sm { padding-inline: 12px; } }
 @media (min-width: 600px) and (max-width: 1024px) {
   :is(.btns, .ph__ctas, .gate__btns, .st-pass__cta, .sh-store__cta, .co-roster__go, .sh-now__act, .sh-crate__foot, .h-shop__foot, .sh-shopat, .st-res__acts):has(> .btn:nth-child(2 of .btn):nth-last-child(1 of .btn)) { --cta-guess: 2; }
   :is(.btns, .ph__ctas, .gate__btns, .st-pass__cta, .sh-store__cta, .co-roster__go, .sh-now__act, .sh-crate__foot, .h-shop__foot, .sh-shopat, .st-res__acts):has(> .btn:nth-child(3 of .btn):nth-last-child(1 of .btn)) { --cta-guess: 3; }

@@ -1,11 +1,11 @@
 {
-  "at": "2026-11-13T03:06:17.767Z",
+  "at": "2026-11-13T08:30:24.884Z",
   "url": "https://sgen-sites.github.io/capitaldistrict-redesign/",
   "pass": 12,
   "total": 12,
   "results": [
     {
-      "name": "every page answers 200 with its own title and noindex (142 pages, 15 redirect stubs skipped)",
+      "name": "every page answers 200 with its own title and noindex (145 pages, 15 redirect stubs skipped)",
       "ok": true,
       "detail": ""
     },
@@ -52,7 +52,7 @@
     {
       "name": "pickup bar points Shop now, Call and Directions at Clifton Park",
       "ok": true,
-      "detail": "{\"on\":true,\"top\":766,\"bottom\":830,\"vh\":844,\"store\":\"clifton-park\",\"name\":\"Clifton Park, NY\",\"shop\":\"https://capitaldistrictcannabis.com/stores/cd-clifton-park-ny\",\"call\":\"tel:5189010010\",\"maps\":\"https://maps.app.goo.gl/qzwVeWkQn3QM7ydDA\"}"
+      "detail": "{\"on\":true,\"top\":766,\"bottom\":830,\"vh\":844,\"store\":\"clifton-park\",\"name\":\"Clifton Park, NY\",\"shop\":\"https://capitaldistrictcannabis.com/stores/cd-clifton-park-ny\",\"call\":\"tel:5189010010\",\"maps\":\"https://maps.app.goo.gl/qzwVeWkQn3QM7ydDA\"}"
     },
     {
       "name": "category sleeves follow the chosen store (Beverages -> Clifton Park drinks shelf)",

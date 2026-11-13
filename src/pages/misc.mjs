@@ -81,9 +81,9 @@ export function pages() {
     title: 'Reviews section: three layout options (design lab)',
     description: 'Three working layout options for the reviews section of the Capital District Cannabis redesign.',
     main: intro
-      + `<div id="opt-a">${label('A', 'The Wall', 'Two rows drift in opposite directions over the mural; hover to pause and read.')}${optA}</div>`
+      + `<div id="opt-a">${label('A', 'The Wall', 'Two rows drift in opposite directions over the mural; hover to pause and\u00a0read.')}${optA}</div>`
       + `<div id="opt-b">${label('B', 'Spotlight', 'One review at a time, big; advances on its own, or pick a reviewer.')}${optB}</div>`
-      + `<div id="opt-c">${label('C', 'The Deck', 'A stack of cards: drag the top one away or deal the next.')}${optC}</div>`,
+      + `<div id="opt-c">${label('C', 'The Deck', 'A stack of cards: drag the top one away or deal the\u00a0next.')}${optC}</div>`,
   }];
 }
 

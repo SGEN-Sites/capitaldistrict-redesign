@@ -50,6 +50,7 @@
 .ph__beam { position: absolute; inset: -20% -10% auto auto; width: 70%; height: 140%; background: linear-gradient(115deg, transparent 40%, rgba(161, 207, 110, .1) 50%, transparent 60%); animation: phBeam 11s var(--ease-io) infinite alternate; }
 .ph__in { position: relative; z-index: 2; max-width: var(--wrap); }
 .ph__h1 { max-width: 15ch; margin-bottom: 18px; }
+@media (max-width: 359px) { .ph__h1.dh--xl { font-size: min(var(--fs-xl), 10.4vw); } } /* 320: "Every page." broke with "page." alone */
 .ph__lede { color: var(--text-2); font-size: clamp(1.05rem, .98rem + .4vw, 1.28rem); max-width: 58ch; margin: 0 0 26px; }
 .ph__ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 /* sticker.js pins it just after the heading's last letter, lightly overlapping it; without the script it sits top right */
@@ -271,6 +272,7 @@ a.gcard:hover .gcard__go .ico { transform: translateX(4px); }
 .flyer__when, .flyer__where { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; font-weight: 600; color: var(--text-ink-2); }
 .flyer__when .ico, .flyer__where .ico { width: 15px; height: 15px; color: #4e7d22; }
 .flyer__t { font: 850 19px/1.08 var(--f-display); font-stretch: 108%; text-transform: uppercase; }
+@media (max-width: 359px) { .flyer__t { font-size: 17px; font-stretch: 92%; } } /* 320: 6 lines of ~9 characters */
 
 /* ---------- prose (articles, policy text) ---------- */
 .prose { font-size: 18px; line-height: 1.75; color: var(--text-2); max-width: 72ch; }

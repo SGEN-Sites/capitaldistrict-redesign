@@ -49,6 +49,7 @@
 .co-liner { list-style: none; display: grid; gap: 10px; max-width: 430px; }
 .co-liner li { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .45); }
 .co-liner b { display: block; font: 850 18px/1.1 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+@media (max-width: 359px) { .co-liner b { font-size: 16px; } } /* 320: "Clifton Park" broke with "Park" alone */
 .co-liner small { color: var(--text-3); font-size: 14px; }
 .co-story__body .btns { margin-top: 30px; }
 @media (max-width: 900px) {
@@ -277,6 +278,7 @@
   .co-jump a:last-child:nth-child(even) { grid-column: 1 / -1; } /* an odd count of topics: the last one takes the row, no hole beside it */
 }
 @media (max-width: 520px) { .co-jump a { gap: 8px; padding: 8px 10px; font-size: 13.5px; line-height: 1.2; } .co-jump a small { display: none; } }
+@media (max-width: 359px) { .co-jump { grid-template-columns: minmax(0, 1fr); } } /* 320: two topic columns left ~92px of text, 3 lines of ~8 characters */
 
 /* ---------- /reviews/: the wall ---------- */
 .co-revnote { margin: 0 0 clamp(36px, 4vw, 56px); padding: 12px 16px; border-left: 3px solid var(--lime); color: var(--text-2); font-size: 15px; max-width: 70ch; }
