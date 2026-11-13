@@ -285,6 +285,20 @@ a.gcard:hover .gcard__go .ico { transform: translateX(4px); }
    equal-width grid, side by side only when the CARD (container query) is wide enough for both labels. */
 .scard { position: relative; display: flex; flex-direction: column; align-self: stretch; container-type: inline-size; border-radius: var(--r-l); overflow: hidden; background: var(--ink-2); border: 1px solid var(--line); }
 .scard.is-mine { border-color: var(--lime); box-shadow: var(--shadow-lime); }
+/* picking a store: the whole card selects it (site.js, [data-pick-card]); the pick button says what it does and shows
+   "Your store" on the current store; a short pulse confirms the pick */
+[data-pick-card] { cursor: pointer; }
+[data-pick-card] a, [data-pick-card] button { cursor: pointer; }
+.scard[data-pick-card]:not(.is-mine):hover { border-color: var(--line-2); }
+.pick .pick__on { display: none; }
+.pick .pick__off, .pick .pick__on { align-items: center; gap: .5em; }
+.pick .pick__off { display: inline-flex; }
+.is-mine .pick .pick__off { display: none; }
+.is-mine .pick .pick__on { display: inline-flex; }
+.is-mine .pick.btn--lime { --bg: transparent; --fg: var(--lime); --bd: var(--lime-32); --sweep: var(--lime-08); }
+.is-mine .pick.btn--ghost { --fg: var(--lime); --bd: var(--lime-32); }
+.is-picked { animation: picked 1.1s var(--ease) both; }
+@keyframes picked { 0% { box-shadow: 0 0 0 0 rgba(161, 207, 110, .7), var(--shadow-lime); } 100% { box-shadow: 0 0 0 18px rgba(161, 207, 110, 0), var(--shadow-lime); } }
 .scard__media { position: relative; flex: none; aspect-ratio: 16 / 10; overflow: hidden; }
 .scard__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .scard:hover .scard__media img { transform: scale(1.06); }

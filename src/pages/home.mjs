@@ -72,7 +72,7 @@ export function home() {
   { tone: 'night', lit: true, spot: true, id: 'h-shop', cls: 'h-shop', lx: '18%', ly: '8%', labelledby: 'h-shop-h', after: floatObj('obj-bud-a', { cls: 'h-bud', depth: 0.22, sizes: '260px' }) });
 
   // ---------- 4. Where Ya Shopping? (store selection) ----------
-  const pick = band(`<div class="band__head"><div class="band__intro">${kicker('Three stores, one crew')}${dh('Where Ya', 'Shopping?', { id: 'h-stores-h', spray: '518' })}</div>
+  const pick = band(`<div class="band__head"><div class="band__intro">${kicker('Three stores, one crew')}${dh('Where Ya', 'Shopping?', { id: 'h-stores-h' })}</div>
     <p class="lede" data-reveal>Pick your store once. Every Shop button on the site follows it, straight to that store’s menu, specials and cart.</p></div>
   <div class="grid grid--3 h-stores">${stores.map((s, i) => storeCard(s, { cls: 'h-scard' }).replace('data-reveal', `data-reveal style="--i:${i}"`)).join('')}</div>
   <p class="h-stores__more" data-reveal><a class="tlink" href="${href('/store-locator/')}">Find the closest store to your town${icon('arrow')}</a> <a class="tlink" href="${href('/visit-us/')}">Areas we serve${icon('arrow')}</a></p>`,

@@ -240,7 +240,7 @@ function about() {
   </aside>
   <div class="co-story__body">
     ${kicker('Our story')}
-    ${dh('Come on in', '& explore', { size: 'lg', spray: '518' })}
+    ${dh('Come on in', '& explore', { size: 'lg' })}
     <p class="co-lede"${rv(1)}>${esc(pPride)}</p>
     <p class="co-body"${rv(2)}>${esc(pJourney)}</p>
     <div class="btns"${rv(3)}>${btn('Cannabis 101', '/learn/')}${btn('Read the blog', '/blog/', { kind: 'ghost' })}</div>

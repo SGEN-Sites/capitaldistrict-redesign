@@ -127,8 +127,9 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 @keyframes fadeIn { from { opacity: 0; } }
 
 /* mini store card (switcher, footer) */
-.mini { position: relative; display: flex; flex-direction: column; container-type: inline-size; gap: 12px; padding: 20px; border-radius: var(--r-m); background: rgba(13, 18, 17, .55); border: 1px solid var(--line); transition: border-color var(--d-1), transform var(--d-2) var(--ease); }
-.mini:hover { border-color: var(--line-2); transform: translateY(-3px); }
+.mini { position: relative; display: flex; flex-direction: column; container-type: inline-size; gap: 12px; padding: 20px; border-radius: var(--r-m); background: rgba(13, 18, 17, .55); border: 1px solid var(--line); transition: border-color var(--d-1), background var(--d-1); }
+/* no movement on hover: a card that shifts under the pointer can swallow the click meant for its button */
+.mini:hover { border-color: var(--line-2); }
 .mini.is-mine { border-color: var(--lime); box-shadow: var(--shadow-lime); }
 .mini.is-mine::after { content: 'Your store'; position: absolute; top: -11px; right: 16px; padding: 4px 10px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font: 700 11px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; }
 .mini__head { display: flex; gap: 12px; align-items: center; }

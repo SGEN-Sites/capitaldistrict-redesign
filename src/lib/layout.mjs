@@ -40,11 +40,11 @@ export const bullet = (s, cls = '') => `<span class="bullet ${cls}" data-store-l
 const statusSpan = (s) => `<span class="status" data-status-for="${s.id}"><i class="status__dot"></i><span class="status__txt">${esc(todayLine)}</span></span>`;
 
 function storeCardMini(s, opts = {}) {
-  return `<article class="mini" data-store-card="${s.id}">
+  return `<article class="mini"${opts.choose ? ' data-pick-card' : ''} data-store-card="${s.id}">
   <div class="mini__head">${bullet(s)}<div><h3 class="mini__name">${esc(s.name)}</h3>${statusSpan(s)}</div></div>
   <p class="mini__addr">${esc(s.street)}<br>${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</p>
   <p class="mini__links"><a href="tel:${s.tel}">${icon('phone')}${esc(s.phone)}</a><a href="${esc(s.directions)}" target="_blank" rel="noopener">${icon('route')}Directions</a></p>
-  <div class="mini__cta">${opts.choose ? `<button class="btn btn--lime btn--sm" type="button" data-set-store="${s.id}">Shop ${esc(s.city)}</button>` : `<a class="btn btn--lime btn--sm" href="${esc(menuUrl(s.id, 'all'))}" target="_blank" rel="noopener">Shop ${esc(s.city)}${icon('arrow-ne')}</a>`}<a class="btn btn--ghost btn--sm" href="${href(s.page)}">Store details</a></div>
+  <div class="mini__cta">${opts.choose ? `<button class="btn btn--lime btn--sm pick" type="button" data-set-store="${s.id}"><span class="pick__off">Switch to ${esc(s.city)}</span><span class="pick__on">${icon('check')}Your store</span></button>` : `<a class="btn btn--lime btn--sm" href="${esc(menuUrl(s.id, 'all'))}" target="_blank" rel="noopener">Shop ${esc(s.city)}${icon('arrow-ne')}</a>`}<a class="btn btn--ghost btn--sm" href="${href(s.page)}">Store details</a></div>
 </article>`;
 }
 

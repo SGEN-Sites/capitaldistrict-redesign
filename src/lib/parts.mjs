@@ -61,7 +61,7 @@ export function hoursTable(s) {
 }
 // the rich store card (locations hub, locator, home)
 export function storeCard(s, o = {}) {
-  return `<article class="scard${o.cls ? ' ' + o.cls : ''}" data-store-card="${s.id}" data-tilt data-reveal>
+  return `<article class="scard${o.cls ? ' ' + o.cls : ''}" data-store-card="${s.id}" data-pick-card data-reveal>
   <div class="scard__media">${img(s.photo, { alt: s.photoAlt, sizes: '(min-width: 1000px) 33vw, 100vw' })}<span class="scard__bullet">${bullet(s)}</span></div>
   <div class="scard__body">
     <h3 class="scard__name">${esc(s.name)}</h3>
@@ -71,7 +71,7 @@ export function storeCard(s, o = {}) {
     ${hoursTable(s)}
     <div class="scard__cta">
       <a class="btn btn--lime btn--sm" href="${esc(menuUrl(s.id, 'all'))}" target="_blank" rel="noopener"><span>Shop ${esc(s.city)}</span>${icon('arrow-ne')}</a>
-      <button class="btn btn--ghost btn--sm" type="button" data-set-store="${s.id}"><span>Make this my store</span>${icon('check')}</button>
+      <button class="btn btn--ghost btn--sm pick" type="button" data-set-store="${s.id}"><span class="pick__off">Make this my store</span><span class="pick__on">${icon('check')}Your store</span></button>
     </div>
     <p class="scard__links"><a href="${href(s.page)}">Store details${icon('arrow')}</a><a href="${esc(s.directions)}" target="_blank" rel="noopener">Directions${icon('arrow-ne')}</a></p>
   </div>

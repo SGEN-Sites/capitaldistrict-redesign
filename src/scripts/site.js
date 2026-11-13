@@ -105,12 +105,39 @@
     const o = e.target.closest('[data-open-store]'); if (o) { e.preventDefault(); openModal(); return; }
     if (e.target.closest('[data-smodal-close]')) { closeModal(); return; }
     const set = e.target.closest('[data-set-store]');
-    if (set) {
-      const id = set.getAttribute('data-set-store'); ls.set('cdc.store', id); applyStore(id);
-      if (set.hasAttribute('data-gate-done')) { closeGate(); toast('Shopping ' + byId(id).name + '. Enjoy!'); return; }
-      closeModal(); toast('Now shopping ' + byId(id).name);
-    }
+    if (set) { pickStore(set.getAttribute('data-set-store'), set.hasAttribute('data-gate-done')); return; }
+    // the whole store card selects its store; its links (phone, directions, Shop, details) keep their own job. A press
+    // that started elsewhere and was dragged more than 24px is a drag, not a pick (browsers still send the card a click).
+    const card = e.target.closest('[data-pick-card]');
+    const dragged = downPos && (e.clientX || e.clientY) && Math.hypot(e.clientX - downPos.x, e.clientY - downPos.y) > 24;
+    if (card && !dragged && !e.target.closest('a, button, input, select, textarea, summary, label')) pickStore(card.getAttribute('data-store-card'), false);
   });
+  let downPos = null;
+  d.addEventListener('pointerdown', (e) => { downPos = { x: e.clientX, y: e.clientY }; }, true);
+  // A press that starts on a pick button or card and is released a few pixels away (off the button) gets no click
+  // from the browser; if it stays inside the same store card, it still picks that store.
+  let press = null;
+  d.addEventListener('pointerdown', (e) => {
+    press = null; if (e.button !== 0) return;
+    const btn = e.target.closest('[data-set-store]'); if (!btn) return;
+    press = { btn, id: btn.getAttribute('data-set-store'), area: btn.closest('[data-pick-card]') || btn.parentElement, x: e.clientX, y: e.clientY, gate: btn.hasAttribute('data-gate-done') };
+  }, true);
+  d.addEventListener('pointerup', (e) => {
+    const pr = press; press = null; if (!pr) return;
+    if (pr.btn.contains(e.target)) return; // released on the button: the normal click picks
+    if (Math.hypot(e.clientX - pr.x, e.clientY - pr.y) > 24 || !pr.area.contains(e.target)) return; // a drag, or left the card (a link under the release gets no click: the press began on the button)
+    W.setTimeout(() => pickStore(pr.id, pr.gate), 0);
+  }, true);
+  let lastPick = { id: null, t: 0 };
+  function pickStore(id, fromGate) {
+    if (lastPick.id === id && performance.now() - lastPick.t < 350) return; // one pick per press
+    lastPick = { id, t: performance.now() };
+    ls.set('cdc.store', id); applyStore(id);
+    $$('[data-store-card="' + id + '"]').forEach((c) => { c.classList.remove('is-picked'); void c.offsetWidth; c.classList.add('is-picked'); W.setTimeout(() => c.classList.remove('is-picked'), 1200); });
+    if (fromGate) { closeGate(); toast('Shopping ' + byId(id).name + '. Enjoy!'); return; }
+    if (modal && !modal.hidden) W.setTimeout(closeModal, 380); // the pick shows on the card, then the switcher closes
+    toast('Now shopping ' + byId(id).name);
+  }
   if (modal) modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); trap(modal, e); });
 
   /* ---------------- header: frost on scroll, mega menus, drawer ---------------- */
