@@ -1,0 +1,37 @@
+/* lanyard.css: the all-access pass on a stretchy woven band (/loyalty-program/). Physics in src/scripts/lanyard.js,
+   ported from an earlier redesign of ours; the pass itself keeps its .co-pass look from company.css. */
+/* the stage no longer takes the touch: with touch-action none on the whole ~570px stage a phone could not scroll the page
+   past it. The pass takes sideways drags and taps (pan-y on .lanyard__card); an up or down swipe scrolls the page */
+.lanyard { --band: clamp(150px, 15vw, 220px); --card-w: min(300px, 72vw); position: relative; width: 100%; height: calc(var(--band) + var(--card-w) * 1.5 + 48px); -webkit-user-select: none; user-select: none; }
+.lanyard__band { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.lanyard__edge { fill: none; stroke: #6f9a45; stroke-width: 30; stroke-linecap: butt; }   /* the woven edge */
+.lanyard__strap { fill: none; stroke: var(--lime); stroke-width: 25; stroke-linecap: butt; }
+.lanyard__print { font: 800 10px var(--f-display); font-stretch: 120%; letter-spacing: .22em; fill: var(--ink); dominant-baseline: central; }
+.lanyard__card {
+  position: absolute; left: 0; top: 0; width: var(--card-w); padding: 0; border: 0; background: none; cursor: grab; font: inherit; color: inherit; text-align: center;
+  transform-origin: 50% 0; transform-style: preserve-3d; will-change: transform; touch-action: pan-y;
+}
+.lanyard__card.is-grabbed { cursor: grabbing; }
+.lanyard__card:focus-visible { outline: none; } /* the ring is drawn on the faces */
+.lanyard__card:focus-visible .lanyard__face { box-shadow: 0 0 0 3px var(--ink), 0 0 0 6px var(--lime), 0 40px 70px -30px rgba(0, 0, 0, .9); }
+.lanyard__card::before { /* the metal clip */
+  content: ''; position: absolute; left: 50%; top: -18px; z-index: 3; width: 30px; height: 30px; translate: -50% 0; border-radius: 7px 7px 9px 9px;
+  background: linear-gradient(180deg, #e7ece9, #9aa6a1 55%, #d4dbd8); box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .25), 0 3px 7px rgba(0, 0, 0, .45);
+}
+.lanyard__face { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.lanyard__face.co-pass { display: grid; } /* the front stays in flow and sizes the card; the back lies over it */
+.lanyard__face--back { position: absolute; inset: 0; transform: rotateY(180deg); }
+.lanyard__hint { position: absolute; left: 50%; bottom: 0; translate: -50% 0; margin: 0; font-size: 13px; color: var(--text-3); white-space: nowrap; pointer-events: none; }
+
+/* the back of the pass: the program in the page's own words */
+.co-pass--back { align-content: center; gap: 10px; background: linear-gradient(165deg, #232c2a, var(--ink) 55%, #10171a); color: var(--text); box-shadow: inset 0 0 0 1px rgba(161, 207, 110, .35), 0 60px 90px -36px rgba(0, 0, 0, .95); }
+.co-pass--back .co-pass__slot { background: #050807; }
+.co-pass__back-big { font: 900 clamp(30px, 3vw, 40px)/.95 var(--f-display); font-stretch: 125%; text-transform: uppercase; color: var(--lime); }
+.co-pass__back-small { font: 700 12px/1.3 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); }
+.co-pass__back-stores { display: grid; gap: 4px; margin: 6px 0; font: 850 17px/1.15 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+.co-pass__back-line { max-width: 24ch; font-size: 13.5px; line-height: 1.45; color: var(--text-2); text-wrap: balance; }
+.co-pass--back .co-pass__access { margin-top: 8px; background: var(--lime); color: var(--ink); }
+
+/* the stage: the hook sits on the band's anchor */
+.co-stage .lanyard { margin-top: 2px; }
+@media (max-width: 900px) { .lanyard { --band: 120px; --card-w: min(270px, 74vw); } }

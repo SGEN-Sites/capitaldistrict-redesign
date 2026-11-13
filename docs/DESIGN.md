@@ -72,3 +72,49 @@ the store and its live status, a header with mega menus (Shop, Locations, Learn)
 phone drawer, a sticky pickup bar, and a footer with every store, the areas served, the licences and the New York
 warning. New page types fill the gaps a multi-store dispensary needs: Shop, Deals, How to Order, Pickup, Learn, FAQ,
 Reviews and a site map.
+
+## Design language, as the owner shaped it (2026-11-13)
+
+The rules every page follows. Reviewers check each inner page against this list at desktop (1440, 1024) and on
+phones (390, 360).
+
+**Layout**
+- Compact and even. Two columns end level, with no tall empty area beside a shorter column. Media stretches to the
+  words beside it (store "at a glance") or the words column widens (home Our Purpose).
+- Headings fit their column. Use the `md` display size in two-column rows, never 4+ lines. A two-line heading that
+  leaves the row's right side empty becomes one line (home Shop by Category).
+- No dead padding. A section stands about as tall as its content needs.
+- Text sizes to the space it is given (container units). No overflow, no cramped columns (under ~14 characters a
+  line), no lone short word on a last line ("AM", "NY" are kept together with no-break spaces), and no button label
+  on two lines. `tools/text-overflow-audit.mjs` enforces all of these.
+- CTAs on phones and tablets match in size and use the full width ("CTAs should match sizes and should utilize full
+  width for mobile views and tablet"). Up to 1024 px a button group's buttons share its width in equal columns. Phones
+  (under 600 px) get one button per row. Tablets get one row when every label fits on one line, otherwise one per row
+  (four buttons: two by two). The groups are listed in `src/styles/fix.css` and `src/scripts/ctas.js`, and checked by
+  `private/cta-check.mjs`. A new button group goes on that list.
+
+**Shared components (reuse, don't reinvent)**
+- Specials per store: the store tickets (`sp-b` / `sp-tix`, sp.css).
+- Featured reviews: the Deck (`rv-c`, rv.css; site.js `[data-rv-deck]`).
+- FAQs: the home FAQ layout. A sticky heading column with a short lede and the spinning record, beside the accordion.
+- Event posters: the gradient carousel (`gcar`). The posters' majority colour tints the band.
+- Categories on location pages: the concave cave carousel. The home page and /shop keep the record crate.
+- Store cards: `mini` (footer, modal) and `scard`. Equal heights, CTAs aligned, names on one line.
+- Page-hero sticker: elastic, pinned after the H1's last letter.
+- Sign Up & Save on every page: The Pass.
+
+**Seams and objects**
+- Section dividers come from the build (dividers.mjs):
+  - into a light band, the wheat-paste tear;
+  - into or out of deals, the neon cut;
+  - anywhere else, the overspray.
+- Cut-out objects (buds, cans, boomboxes) sit over the seams and never cover a button or a line of text. Up to 1024 px
+  one hung across a seam by an inline offset sits inside the gap between the two sections' content (fix.css): centred
+  when the gap allows, at least 16 px clear of both, no taller than the gap. `private/float-overlap.mjs` checks every
+  page. Its ALLOW list holds the one deliberate overlap, the home hero's spray can tagging the "Est. 2022" sticker.
+- Real event flyers are shown whole (2:3, matted by the flyer paper), never cropped.
+
+**Imagery**
+- Store photos are the client's own.
+- Products and atmosphere are fal-generated.
+- Real places are real photos with their licence credited, never generated.

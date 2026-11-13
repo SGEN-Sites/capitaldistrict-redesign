@@ -1,0 +1,346 @@
+/* su.css: the "Sign Up & Save" band, three dynamic redesigns (design lab: /lab/signup/). Prefix su-.
+   B "The Pass" ([data-su="pass"]), C "Paste-up" ([data-su="wall"]), D "Needle Drop" ([data-su="deck"]), driven by
+   src/scripts/su.js. A "before" state (hidden heading, poster off the wall, record in its sleeve) only exists once su.js
+   has armed a section (.su-armed), so without the script, and under reduced motion, every option is complete and still. */
+
+/* ---------- lab page ---------- */
+.su-opt--drip { padding-bottom: 104px; } /* the lime bands drip ~118px: the tips land on the next label's rule */
+.su-fine { margin: 0; font-size: 13px; line-height: 1.5; }
+/* forms on a light ground (the lime band, the poster, the sleeve): white fields, ink text, an ink focus ring */
+.su-light .field { color: var(--text-ink); }
+.su-light .field input { background: rgba(255, 255, 255, .9); color: var(--text-ink); border-color: rgba(42, 49, 48, .3); }
+.su-light .field input::placeholder { color: #66746f; }
+.su-light .field input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(42, 49, 48, .3); }
+.su-light .su-fine { color: var(--text-ink-2); }
+.su-light .su-fine a { color: var(--ink); font-weight: 600; }
+.su-light :focus-visible { outline-color: var(--ink); }
+.su-light .su-fine.is-flash { color: var(--ink); animation: suFlash 1.4s var(--ease) both; }
+@keyframes suFlash { 0%, 30% { background: rgba(42, 49, 48, .14); } 100% { background: rgba(42, 49, 48, 0); } }
+
+/* ================= B: The Pass ================= */
+.su-b.band { padding: clamp(64px, 7vw, 112px) 0 clamp(72px, 7vw, 104px); overflow-x: clip; }
+.su-b__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr); grid-template-areas: "words stage" "form stage"; gap: 30px clamp(36px, 5vw, 84px); align-items: center; }
+.su-b__words { grid-area: words; align-self: end; }
+.su-b__words .dh { margin-bottom: 18px; }
+.su-b__lede { margin: 0; max-width: 44ch; color: var(--text-ink-2); font-size: clamp(1.05rem, 1rem + .25vw, 1.15rem); }
+.su-b__form { grid-area: form; align-self: start; display: grid; gap: 16px; max-width: 600px; }
+.su-b__fields { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 12px; }
+.su-b__fields .field { min-width: 0; } /* the phone field kept its own minimum width: 31px past the form at 1024 */
+.su-b__fields .field input { width: 100%; min-width: 0; }
+.su-b__go { display: flex; }
+
+/* the stage: su.js sets --px / --py (-1..1, the pointer around the card); --k eases the lean off while you type */
+.su-b__stage { grid-area: stage; position: relative; display: grid; place-items: center; padding: 6px 0 34px; --px: 0; --py: 0; --k: 1; }
+.su-b__grid[data-focus] .su-b__stage { --k: .1; }
+.su-b__float { position: relative; width: min(100%, 540px); animation: suFloat 8s var(--ease-io) infinite alternate; }
+.su-b__card {
+  position: relative; container-type: inline-size; width: 100%; aspect-ratio: 1.586; border-radius: 4.6% / 7.3%; overflow: hidden;
+  transform: perspective(1500px) rotateX(calc((5deg - var(--py) * 12deg) * var(--k))) rotateY(calc((-15deg + var(--px) * 24deg) * var(--k))) translateZ(calc((1 - var(--k)) * 36px));
+  box-shadow: 0 46px 64px -36px rgba(13, 18, 17, .92), 0 16px 26px -16px rgba(13, 18, 17, .6);
+  transition: transform .75s var(--ease);
+}
+.su-b__card::after { /* the lit edge */
+  content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(140deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, .06) 38%, rgba(255, 255, 255, .03) 62%, rgba(161, 207, 110, .6));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.su-b__face {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 6.2cqi 6.6cqi 5.8cqi; color: var(--text);
+  background: radial-gradient(85% 120% at 100% 0%, rgba(161, 207, 110, .2), transparent 58%), radial-gradient(70% 90% at 0% 100%, rgba(47, 143, 134, .22), transparent 62%), linear-gradient(152deg, #2b3533 0%, #1b2221 48%, #101514 100%);
+}
+.su-b__face::before { /* guilloche: two families of fine rings crossing, the security print of a real card */
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-radial-gradient(circle at 8% 128%, transparent 0 calc(1.9cqi - 1.2px), rgba(161, 207, 110, .15) calc(1.9cqi - .6px) 1.9cqi),
+    repeating-radial-gradient(circle at 104% -24%, transparent 0 calc(2.5cqi - 1.2px), rgba(223, 236, 231, .085) calc(2.5cqi - .6px) 2.5cqi);
+  -webkit-mask-image: linear-gradient(104deg, #000 0%, rgba(0, 0, 0, .25) 48%, #000 100%); mask-image: linear-gradient(104deg, #000 0%, rgba(0, 0, 0, .25) 48%, #000 100%);
+}
+.su-b__top, .su-b__mid, .su-b__foot { position: relative; }
+.su-b__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 3cqi; }
+.su-b__logo { width: 40cqi; height: auto; }
+.su-b__tier { flex: none; padding: 1.3cqi 2.3cqi 1.2cqi; border: 1px solid rgba(161, 207, 110, .5); border-radius: 99px; color: var(--lime); font: 700 2.1cqi/1 var(--f-body); letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
+.su-b__mid { display: flex; align-items: center; gap: 5cqi; }
+/* the chip is a little record: it spins while you type */
+.su-b__chip { position: relative; flex: none; width: 13cqi; aspect-ratio: 1; border-radius: 50%; box-shadow: 0 1.6cqi 2.6cqi -1.2cqi rgba(0, 0, 0, .85), 0 0 0 .35cqi rgba(161, 207, 110, .3); }
+.su-b__disc { position: absolute; inset: 0; border-radius: 50%; animation: spin 2.2s linear infinite paused; background: radial-gradient(circle closest-side, #0d1211 0 7%, var(--lime) 8% 50%, #0d1211 52% 56%, transparent 57%), repeating-radial-gradient(circle closest-side, #1b2221 0 3.4%, #0a0e0d 3.4% 6.8%); }
+.su-b__disc::after { content: ''; position: absolute; left: 47%; top: 31%; width: 6%; height: 9%; border-radius: 50%; background: rgba(13, 18, 17, .55); }
+.su-b__chip::after { content: ''; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; background: conic-gradient(from 200deg, transparent 0 9%, rgba(255, 255, 255, .22) 14%, transparent 21% 56%, rgba(255, 255, 255, .13) 63%, transparent 70%); }
+.su-b__grid.is-typing .su-b__disc { animation-play-state: running; }
+.su-b__rows { flex: 1; min-width: 0; display: grid; gap: 2.3cqi; }
+.su-b__row { position: relative; display: grid; gap: .9cqi; padding-bottom: 1.3cqi; }
+.su-b__row::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: rgba(223, 236, 231, .16); }
+.su-b__row::before { /* the focus line: draws across when its field has focus */
+  content: ''; position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--lime); box-shadow: 0 0 1.6cqi rgba(161, 207, 110, .7);
+  transform: scaleX(0); transform-origin: left; transition: transform .55s var(--ease);
+}
+.su-b__row small { display: flex; align-items: center; gap: 1.3cqi; font: 600 2.05cqi/1 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); transition: color .3s; }
+.su-b__ok { display: grid; place-items: center; width: 2.9cqi; height: 2.9cqi; border-radius: 50%; background: var(--lime); color: var(--ink); scale: 0; transition: scale .45s var(--ease-spring); }
+.su-b__ok .ico { width: 78%; height: 78%; stroke-width: 3.2; }
+.su-b__val { display: flex; align-items: center; min-width: 0; height: 6.6cqi; }
+.su-b__val b {
+  --vfs: max(2.9cqi, calc(4.8cqi * min(1, 24 / var(--len, 1))));
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-bottom: .12em;
+  font: 600 var(--vfs)/1.2 var(--f-display); font-stretch: 80%; letter-spacing: .03em; color: rgba(185, 199, 193, .36);
+}
+.su-b__row.is-filled .su-b__val b { /* typed: foil, catching the light where the card leans */
+  color: transparent; background: linear-gradient(100deg, #dfece7 0%, #ffffff 18%, #c8f09b 36%, #dfece7 52%, #a1cf6e 70%, #f4f8f6 88%, #dfece7 100%) calc(50% + var(--px) * 50%) 0 / 260% 100%;
+  -webkit-background-clip: text; background-clip: text; filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .6)); transition: background-position .75s var(--ease);
+}
+.su-b__caret { flex: none; width: 2px; height: 4.4cqi; margin-left: .7cqi; border-radius: 2px; background: var(--lime); box-shadow: 0 0 1.2cqi var(--lime); opacity: 0; }
+.su-b__grid[data-focus="email"] [data-row="email"]::before, .su-b__grid[data-focus="phone"] [data-row="phone"]::before { transform: scaleX(1); }
+.su-b__grid[data-focus="email"] [data-row="email"] small, .su-b__grid[data-focus="phone"] [data-row="phone"] small { color: var(--lime); }
+.su-b__grid[data-focus="email"] [data-row="email"] .su-b__caret, .su-b__grid[data-focus="phone"] [data-row="phone"] .su-b__caret { opacity: 1; animation: suBlink 1.05s steps(1) infinite; }
+.su-b__row.is-ok .su-b__ok { scale: 1; }
+.su-b__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 4cqi; font: 600 2.05cqi/1.2 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
+.su-b__foot > span:first-child { padding-bottom: .4cqi; }
+.su-b__seal { position: relative; flex: none; width: 12.5cqi; aspect-ratio: 1; margin: -2cqi -.6cqi -.8cqi 0; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 .5cqi rgba(255, 255, 255, .1), 0 1.2cqi 2.2cqi -1cqi #000; }
+.su-b__seal img { width: 100%; height: 100%; object-fit: cover; }
+.su-b__seal::after { /* a hologram over the badge: its colours turn as the card leans */
+  content: ''; position: absolute; inset: 0; border-radius: 50%; mix-blend-mode: color-dodge; opacity: .55;
+  background: conic-gradient(from calc(var(--px) * 140deg + 20deg), rgba(161, 207, 110, 0), rgba(161, 207, 110, .75), rgba(47, 143, 134, .65), rgba(223, 236, 231, .75), rgba(200, 240, 155, .65), rgba(161, 207, 110, 0));
+}
+.su-b__holo, .su-b__glare, .su-b__scan { position: absolute; inset: 0; pointer-events: none; }
+.su-b__holo { /* holographic foil: a band of lime, teal and mint that slides across as the card leans */
+  opacity: .5; mix-blend-mode: color-dodge;
+  background: linear-gradient(118deg, transparent 22%, rgba(161, 207, 110, .5) 35%, rgba(47, 143, 134, .45) 42%, rgba(223, 236, 231, .6) 49%, rgba(200, 240, 155, .5) 56%, rgba(47, 143, 134, .3) 63%, transparent 76%) calc(50% + var(--px) * 55%) calc(50% + var(--py) * 55%) / 280% 280% no-repeat;
+  transition: background-position .75s var(--ease), opacity .4s;
+}
+.su-b__glare { inset: -40%; background: radial-gradient(closest-side, rgba(255, 255, 255, .26), rgba(255, 255, 255, .06) 55%, transparent); mix-blend-mode: soft-light; translate: calc(var(--px) * 26%) calc(var(--py) * 22%); transition: translate .75s var(--ease); }
+.su-b__scan { opacity: 0; mix-blend-mode: screen; background: linear-gradient(90deg, transparent 0 42%, rgba(200, 240, 155, .85) 50%, transparent 58% 100%) 120% 0 / 260% 100% no-repeat; }
+.su-b__floor { position: absolute; z-index: -1; left: 14%; right: 14%; bottom: 2px; height: 30px; border-radius: 50%; background: radial-gradient(closest-side, rgba(20, 26, 25, .42), transparent); translate: calc(var(--px) * -28px) 0; transition: translate .75s var(--ease); animation: suFloor 8s var(--ease-io) infinite alternate; }
+/* moments: a valid email sweeps the foil; Sign Up swipes the card through a reader; an empty or bad email shakes it */
+.su-b__card.is-sweep .su-b__holo { animation: suSweep 1.25s var(--ease) both; }
+.su-b__stage.is-swipe .su-b__card { animation: suSwipe 1.05s var(--ease) both; }
+.su-b__stage.is-swipe .su-b__scan { animation: suScan 1.05s var(--ease) both; }
+.su-b__stage.is-shake .su-b__card { animation: suShake .6s var(--ease) both; }
+@keyframes suFloat { from { translate: 0 -7px; rotate: -.6deg; } to { translate: 0 7px; rotate: .8deg; } }
+@keyframes suFloor { from { scale: 1.04; opacity: .7; } to { scale: .9; opacity: 1; } }
+@keyframes suBlink { 50% { opacity: 0; } }
+@keyframes suSweep { from { opacity: .95; background-position: 130% 0; } to { opacity: .5; background-position: -30% 100%; } }
+@keyframes suSwipe { 0% { translate: 0 0; rotate: 0deg; } 32% { translate: 8% -2%; rotate: 2.4deg; } 64% { translate: -1.5% 0; rotate: -.6deg; } 100% { translate: 0 0; rotate: 0deg; } }
+@keyframes suScan { 0% { opacity: 0; background-position: 120% 0; } 18%, 78% { opacity: 1; } 100% { opacity: 0; background-position: -20% 0; } }
+@keyframes suShake { 0%, 100% { translate: 0 0; } 18% { translate: -3.6% 0; } 36% { translate: 3% 0; } 54% { translate: -2% 0; } 72% { translate: 1.2% 0; } }
+@keyframes suHoloIdle { from { background-position: 8% 30%; } to { background-position: 92% 70%; } }
+@media (hover: none) { .su-b__holo { animation: suHoloIdle 7s var(--ease-io) infinite alternate; } }
+.su-b__grid.is-away .su-b__float, .su-b__grid.is-away .su-b__floor, .su-b__grid.is-away .su-b__holo { animation-play-state: paused; } /* loops rest off screen */
+@media (max-width: 960px) {
+  .su-b__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "words" "stage" "form"; row-gap: 26px; }
+  .su-b__words { align-self: auto; }
+  .su-b__stage { padding: 4px 0 26px; }
+  .su-b__float { width: min(100%, 470px); }
+  .su-b__form { max-width: none; }
+}
+@media (max-width: 560px) { .su-b__fields { grid-template-columns: minmax(0, 1fr); } }
+
+/* ================= C: Paste-up ================= */
+.su-c.band { padding: clamp(72px, 8vw, 128px) 0 clamp(80px, 8.5vw, 136px); overflow-x: clip; background: #161c1b; }
+/* a cinder-block wall: courses every 44px, joints staggered by half a block, each block a shade of its own, mortar
+   bevelled (a dark joint over a faint lit lip); lit from above and by the band's key light, which follows the pointer */
+.su-c__wall {
+  position: absolute; inset: 0;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='352' height='176'><g stroke='none'><rect x='88' y='0' width='88' height='44' fill='%23fff' fill-opacity='.03'/><rect x='264' y='0' width='88' height='44' fill='%23000' fill-opacity='.1'/><rect x='132' y='44' width='88' height='44' fill='%23000' fill-opacity='.13'/><rect x='308' y='44' width='44' height='44' fill='%23fff' fill-opacity='.025'/><rect x='0' y='44' width='44' height='44' fill='%23fff' fill-opacity='.025'/><rect x='0' y='88' width='88' height='44' fill='%23000' fill-opacity='.08'/><rect x='176' y='88' width='88' height='44' fill='%23fff' fill-opacity='.035'/><rect x='44' y='132' width='88' height='44' fill='%23fff' fill-opacity='.02'/><rect x='220' y='132' width='88' height='44' fill='%23000' fill-opacity='.11'/></g><g fill='none'><path d='M0 1H352M0 45H352M0 89H352M0 133H352' stroke='%23000' stroke-opacity='.42' stroke-width='2'/><path d='M0 3H352M0 47H352M0 91H352M0 135H352' stroke='%23fff' stroke-opacity='.035'/><path d='M1 0V44M89 0V44M177 0V44M265 0V44M45 44V88M133 44V88M221 44V88M309 44V88M1 88V132M89 88V132M177 88V132M265 88V132M45 132V176M133 132V176M221 132V176M309 132V176' stroke='%23000' stroke-opacity='.36' stroke-width='2'/></g></svg>") 0 0 / 352px 176px,
+    radial-gradient(120% 90% at 50% 0%, #29322f 0%, #1a2120 52%, #101514 100%);
+}
+.su-c__lamp { position: absolute; left: 50%; top: -55%; width: 130%; height: 120%; translate: -50% 0; background: radial-gradient(closest-side, rgba(223, 236, 231, .07), transparent); }
+.su-c__grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: clamp(36px, 5vw, 84px); align-items: center; }
+.su-c__defs { position: absolute; width: 0; height: 0; overflow: hidden; } /* holds the filter; display:none would void it */
+
+/* the tag: block letters in spray paint, a dark 3D drop under them and overspray around them */
+.su-c__tag { margin: 0; font-size: clamp(min(2.7rem, 11.3vw), .8rem + 6.4vw, 7.2rem); line-height: .92; letter-spacing: -.01em; }
+.su-c__line { position: relative; display: block; width: fit-content; }
+.su-c__line + .su-c__line { margin-top: .05em; }
+.su-c__line--a { --mist: 238, 245, 241; }
+.su-c__line--b { --mist: 161, 207, 110; }
+.su-c__ink { display: inline-block; padding: .42em .5em; margin: -.42em -.5em; filter: url(#su-rough); }
+.su-c__line--a .su-c__ink { color: #eef5f1; }
+.su-c__line--b .su-c__ink { color: var(--lime); }
+.su-c__ink { text-shadow: .05em .055em 0 #0a0e0d, 0 0 .035em rgba(var(--mist), .85), 0 0 .2em rgba(var(--mist), .2); }
+.su-c__drip { position: absolute; width: .068em; height: var(--h, .5em); margin-left: -.034em; border-radius: 0 0 .04em .04em; transform-origin: 50% 0; pointer-events: none; background: rgb(var(--mist)); box-shadow: 0 0 .06em rgba(var(--mist), .55); }
+.su-c__drip::after { content: ''; position: absolute; left: 50%; bottom: -.07em; width: .13em; height: .15em; margin-left: -.065em; border-radius: 50% 50% 50% 50% / 42% 42% 58% 58%; background: inherit; }
+.su-c__puff, .su-c__can { position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0; }
+.su-c__puff { /* the mist at the nozzle, riding the sprayed edge */
+  top: 50%; width: 1.6em; height: 1.6em; margin: -.8em 0 0 -.8em; border-radius: 50%; mix-blend-mode: screen; filter: blur(1.5px);
+  background: radial-gradient(closest-side, rgba(255, 255, 255, .65) 0 7%, rgba(var(--mist), .55) 20%, rgba(var(--mist), .2) 44%, transparent);
+}
+.su-c__puff::after { /* flying droplets */
+  content: ''; position: absolute; inset: 6%; border-radius: 50%;
+  background: radial-gradient(circle at 22% 34%, rgb(var(--mist)) 0 1.6%, transparent 2.6%), radial-gradient(circle at 70% 22%, rgb(var(--mist)) 0 1.2%, transparent 2.2%), radial-gradient(circle at 80% 66%, rgb(var(--mist)) 0 1.8%, transparent 2.8%), radial-gradient(circle at 36% 78%, rgb(var(--mist)) 0 1.3%, transparent 2.3%), radial-gradient(circle at 56% 48%, rgb(var(--mist)) 0 1%, transparent 2%);
+  animation: suSpeck .14s steps(2) infinite;
+}
+/* the can (the hero's cut-out) rides the edge too, its nozzle on the mist; turned on the nozzle to stand nearly upright */
+.su-c__can { top: 50%; width: .56em; margin: -.04em 0 0 -.4em; rotate: -14deg; transform-origin: 79% 3%; filter: drop-shadow(0 .12em .1em rgba(0, 0, 0, .6)); }
+.su-c__can img { width: 100%; height: auto; }
+/* armed (su.js, motion allowed): the letters wait unpainted, the poster waits off the wall */
+.su-c.su-armed .su-c__ink { -webkit-mask: linear-gradient(90deg, #000 0 45%, transparent 55% 100%) 100% 0 / 260% 100% no-repeat; mask: linear-gradient(90deg, #000 0 45%, transparent 55% 100%) 100% 0 / 260% 100% no-repeat; }
+.su-c.su-armed .su-c__drip { scale: 1 0; }
+.su-c.su-armed .su-c__pin { opacity: 0; translate: 0 -26px; rotate: -7deg; scale: 1.07; }
+.su-c.is-spraying .su-c__line--a .su-c__ink { animation: suSpray 1.05s var(--ease-io) .15s both; }
+.su-c.is-spraying .su-c__line--b .su-c__ink { animation: suSpray .95s var(--ease-io) 1.3s both; }
+.su-c.is-spraying .su-c__line--a .su-c__puff, .su-c.is-spraying .su-c__line--a .su-c__can { animation: suRide 1.05s var(--ease-io) .15s both; }
+.su-c.is-spraying .su-c__line--b .su-c__puff, .su-c.is-spraying .su-c__line--b .su-c__can { animation: suRide .95s var(--ease-io) 1.3s both; }
+.su-c.is-spraying .su-c__drip { animation: suDrip var(--t, 2s) cubic-bezier(.25, .7, .35, 1) var(--d, 1s) both; }
+.su-c.is-spraying .su-c__pin { animation: suPaste .85s var(--ease-spring) .55s both; }
+.su-c.is-spraying .su-c__wet { animation: suWet 2.8s ease-out 1.1s both; }
+@keyframes suSpray { from { -webkit-mask-position: 100% 0; mask-position: 100% 0; } to { -webkit-mask-position: 0 0; mask-position: 0 0; } }
+@keyframes suRide { 0% { left: -30%; opacity: 0; } 14% { opacity: 1; } 82% { opacity: 1; } 100% { left: 130%; opacity: 0; } }
+@keyframes suDrip { from { scale: 1 0; } to { scale: 1 1; } }
+@keyframes suSpeck { 50% { transform: rotate(160deg) scale(1.15); } }
+@keyframes suPaste { 0% { opacity: 0; translate: 0 -26px; rotate: -7deg; scale: 1.07; } 35% { opacity: 1; } 100% { opacity: 1; translate: 0 0; rotate: var(--r); scale: 1; } }
+@keyframes suWet { from { opacity: 1; } to { opacity: 0; } }
+
+/* the poster: wheat-pasted paper, torn edges (clip-path from lab-signup.mjs), taped corners, a shadow on the wall.
+   The shadow is a box-shadow on a backing sheet, not a drop-shadow filter on the poster: a filter would re-render the
+   whole poster, fields and all, on every frame of the paste-up (headless Chromium at 1440: p95 50ms a frame with the
+   filter, 17.7ms without) */
+.su-c__pin { --r: -1.8deg; position: relative; justify-self: end; width: 100%; max-width: 500px; rotate: var(--r); }
+.su-c__pin::before { content: ''; position: absolute; z-index: -1; inset: .8% .4% .6%; border-radius: 2px; pointer-events: none; box-shadow: 0 28px 34px -8px rgba(0, 0, 0, .58), 0 4px 6px rgba(0, 0, 0, .34); }
+.su-c__poster {
+  --pad: clamp(22px, 2.6vw, 34px);
+  position: relative; padding: 0 var(--pad) calc(var(--pad) + 4px); color: var(--text-ink);
+  background:
+    linear-gradient(97deg, transparent 0 31%, rgba(28, 35, 34, .05) 31.4%, transparent 32.8%),
+    linear-gradient(81deg, transparent 0 63%, rgba(255, 255, 255, .75) 63.3%, rgba(28, 35, 34, .05) 64.1%, transparent 65.2%),
+    linear-gradient(176deg, transparent 0 58%, rgba(28, 35, 34, .04) 58.5%, transparent 60%),
+    radial-gradient(130% 90% at 25% 0%, #f8fbf9, #ebf1ed 66%, #e0e8e3);
+}
+.su-c__head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 0 calc(-1 * var(--pad)) 22px; padding: 24px var(--pad) 16px; background: linear-gradient(170deg, #b2db84, var(--lime) 60%, #96c562); }
+.su-c__head .kicker { margin: 0; color: var(--ink); font-weight: 700; }
+.su-c__head .kicker::before { background: var(--ink); box-shadow: 0 0 0 4px rgba(42, 49, 48, .16); }
+.su-c__head img { flex: none; width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 0 0 2px var(--ink); }
+.su-c__lede { margin: 0 0 20px; font: 600 clamp(1.08rem, 1rem + .3vw, 1.22rem)/1.45 var(--f-body); color: var(--text-ink); }
+.su-c__form { display: grid; gap: 16px; }
+.su-c__field { gap: 8px; }
+.su-c__lbl { position: relative; z-index: 0; width: fit-content; font: 850 13px/1.15 var(--f-display); font-stretch: 112%; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+.su-c__lbl::before { /* a lime spray swash behind the label of the field you are in */
+  content: ''; position: absolute; z-index: -1; left: -.5em; right: -.7em; top: -.28em; bottom: -.38em; border-radius: 40% 60% 48% 52% / 55% 45% 55% 45%;
+  background: rgba(161, 207, 110, .95); filter: blur(1.6px); rotate: -1.5deg;
+  transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease);
+}
+.su-c__field.is-focus .su-c__lbl::before { transform: scaleX(1); }
+.su-c__box { position: relative; display: block; }
+.su-light .su-c__box input { width: 100%; padding-right: 54px; border: 2px solid var(--ink); border-radius: 4px; background: #fff; transition: box-shadow .25s var(--ease), translate .25s var(--ease); }
+.su-light .su-c__box input:focus { border-color: var(--ink); box-shadow: 5px 5px 0 var(--ink); translate: -2px -2px; }
+.su-c__tick { position: absolute; right: 14px; top: 50%; width: 30px; height: 24px; margin-top: -12px; overflow: visible; pointer-events: none; filter: drop-shadow(0 0 3px rgba(161, 207, 110, .95)); transition: translate .25s var(--ease); }
+.su-c__tick path { fill: none; stroke: #4e7d22; stroke-width: 4.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .5s var(--ease); }
+.su-c__box:focus-within .su-c__tick { translate: -2px -2px; }
+.su-c__field.is-ok .su-c__tick path { stroke-dashoffset: 0; }
+.su-c__field.is-miss .su-c__box { animation: suShake .55s var(--ease) both; }
+.su-c__go { position: relative; display: flex; margin-top: 2px; }
+.su-c__burst { position: absolute; z-index: -1; left: 0; top: 50%; width: 220px; height: 150px; margin: -75px 0 0 -40px; border-radius: 50%; pointer-events: none; opacity: 0; filter: blur(3px); background: radial-gradient(closest-side, rgba(161, 207, 110, .8) 0 22%, rgba(161, 207, 110, .38) 46%, transparent); }
+.su-c__go.is-burst .su-c__burst { animation: suBurst .95s var(--ease) both; }
+@keyframes suBurst { 0% { opacity: 0; scale: .25; } 22% { opacity: 1; } 100% { opacity: 0; scale: 1.3; } }
+/* fresh paste: the paper starts darker and glossy, and dries as the overlay fades (an opacity fade, cheap to run) */
+.su-c__wet { position: absolute; inset: 0; pointer-events: none; opacity: 0; background: linear-gradient(120deg, transparent 18%, rgba(255, 255, 255, .34) 32%, transparent 41% 57%, rgba(255, 255, 255, .24) 68%, transparent 77%), rgba(20, 26, 25, .13); }
+.su-c__tape { position: absolute; z-index: 2; top: -13px; width: 108px; height: 30px; background: linear-gradient(180deg, rgba(240, 236, 220, .86), rgba(226, 221, 200, .8)); box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+  clip-path: polygon(0 10%, 5% 0, 10% 12%, 16% 2%, 22% 9%, 30% 0, 70% 0, 76% 10%, 82% 1%, 88% 11%, 94% 0, 100% 9%, 100% 92%, 95% 100%, 89% 88%, 83% 99%, 77% 90%, 70% 100%, 30% 100%, 24% 89%, 18% 98%, 12% 88%, 6% 100%, 0 90%); }
+.su-c__tape--l { left: 7%; rotate: -7deg; }
+.su-c__tape--r { right: 7%; rotate: 5deg; }
+.su-c .su-fine { margin-top: 2px; }
+@media (max-width: 900px) {
+  .su-c__tag { font-size: clamp(3.2rem, 1rem + 9vw, 6rem); } /* one column: the tag gets the wall's full width */
+  .su-c__grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .su-c__pin { justify-self: center; max-width: 540px; --r: -1.2deg; }
+}
+
+/* ================= D: Needle Drop ================= */
+.su-d.band { padding: clamp(64px, 7vw, 112px) 0; overflow-x: clip; }
+.su-d { --out: -36cqi 0; }
+.su-d__grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: clamp(32px, 4.5vw, 72px); align-items: center; }
+.su-d__words .dh { margin-bottom: 18px; }
+.su-d__lede { margin: 0; max-width: 40ch; color: var(--text-2); font-size: clamp(1.05rem, 1rem + .25vw, 1.15rem); }
+/* the stage: the sleeve (the form) in front, the record slid out to its right, the tonearm above the record */
+.su-d__stage { position: relative; container-type: inline-size; padding: 10% 0 5%; }
+.su-d__deck { position: absolute; z-index: 1; left: 40cqi; top: calc(52.5% - 26cqi); width: 52cqi; aspect-ratio: 1; container-type: inline-size; transition: translate 1.35s var(--ease); }
+.su-d.su-armed:not(.is-out) .su-d__deck { translate: var(--out); }
+.su-d__deck::after { /* the arm rest */ content: ''; position: absolute; left: 110.8%; top: 51%; width: 4.4cqi; height: 4.4cqi; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #4a5553, #1b2221); box-shadow: 0 .6cqi 1.2cqi rgba(0, 0, 0, .6); }
+.su-d__rec { position: absolute; inset: 0; border-radius: 50%; -webkit-user-select: none; user-select: none; }
+.su-d__rec::before { /* the platter under the record; its lime ring lights while it plays */
+  content: ''; position: absolute; inset: -2.4%; border-radius: 50%; background: radial-gradient(circle closest-side, #0b0f0e 94%, #263030 96%, #0b0f0e);
+  box-shadow: 0 4cqi 7cqi -2cqi rgba(0, 0, 0, .9), 0 0 0 0 rgba(161, 207, 110, 0), 0 0 0 0 rgba(161, 207, 110, 0); transition: box-shadow 1s var(--ease);
+}
+.su-d.is-playing .su-d__rec::before { box-shadow: 0 4cqi 7cqi -2cqi rgba(0, 0, 0, .9), 0 0 0 .55cqi rgba(161, 207, 110, .75), 0 0 8cqi 1cqi rgba(161, 207, 110, .38); }
+.su-d.is-scratchable .su-d__rec { cursor: grab; }
+.su-d.is-scratchable .su-d__rec.is-grab { cursor: grabbing; }
+/* grooves, and three smooth bands between the tracks: A1 is outermost, A3 nearest the label */
+.su-d__disc {
+  position: absolute; inset: 0; border-radius: 50%; will-change: rotate;
+  background:
+    radial-gradient(circle closest-side, transparent 0 56.2%, #040606 56.6% 57.6%, transparent 58%),
+    radial-gradient(circle closest-side, transparent 0 68.2%, #040606 68.6% 69.6%, transparent 70%),
+    radial-gradient(circle closest-side, transparent 0 82.2%, #040606 82.6% 83.6%, transparent 84%),
+    radial-gradient(circle closest-side, transparent 0 96.4%, #222a29 97% 100%),
+    repeating-radial-gradient(circle closest-side, #171e1d 0 .55%, #0b0f0e .55% 1.1%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .05);
+}
+.su-d__label { position: absolute; inset: 31.5%; border-radius: 50%; overflow: hidden; background: var(--slate); box-shadow: 0 0 0 .5cqi rgba(0, 0, 0, .45); }
+.su-d__label img { width: 100%; height: 100%; object-fit: cover; }
+.su-d__spindle { position: absolute; left: 50%; top: 50%; width: 2.6%; height: 2.6%; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f4f8f6, #6f7b78 70%); box-shadow: 0 .2cqi .5cqi rgba(0, 0, 0, .6); }
+.su-d__sheen { /* the light on the vinyl does not turn with it */
+  position: absolute; inset: 0; border-radius: 50%; pointer-events: none; mix-blend-mode: screen;
+  background: conic-gradient(from 215deg, transparent 0 7%, rgba(255, 255, 255, .17) 12%, transparent 19% 50%, rgba(255, 255, 255, .11) 61%, transparent 68%);
+  -webkit-mask: radial-gradient(circle closest-side, transparent 0 37.5%, #000 38.5%); mask: radial-gradient(circle closest-side, transparent 0 37.5%, #000 38.5%);
+}
+/* the tonearm, drawn about its pivot (top right of the record): su.js sets --arm, the rotation from hanging straight down.
+   Lifted, it casts a long soft shadow; down on the record, a short hard one. */
+.su-d__base { position: absolute; z-index: 2; left: 100%; top: -10%; width: 15cqi; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle at 38% 32%, #f4f8f6 0 7%, #b8c3bf 22%, #6f7b78 62%, #3c4644 100%); box-shadow: 0 2cqi 4cqi -1cqi rgba(0, 0, 0, .85), inset 0 0 0 .9cqi rgba(0, 0, 0, .16); }
+.su-d__arm {
+  --lift: 1;
+  position: absolute; z-index: 3; left: 100%; top: -10%; width: 0; height: 0; rotate: var(--arm, -10deg);
+  filter: drop-shadow(calc(.7cqi + var(--lift) * 1.8cqi) calc(1.2cqi + var(--lift) * 3.2cqi) calc(.9cqi + var(--lift) * 1.8cqi) rgba(0, 0, 0, calc(.66 - var(--lift) * .2)));
+  transition: rotate .85s var(--ease), filter .35s var(--ease);
+}
+.su-d.is-down .su-d__arm { --lift: 0; }
+.su-d__weight { position: absolute; left: -4.2cqi; top: -15.5cqi; width: 8.4cqi; height: 10.5cqi; border-radius: 1.6cqi; background: linear-gradient(90deg, #3c4644, #dfe6e3 40%, #8d9996 70%, #333c3a); box-shadow: inset 0 -1.4cqi 0 rgba(0, 0, 0, .22); }
+.su-d__rod { position: absolute; left: -1.15cqi; top: -2cqi; width: 2.3cqi; height: 56cqi; border-radius: 1.2cqi; background: linear-gradient(90deg, #5a6563, #f4f8f6 42%, #a8b3b0 64%, #4a5553); }
+.su-d__head { position: absolute; left: -3.5cqi; top: 52cqi; width: 7cqi; height: 11.5cqi; border-radius: 1cqi 1cqi 1.8cqi 1.8cqi; background: linear-gradient(180deg, #2f3836, #0f1413); box-shadow: inset 0 0 0 .35cqi rgba(161, 207, 110, .45); scale: calc(1 + var(--lift) * .05); transition: scale .35s var(--ease); }
+.su-d__head::after { /* the cartridge */ content: ''; position: absolute; left: 22%; right: 22%; bottom: 9%; height: 34%; border-radius: .6cqi; background: var(--lime); box-shadow: 0 0 1.8cqi rgba(161, 207, 110, .65); }
+.su-d__arm.is-skip { animation: suSkip .5s var(--ease) both; }
+@keyframes suSkip { 0%, 100% { translate: 0 0; } 25% { translate: 1.2cqi -1.6cqi; } 55% { translate: -.6cqi .5cqi; } 80% { translate: .3cqi -.2cqi; } }
+
+/* the sleeve: the form on the record's jacket, lime, with the ring the record has worn into it */
+.su-d__sleeve {
+  position: relative; z-index: 2; width: 60cqi; aspect-ratio: 1; display: flex; flex-direction: column; justify-content: center; gap: 14px;
+  padding: clamp(20px, 2.4vw, 32px); border-radius: 8px; color: var(--text-ink);
+  background:
+    radial-gradient(circle closest-side, transparent 0 86%, rgba(255, 255, 255, .22) 87.6%, rgba(42, 49, 48, .07) 89.4%, transparent 91.5%) 50% 50% / 90% 90% no-repeat,
+    linear-gradient(150deg, #b6de8a 0%, var(--lime) 44%, #8fbf5b 100%);
+  box-shadow: 0 50px 80px -36px rgba(0, 0, 0, .95), inset 0 0 0 1px rgba(255, 255, 255, .2);
+}
+.su-d__sleeve::before { /* the open edge the record slid out of */ content: ''; position: absolute; top: 2.5%; bottom: 2.5%; right: 0; width: 7px; border-radius: 0 8px 8px 0; background: linear-gradient(90deg, rgba(42, 49, 48, 0), rgba(42, 49, 48, .32)); pointer-events: none; }
+.su-d__now { display: flex; align-items: center; gap: 10px; width: fit-content; max-width: 100%; margin: 0 0 2px; padding: 8px 14px 8px 12px; border-radius: 99px; background: var(--ink); color: var(--lime); font: 700 12px/1.1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; box-shadow: inset 0 0 0 1px rgba(161, 207, 110, .25); }
+.su-d__now [data-su-now] { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.su-d__rpm { color: var(--text-2); letter-spacing: .04em; }
+.su-d__eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; flex: none; }
+.su-d__eq i { width: 3px; height: 100%; border-radius: 1px; background: currentColor; transform-origin: 50% 100%; scale: 1 .22; transition: scale .3s; }
+.su-d.is-playing .su-d__eq i { animation: suEq .78s ease-in-out infinite alternate; }
+.su-d.is-playing .su-d__eq i:nth-child(2) { animation-duration: .52s; animation-delay: -.2s; }
+.su-d.is-playing .su-d__eq i:nth-child(3) { animation-duration: .66s; animation-delay: -.45s; }
+.su-d.is-playing .su-d__eq i:nth-child(4) { animation-duration: .58s; animation-delay: -.1s; }
+@keyframes suEq { from { scale: 1 .18; } to { scale: 1 1; } }
+.su-d__form { display: grid; gap: 12px; }
+.su-d__trk { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 0 12px; align-items: end; }
+.su-d__no { display: grid; place-items: center; height: 50px; border-radius: 10px; background: rgba(42, 49, 48, .13); color: var(--ink); font: 900 13px/1 var(--f-display); font-stretch: 116%; transition: background .3s, color .3s, box-shadow .3s; }
+.su-d__trk.is-on .su-d__no { background: var(--ink); color: var(--lime); box-shadow: 0 8px 18px -10px rgba(13, 18, 17, .8); }
+.su-d__go { align-items: center; }
+.su-d__go .su-d__no { height: 52px; }
+.su-d__go .btn { justify-self: start; }
+.su-d__sleeve .su-fine { padding-left: 48px; }
+@media (max-width: 1100px) {
+  .su-d__grid { grid-template-columns: minmax(0, 1fr); }
+  .su-d__stage { width: min(100%, 720px); margin-inline: auto; }
+}
+@media (max-width: 640px) {
+  .su-d { --out: 0 28cqi; }
+  .su-d__stage { display: flex; flex-direction: column; align-items: center; padding: 0; }
+  .su-d__deck { position: relative; left: auto; top: auto; width: 64cqi; margin: 13cqi 8cqi -25cqi 0; }
+  .su-d__sleeve { width: 100%; aspect-ratio: auto; }
+  .su-d__sleeve::before { top: 0; left: 2.5%; right: 2.5%; bottom: auto; width: auto; height: 7px; border-radius: 8px 8px 0 0; background: linear-gradient(0deg, rgba(42, 49, 48, 0), rgba(42, 49, 48, .32)); }
+  .su-d__sleeve .su-fine { padding-left: 0; }
+  .su-d__rpm { display: none; }
+}
+
+/* ---------- reduced motion: every option still and complete (motion.css also stops the rest) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .su-b__float, .su-b__floor, .su-b__holo, .su-b__disc, .su-c__puff::after, .su-d__eq i { animation: none !important; }
+}

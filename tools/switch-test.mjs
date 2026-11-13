@@ -27,7 +27,7 @@ for (const eng of ['chromium', 'webkit']) {
   const p = await ctx.newPage(); const errs = [];
   p.on('pageerror', (e) => errs.push(e.message));
   await p.goto(URL0, { waitUntil: 'load' }); await p.waitForTimeout(1200);
-  const state = () => p.evaluate(() => ({ store: document.documentElement.getAttribute('data-store'), modal: !document.querySelector('[data-smodal]').hidden, chip: document.querySelector('.chip [data-store-name]').textContent, bar: document.querySelector('.pickbar [data-store-name]').textContent }));
+  const state = () => p.evaluate(() => ({ store: document.documentElement.getAttribute('data-store'), modal: !document.querySelector('[data-smodal]').hidden, chip: document.querySelector('.chip [data-store-name]').textContent, bar: document.querySelector('.pickbar [data-store-name]').textContent.replace(/ /g, ' ') })); // names hold "NY" with a no-break space
   // 1. switcher button
   await p.click('.chip[data-open-store]'); await p.waitForTimeout(400);
   const label = await p.locator('[data-smodal] [data-store-card="clifton-park"] .pick').innerText();

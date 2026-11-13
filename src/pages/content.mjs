@@ -3,7 +3,7 @@
 // descriptions, H1s, article bodies, event copy) read from capture.mjs; new words are labels and glue written only from
 // captured facts (the store FAQs, site.mjs). Empty legacy URLs (blog pagination, author archives, the two empty COA
 // entries, the events plugin's /page/2/) redirect.
-import { band, dh, kicker, btn, menuBtn, sticker, pageHero, vinyl, floatObj, faqList, tracklist, glassCard, postCard, flyer, richHtml, prose, signUp, esc, href, img, imgInfo, mediaImg, mediaId, icon, slug, trimWords, asset } from '../lib/parts.mjs';
+import { band, dh, kicker, btn, menuBtn, sticker, pageHero, vinyl, floatObj, faqList, faqSection, tracklist, glassCard, postCard, flyer, richHtml, prose, signUp, fitEm, esc, href, img, imgInfo, mediaImg, mediaId, icon, slug, trimWords, asset } from '../lib/parts.mjs';
 import { orgLd } from '../lib/layout.mjs';
 import { allPages, page as cap, text as plain } from '../lib/capture.mjs';
 import { brand, stores, categories, menuUrl, ORIGIN, DEFAULT_STORE } from '../content/site.mjs';
@@ -42,8 +42,9 @@ function split2(t) {
   if (c > 0 && c < s.length - 4) return [s.slice(0, c + 1), s.slice(c + 2)];
   const w = s.split(/\s+/);
   if (w.length === 1) return ['', s];
-  if (w.length <= 3) return [w.slice(0, -1).join(' '), w[w.length - 1]];
-  const k = Math.ceil(w.length * 0.55);
+  let k = w.length <= 3 ? w.length - 1 : Math.ceil(w.length * 0.55);
+  // never a lone short word on the lime line ("THINGS TO / DO", "REC ROOTS POP / UP"): it takes the word before it
+  if (k > 1 && w.slice(k).join('').replace(/[^\p{L}\p{N}]/gu, '').length <= 3) k--;
   return [w.slice(0, k).join(' '), w.slice(k).join(' ')];
 }
 // ids on the article's h2s (h3s when a post has no h2) for the table of contents. An h2 that only wraps an image (a
@@ -156,7 +157,62 @@ function gcal(e) {
   const loc = e.store ? `${e.store.street}, ${e.store.city}, ${e.store.region} ${e.store.zip}` : e.addr;
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(e.title)}&dates=${dates}&ctz=America%2FNew_York${loc ? '&location=' + encodeURIComponent(loc) : ''}&details=${encodeURIComponent(ORIGIN + e.path)}`;
 }
-const flyerOf = (e) => ({ path: e.path, title: e.title, image: e.image, imageAlt: e.imageAlt, when: e.when, where: e.where });
+// a flyer's date and venue lines wrap in narrow poster columns, so their pairs stay together: the "·" with what comes
+// before it, a month with its day, a time with its am/pm and a short last word ("Ave", "St", "US-9") with the word
+// before it (no "pm" or "Ave" alone on a line)
+const NB = ' ';
+const noOrphan = (s) => String(s || '').replace(/ (\S+)$/, (m, w) => (w.replace(/[^\p{L}\p{N}]/gu, '').length <= 4 ? NB : ' ') + w);
+const keepTogether = (s) => noOrphan(String(s || '').replace(/ ·/g, NB + '·').replace(/\b([A-Z][a-z]{2}) (\d{1,2},)/g, `$1${NB}$2`).replace(/(\d) ([ap]m)\b/gi, `$1${NB}$2`));
+const flyerOf = (e) => ({ path: e.path, title: e.title, image: e.image, imageAlt: e.imageAlt, when: keepTogether(e.when), where: keepTogether(e.where) });
+// a poster's own shape (width / height)
+const arOf = (url) => { const r = url && mediaId(url) && imgInfo(mediaId(url)); return r && r.w && r.h ? Math.round((r.w / r.h) * 1000) / 1000 : 0.8; };
+// the poster wall hangs whole posters in equal cells, a landscape poster across two (content.css .ct-wall). Its rows are
+// centred, so a landscape poster that cannot fit at the end of a row would leave that row short: the wall keeps the
+// newest-first order but lets each landscape poster trade places with its neighbours, as few places as possible, so
+// every row of the full wall closes level at two, three and four across (only the last row may be short)
+const isWide = (e) => arOf(e.image) >= 1.2;
+function wallOrder(list) {
+  const wideAt = list.map(isWide); const k = wideAt.filter(Boolean).length; const n = list.length;
+  if (!k || k > 6) return list;
+  const short = (units) => [2, 3, 4].reduce((sum, cols) => {
+    let used = 0, bad = 0;
+    for (const u of units) { const w = Math.min(u, cols); if (used + w > cols) { bad++; used = 0; } used += w; if (used === cols) used = 0; }
+    return sum + bad;
+  }, 0);
+  const wides = list.filter((e, i) => wideAt[i]), rest = list.filter((e, i) => !wideAt[i]);
+  let best = null;
+  const pick = (from, chosen) => {
+    if (chosen.length === k) {
+      const order = []; let wi = 0, ri = 0;
+      for (let i = 0; i < n; i++) order.push(chosen.includes(i) ? wides[wi++] : rest[ri++]);
+      const score = short(order.map((e) => (isWide(e) ? 2 : 1))) * 1000 + order.reduce((d, e, i) => d + Math.abs(i - list.indexOf(e)), 0);
+      if (!best || score < best.score) best = { score, order };
+      return;
+    }
+    for (let i = from; i <= n - (k - chosen.length); i++) pick(i + 1, [...chosen, i]);
+  };
+  pick(0, []);
+  return best.order;
+}
+// event posters as the shared gradient carousel (DESIGN.md: "Event posters: the gradient carousel"), the home events
+// band's markup: the taped flyers, one per slide, their reveal/tilt hooks dropped (the carousel moves the card). Behaviour
+// src/scripts/gcarousel.js [data-gcar] (it tints the .gcar-band behind it); styles gcarousel.css. Without JS: a swipe row.
+const gcarGlow = '<div class="gcar-glow" data-gcar-glow><i class="gcar-glow__a"></i><i class="gcar-glow__b"></i><i class="gcar-glow__c"></i></div>';
+function gcar(list, label) {
+  if (!list.length) return '';
+  const card = (e, i) => flyer(flyerOf(e), { i, cls: 'gcar__flyer' }).replace(/^<article\b[^>]*>/, (t) => t.replace(/\s+data-(?:reveal|tilt)(?:="[^"]*")?/g, ''));
+  return `<div class="gcar" role="region" aria-roledescription="carousel" aria-label="${esc(label)}" data-gcar data-reveal>
+    <div class="gcar__stage"><div class="gcar__track">${list.map((e, i) => `<div class="gcar__slide" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${list.length}" data-gcar-slide>${card(e, i)}</div>`).join('')}</div></div>
+    <div class="gcar__foot">
+      <div class="gcar__ctrl" data-gcar-ctrl hidden>
+        <button class="gcar__btn" type="button" aria-label="Previous event" data-gcar-prev>${icon('arrow-l')}</button>
+        <p class="gcar__count" aria-hidden="true"><b data-gcar-now>01</b><i class="gcar__bar"><i></i></i><span>${String(list.length).padStart(2, '0')}</span></p>
+        <button class="gcar__btn" type="button" aria-label="Next event" data-gcar-next>${icon('arrow')}</button>
+      </div>
+    </div>
+    <p class="sr" aria-live="polite" aria-atomic="true" data-gcar-live></p>
+  </div>`;
+}
 
 // ---------- shared content blocks ----------
 const metaItem = (ic, html) => `<span class="ct-meta__i">${icon(ic)}${html}</span>`;
@@ -172,7 +228,7 @@ function feature(x, o = {}) {
   <div class="ct-feature__panel glass">
     ${kicker(o.kicker || 'Latest')}
     ${x.cats.length ? `<p class="ct-feature__cats">${x.cats.map((c) => `<span class="ct-tag">${esc(c)}</span>`).join('')}</p>` : ''}
-    <${h} class="ct-feature__t"><a href="${href(x.path)}">${esc(x.title)}</a></${h}>
+    <${h} class="ct-feature__t" style="--fit:${fitEm(x.title)}"><a href="${href(x.path)}">${esc(x.title)}</a></${h}>
     ${x.excerpt ? `<p class="ct-feature__x">${esc(trimWords(x.excerpt, 30))}</p>` : ''}
     <p class="ct-feature__meta"><span>${icon('cal')}${esc(x.date)}</span><span>${icon('clock')}${x.mins} min read</span><span class="ct-feature__go">Read the article${icon('arrow')}</span></p>
   </div>
@@ -206,9 +262,10 @@ function postPage(x, D) {
   const target = shopTarget(x);
   const chips = x.cats.map((c) => D.catBySlug[slug(c)] ? `<a class="ct-chip" href="${href(D.catBySlug[slug(c)].path)}">${esc(c)}</a>` : `<span class="ct-chip">${esc(c)}</span>`).join('');
   const lede = `<span class="ct-meta">${chips}${x.date ? metaItem('cal', `<time datetime="${esc(x.iso.slice(0, 10))}">${esc(x.date)}</time>`) : ''}${x.author ? metaItem('user', `By ${esc(x.author)}`) : ''}${metaItem('clock', `${x.mins} min read`)}</span>`;
-  const hero = pageHero({ cls: 'ct-ahero', crumbs, kicker: BLOG, title: split2(x.title), lede, ledeHtml: true, img: x.image ? { url: x.image } : 'wall-mural-wide' });
+  const hero = pageHero({ cls: 'ct-ahero', crumbs, kicker: BLOG, title: split2(x.title), lede, ledeHtml: true, img: x.image ? { url: x.image } : 'wall-mural-wide', fit: true });
 
-  const tocList = toc.map((t, i) => `<li><a href="#${t.id}"><span class="ct-toc__n">${String(i + 1).padStart(2, '0')}</span><span>${esc(t.text)}</span></a></li>`).join('');
+  // a short last word stays with the one before it ("Experience Something New" never leaves "New" alone in the column)
+  const tocList = toc.map((t, i) => `<li><a href="#${t.id}"><span class="ct-toc__n">${String(i + 1).padStart(2, '0')}</span><span>${esc(noOrphan(t.text))}</span></a></li>`).join('');
   const tocSide = toc.length > 1 ? `<nav class="ct-toc" aria-labelledby="ct-toc-h"><p class="ct-toc__t" id="ct-toc-h">Table of Contents</p><ol>${tocList}</ol></nav>` : '';
   const tocTop = toc.length > 1 ? `<details class="ct-toc ct-toc--top"><summary><span>Table of Contents</span><small>${toc.length} sections</small>${icon('chev')}</summary><ol>${tocList}</ol></details>` : '';
   const mini = `<div class="ct-mini">
@@ -299,7 +356,7 @@ function blogHub(D) {
   const list = D.posts; const lead = list[0];
   const crumbs = [{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog/' }];
   const hero = pageHero({
-    crumbs, kicker: 'The blog', title: split2(b.h1 || BLOG), lede: b.description || '',
+    cls: 'ct-bhero', crumbs, kicker: 'The blog', title: split2(b.h1 || BLOG), lede: b.description || '',
     ctas: btn('Cannabis 101', '/learn/') + btn('Browse topics', '#ct-topics', { kind: 'ghost' }), img: 'wall-mural-wide', sticker: n(list.length, 'article', 'articles'),
   });
   const cover = band(`<div class="band__head"><div class="band__intro">${kicker('New on the blog')}${dh('Cover', 'Story', { id: 'ct-cover-h' })}</div></div>
@@ -317,7 +374,7 @@ function blogHub(D) {
     <div class="ct-topicsband__intro">${kicker('Browse by topic')}${dh('Pick a', 'Topic', { id: 'ct-topics-h' })}<p class="ct-topicsband__p" data-reveal>Every topic has its own page. New to all this? Start with the basics.</p>
       <div class="btns" data-reveal>${btn('Cannabis 101', '/learn/', { kind: 'ink' })}${btn('FAQs', '/faq/', { kind: 'ghost' })}</div></div>
     ${topicLinks(D.cats, null, { cls: 'ct-topics--mint' })}
-  </div>`, { tone: 'mint', id: 'ct-topics', labelledby: 'ct-topics-h', lx: '85%', ly: '0%' });
+  </div>`, { tone: 'mint', id: 'ct-topics', labelledby: 'ct-topics-h', lx: '85%', ly: '0%', tight: true });
   const ld = {
     '@context': 'https://schema.org', '@type': 'Blog', name: b.h1 || BLOG, url: ORIGIN + '/blog/', description: b.description || undefined, publisher: publisher(),
     blogPost: list.map((x) => ({ '@type': 'BlogPosting', headline: x.title, url: ORIGIN + x.path, datePublished: x.iso || undefined, image: ldImg(x.image) })),
@@ -382,14 +439,11 @@ function learnPage(D) {
   <div class="grid grid--3">${D.posts.slice(0, 6).map((x, i) => postCard(card(x), { i: i % 3 })).join('')}</div>`, { tone: 'night', lit: true, labelledby: 'ct-reads-h', lx: '15%', ly: '0%' });
 
   const faqs = capturedFaqs();
-  const basics = band(`<div class="ct-basics">
-    <div class="ct-basics__side">
-      ${kicker('NY cannabis basics')}${dh('Know the', 'Basics', { id: 'ct-basics-h' })}
-      <p class="ct-basics__p" data-reveal>Straight answers from our store pages on buying cannabis in New York.</p>
-      <div class="ct-deck" data-reveal>${vinyl({ name: 'learn', cls: 'ct-vinyl' })}<span class="ct-deck__lbl">Side B · The basics</span></div>
-    </div>
-    <div class="ct-basics__faq">${faqList(faqs, { openFirst: true })}<div class="btns ct-basics__more" data-reveal>${btn('All FAQs', '/faq/', { kind: 'ink' })}${btn('How to order', '/how-to-order/', { kind: 'ghost' })}</div></div>
-  </div>`, { tone: 'mint', labelledby: 'ct-basics-h', id: 'ct-basics', lx: '20%', ly: '0%' });
+  // the shared FAQ section (parts.mjs faqSection, the home FAQ's layout); "KNOW THE" keeps one line (fit 6.8em)
+  const basics = band(faqSection({ kicker: 'NY cannabis basics', heading: ['Know the', 'Basics'], size: 'lg', fit: 6.8, id: 'ct-basics-h', items: faqs,
+    lede: 'Straight answers from our store pages on buying cannabis in New York.', cta: btn('All FAQs', '/faq/', { kind: 'ink' }) + btn('How to order', '/how-to-order/', { kind: 'ghost' }),
+    name: 'learn', label: 'Side B · The basics' }),
+  { tone: 'mint', labelledby: 'ct-basics-h', id: 'ct-basics', lx: '20%', ly: '0%' });
 
   const next = band(`<div class="band__head"><div class="band__intro">${kicker('Keep going')}${dh('Next', 'Tracks', { id: 'ct-next-h' })}</div></div>
   <div class="grid grid--4 ct-nextgrid">${[
@@ -424,19 +478,20 @@ function eventsHub(D) {
   const toggle = `<button class="ct-ttbtn" type="button" data-video-toggle aria-controls="ct-tt" aria-pressed="false" aria-label="Pause the loop">${icon('pause', 'ico ct-i-pause')}${icon('play', 'ico ct-i-play')}</button>`;
   const insta = brand.social.find((s) => s.icon === 'instagram');
   const nextInner = up.length
-    ? `<div class="band__head"><div class="band__intro">${kicker('Up next')}${dh('Next', 'Up', { id: 'ct-next-h' })}</div></div><div class="grid grid--3 ct-upgrid">${up.map((e, i) => flyer(flyerOf(e), { i })).join('')}</div>`
+    ? `<div class="band__head"><div class="band__intro">${kicker('Up next')}${dh('Next', 'Up', { id: 'ct-next-h' })}</div></div>${gcar(up, 'Upcoming events')}`
     : `<div class="ct-next glass" data-reveal>
       ${kicker('Up next')}${dh('Next', 'Up', { id: 'ct-next-h', size: 'md' })}
       <p class="ct-next__p">No upcoming events are posted right now. Check back soon, and catch up on what went down below.</p>
       <div class="btns">${btn('Past events', '#ct-past')}${insta ? btn('Follow on Instagram', insta.href, { kind: 'ghost' }) : ''}</div>
     </div>`;
+  // upcoming flyers are the gradient carousel (tinted by the active poster, over the turntable); none: the glass note
   const nextBand = band(`${nextInner}<div class="ct-ttbar">${toggle}<span class="ct-ttbar__k">Side A · Now spinning</span></div>`,
-    { tone: 'night', id: 'ct-next', labelledby: 'ct-next-h', cls: 'ct-nextup', backdrop: tt });
+    { tone: 'night', id: 'ct-next', labelledby: 'ct-next-h', cls: up.length ? 'ct-nextup ct-nextup--up gcar-band' : 'ct-nextup', backdrop: tt + (up.length ? gcarGlow : '') });
 
   const venues = [...stores.map((s) => ({ v: s.id, label: s.city, n: past.filter((e) => e.tags.split(' ').includes(s.id)).length })), { v: 'other', label: 'Other venues', n: past.filter((e) => e.tags === 'other').length }];
   const wall = band(`<div class="band__head"><div class="band__intro">${kicker('The poster wall')}${dh('Past', 'Events', { id: 'ct-past-h' })}</div><p class="lede" data-reveal>${n(past.length, 'event', 'events')} and counting, from grand openings to boat parties. Filter by store.</p></div>
   ${filterChips('ct-wall', [{ v: 'all', label: 'All', n: past.length }, ...venues], 'Filter past events by store or venue')}
-  <div class="ct-wall" id="ct-wall">${past.map((e, i) => `<div class="ct-cell" data-tags="${esc(e.tags)}">${flyer(flyerOf(e), { i })}</div>`).join('')}</div>
+  <div class="ct-wall" id="ct-wall">${wallOrder(past).map((e, i) => `<div class="ct-cell${isWide(e) ? ' ct-cell--wide' : ''}" data-tags="${esc(e.tags)}">${flyer(flyerOf(e), { i })}</div>`).join('')}</div>
   <p class="ct-empty" data-filter-empty hidden>No past events at that venue yet.</p>`,
   { tone: 'ink', sheet: true, id: 'ct-past', labelledby: 'ct-past-h', cls: 'ct-wallband', after: floatObj('obj-boombox', { cls: 'ct-float', style: 'right:3%;top:-70px;width:min(220px,18vw)', depth: 0.12, sizes: '240px' }) });
 
@@ -448,9 +503,11 @@ function eventsHub(D) {
     { title: 'Car and bike meets', re: /car meet|cars & canna|cycles & canna/i, icon: 'route' },
   ];
   const rot = SERIES.map((s) => ({ ...s, list: D.events.filter((e) => s.re.test(e.title)).sort((a, b) => a.start.localeCompare(b.start)) })).filter((s) => s.list.length > 1);
+  // the intro runs across the top (the lede beside the heading) and the series sit two to a row beneath it, so no column
+  // stands half empty beside a long one (ct-rot in content.css, tracks--2 in components.css)
   const series = rot.length ? band(`<div class="ct-rot">
-    <div class="ct-rot__intro">${kicker('On repeat')}${dh('The', 'Rotation', { id: 'ct-rot-h' })}<p class="ct-rot__p" data-reveal>Some nights come back around. Here is the rotation so far.</p></div>
-    ${tracklist(rot.map((s) => ({ title: s.title, html: true, icon: s.icon, text: `<span class="ct-rot__list">${s.list.map((e) => `<a class="ct-rot__a" href="${href(e.path)}"><span>${esc(e.title)}</span><span class="ct-rot__d">${esc(shortDate(e.start))}</span></a>`).join('')}</span>` })), { cls: 'ct-tracks' })}
+    <div class="band__head ct-rot__intro"><div class="band__intro">${kicker('On repeat')}${dh('The', 'Rotation', { id: 'ct-rot-h' })}</div><p class="ct-rot__p" data-reveal>Some nights come back around. Here is the rotation so far.</p></div>
+    ${tracklist(rot.map((s) => ({ title: s.title, html: true, icon: s.icon, text: `<span class="ct-rot__list">${s.list.map((e) => `<a class="ct-rot__a" href="${href(e.path)}"><span>${esc(e.title)}</span><span class="ct-rot__d">${esc(shortDate(e.start))}</span></a>`).join('')}</span>` })), { cls: 'ct-tracks tracks--2' })}
   </div>`, { tone: 'mint', labelledby: 'ct-rot-h', lx: '80%', ly: '0%' }) : '';
 
   const ld = [{ '@context': 'https://schema.org', '@type': 'ItemList', name: h1, itemListElement: D.events.map((e, i) => ({ '@type': 'ListItem', position: i + 1, item: eventLd(e, false) })) }];
@@ -467,7 +524,7 @@ function eventPage(e, D) {
   const time = e.sched.label || (e.sched.allDay ? 'All day' : '');
   const lede = `<span class="ct-meta">${e.start ? metaItem('cal', `<time datetime="${esc(e.start)}">${esc(longDate(e.start))}</time>`) : ''}${time ? metaItem('clock', esc(time)) : ''}${e.where ? metaItem('pin', esc(e.where)) : ''}</span>`;
   const hero = pageHero({
-    cls: 'ct-ahero ct-ehero', crumbs, kicker: e.upcoming ? 'Upcoming event' : 'Past event', title: split2(e.title), lede, ledeHtml: true,
+    cls: 'ct-ahero ct-ehero', crumbs, kicker: e.upcoming ? 'Upcoming event' : 'Past event', title: split2(e.title), lede, ledeHtml: true, fit: true,
     ctas: (cal ? `<a class="btn btn--lime" href="${esc(cal)}" target="_blank" rel="noopener" data-magnetic><span>Add to calendar</span>${icon('cal')}</a>` : '') + btn(e.upcoming ? 'All events' : 'See what is next', '/events/', { kind: cal ? 'ghost' : 'lime' }),
     img: e.image ? { url: e.image } : 'alley',
   });
@@ -480,18 +537,24 @@ function eventPage(e, D) {
     s ? ['route', 'Address', `${esc(s.street)}, ${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}`] : e.addr ? ['route', 'Address', esc(e.addr)] : null,
     ['spark', 'Status', e.upcoming ? 'Upcoming' : 'This one has wrapped'],
   ].filter(Boolean);
+  // the button row only when it has a button (an event with no address, store or calendar link has none)
+  const ctas = [
+    cal ? `<a class="btn btn--lime btn--sm" href="${esc(cal)}" target="_blank" rel="noopener"><span>Add to calendar</span>${icon('cal')}</a>` : '',
+    dirUrl ? `<a class="btn btn--ghost btn--sm" href="${esc(dirUrl)}" target="_blank" rel="noopener"><span>Directions</span>${icon('arrow-ne')}</a>` : '',
+    s ? `<a class="btn btn--lime btn--sm" href="${esc(menuUrl(s.id, 'all'))}" target="_blank" rel="noopener" aria-label="Shop ${esc(s.city)} on the live menu (opens in a new tab)"><span>Shop ${esc(s.city)}</span>${icon('arrow-ne')}</a>` : '',
+  ].filter(Boolean);
   const details = `<div class="ct-details glass" data-reveal style="--i:2">
     <h2 class="ct-details__h">Details</h2>
     <dl>${rows.map(([ic, k, v]) => `<div class="ct-details__row"><dt>${icon(ic)}${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
-    <div class="btns ct-details__cta">
-      ${cal ? `<a class="btn btn--lime btn--sm" href="${esc(cal)}" target="_blank" rel="noopener"><span>Add to calendar</span>${icon('cal')}</a>` : ''}
-      ${dirUrl ? `<a class="btn btn--ghost btn--sm" href="${esc(dirUrl)}" target="_blank" rel="noopener"><span>Directions</span>${icon('arrow-ne')}</a>` : ''}
-      ${s ? `<a class="btn btn--lime btn--sm" href="${esc(menuUrl(s.id, 'all'))}" target="_blank" rel="noopener" aria-label="Shop ${esc(s.city)} on the live menu (opens in a new tab)"><span>Shop ${esc(s.city)}</span>${icon('arrow-ne')}</a>` : ''}
-    </div>
+    ${ctas.length ? `<div class="btns ct-details__cta">
+      ${ctas.join('\n      ')}
+    </div>` : ''}
     ${s ? `<p class="ct-details__more"><a class="tlink" href="${href(s.page)}">${esc(s.city)} store hours and details${icon('arrow')}</a></p>` : ''}
   </div>`;
   const poster = e.image ? `<figure class="ct-poster" data-reveal data-tilt><span class="ct-poster__tape" aria-hidden="true"></span>${mediaImg(e.image, { alt: e.imageAlt, sizes: '(min-width: 1000px) 520px, 92vw', eager: true })}</figure>` : '';
-  const main = band(`<div class="ct-event${poster ? '' : ' ct-event--noposter'}">
+  // a square or landscape poster takes half the row (in the narrower column it stood far shorter than the words beside it)
+  const wide = poster && arOf(e.image) >= 0.9;
+  const main = band(`<div class="ct-event${poster ? '' : ' ct-event--noposter'}${wide ? ' ct-event--wide' : ''}">
     <div class="ct-event__media">${poster}</div>
     <div class="ct-event__body">
       ${kicker(e.upcoming ? 'Be there' : 'How it went down')}${dh('The', 'Rundown', { size: 'md', id: 'ct-ev-h' })}
@@ -501,9 +564,10 @@ function eventPage(e, D) {
   </div>`, { tone: 'night', lit: true, spot: true, labelledby: 'ct-ev-h', cls: 'ct-evband', lx: '30%', ly: '20%', backdrop: `${img('wall-mural-wide', { decorative: true, sizes: '100vw', min: 1400 })}<div class="ct-shade ct-shade--deep"></div>` });
   const others = D.events.filter((x) => x.path !== e.path);
   const more = [...others.filter((x) => x.upcoming).sort((a, b) => a.start.localeCompare(b.start)), ...others.filter((x) => !x.upcoming)].slice(0, 3);
+  // the same three flyers as the shared gradient carousel (the band takes the centred poster's colour)
   const moreBand = band(`<div class="band__head"><div class="band__intro">${kicker(more.some((x) => x.upcoming) ? 'Up next' : 'From the poster wall')}${dh('More', 'Events', { id: 'ct-more-h' })}</div><div data-reveal>${btn('All events', '/events/', { kind: 'ghost' })}</div></div>
-  <div class="grid grid--3 ct-moregrid">${more.map((x, i) => flyer(flyerOf(x), { i })).join('')}</div>`,
-  { tone: 'ink', sheet: true, labelledby: 'ct-more-h', cls: 'ct-moreband', after: floatObj('obj-boombox', { cls: 'ct-float', style: 'right:3%;top:-64px;width:min(200px,16vw)', depth: 0.12, sizes: '220px' }) });
+  ${gcar(more, 'More events')}`,
+  { tone: 'ink', sheet: true, labelledby: 'ct-more-h', cls: 'ct-moreband gcar-band', backdrop: gcarGlow, after: floatObj('obj-boombox', { cls: 'ct-float', style: 'right:3%;top:-64px;width:min(200px,16vw)', depth: 0.12, sizes: '220px' }) });
   return {
     path: e.path, title: e.cap.title, description: e.cap.description || trimWords(plain(e.html), 28), type: 'event', crumbs, jsonld: [eventLd(e)],
     ogImage: ogOf(e.image), main: hero + main + moreBand + signUp(),

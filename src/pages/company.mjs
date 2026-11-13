@@ -8,8 +8,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  pageHero, band, dh, kicker, btn, menuBtn, sticker, storeCard, vinyl, floatObj, faqList, tracklist, glassCard, flyer,
-  richHtml, signUp, bullet, statusLine, esc, href, img, imgInfo, icon, menuLink, slug, asset,
+  pageHero, band, dh, kicker, btn, menuBtn, sticker, storeCard, vinyl, floatObj, faqList, faqSection, tracklist, glassCard, flyer,
+  richHtml, signUp, bullet, statusLine, storeName, esc, href, img, imgInfo, icon, menuLink, slug, asset,
 } from '../lib/parts.mjs';
 import { orgLd, storeLd } from '../lib/layout.mjs';
 import { brand, stores, menuUrl } from '../content/site.mjs';
@@ -195,18 +195,19 @@ const eventCards = () => EVENT_PICKS.map((p) => {
   return { path: p + '/', title: ev.title, image: ev.image.src, imageAlt: `Event flyer: ${ev.title}`, when: fmtDate(ev.startDate), where: s ? s.city : '' };
 });
 
-// the store roster (about): one row per store, its own live menu, details and phone
+// the store roster (about): one row per store, its own live menu, details and phone. Shop first, then Store details, the
+// order of the shared store cards (scard, mini), so the buttons read the same as the footer's cards when they stack
 const rosterRow = (s, i) => `<li class="co-roster__row"${rv(i)}>
   <span class="co-roster__no">${bullet(s)}</span>
   <div class="co-roster__name"><h3>${esc(s.city)}</h3>${statusLine(s)}</div>
   <p class="co-roster__addr">${icon('pin')}<span>${esc(s.street)}<br>${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</span></p>
   <p class="co-roster__tel">${icon('phone')}<a href="tel:${s.tel}">${esc(s.phone)}</a></p>
-  <div class="co-roster__go"><a class="btn btn--ghost btn--sm" href="${href(s.page)}"><span>Store details</span>${icon('arrow')}</a><a class="btn btn--lime btn--sm" href="${esc(menuUrl(s.id, 'all'))}" target="_blank" rel="noopener" aria-label="Shop ${esc(s.city)} on the live menu (opens in a new tab)"><span>Shop ${esc(s.city)}</span>${icon('arrow-ne')}</a></div>
+  <div class="co-roster__go"><a class="btn btn--lime btn--sm" href="${esc(menuUrl(s.id, 'all'))}" target="_blank" rel="noopener" aria-label="Shop ${esc(s.city)} on the live menu (opens in a new tab)"><span>Shop ${esc(s.city)}</span>${icon('arrow-ne')}</a><a class="btn btn--ghost btn--sm" href="${href(s.page)}"><span>Store details</span>${icon('arrow')}</a></div>
 </li>`;
 
 // a store contact card for the mint "call us" bands (careers)
 const callCard = (s, i) => `<article class="co-call"${rv(i)}>
-  <div class="co-call__head">${bullet(s)}<h3>${esc(s.name)}</h3></div>
+  <div class="co-call__head">${bullet(s)}<h3>${storeName(s)}</h3></div>
   <p class="co-call__addr">${esc(s.street)}, ${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</p>
   <a class="btn btn--ink" href="tel:${s.tel}"><span>Call ${esc(s.phone)}</span>${icon('phone')}</a>
   <a class="co-call__dir" href="${esc(s.directions)}" target="_blank" rel="noopener">Directions${icon('arrow-ne')}</a>
@@ -247,13 +248,16 @@ function about() {
   </div>
 </div>`, { tone: 'ink', lit: true, spot: true, cls: 'co-clipx', lx: '22%', ly: '26%' });
 
+  // the button sits under the quote, in the shorter column, so the two columns end near each other. The heading is in a
+  // two-column row, so it takes the md size (DESIGN.md): at lg, "A" was left alone on its own line at 1024. "A" keeps a
+  // no-break space to its word.
   const purposeBand = band(`<div class="co-purpose">
-  <div class="co-purpose__head">${kicker(pH2)}${dh(h3a, h3b, { size: 'lg' })}<blockquote class="co-quote"${rv(1)}><p>${esc(quote)}</p></blockquote></div>
-  <div class="co-purpose__card glass"${rv(2)}><p>${esc(pP)}</p><div class="btns">${btn(loc, '/location/')}</div></div>
+  <div class="co-purpose__head">${kicker(pH2)}${dh(h3a.replace(/^(\S+) /, '$1 '), h3b, { size: 'md' })}<blockquote class="co-quote"${rv(1)}><p>${esc(quote)}</p></blockquote><div class="btns"${rv(2)}>${btn(loc, '/location/')}</div></div>
+  <div class="co-purpose__card glass"${rv(2)}><p>${esc(pP)}</p></div>
 </div>`, { tone: 'night', lit: true, spot: true, lx: '78%', ly: '18%', backdrop: backdrop('store-albany', 'side', 'co-bg--photo') });
 
   const culture = band(`<div class="band__head"><div>${kicker('In store')}${dh('Inside', 'the stores', { size: 'lg' })}</div><p class="lede co-lede--ink">Real photos from inside our stores: the mural, the counters and the shelves.</p></div>
-${gallery(CULTURE)}`, { tone: 'mint', sheet: true, lx: '18%', ly: '8%', after: floatObj('obj-spraycan', { style: 'top:-118px;right:6%;width:min(132px,17vw)', depth: 0.1 }) });
+${gallery(CULTURE)}`, { tone: 'mint', sheet: true, lx: '18%', ly: '8%', after: floatObj('obj-spraycan', { cls: 'co-flt co-flt--can co-flt--about-can', depth: 0.1 }) });
 
   const roster = band(`<div class="band__head"><div>${kicker('Where Ya Shopping?')}${dh('Dispensary', 'Locations', { size: 'lg' })}</div>${btn('All locations', '/location/', { kind: 'ghost' })}</div>
 <ol class="co-roster">${stores.map(rosterRow).join('')}</ol>`, { tone: 'ink', lit: true, spot: true, lx: '82%', ly: '12%' });
@@ -264,7 +268,7 @@ ${gallery(CULTURE)}`, { tone: 'mint', sheet: true, lx: '18%', ly: '8%', after: f
   const crew = band(`<div class="co-cta">
   <div>${kicker('Careers')}${dh('Join', 'the crew', { size: 'lg' })}</div>
   <div class="co-cta__side"><p class="lede">Roles are posted by each store. Ask in store, or call the one you would like to join.</p><div class="btns">${btn('Careers', '/careers/')}${btn('Contact us', '/contact/', { kind: 'ghost' })}</div></div>
-</div>`, { tone: 'slate', lit: true, lx: '85%', ly: '30%', after: floatObj('obj-boombox', { style: 'top:-96px;left:5%;width:min(230px,20vw)', depth: 0.08 }) });
+</div>`, { tone: 'slate', lit: true, tight: true, lx: '85%', ly: '30%', after: floatObj('obj-boombox', { cls: 'co-flt co-flt--box co-flt--about-box', depth: 0.08 }) });
 
   const main = hero + story + purposeBand + culture + roster + community + crew + signUp();
   covered(main, [kick, h, pJourney, pPride, pH2, pH3, pP, loc, ...nl.filter((b) => /^(h\d|p)$/.test(b.t)).map((b) => b.text)], '/about/');
@@ -278,39 +282,37 @@ ${gallery(CULTURE)}`, { tone: 'mint', sheet: true, lx: '18%', ly: '8%', after: f
 
 // ================================================================= /loyalty-program/
 function laminate() {
-  const strap = Array(6).fill('CDCW ✦ All Access').join(' ✦ ');
+  // owner, 2026-11-13: the lanyard physics (from an earlier redesign of ours) on the all-access pass (src/scripts/lanyard.js, styles in
+  // lanyard.css). Front: the pass as before. Back: only this page's own words (earn points on every purchase; ask a
+  // budtender in-store or sign up today to start earning) and the three stores.
+  const print = Array(10).fill('CDCW ✦ All Access').join(' ✦ ').toUpperCase() + ' ✦ ';
   return `<div class="co-stage"${rv(1)}>
   <span class="co-hook" aria-hidden="true"></span>
-  <div class="co-lanyard" data-lanyard>
-    <span class="co-strap" aria-hidden="true"><span>${esc(strap)}</span></span>
-    <span class="co-clip" aria-hidden="true"></span>
-    <div class="co-pass" role="img" aria-label="${esc(brand.name)} Rewards: all access pass">
-      <span class="co-pass__slot"></span>
-      <span class="co-pass__holo">21+</span>
-      <span class="co-pass__brand">${esc(brand.name)}</span>
-      <img class="co-pass__badge" src="${asset('brand/round-logo-480.webp')}" alt="" width="480" height="480" loading="lazy" decoding="async">
-      <span class="co-pass__tier">Rewards</span>
-      <span class="co-pass__access">All Access</span>
-      <span class="co-pass__foot"><span>${stores.map((s) => esc(s.city)).join(' · ')}</span><span class="co-pass__code"></span></span>
-      <span class="co-pass__sheen"></span>
-    </div>
+  <div class="lanyard co-lanyard" data-print="${esc(print)}">
+    <button class="lanyard__card" type="button" aria-pressed="false" aria-label="${esc(brand.name)} Rewards: all access pass. Press to flip it, arrow keys to swing it.">
+      <span class="lanyard__face lanyard__face--front co-pass">
+        <span class="co-pass__slot"></span>
+        <span class="co-pass__holo">21+</span>
+        <span class="co-pass__brand">${esc(brand.name)}</span>
+        <img class="co-pass__badge" src="${asset('brand/round-logo-480.webp')}" alt="" width="480" height="480" loading="lazy" decoding="async">
+        <span class="co-pass__tier">Rewards</span>
+        <span class="co-pass__access">All Access</span>
+        <span class="co-pass__foot"><span>${stores.map((s) => esc(s.city)).join(' · ')}</span><span class="co-pass__code"></span></span>
+        <span class="co-pass__sheen"></span>
+      </span>
+      <span class="lanyard__face lanyard__face--back co-pass co-pass--back">
+        <span class="co-pass__slot"></span>
+        <span class="co-pass__back-big">Earn points</span>
+        <span class="co-pass__back-small">on every purchase at</span>
+        <span class="co-pass__back-stores">${stores.map((s) => `<span>${esc(s.city)}</span>`).join('')}</span>
+        <span class="co-pass__back-line">Ask a budtender in-store or sign up today to start earning.</span>
+        <span class="co-pass__access">All Access</span>
+      </span>
+    </button>
+    <p class="lanyard__hint">Drag, throw or tap to flip</p>
   </div>
 </div>`;
 }
-const joinForm = () => `<form class="co-form glass" data-demo-form onsubmit="return false" aria-label="Join the loyalty program (preview)"${rv(2)}>
-  <div class="co-form__row">
-    <label class="field"><span>First name</span><input type="text" name="first" autocomplete="given-name" required></label>
-    <label class="field"><span>Last name</span><input type="text" name="last" autocomplete="family-name"></label>
-  </div>
-  <label class="field"><span>Email address</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
-  <div class="co-form__row">
-    <label class="field"><span>Mobile phone</span><input type="tel" name="phone" autocomplete="tel" placeholder="(518) 555-0123"></label>
-    <label class="field"><span>Home store</span><select name="store">${stores.map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</select></label>
-  </div>
-  <button class="btn btn--lime" type="submit" data-magnetic><span>Sign Up</span>${icon('arrow')}</button>
-  <p class="co-form__fine" data-demo-msg>Preview build: forms are disabled in this preview, nothing is sent.</p>
-</form>`;
-
 function loyalty() {
   const P = '/loyalty-program';
   const h1 = pick(blocksOf(P, 'hero'), 'h1', /^Loyalty Program$/).text;
@@ -339,9 +341,10 @@ function loyalty() {
   const lfaq = collectFaqs().items.filter((it) => it.group === 'loyalty');
   if (!lfaq.length) throw new Error('company.mjs: no captured loyalty questions');
 
+  // co-ph-pin: on phones the sticker hangs under "PROGRAM" (sticker.js), so the buttons below it step down (company.css)
   const hero = pageHero({
     crumbs: home('Loyalty Program', '/loyalty-program/'), kicker: 'Rewards', title: h1.split(' '), img: { url: pick(m, 'img').src }, sticker: 'All Access',
-    ctas: btn('Sign Up', signHref) + btn('How it works', '#how', { kind: 'ghost' }),
+    ctas: btn('Sign Up', signHref) + btn('How it works', '#how', { kind: 'ghost' }), cls: 'co-ph-pin',
   });
 
   const lam = band(`<div class="co-lam">
@@ -349,20 +352,22 @@ function loyalty() {
   <div class="co-lam__art">${laminate()}</div>
 </div>`, { tone: 'night', lit: true, spot: true, cls: 'co-clipx', lx: '76%', ly: '26%' });
 
+  // the heading runs across the top, so the steps and the bonus card beside them stand about the same height
   const how = band(`<div class="co-how">
-  <div class="co-how__list">${kicker('How it works')}${dh('Join. Earn.', 'Redeem.', { size: 'lg' })}${tracklist(steps, { side: 'A', cls: 'co-tracks' })}</div>
+  <div class="co-how__head">${kicker('How it works')}${dh('Join. Earn.', 'Redeem.', { size: 'lg' })}</div>
+  <div class="co-how__list">${tracklist(steps, { side: 'A', cls: 'co-tracks' })}</div>
   <aside class="co-how__bonus glass"${rv(2)}><span class="co-how__tag">Bonus track</span><p class="co-how__big">${esc(sBonus)}.</p><p class="co-how__note">${esc(sAsk)}</p></aside>
-</div>`, { tone: 'ink', lit: true, sheet: true, id: 'how', lx: '80%', ly: '40%', backdrop: img('turntable', { decorative: true, sizes: '60vw', cls: 'co-bg co-bg--right' }) + veil('left'), after: floatObj('obj-bud-a', { cls: 'co-bud', style: 'width:min(150px,16vw)', depth: 0.12 }) });
+</div>`, { tone: 'ink', lit: true, sheet: true, id: 'how', lx: '80%', ly: '40%', backdrop: img('turntable', { decorative: true, sizes: '60vw', cls: 'co-bg co-bg--right' }) + veil('left'), after: floatObj('obj-bud-a', { cls: 'co-bud', depth: 0.12 }) });
 
-  const access = band(`<div class="co-access">
-  <div class="co-access__words">${kicker('All Access')}${dh('Works at', 'every store', { size: 'lg' })}<ul class="co-chips">${stores.map((s, i) => `<li${rv(i)}><a href="${href(s.page)}">${bullet(s)}<span>${esc(s.name)}</span>${icon('arrow')}</a></li>`).join('')}</ul></div>
-  <div class="co-access__faq">${faqList(lfaq.map(toFaq), { cls: 'co-faq', openFirst: true })}</div>
-</div>`, { tone: 'mint', sheet: true, lx: '14%', ly: '12%' });
+  // the shared FAQ section (parts.mjs faqSection); the store chips fill the heading column, so no record beside two questions
+  const access = band(faqSection({ kicker: 'All Access', heading: ['Works at', 'every store'], items: lfaq.map(toFaq), listCls: 'co-faq', vinyl: false,
+    extra: `<ul class="co-chips">${stores.map((s, i) => `<li${rv(i)}><a href="${href(s.page)}">${bullet(s)}<span>${esc(s.name)}</span>${icon('arrow')}</a></li>`).join('')}</ul>` }),
+  { tone: 'mint', sheet: true, lx: '14%', ly: '12%' });
 
-  const join = band(`<div class="co-join">
-  <div class="co-join__words">${kicker(nlKick)}${dh('Sign Up', '& Save', { size: 'lg' })}<p class="co-lede"${rv(1)}>${esc(nlP)}</p><p class="co-body"${rv(2)}>${esc(sAsk)}</p></div>
-  ${joinForm()}
-</div>`, { tone: 'night', lit: true, spot: true, id: 'join', lx: '72%', ly: '30%', backdrop: backdrop('store-mural', 'side', 'co-bg--photo') });
+  // Sign Up & Save is The Pass on every page (DESIGN.md), here too: the shared band carries this page's captured
+  // newsletter words (News Letter, Sign Up & Save, nlP) and keeps the #join anchor the buttons above point to.
+  // The captured "Ask a budtender ..." line stays in the steps' bonus card and in p2.
+  const join = signUp({ id: 'join', text: nlP });
 
   const main = hero + lam + how + access + join;
   covered(main, [h1, h2, p1, p2, nlKick, nlH, nlP], '/loyalty-program/');
@@ -390,7 +395,7 @@ function careers() {
 </div>`, { tone: 'ink', lit: true, spot: true, lx: '70%', ly: '20%', backdrop: backdrop('m-2024-06-untitled', 'even', 'co-bg--dim') });
   const strip = ['store-albany', 'm-2025-08-image-1', 'm-2025-10-img-6712', 'store-mural'].map((id) => CULTURE.find((c) => c.id === id));
   const floor = band(`<div class="band__head"><div>${kicker('The culture')}${dh('On the', 'floor', { size: 'lg' })}</div><p class="lede">The mural, the counter and the shelves, inside our stores.</p></div>
-<div class="co-strip">${strip.map((c, i) => `<figure${rv(i)}><div class="co-strip__img" data-tilt>${img(c.id, { alt: c.alt, sizes: '(min-width: 860px) 25vw, 50vw' })}</div><figcaption><b>${esc(c.where)}</b> ${esc(c.cap)}</figcaption></figure>`).join('')}</div>`, { tone: 'night', lit: true, lx: '20%', ly: '10%', after: floatObj('obj-boombox', { style: 'top:-90px;right:5%;width:min(220px,19vw)', depth: 0.08 }) });
+<div class="co-strip">${strip.map((c, i) => `<figure${rv(i)}><div class="co-strip__img" data-tilt>${img(c.id, { alt: c.alt, sizes: '(min-width: 860px) 25vw, 50vw' })}</div><figcaption><b>${esc(c.where)}</b> ${esc(c.cap)}</figcaption></figure>`).join('')}</div>`, { tone: 'night', lit: true, lx: '20%', ly: '10%', after: floatObj('obj-boombox', { cls: 'co-flt co-flt--box co-flt--careers', depth: 0.08 }) });
   const apply = band(`<div class="band__head"><div>${kicker('How to get in')}${dh('Ask in store', 'or call', { size: 'lg' })}</div><p class="lede co-lede--ink">Roles are posted by each store. Stop by and ask at the counter, or call the store you would like to join.</p></div>
 <div class="co-calls">${stores.map(callCard).join('')}</div>`, { tone: 'mint', sheet: true, id: 'apply', lx: '80%', ly: '10%' });
   return {
@@ -434,7 +439,7 @@ function contact() {
     lede: 'Call a store, stop by, or send us a note. Here is how to reach all three.',
     ctas: btn('Store contacts', '#stores') + btn('Send a message', '#message', { kind: 'ghost' }),
   });
-  const cards = band(`<div class="band__head"><div>${kicker('Where Ya Shopping?')}${dh('Call or', 'stop by', { size: 'lg' })}</div><p class="lede">Open Monday to Saturday 9 AM to 9 PM, and Sunday 10 AM to 6 PM, at all three stores.</p></div>
+  const cards = band(`<div class="band__head"><div>${kicker('Where Ya Shopping?')}${dh('Call or', 'stop by', { size: 'lg' })}</div><p class="lede">Open Monday to Saturday 9 AM to 9 PM, and Sunday 10 AM to 6 PM, at all three stores.</p></div>
 <div class="co-cards">${stores.map((s) => storeCard(s)).join('')}</div>`, { tone: 'ink', lit: true, spot: true, id: 'stores', lx: '20%', ly: '10%' });
   const message = band(`<div class="co-msg">
   <div class="co-msg__words">${kicker('Write to us')}${dh('Send a', 'message', { size: 'lg' })}<p class="co-lede"${rv(1)}>For orders, stock and hours, your store is the quickest answer. For anything else, drop us a line.</p>
@@ -443,10 +448,10 @@ function contact() {
   </div>
   ${contactForm()}
 </div>`, { tone: 'night', lit: true, spot: true, id: 'message', lx: '70%', ly: '30%', backdrop: backdrop('store-albany', 'side', 'co-bg--photo') });
-  const faqs = band(`<div class="co-qa">
-  <div class="co-qa__head">${kicker(accKick)}${dh(accH.slice(0, qcut), accH.slice(qcut).trim(), { size: 'md' })}<p class="co-lede co-lede--ink">Quick answers about shopping at our three stores.</p>${btn('All FAQs', '/faq/', { kind: 'ghost' })}</div>
-  <div>${faqList(visit, { cls: 'co-faq', openFirst: true })}</div>
-</div>`, { tone: 'mint', sheet: true, lx: '86%', ly: '10%', after: floatObj('obj-bud-b', { style: 'top:-110px;left:6%;width:min(110px,14vw)', depth: 0.12 }) });
+  // the shared FAQ section (parts.mjs faqSection, the home FAQ's layout)
+  const faqs = band(faqSection({ kicker: accKick, heading: [accH.slice(0, qcut), accH.slice(qcut).trim()], items: visit, listCls: 'co-faq', name: 'faq',
+    lede: 'Quick answers about shopping at our three stores.', cta: btn('All FAQs', '/faq/', { kind: 'ghost' }) }),
+  { tone: 'mint', sheet: true, lx: '86%', ly: '10%', after: floatObj('obj-bud-b', { cls: 'co-flt co-flt--bud co-flt--contact', depth: 0.12 }) });
   const main = hero + cards + message + faqs + signUp();
   covered(main, [kick, h, accKick, accH, ...visit.map((x) => x.q)], '/contact/');
   return {
@@ -470,7 +475,7 @@ function faqPage() {
   <header class="co-fgroup__h" data-reveal><span class="co-fgroup__ic">${icon(g.icon)}</span><div><h2 id="faq-${g.id}-h">${esc(g.title)}</h2><small>${plural(g.items.length, 'question', 'questions')}</small></div></header>
   ${faqList(g.items.map(toFaq), { cls: 'co-faq', openFirst: true })}
 </section>`).join('');
-  const list = band(`<div class="co-faqs">${nav}<div class="co-faqs__groups">${body}</div></div>`, { tone: 'night', lit: true, spot: true, lx: '82%', ly: '6%', after: floatObj('obj-bud-b', { style: 'top:-96px;right:7%;width:min(118px,14vw)', depth: 0.12 }) });
+  const list = band(`<div class="co-faqs">${nav}<div class="co-faqs__groups">${body}</div></div>`, { tone: 'night', lit: true, spot: true, lx: '82%', ly: '6%', after: floatObj('obj-bud-b', { cls: 'co-flt co-flt--bud co-flt--faq', depth: 0.12 }) });
   const help = band(`<div class="band__head"><div>${kicker('Still stuck?')}${dh('Ask your', 'budtender', { size: 'lg' })}</div><p class="lede co-lede--ink">Call the store you shop at, or send us a message.</p></div>
 <div class="co-calls">${stores.map(callCard).join('')}</div>
 <p class="co-more">${btn('Contact us', '/contact/', { kind: 'ghost' })}</p>`, { tone: 'mint', sheet: true, lx: '20%', ly: '10%' });
@@ -498,11 +503,11 @@ function reviewsPage() {
 ${shown.map((g) => `<section class="co-revgrp" aria-labelledby="rev-${g.id}">
   <header class="co-revgrp__h" data-reveal><div><p class="co-revgrp__where">${esc(g.where)}</p><h2 id="rev-${g.id}">${esc(g.heading || g.where)}</h2></div><p class="co-revgrp__meta">${plural(g.reviews.length, 'review', 'reviews')}${g.pages > 1 ? `, published on all ${g.pages} town pages` : ''}</p></header>
   <div class="co-wall">${g.reviews.map((r) => shoutCard(r, n++)).join('')}</div>
-</section>`).join('')}`, { tone: 'night', lit: true, spot: true, lx: '50%', ly: '4%', after: floatObj('obj-boombox', { style: 'top:-80px;right:4%;width:min(210px,18vw)', depth: 0.08 }) });
+</section>`).join('')}`, { tone: 'night', lit: true, spot: true, lx: '50%', ly: '4%', after: floatObj('obj-boombox', { cls: 'co-flt co-flt--box co-flt--reviews', depth: 0.08 }) });
   const cta = band(`<div class="co-cta">
   <div>${kicker('Your turn')}${dh('Been in', 'lately?', { size: 'lg' })}</div>
   <div class="co-cta__side"><p class="lede co-lede--ink">Tell us how it went. Leave a review on Google.</p><div class="btns">${btn('Leave a Review', leave)}${btn('Find a store', '/location/', { kind: 'ghost' })}</div></div>
-</div>`, { tone: 'mint', sheet: true, lx: '80%', ly: '20%' });
+</div>`, { tone: 'mint', sheet: true, tight: true, lx: '80%', ly: '20%' });
   const main = hero + wall + cta + signUp();
   covered(main, shown.flatMap((g) => g.reviews.flatMap((r) => [r.text, r.name])), '/reviews/');
   return {
@@ -548,7 +553,8 @@ function terms() {
   const mail = policyEmail();
   const fix = (h) => richHtml(String(h).replace(/<a href="\/cdn-cgi\/l\/email-protection">[\s\S]*?<\/a>/g, `<a href="mailto:${mail}">${mail}</a>`));
   const part = (p) => (p.t === 'ul' ? `<ul>${p.items.map((x) => `<li>${fix(x)}</li>`).join('')}</ul>` : `<p>${fix(p.html)}</p>`);
-  const hero = pageHero({ crumbs: home('Terms & Conditions', '/terms-conditions/'), kicker: 'Privacy Policy', title: ['Terms &', 'Conditions'], img: 'alley', sticker: effective.text });
+  // co-ph-flow: the date sticker is long; wherever it would hang over "CONDITIONS" it sits under the heading (company.css)
+  const hero = pageHero({ crumbs: home('Terms & Conditions', '/terms-conditions/'), kicker: 'Privacy Policy', title: ['Terms &', 'Conditions'], img: 'alley', sticker: effective.text, cls: 'co-ph-flow' });
   const outline = `<nav class="co-outline" aria-label="On this page"><p class="co-jump__t">On this page</p><ol>${sections.map((s) => `<li><a href="#${s.id}">${esc(s.h)}</a></li>`).join('')}</ol></nav>`;
   const doc = `<article class="prose co-doc">
   <header class="co-doc__head"><h2>${esc(docTitle.text)}</h2><p class="co-stamp">${icon('cal')}<span>${esc(effective.text)}</span></p></header>
@@ -583,10 +589,11 @@ function sitemapGroups() {
   const coa = byPath(/^\/blog\/cp_coa\//).map((p) => { used.add(p.path); return { label: short(p.title), href: p.path + '/' }; }).sort((a, b) => a.label.localeCompare(b.label));
   const events = byPath(/^\/event\//).map((p) => { used.add(p.path); return { label: (p.event && p.event.title) || short(p.title), href: p.path + '/', meta: p.event && fmtDate(p.event.startDate), d: (p.event && p.event.startDate) || '' }; }).sort((a, b) => b.d.localeCompare(a.d));
   const groups = [
-    { id: 'shop', title: 'Shop', icon: 'bag', links: [fresh('Shop', '/shop/'), fresh('Deals', '/deals/'), fresh('How to order', '/how-to-order/'), fresh('Order ahead and pickup', '/pickup/'), item('/brands', 'Brands we carry'), item('/our-brands'), item('/our-brands/ayrloom'), item('/our-brands/hashtag-honey')], live: true },
-    { id: 'locations', title: 'Locations', icon: 'pin', links: [item('/location'), ...stores.map((s) => item(s.page.replace(/\/$/, ''), s.name)), item('/store-locator'), item('/find-a-dispensary')] },
-    { id: 'company', title: 'Company', icon: 'user', links: [{ label: 'Home', href: '/' }, item('/about', 'About us'), item('/loyalty-program'), item('/careers'), item('/contact')] },
-    { id: 'legal', title: 'Legal', icon: 'id', links: [item('/terms-conditions'), fresh('Site map', '/sitemap/')] },
+    // col: the short groups stand in three columns (Shop | Locations | Company over Legal), so that row ends level
+    { id: 'shop', col: 1, title: 'Shop', icon: 'bag', links: [fresh('Shop', '/shop/'), fresh('Deals', '/deals/'), fresh('How to order', '/how-to-order/'), fresh('Order ahead and pickup', '/pickup/'), item('/brands', 'Brands we carry'), item('/our-brands'), item('/our-brands/ayrloom'), item('/our-brands/hashtag-honey')], live: true },
+    { id: 'locations', col: 2, title: 'Locations', icon: 'pin', links: [item('/location'), ...stores.map((s) => item(s.page.replace(/\/$/, ''), s.name)), item('/store-locator'), item('/find-a-dispensary')] },
+    { id: 'company', col: 3, title: 'Company', icon: 'user', links: [{ label: 'Home', href: '/' }, item('/about', 'About us'), item('/loyalty-program'), item('/careers'), item('/contact')] },
+    { id: 'legal', col: 3, title: 'Legal', icon: 'id', links: [item('/terms-conditions'), fresh('Site map', '/sitemap/')] },
     { id: 'areas', title: 'Areas we serve', icon: 'route', wide: true, links: [item('/visit-us', 'Visit Us: all towns'), ...towns] },
     { id: 'learn', title: 'Learn and blog', icon: 'spark', wide: true, links: [fresh('Cannabis 101', '/learn/'), fresh('FAQs', '/faq/'), fresh('Reviews', '/reviews/'), item('/blog', 'Blog')], subs: [{ title: 'Posts', links: posts }, { title: 'Topics', links: topics }, { title: 'Lab results', links: coa }] },
     { id: 'events', title: 'Events', icon: 'cal', wide: true, links: [item('/events', 'All events'), ...events] },
@@ -607,11 +614,16 @@ function sitemap() {
     lede: 'Every page on this site, grouped. Shop links open the live menu in a new tab.',
   });
   const chips = `<nav class="co-mapnav" aria-label="Site map sections" data-reveal>${groups.map((g) => `<a href="#map-${g.id}">${icon(g.icon)}<span>${esc(g.title)}</span><small>${count(g)}</small></a>`).join('')}</nav>`;
-  const cards = groups.map((g, i) => `<section class="co-mapgrp${g.wide ? ' co-mapgrp--wide' : ''}" id="map-${g.id}" aria-labelledby="map-${g.id}-h"${rv(i % 4)}>
+  const card = (g, i) => `<section class="co-mapgrp${g.wide ? ' co-mapgrp--wide' : ''}" id="map-${g.id}" aria-labelledby="map-${g.id}-h"${rv(i % 4)}>
   <h2 class="co-mapgrp__h" id="map-${g.id}-h">${icon(g.icon)}<span>${esc(g.title)}</span><small>${count(g)}</small></h2>
   <ul class="co-maplist">${g.links.map(li).join('')}${g.live ? `<li>${menuLink('all', `<span>Live menu</span><small>new tab</small>`, { aria: 'Live menu (opens in a new tab)' })}</li>` : ''}</ul>
   ${(g.subs || []).filter((s) => s.links.length).map((s) => `<h3 class="co-mapsub">${esc(s.title)} <small>${s.links.length}</small></h3><ul class="co-maplist">${s.links.map(li).join('')}</ul>`).join('')}
-</section>`).join('');
+</section>`;
+  // the short groups go into their columns (g.col), in page order; the wide groups follow, each across the full row
+  const short = groups.filter((g) => !g.wide);
+  const cols = [...new Set(short.map((g) => g.col))].map((c) => short.filter((g) => g.col === c));
+  const cards = cols.map((list) => `<div class="co-mapcol">${list.map((g) => card(g, groups.indexOf(g))).join('')}</div>`).join('')
+    + groups.filter((g) => g.wide).map((g) => card(g, groups.indexOf(g))).join('');
   const body = band(`${chips}<div class="co-map">${cards}</div>`, { tone: 'night', lit: true, lx: '80%', ly: '4%' });
   return {
     path: '/sitemap/', title: 'Site Map - Capital District Cannabis', type: 'sitemap', crumbs: home('Site map', '/sitemap/'), ogImage: og('wall-mural-wide'),

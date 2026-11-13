@@ -12,7 +12,7 @@ export const setOrigin = (v) => { SHARE_ORIGIN = v; };
 export const isPreview = () => PREVIEW;
 
 const def = stores.find((s) => s.id === DEFAULT_STORE);
-const todayLine = 'Mon\u2013Sat 9 AM\u20139 PM \u00b7 Sun 10 AM\u20136 PM';
+const todayLine = 'Mon\u2013Sat 9\u00a0AM\u20139\u00a0PM \u00b7 Sun 10\u00a0AM\u20136\u00a0PM'; // no-break spaces keep "9 AM" together
 
 // ---------- JSON-LD builders (facts only, from site.mjs) ----------
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -41,7 +41,7 @@ const statusSpan = (s) => `<span class="status" data-status-for="${s.id}"><i cla
 
 function storeCardMini(s, opts = {}) {
   return `<article class="mini"${opts.choose ? ' data-pick-card' : ''} data-store-card="${s.id}">
-  <div class="mini__head">${bullet(s)}<div><h3 class="mini__name">${esc(s.name)}</h3>${statusSpan(s)}</div></div>
+  <div class="mini__head">${bullet(s)}<div><h3 class="mini__name">${esc(s.name).replace(/, ([A-Z]{2})$/, ', $1')}</h3>${statusSpan(s)}</div></div>
   <p class="mini__addr">${esc(s.street)}<br>${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</p>
   <p class="mini__links"><a href="tel:${s.tel}">${icon('phone')}${esc(s.phone)}</a><a href="${esc(s.directions)}" target="_blank" rel="noopener">${icon('route')}Directions</a></p>
   <div class="mini__cta">${opts.choose ? `<button class="btn btn--lime btn--sm pick" type="button" data-set-store="${s.id}"><span class="pick__off">Switch to ${esc(s.city)}</span><span class="pick__on">${icon('check')}Your store</span></button>` : `<a class="btn btn--lime btn--sm" href="${esc(menuUrl(s.id, 'all'))}" target="_blank" rel="noopener">Shop ${esc(s.city)}${icon('arrow-ne')}</a>`}<a class="btn btn--ghost btn--sm" href="${href(s.page)}">Store details</a></div>
@@ -54,7 +54,7 @@ function ageGate() {
   <div class="gate__card glass">
     <img class="gate__logo" src="${asset('brand/logo.svg')}" alt="${esc(brand.name)}" width="314" height="58">
     <div class="gate__step" data-gate-step="1">
-      <p class="sticker sticker--tilt">21+</p>
+      <p class="sticker sticker--tilt gate__sticker" data-sticker><span class="sticker__face">21+</span><span class="sticker__flap" aria-hidden="true"></span></p>
       <h2 class="gate__q" id="gate-q">${esc(brand.agegate)}</h2>
       <div class="gate__btns"><button class="btn btn--lime" type="button" data-gate-yes>Yes, I Am</button><button class="btn btn--ghost" type="button" data-gate-no>No, I'm Not</button></div>
       <p class="gate__no" data-gate-msg hidden>You are not old enough to view this Website</p>
@@ -62,7 +62,7 @@ function ageGate() {
     <div class="gate__step" data-gate-step="2" hidden>
       <p class="kicker">Where Ya Shopping?</p>
       <h2 class="gate__q">Pick your store</h2>
-      <div class="gate__stores">${stores.map((s) => `<button class="gate__store" type="button" data-set-store="${s.id}" data-gate-done>${bullet(s)}<span><b>${esc(s.name)}</b><small>${esc(s.street)}</small>${statusSpan(s)}</span>${icon('arrow')}</button>`).join('')}</div>
+      <div class="gate__stores">${stores.map((s) => `<button class="gate__store" type="button" data-set-store="${s.id}" data-gate-done>${bullet(s)}<span><b>${esc(s.name).replace(/, ([A-Z]{2})$/, ',\u00a0$1')}</b><small>${esc(s.street)}</small>${statusSpan(s)}</span>${icon('arrow')}</button>`).join('')}</div>
       <p class="gate__fine">${esc(brand.separateCarts)}</p>
     </div>
   </div>
@@ -114,14 +114,15 @@ function header(current) {
 </div>`;
 }
 
-function footer() {
+// flush: no band above drips into the footer (the 404, the design labs), so it needs no room for the drips
+function footer(flush) {
   const towns = loadCapture();
   const areaLinks = Object.values(towns.pages).filter((p) => /^\/visit-us\/./.test(p.path)).map((p) => {
     const h2 = (p.modules.flatMap((m) => m.blocks).find((b) => b.t === 'h2') || {}).text || '';
     const name = (p.title.match(/Near ([^|]+?)(?:,\s*NY)?\s*-\s*Capital/i) || [])[1] || (h2.match(/Near (.+)$/i) || [])[1] || p.path.split('/').pop();
     return { label: name.replace(/(?:,\s*|\s+)NY\??$/, '').trim(), href: p.path + '/' };
   }).sort((a, b) => a.label.localeCompare(b.label));
-  return `<footer class="ftr" data-ftr>
+  return `<footer class="ftr${flush ? ' ftr--flush' : ''}" data-ftr>
   <div class="ftr__finale band band--night" data-spot>
     <div class="band__clip">${img('alley', { decorative: true, sizes: '100vw', cls: 'ftr__alley' })}</div>
     <div class="wrap ftr__top">
@@ -146,7 +147,7 @@ function footer() {
   <div class="wrap">
     <details class="ftr__areas"><summary>Areas we serve <small>${areaLinks.length} towns and destinations</small>${icon('plus')}</summary><ul>${areaLinks.map((a) => `<li><a href="${href(a.href)}">${esc(a.label)}</a></li>`).join('')}</ul></details>
     <div class="ftr__legal">
-      <p class="ftr__lic">${esc(brand.licences)}</p>
+      <p class="ftr__lic">${esc(brand.licences).replace(/OCM-[A-Z]+-\d+-\d+/g, (m) => `<span class="ftr__licno">${m}</span>`)}</p>
       <div class="ftr__warn"><p>${esc(brand.warning)}</p><p>${esc(brand.hopeline)} Visit <a href="${esc(brand.hopelineUrl)}" target="_blank" rel="noopener">${esc(brand.hopelineUrl)}</a></p></div>
     </div>
     <div class="ftr__bottom">
@@ -161,13 +162,13 @@ function footer() {
 function storeModal() {
   return `<div class="smodal" id="store-modal" role="dialog" aria-modal="true" aria-labelledby="smodal-h" data-smodal hidden>
   <div class="smodal__scrim" data-smodal-close></div>
-  <div class="smodal__card glass">
+  <div class="smodal__card glass"><div class="smodal__scroll">
     <button class="smodal__x" type="button" data-smodal-close aria-label="Close">${icon('close')}</button>
     <p class="kicker">Where Ya Shopping?</p>
     <h2 class="smodal__h" id="smodal-h">Switch your store?</h2>
     <p class="smodal__note">${esc(brand.separateCarts)}</p>
     <div class="smodal__list">${stores.map((s) => storeCardMini(s, { choose: true })).join('')}</div>
-  </div>
+  </div></div>
 </div>`;
 }
 
@@ -194,6 +195,10 @@ export function page(p) {
   const ld = [...(p.jsonld || [])];
   if (p.crumbs && p.crumbs.length > 1) ld.push(crumbsLd(p.crumbs));
   const stamp = '?v=' + VERSION;
+  // The Pass (the sign-up band) hangs paint drips ~118px into the footer, which keeps room for them; when the page's
+  // last band has no drips the footer drops that room
+  const lastBand = p.main.lastIndexOf('<section class="band');
+  const dripsIntoFooter = lastBand >= 0 && p.main.indexOf('<svg class="drip', lastBand) >= 0;
   return `<!doctype html>
 <html lang="en" class="no-js" data-store="${DEFAULT_STORE}">
 <head>
@@ -224,7 +229,7 @@ ${header(p.path)}
 <main id="main" tabindex="-1">
 ${p.main}
 </main>
-${footer()}
+${footer(!dripsIntoFooter)}
 ${storeModal()}
 ${pickbar()}
 <script type="application/json" id="cdc-data">${JSON.stringify({

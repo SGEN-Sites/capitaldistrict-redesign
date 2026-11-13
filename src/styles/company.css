@@ -17,6 +17,7 @@
   .co-bg--right { width: 100% !important; opacity: .3; -webkit-mask-image: none; mask-image: none; }
 }
 .co-lede { font-size: clamp(1.08rem, 1rem + .45vw, 1.32rem); line-height: 1.6; color: var(--text); max-width: 60ch; }
+.dh + .co-lede { margin-top: 20px; } /* collapses with the heading's .32em: never under the 20px a band__head lede gets (phones had 10px) */
 .co-body { color: var(--text-2); max-width: 64ch; }
 .co-lede--ink, .band--mint .co-lede { color: var(--text-ink-2); }
 .co-more { margin: 28px 0 0; }
@@ -24,12 +25,27 @@
    x axis only (art still crosses the seams vertically; clip, unlike hidden, keeps sticky asides working) */
 .co-clipx { overflow-x: clip; }
 
+/* ---------- cut-outs crossing a seam (floatObj, the last thing in a band; positions here, not inline) ----------
+   Desktop: as placed per band. Phones: the shared .float scale(.62) shrank these vw-sized objects to 35-50px specks
+   floating above the seam or over a card corner; each is sized up and centred on the seam (top = half its box). */
+.co-flt--about-can { top: -118px; right: 6%; width: min(132px, 17vw); }
+.co-flt--about-box { top: -96px; left: 5%; width: min(230px, 20vw); }
+.co-flt--careers { top: -90px; right: 5%; width: min(220px, 19vw); }
+.co-flt--contact { top: -110px; left: 6%; width: min(110px, 14vw); }
+.co-flt--faq { top: -96px; right: 7%; width: min(118px, 14vw); }
+.co-flt--reviews { top: -80px; right: 4%; width: min(210px, 18vw); }
+@media (max-width: 760px) { /* capped so a tablet at 760px shows them no bigger than the desktop rule does at 761px */
+  .co-flt--box { width: min(40vw, 245px); top: calc(min(40vw, 245px) * -.3025); } /* boombox, 1360 x 823 */
+  .co-flt--bud { width: min(24vw, 172px); top: calc(min(24vw, 172px) * -.8245); } /* bud-b, 752 x 1240 */
+  .co-flt--can { width: 22vw; top: -18.6vw; } /* can, 864 x 1458 */
+}
+
 /* ---------- /about/: the story (record + liner notes beside the words) ---------- */
 .co-story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 110px); align-items: start; }
 .co-story__aside { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 36px); display: grid; gap: 26px; }
 .co-spin { position: relative; width: min(100%, 430px); }
 .co-spin__stamp { position: absolute; right: 0; top: 6%; z-index: 2; }
-.co-spin__stamp .sticker { font-size: clamp(15px, 1.4vw, 19px); }
+.co-spin__stamp .sticker { font-size: clamp(19px, 1.7vw, 25px); }
 .co-liner { list-style: none; display: grid; gap: 10px; max-width: 430px; }
 .co-liner li { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .45); }
 .co-liner b { display: block; font: 850 18px/1.1 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
@@ -37,7 +53,8 @@
 .co-story__body .btns { margin-top: 30px; }
 @media (max-width: 900px) {
   .co-story { grid-template-columns: 1fr; }
-  .co-story__aside { position: static; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); align-items: center; }
+  /* one column: the words open the section, the record and the store list follow them */
+  .co-story__aside { order: 2; position: static; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); align-items: center; }
 }
 @media (max-width: 560px) {
   .co-story__aside { grid-template-columns: 1fr; }
@@ -45,13 +62,17 @@
 }
 
 /* ---------- /about/: purpose (glass over the mural photo) ---------- */
-.co-purpose { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+/* the card's long paragraph gets the wider column, so the two columns end near each other (1fr/1fr with the md heading:
+   the card stood 223px taller at 1024) */
+.co-purpose { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
 .co-quote { margin: 28px 0 0; padding: 2px 0 2px 24px; border-left: 3px solid var(--lime); font: 600 clamp(1.2rem, 1rem + .85vw, 1.7rem)/1.4 var(--f-body); color: var(--text); max-width: 34ch; }
 .co-quote p { margin: 0; }
 .co-purpose__card { padding: clamp(24px, 3vw, 42px); }
 .co-purpose__card p { color: var(--text); font-size: 17px; line-height: 1.75; }
-.co-purpose__card .btns { margin-top: 6px; }
-@media (max-width: 900px) { .co-purpose { grid-template-columns: 1fr; } }
+.co-purpose__card p:last-child { margin-bottom: 0; }
+.co-purpose__head .btns { margin-top: 28px; } /* the button sits under the quote, in the shorter column */
+/* the heading takes md in the two-column row (company.mjs); stacked in one column it is back at the page's lg */
+@media (max-width: 900px) { .co-purpose { grid-template-columns: 1fr; } .co-purpose__head .dh { font-size: var(--fs-lg); } }
 
 /* ---------- in-store gallery (real photos, framed; captions on glass) ---------- */
 .co-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: clamp(150px, 15.5vw, 236px); gap: clamp(12px, 1.6vw, 22px); }
@@ -91,18 +112,29 @@
 .co-roster__tel a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); font-weight: 600; text-decoration: none; }
 .co-roster__tel a:hover { color: var(--lime); }
 .co-roster__go { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-@media (max-width: 1180px) {
+/* two lines beside the bullet: name over buttons, address over phone (left to auto-placement, the phone fell into the
+   bullet's column and pushed the name ~70px off the bullet). Up to 1279px: the five-column row only fits from 1280
+   (narrower, the Clifton Park row stood ~24px taller than the other two) */
+@media (max-width: 1279px) {
   .co-roster__row { grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr); }
-  .co-roster__go { grid-column: 2 / -1; justify-content: flex-start; }
+  .co-roster__no { grid-row: span 2; }
+  .co-roster__name { grid-column: 2; }
+  .co-roster__addr { grid-column: 3; }
+  .co-roster__tel { grid-column: 3; grid-row: 2; }
+  .co-roster__go { grid-column: 2; grid-row: 2; justify-content: flex-start; }
 }
 @media (max-width: 640px) {
   .co-roster__row { grid-template-columns: auto minmax(0, 1fr); padding: 18px; gap: 12px 16px; }
-  .co-roster__addr, .co-roster__tel, .co-roster__go { grid-column: 1 / -1; }
+  .co-roster__no { grid-row: auto; }
+  .co-roster__addr, .co-roster__tel, .co-roster__go { grid-column: 1 / -1; grid-row: auto; }
   .co-roster__no .bullet { width: 48px; height: 48px; font-size: 21px; }
+  /* both buttons full width on every card (side by side, only the shortest city name fitted one row) */
+  .co-roster__go { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .co-roster__go .btn { justify-content: center; }
 }
 
 /* ---------- /about/: community flyers on the wall ---------- */
-.co-community__lede { margin: 18px 0 0; }
+.band__head .co-community__lede { margin: 20px 0 0; } /* .band__head .lede sets margin 0: the lede sat on the heading */
 .co-flyers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(22px, 3.4vw, 52px); padding-top: 14px; }
 @media (max-width: 860px) {
   .co-flyers { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 18px var(--gutter) 26px; margin: 0 calc(-1 * var(--gutter)); scrollbar-width: none; }
@@ -135,7 +167,7 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9), 0 0 0 8px rgba(223, 236, 231, .13), 0 0 0 9px rgba(255, 255, 255, .22), 0 60px 90px -36px rgba(0, 0, 0, .95), 0 0 100px -20px rgba(161, 207, 110, .42); }
 .co-pass__slot { position: absolute; top: 14px; left: 50%; width: 64px; height: 12px; margin-left: -32px; border-radius: var(--pill); background: var(--night); box-shadow: inset 0 2px 3px rgba(0, 0, 0, .6); }
 .co-pass__holo { position: absolute; top: 12px; right: 14px; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; font: 900 12px/1 var(--f-display); color: var(--ink); background: var(--foil); background-size: 300% 100%; box-shadow: 0 0 0 2px rgba(255, 255, 255, .8), 0 4px 10px -4px rgba(0, 0, 0, .5); animation: foil 6s linear infinite; }
-.co-pass__brand { max-width: 22ch; font: 700 11px/1.4 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--text-ink-2); }
+.co-pass__brand { max-width: 30ch; font: 700 11px/1.4 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--text-ink-2); }
 .co-pass__badge { width: 48%; aspect-ratio: 1; border-radius: 50%; box-shadow: 0 0 0 4px #fff, 0 14px 30px -12px rgba(0, 0, 0, .55); }
 .co-pass__tier { font: 900 clamp(28px, 2.5vw, 38px)/1 var(--f-display); font-stretch: 125%; letter-spacing: .02em; text-transform: uppercase; color: var(--ink); }
 .co-pass__access { justify-self: stretch; margin: 2px -26px 0; padding: 12px 10px; background: var(--ink); color: var(--lime); font: 900 clamp(22px, 2vw, 28px)/1 var(--f-display); font-stretch: 130%; letter-spacing: .08em; text-transform: uppercase; }
@@ -145,34 +177,38 @@
 @media (max-width: 900px) { .co-lam { grid-template-columns: 1fr; } }
 
 /* ---------- /loyalty-program/: how it works ---------- */
-.co-how { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+/* the heading runs across the top; the steps and the bonus card share the row beneath it */
+.co-how { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); grid-template-areas: "head head" "list bonus"; gap: 18px clamp(30px, 5vw, 80px); align-items: center; }
+.co-how__head { grid-area: head; }
+.co-how__head .dh { margin: 0; }
+.co-how__list { grid-area: list; }
+.co-how__bonus { grid-area: bonus; }
 .co-tracks { margin-top: 10px; }
 .co-how__bonus { display: grid; gap: 14px; padding: clamp(24px, 3vw, 38px); }
 .co-how__tag { justify-self: start; padding: 8px 13px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font: 700 12px/1 var(--f-body); letter-spacing: .2em; text-transform: uppercase; }
 .co-how__big { margin: 0; font: 800 clamp(1.3rem, 1rem + 1vw, 1.9rem)/1.2 var(--f-display); font-stretch: 108%; color: var(--text); }
 .co-how__note { margin: 0; color: var(--text-2); }
-@media (max-width: 900px) { .co-how { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .co-how { grid-template-columns: 1fr; grid-template-areas: "head" "list" "bonus"; } }
 /* the bud crossing into How it works: on one column it would sit on the pass, so it drops to the seam */
-.co-bud { top: -88px; right: 8%; }
+.co-bud { top: -88px; right: 8%; width: min(150px, 16vw); }
 @media (max-width: 900px) { .co-bud { top: -40px; right: 6%; } }
+@media (max-width: 760px) { .co-bud { width: 26vw; top: -12.4vw; } } /* bud-a, 1075 x 1026: centred on the seam (see .co-flt) */
 
-/* ---------- /loyalty-program/: works at every store (mint) ---------- */
-.co-access { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(30px, 5vw, 80px); align-items: start; }
+/* ---------- /loyalty-program/: works at every store (mint): the shared FAQ section, the store chips in its heading column ---------- */
 .co-chips { list-style: none; display: grid; gap: 10px; max-width: 440px; margin-top: 26px; }
 .co-chips a { display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 10px 20px 10px 12px; border-radius: var(--pill); border: 1px solid rgba(42, 49, 48, .16); background: rgba(255, 255, 255, .6); color: var(--text-ink); font-weight: 700; text-decoration: none; transition: background var(--d-1), border-color var(--d-1), translate var(--d-2) var(--ease); }
 .co-chips a span:not(.bullet) { flex: 1; }
 .co-chips a .ico { color: var(--ink); }
 .co-chips a:hover { background: #fff; border-color: rgba(42, 49, 48, .36); translate: 4px 0; }
-@media (max-width: 900px) { .co-access { grid-template-columns: 1fr; } }
 
-/* ---------- forms (loyalty join, contact) ---------- */
-.co-join, .co-msg { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+/* ---------- forms (contact; the loyalty page signs up through The Pass) ---------- */
+.co-msg { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
 .co-form { display: grid; gap: 14px; padding: clamp(22px, 3vw, 36px); }
 .co-form__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .co-form .btn { justify-self: start; margin-top: 4px; }
 .co-form__fine { margin: 0; font-size: 13.5px; color: var(--text-2); }
 .co-form__fine.is-flash { color: var(--lime); }
-@media (max-width: 900px) { .co-join, .co-msg { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .co-msg { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .co-form__row { grid-template-columns: 1fr; } }
 
 /* ---------- /careers/ ---------- */
@@ -187,7 +223,8 @@
 .co-calls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .co-call { display: grid; gap: 12px; align-content: start; padding: 24px; border-radius: var(--r-l); border: 1px solid rgba(42, 49, 48, .14); background: rgba(255, 255, 255, .62); color: var(--text-ink); }
 .co-call__head { display: flex; align-items: center; gap: 12px; }
-.co-call__head h3 { font: 880 22px/1 var(--f-display); font-stretch: 114%; text-transform: uppercase; }
+.co-call { container-type: inline-size; }
+.co-call__head h3 { font: 880 min(22px, calc((100cqi - 50px) / 12.4))/1 var(--f-display); font-stretch: 114%; text-transform: uppercase; } /* "SCHENECTADY, NY" (kept together) fits the card */
 .co-call__addr { margin: 0; color: var(--text-ink-2); }
 .co-call .btn { justify-self: start; }
 .co-call__dir { justify-self: start; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: #3d6b16; font-weight: 700; text-decoration: none; }
@@ -205,9 +242,7 @@
 .co-social__ic { display: grid; place-items: center; width: 42px; height: 42px; flex: none; border-radius: 50%; background: var(--lime); color: var(--ink); }
 .co-social small { margin-left: auto; color: var(--text-3); font-size: 13px; }
 .co-social a > .ico:last-child { color: var(--lime); }
-.co-qa { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(30px, 5vw, 80px); align-items: start; }
-.co-qa__head { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 32px); }
-@media (max-width: 900px) { .co-qa { grid-template-columns: 1fr; } .co-qa__head { position: static; } }
+/* /contact/ questions: the shared FAQ section (.faqsec in components.css, parts.mjs faqSection) */
 
 /* ---------- FAQ lists in this lane (wrapped variant: link lists in answers become chips) ---------- */
 .co-faq .faq__a ul { list-style: none; padding: 0; margin: 8px 0 16px; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -239,6 +274,7 @@
   .co-faqs { grid-template-columns: 1fr; }
   .co-jump { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .co-jump__t { grid-column: 1 / -1; }
+  .co-jump a:last-child:nth-child(even) { grid-column: 1 / -1; } /* an odd count of topics: the last one takes the row, no hole beside it */
 }
 @media (max-width: 520px) { .co-jump a { gap: 8px; padding: 8px 10px; font-size: 13.5px; line-height: 1.2; } .co-jump a small { display: none; } }
 
@@ -249,9 +285,12 @@
 .co-revgrp__where { margin: 0 0 10px; font: 700 12px/1 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--lime); }
 .co-revgrp__h h2 { font: 880 clamp(1.6rem, 1.1rem + 1.7vw, 2.7rem)/1 var(--f-display); font-stretch: 114%; text-transform: uppercase; }
 .co-revgrp__meta { margin: 0; color: var(--text-3); font-size: 14px; }
-.co-wall { columns: 3 270px; column-gap: clamp(20px, 2.6vw, 36px); padding-top: 10px; }
+/* two columns: with three, the 4- and 8-review groups ended 200-350px apart (a card cannot split across columns);
+   two end within ~4-120px */
+.co-wall { columns: 2 320px; column-gap: clamp(20px, 2.6vw, 36px); padding-top: 10px; }
 .co-wall > .shout { break-inside: avoid; margin: 0 0 44px; }
-@media (max-width: 640px) { .co-wall { columns: 1; } .co-wall > .shout { margin-bottom: 36px; } }
+/* one column: a small inset keeps the tilted cards' corners on the page gutter (they reached 12px from the edge) */
+@media (max-width: 640px) { .co-wall { columns: 1; padding-inline: 6px; } .co-wall > .shout { margin-bottom: 36px; } }
 
 /* ---------- /terms-conditions/: sticky outline + the policy ---------- */
 .co-legal { display: grid; grid-template-columns: minmax(0, 290px) minmax(0, 1fr); gap: clamp(30px, 6vw, 100px); align-items: start; }
@@ -277,7 +316,11 @@
 /* ---------- /sitemap/ ---------- */
 .co-mapnav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(30px, 4vw, 50px); }
 .co-mapnav a small { margin-left: 4px; }
-.co-map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); align-items: start; }
+.co-map { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); align-items: stretch; } /* the group cards of a row stand the same height: an even row, not a ragged one */
+/* the short groups in three columns (company.mjs g.col): Shop | Locations | Company over Legal. In four equal-height
+   cards, Legal's two links left ~320px of empty card and "LOCATIONS 6" met the card edge at 1024 */
+.co-mapcol { display: flex; flex-direction: column; gap: clamp(14px, 2vw, 24px); }
+.co-mapcol > .co-mapgrp:last-child { flex: 1; }
 .co-mapgrp { padding: clamp(20px, 2.4vw, 30px); border-radius: var(--r-l); border: 1px solid var(--line); background: rgba(13, 18, 17, .5); }
 .co-mapgrp--wide { grid-column: 1 / -1; }
 .co-mapgrp__h { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font: 880 21px/1.05 var(--f-display); font-stretch: 114%; text-transform: uppercase; }
@@ -288,10 +331,11 @@
 .co-maplist { list-style: none; display: grid; }
 .co-mapgrp--wide .co-maplist { display: block; columns: 4 230px; column-gap: 30px; }
 .co-maplist li { break-inside: avoid; }
+.co-maplist a { flex-wrap: wrap; row-gap: 2px; } .co-maplist a > span { flex: 1 1 200px; min-width: 0; } /* a long title keeps its width; its date drops below */
 .co-maplist a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 7px 0; border-bottom: 1px solid var(--line); color: var(--text-2); font-size: 15px; line-height: 1.3; text-decoration: none; transition: color var(--d-1); }
 .co-maplist a:hover { color: var(--lime); }
 .co-maplist a small { margin-left: auto; padding-left: 8px; color: var(--text-3); font-size: 12.5px; white-space: nowrap; }
-@media (max-width: 1000px) { .co-map { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1000px) { .co-map { grid-template-columns: repeat(2, minmax(0, 1fr)); } .co-mapcol { display: contents; } }
 @media (max-width: 640px) { .co-map { grid-template-columns: 1fr; } .co-mapnav a { min-height: 44px; padding: 6px 12px; font-size: 14px; } }
 
 /* ---------- 404: track not found ---------- */

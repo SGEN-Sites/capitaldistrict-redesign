@@ -1,11 +1,11 @@
 {
-  "at": "2026-11-13T01:57:00.196Z",
+  "at": "2026-11-13T03:06:17.767Z",
   "url": "https://sgen-sites.github.io/capitaldistrict-redesign/",
   "pass": 12,
   "total": 12,
   "results": [
     {
-      "name": "every page answers 200 with its own title and noindex (141 pages, 15 redirect stubs skipped)",
+      "name": "every page answers 200 with its own title and noindex (142 pages, 15 redirect stubs skipped)",
       "ok": true,
       "detail": ""
     },

@@ -29,7 +29,7 @@ export const brand = {
 // Hours on every store page: "Monday – Saturday: 9 AM – 9 PM", "Sunday: 10 AM – 6 PM". Pre-orders close 30 minutes before
 // closing (store selector: "Open • Order until 8:30 pm" / "Pre-Orders Closed • Order at 9:00AM").
 const HOURS = { 0: [10, 18], 1: [9, 21], 2: [9, 21], 3: [9, 21], 4: [9, 21], 5: [9, 21], 6: [9, 21] };
-const HOURS_TEXT = [['Monday – Saturday', '9 AM – 9 PM'], ['Sunday', '10 AM – 6 PM']];
+const HOURS_TEXT = [['Monday – Saturday', '9 AM – 9 PM'], ['Sunday', '10 AM – 6 PM']]; // no-break spaces keep "9 AM" together
 
 export const stores = [
   {

@@ -48,69 +48,22 @@
   .sh-now__act .btn { flex: 1 1 100%; }
 }
 
-/* ---------- store tiles: the store photo with a glass panel over it ---------- */
+/* ---------- store cards: the shared store card (.scard, components.css) in the shared three-up grid (.grid--3
+   breakpoints); a lone third card on a two-up row sits centred instead of leaving the right half empty ---------- */
 .sh-stores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); margin-top: clamp(22px, 3vw, 36px); }
-.sh-store__in { position: relative; display: grid; align-content: end; min-height: 560px; height: 100%; border-radius: var(--r-l); overflow: hidden; background: var(--ink-2); border: 1px solid var(--line); transition: border-color var(--d-2), box-shadow var(--d-2); }
-.sh-store__media { position: absolute; inset: 0; }
-.sh-store__media img { width: 100%; height: 100%; object-fit: cover; transition: scale 1.2s var(--ease); }
-.sh-store__in:hover .sh-store__media img { scale: 1.06; }
-.sh-store__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13, 18, 17, .05) 25%, rgba(13, 18, 17, .7) 70%, rgba(13, 18, 17, .9)); }
-.sh-store__bul { position: absolute; left: 16px; top: 16px; z-index: 2; display: flex; align-items: center; gap: 10px; }
-.sh-store__bul .bullet { width: 50px; height: 50px; font-size: 22px; }
-.sh-store__mine { display: none; align-items: center; gap: 6px; padding: 7px 12px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font-size: 13px; font-weight: 700; }
-.sh-store__mine .ico { width: 15px; height: 15px; }
-.sh-store.is-mine .sh-store__mine { display: inline-flex; }
-.sh-store.is-mine .sh-store__in { border-color: var(--lime); box-shadow: var(--shadow-lime); }
-.sh-store__body { position: relative; z-index: 1; display: grid; gap: 10px; margin: 12px; padding: 20px; border-radius: var(--r-m); }
-.sh-store__name { font: 880 clamp(24px, 1.2rem + .8vw, 30px)/1 var(--f-display); font-stretch: 114%; text-transform: uppercase; }
-.sh-store__addr, .sh-store__near { margin: 0; display: flex; gap: 10px; align-items: flex-start; color: var(--text-2); font-size: 15px; }
-.sh-store__addr .ico, .sh-store__near .ico { color: var(--lime); margin-top: 3px; }
-.sh-store__addr a { color: inherit; display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; }
-.sh-store__near { font-size: 14px; color: var(--text-3); }
-.sh-store__cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-.sh-store__set { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; justify-self: start; color: var(--lime); font-weight: 600; font-size: 14px; }
-.sh-store__set:hover span { text-decoration: underline; text-underline-offset: .18em; }
-.sh-store.is-mine .sh-store__set { color: var(--text-3); }
-.sh-stores--pick .sh-store__in { min-height: 640px; }
-@media (max-width: 1000px) { .sh-stores { grid-template-columns: minmax(0, 1fr); } .sh-store__in { min-height: 480px; } .sh-stores--pick .sh-store__in { min-height: 560px; } }
-@media (max-width: 520px) { .sh-store__body { margin: 8px; padding: 16px; } .sh-store__cta .btn { flex: 1 1 auto; } }
-
-/* ---------- ticket stubs (today's specials per store) ---------- */
-.sh-tixrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 30px); }
-.sh-tix { rotate: var(--r, 0deg); }
-.sh-tix__in {
-  --stub: 96px;
-  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--stub); min-height: 250px; height: 100%; text-decoration: none; color: var(--text-ink);
-  border-radius: 18px; background: var(--paper); box-shadow: 0 30px 50px -26px rgba(0, 0, 0, .9); transition: box-shadow var(--d-2) var(--ease);
-  -webkit-mask: radial-gradient(circle 13px at calc(100% - var(--stub)) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle 13px at calc(100% - var(--stub)) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat;
-  mask: radial-gradient(circle 13px at calc(100% - var(--stub)) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle 13px at calc(100% - var(--stub)) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat;
+.sh-scard__near { font-size: 14px; color: var(--text-3); text-wrap: balance; } /* even lines: not "I-90" alone on the last */
+/* the chosen store, on cards without the pick button (/pickup/, brand pages): a "Your store" pill beside the letter */
+.sh-scard .scard__bullet { display: flex; align-items: center; gap: 10px; }
+.sh-scard__mine { display: none; align-items: center; gap: 6px; padding: 7px 12px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font-size: 13px; font-weight: 700; }
+.sh-scard__mine .ico { width: 15px; height: 15px; }
+.sh-scard.is-mine .sh-scard__mine { display: inline-flex; }
+@media (max-width: 1000px) {
+  .sh-stores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sh-stores > .scard:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - clamp(14px, 2vw, 24px) / 2); }
 }
-.sh-tix__in:hover, .sh-tix__in:focus-visible { box-shadow: 0 40px 60px -26px rgba(0, 0, 0, .95), 0 0 0 2px var(--lime); }
-.sh-tix__main { container-type: inline-size; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; align-content: start; padding: 22px 22px 20px; min-width: 0; background: radial-gradient(120% 80% at 0% 0%, rgba(161, 207, 110, .22), transparent 60%); border-radius: 18px 0 0 18px; }
-.sh-tix__main > * { min-width: 0; }
-.sh-tix__top > span:not(.bullet) { min-width: 0; font-size: min(13px, calc((100cqi - 50px) / 10)); } /* "SCHENECTADY" at .18em tracking, beside the 38px badge */
-.sh-tix__top { display: flex; align-items: center; gap: 12px; font: 700 13px/1 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--text-ink-2); }
-.sh-tix__big { font: 900 clamp(1.5rem, 1rem + 1.4vw, 2.5rem)/.88 var(--f-display); font-size: clamp(1.1rem, 15.5cqi, 2.9rem); font-stretch: 122%; text-transform: uppercase; color: var(--ink); margin: 6px 0 2px; }
-.sh-tix__addr { font-size: 14px; color: var(--text-ink-2); overflow-wrap: anywhere; }
-.sh-tix__main .status { color: var(--text-ink-2); }
-.sh-tix__main .status.is-open .status__txt b { color: #3d6b16; }
-.sh-tix__stub { display: grid; align-content: space-between; justify-items: center; padding: 20px 8px; background: var(--lime); border-left: 2px dashed rgba(42, 49, 48, .4); border-radius: 0 18px 18px 0; }
-.sh-tix__no { font: 900 46px/1 var(--f-display); font-stretch: 120%; color: var(--ink); }
-.sh-tix__go { writing-mode: vertical-rl; rotate: 180deg; display: inline-flex; align-items: center; gap: 8px; font: 800 13px/1 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
-.sh-tix__go .ico { width: 16px; height: 16px; rotate: 90deg; }
-.sh-tix--sm .sh-tix__in { --stub: 78px; min-height: 196px; }
-.sh-tix--sm .sh-tix__main { padding: 18px 18px 16px; gap: 8px; }
-.sh-tix--sm .sh-tix__big { font-size: clamp(1.1rem, .9rem + .6vw, 1.6rem); font-size: clamp(1rem, 15.5cqi, 2.1rem); }
-.sh-tix--sm .sh-tix__addr { font-size: 13px; }
-.sh-tix--sm .sh-tix__top { letter-spacing: .1em; font-size: 12px; overflow-wrap: anywhere; }
-.sh-tix--sm .sh-tix__no { font-size: 36px; }
-@media (max-width: 960px) { .sh-tixrow { grid-template-columns: minmax(0, 1fr); max-width: 560px; } .sh-tix { rotate: calc(var(--r, 0deg) * .5); } }
+@media (max-width: 640px) { .sh-stores { grid-template-columns: minmax(0, 1fr); } .sh-stores > .scard:last-child:nth-child(odd) { grid-column: auto; width: auto; justify-self: stretch; } }
 
-/* /shop/ deals strip: words beside three small stubs */
-.sh-dealstrip { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 9fr); gap: clamp(26px, 4vw, 60px); align-items: center; }
-.sh-dealstrip__words p { color: var(--text-2); max-width: 40ch; }
-.sh-dealstrip__words .btns { margin-top: 18px; }
-@media (max-width: 1100px) { .sh-dealstrip { grid-template-columns: minmax(0, 1fr); } }
+/* ---------- today's specials per store: the shared store tickets (.sp-b / .sp-tix, sp.css) on /shop/ and /deals/ ---------- */
 
 /* ---------- reading layout: a sticky aside beside a prose column ---------- */
 .sh-read { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
@@ -121,7 +74,12 @@
 .sh-read__body { font-size: clamp(1.02rem, .96rem + .3vw, 1.18rem); line-height: 1.75; color: var(--text-2); max-width: 64ch; }
 .sh-read__body p { margin: 0 0 1.1em; }
 .sh-read__body .dh { margin-bottom: .45em; }
-@media (max-width: 900px) { .sh-read { grid-template-columns: minmax(0, 1fr); } .sh-read__aside { position: static; } .sh-read__photo { aspect-ratio: 16 / 11; } }
+/* stacked: the heading and the words first, then the photo, its source line and the button (the button used to come
+   before the words it acts on, and the source line before the words it credits) */
+@media (max-width: 900px) { .sh-read { grid-template-columns: minmax(0, 1fr); } .sh-read__aside { position: static; } .sh-read__body { order: -1; } .sh-read__photo { aspect-ratio: 16 / 11; } }
+/* "SHOP DISPENSARY" / "DEALS & SPECIALS" each stay on one line on phones (at the plain size each broke, leaving "SHOP"
+   alone on a line): 11.9 is the wider half's width in em, plus a little */
+@media (max-width: 430px) { #sh-alb-h { font-size: min(var(--fs-md), calc((100vw - 2 * var(--gutter)) / 11.9)); } }
 
 /* captured store FAQ answers, attributed to their store */
 .sh-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); margin-top: clamp(44px, 6vw, 80px); }
@@ -133,20 +91,29 @@
 .sh-quote blockquote p { margin: 0; }
 @media (max-width: 760px) { .sh-quotes { grid-template-columns: minmax(0, 1fr); } }
 
-/* ---------- FAQ: sticky heading beside the list ---------- */
-.sh-faq { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
-.sh-faq__aside { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 24px); }
-.sh-faq__txt { color: var(--text-2); max-width: 36ch; }
-.sh-faq__aside .btns { margin-top: 20px; }
-@media (max-width: 900px) { .sh-faq { grid-template-columns: minmax(0, 1fr); } .sh-faq__aside { position: static; } }
+/* ---------- FAQ: the shared FAQ section (.faqsec in components.css, parts.mjs faqSection) ---------- */
+/* "ANY QUESTIONS?" (11.03x its size wide, measured) on one line down to 320px: at the plain size it broke at 360px,
+   leaving "ANY" alone on a line and the heading four lines tall */
+@media (max-width: 400px) { #sh-faq .faqsec__head .dh--md { font-size: min(var(--fs-md), calc((100vw - 2 * var(--gutter)) / 11.4)); } }
+/* phones: the bud hanging down from the crate band (/how-to-order/) sits on the seam, clear of the FAQ kicker under it
+   (its offset is inline, where build.mjs reads it to draw the seam under it) */
+@media (max-width: 1000px) { .sh-float-dn { bottom: -60px !important; } }
+@media (max-width: 760px) { .sh-float-dn { bottom: -36px !important; } }
 
-/* ---------- ordering steps (mint) with the record ---------- */
-.sh-steps { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+/* ---------- ordering steps (mint): the heading over the record in the narrow column (sticky beside the steps), the
+   steps in the wide one. Stacked: heading, steps, then the record. ---------- */
+.sh-steps { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(30px, 5vw, 80px); align-items: start; }
+.sh-steps__deck { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 24px); }
 .sh-steps__cta { margin-top: 26px; }
-.sh-steps__deck { position: relative; display: grid; justify-items: center; gap: 18px; }
+.sh-steps__rec { position: relative; display: grid; justify-items: center; gap: 18px; margin-top: 10px; }
 .sh-vinyl { width: min(100%, 420px); }
 .sh-steps__cap { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--text-ink-2); text-align: center; }
-@media (max-width: 900px) { .sh-steps { grid-template-columns: minmax(0, 1fr); } .sh-vinyl { width: min(56vw, 240px); } }
+@media (max-width: 900px) {
+  .sh-steps { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .sh-steps__deck { display: contents; }
+  .sh-steps__rec { order: 2; margin-top: 30px; }
+  .sh-vinyl { width: min(56vw, 240px); }
+}
 
 /* ---------- how to order / pickup: the track list beside a sticky aside ---------- */
 .sh-howto { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
@@ -157,6 +124,13 @@
 .sh-howto__now b { color: var(--text); }
 .sh-vinyl--aside { width: min(100%, 300px); margin-top: 8px; }
 @media (max-width: 900px) { .sh-howto { grid-template-columns: minmax(0, 1fr); } .sh-howto__aside { position: static; } .sh-vinyl--aside { display: none; } }
+/* /pickup/ (four short steps): the heading and the pull quote run across the top, the steps sit two to a row beneath */
+@media (min-width: 901px) {
+  .sh-howto--wide { grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 3vw, 44px); }
+  .sh-howto--wide .sh-howto__aside { position: static; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: 1fr auto; gap: 18px clamp(28px, 5vw, 80px); align-items: end; }
+  .sh-howto--wide .sh-howto__aside > .kicker, .sh-howto--wide .sh-howto__aside > .dh { grid-column: 1; }
+  .sh-howto--wide .sh-pull { grid-column: 2; grid-row: 1 / span 2; justify-self: end; width: min(100%, 560px); }
+}
 
 /* pickup: the captured delivery / pickup answer as a pull quote */
 .sh-pull { position: relative; display: grid; gap: 10px; margin: 0; padding: 24px; border-radius: 26px 26px 26px 6px; background: var(--lime); color: var(--ink); box-shadow: 0 30px 50px -28px rgba(0, 0, 0, .9); rotate: -1.2deg; }
@@ -192,22 +166,32 @@
 .sh-limit span { display: block; margin-top: 12px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--text-ink-2); }
 .sh-limits__txt { display: grid; gap: 12px; padding-left: clamp(18px, 2vw, 28px); border-left: 3px solid var(--ink); }
 .sh-limits__txt p:first-child { margin: 0; font-size: 18px; color: var(--text-ink); max-width: 46ch; }
-@media (max-width: 860px) { .sh-limits { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sh-limits__txt { grid-column: 1 / -1; }
+/* two up: the numbers sized to their half (100cqi / 3: "24 g" is ~2.9x its size wide; at / 2.7 it ran past its column
+   to 8px from a 360px screen's edge), tops level, and "OF CONCENTRATES" kept on one line on small phones (it broke
+   after "OF" and lifted "24 g" above "3 oz") */
+@media (max-width: 860px) { .sh-limits { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } .sh-limits__txt { grid-column: 1 / -1; }
   .sh-limit { container-type: inline-size; } /* only here: on desktop the limits sit in auto columns, which containment would collapse */
-  .sh-limit b { font-size: min(clamp(3.6rem, 2.2rem + 6vw, 8.6rem), calc(100cqi / 2.7)); } }
+  .sh-limit b { font-size: min(clamp(3.6rem, 2.2rem + 6vw, 8.6rem), calc(100cqi / 3)); } }
+@media (max-width: 480px) { .sh-limit span { font-size: 12px; letter-spacing: .08em; } }
 
 /* ---------- deals: loyalty tie-in and fine print ---------- */
-.sh-loyal { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
-.sh-loyal__media { position: relative; }
+/* the photo, the FAQ card and the buttons share the left column, so it ends near the words (the photo used to float
+   mid-column beside a much taller column of words); stacked: photo, words, card and buttons */
+.sh-loyal { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "media words" "more words"; grid-template-rows: auto 1fr; gap: 40px clamp(28px, 5vw, 80px); align-items: start; }
+.sh-loyal__more { grid-area: more; }
+.sh-loyal__more .btns { margin-top: 22px; }
+.sh-loyal__media { grid-area: media; position: relative; }
+.sh-loyal__words { grid-area: words; }
 .sh-loyal__media img { width: 100%; border-radius: var(--r-l); box-shadow: 0 40px 70px -40px rgba(20, 26, 25, .8); }
 .sh-loyal__badge { position: absolute; left: 18px; bottom: -18px; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: var(--pill); background: var(--ink); color: var(--lime); font-weight: 700; font-size: 14px; box-shadow: 0 16px 30px -14px rgba(0, 0, 0, .7); rotate: -2deg; }
 .sh-loyal__words p { color: var(--text-ink-2); max-width: 58ch; }
 .sh-dh2__sub { display: block; margin-top: .4em; font-size: .44em; line-height: 1.05; font-stretch: 108%; color: #4e7d22; }
 .sh-limits__txt i { font-style: italic; }
-.sh-loyal__faq { padding: 14px 18px; border-radius: var(--r-m); background: rgba(255, 255, 255, .6); border: 1px solid rgba(42, 49, 48, .14); font-size: 15px; }
+.sh-loyal__faq { margin: 0; padding: 14px 18px; border-radius: var(--r-m); background: rgba(255, 255, 255, .6); border: 1px solid rgba(42, 49, 48, .14); color: var(--text-ink-2); font-size: 15px; }
 .sh-loyal__faq b { display: block; color: var(--ink); margin-bottom: 4px; }
-.sh-loyal__words .btns { margin-top: 22px; }
-@media (max-width: 900px) { .sh-loyal { grid-template-columns: minmax(0, 1fr); } }
+.sh-loyal__words > :last-child { margin-bottom: 0; }
+/* stacked, the badge hanging off the photo's lower edge keeps clear of the kicker under it */
+@media (max-width: 900px) { .sh-loyal { grid-template-columns: minmax(0, 1fr); grid-template-areas: "media" "words" "more"; grid-template-rows: none; row-gap: 28px; } .sh-loyal__media { margin-bottom: 18px; } }
 .sh-fine { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 24px); }
 .sh-fine__item { display: grid; gap: 10px; align-content: start; padding: 24px; border-radius: var(--r-m); border: 1px solid var(--line-2); background: rgba(13, 18, 17, .35); }
 .sh-fine__item > .ico { width: 28px; height: 28px; color: var(--lime); }
@@ -225,7 +209,7 @@
 .sh-partner__logo img { width: 100%; max-width: 230px; aspect-ratio: 1; object-fit: contain; transition: scale .8s var(--ease); }
 .sh-partner:hover .sh-partner__logo img { scale: 1.05; }
 .sh-partner__body { display: grid; gap: 10px; align-content: center; padding: clamp(20px, 2.4vw, 32px); }
-.sh-partner__k { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--lime); }
+.sh-partner__k { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--lime); text-wrap: balance; } /* two even lines, not "CANNABIS" alone on the second */
 .sh-partner__name { font: 900 clamp(1.7rem, 1.2rem + 1.6vw, 2.7rem)/.92 var(--f-display); font-stretch: 118%; text-transform: uppercase; }
 .sh-partner__txt { color: var(--text-2); font-size: 16px; line-height: 1.6; }
 .sh-partner__go { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; color: var(--lime); font-weight: 600; }
@@ -234,7 +218,8 @@
 .sh-stories .sh-partner__in { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
 .sh-stories .sh-partner__logo { aspect-ratio: 16 / 8; }
 .sh-stories .sh-partner__logo img { max-width: 200px; }
-.sh-stories .sh-partner__body { align-content: start; }
+.sh-stories .sh-partner__body { display: flex; flex-direction: column; }
+.sh-stories .sh-partner__go { margin-top: auto; padding-top: 4px; } /* "Read the story" level on both cards whatever the story's length */
 @media (max-width: 900px) { .sh-partners, .sh-stories { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .sh-partner__in { grid-template-columns: minmax(0, 1fr); } .sh-partner__logo { aspect-ratio: 16 / 9; } .sh-partner__logo img { max-width: 150px; } }
 
@@ -249,11 +234,15 @@
 .sh-shopat__k { margin-right: 4px; font: 600 13px/1.2 var(--f-body); letter-spacing: .2em; text-transform: uppercase; color: var(--text-2); }
 .band--mint .sh-shopat__k { color: var(--text-ink-2); }
 .sh-shopat--line { margin-top: clamp(24px, 3vw, 36px); }
-@media (max-width: 520px) { .sh-shopat__k { flex: 1 1 100%; } }
+/* phones: the three store buttons one per row, each the group's full width (they wrapped two and one, uneven) */
+@media (max-width: 520px) { .sh-shopat { display: grid; grid-template-columns: minmax(0, 1fr); } .sh-shopat .btn { width: 100%; } }
 
 /* ---------- brand detail ---------- */
-.sh-bstory { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
-.sh-slap { position: relative; z-index: 3; margin-top: calc(-1 * clamp(90px, 11vw, 170px)); rotate: -4deg; } /* the logo slapped across the hero seam */
+/* the logo at most 340px (it stood far taller than a short story beside it); the words take the rest of the row */
+.sh-bstory { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+/* the logo slapped across the hero seam, over it: the seam is drawn inside this band at z-index 4 (shop.mjs) */
+.sh-slap { position: relative; z-index: 5; margin-top: calc(-1 * clamp(90px, 11vw, 170px)); rotate: -4deg; }
+.sh-seam-under { width: 0; height: 0; }
 .sh-slap__in { position: relative; display: grid; place-items: center; aspect-ratio: 1; padding: 8%; border-radius: 28px; background: #fff; box-shadow: 0 0 0 6px #f6faf7, 0 40px 70px -30px rgba(0, 0, 0, .9); }
 .sh-slap__in img { width: 100%; height: 100%; object-fit: contain; }
 .sh-bstory__lede { margin: 0 0 22px; font-size: clamp(1.1rem, 1rem + .45vw, 1.35rem); line-height: 1.65; color: var(--text); max-width: 60ch; }
@@ -290,8 +279,15 @@
 .sh-az__stamp .ico { width: 16px; height: 16px; }
 .sh-az__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(24px, 3vw, 36px); }
 .sh-az__chips .chipbtn { min-width: 44px; justify-content: center; }
+/* the letters as even rows (they wrapped with "W" and "Z" alone on a second row): one row where all of them fit at
+   44px, else two rows of half (--chips and --chips-half are set from the letter count in shop.mjs) */
+@media (min-width: 761px) {
+  .sh-az__chips { display: grid; grid-template-columns: repeat(var(--chips-half, 13), minmax(44px, 1fr)); }
+  .sh-az__chips .chipbtn { padding-inline: 8px; }
+}
+@media (min-width: 1360px) { .sh-az__chips { grid-template-columns: repeat(var(--chips, 25), minmax(44px, 1fr)); gap: 6px; } }
 .sh-az__how { margin: 18px 0 0; font-size: 14px; color: var(--text-3); max-width: 80ch; }
-.sh-bins { columns: 3 300px; column-gap: clamp(14px, 2vw, 24px); }
+.sh-bins { columns: 3 320px; column-gap: clamp(14px, 2vw, 24px); } /* two columns at 1024px: three left a brand name ~120px beside its three 44px store letters */
 .sh-bin { break-inside: avoid; margin: 0 0 clamp(14px, 2vw, 22px); border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .6); overflow: hidden; }
 .sh-bin__tab { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 18px; background: linear-gradient(90deg, var(--lime-16), transparent 70%); border-bottom: 1px solid var(--line); }
 .sh-bin__l { font: 900 36px/1 var(--f-display); font-stretch: 120%; color: var(--lime); }
@@ -304,7 +300,7 @@
 .sh-brand__name--go:hover { text-decoration: underline; text-underline-offset: .18em; }
 .sh-brand__name--go .ico { width: 15px; height: 15px; }
 .sh-brand__at { display: flex; gap: 4px; flex: none; }
-.sh-dot { display: grid; place-items: center; width: 40px; height: 40px; flex: none; border-radius: 50%; font: 900 15px/1 var(--f-display); font-stretch: 100%; text-decoration: none; }
+.sh-dot { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 50%; font: 900 15px/1 var(--f-display); font-stretch: 100%; text-decoration: none; } /* a full 44px tap target at every width (40px above 760px was under it, and 1024px is a touch tablet) */
 a.sh-dot { background: var(--night); color: var(--lime); box-shadow: inset 0 0 0 2px var(--lime), 0 0 14px -6px var(--lime); transition: background var(--d-1), color var(--d-1); }
 a.sh-dot:hover, a.sh-dot:focus-visible { background: var(--lime); color: var(--ink); }
 .sh-dot--off { color: var(--text-3); box-shadow: inset 0 0 0 1.5px var(--line); opacity: .55; }
@@ -313,13 +309,13 @@ a.sh-dot:hover, a.sh-dot:focus-visible { background: var(--lime); color: var(--i
   .sh-az__chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 10px; scroll-snap-type: x proximity; scrollbar-width: none; }
   .sh-az__chips::-webkit-scrollbar { display: none; }
   .sh-az__chips .chipbtn { flex: none; scroll-snap-align: start; }
-  .sh-dot { width: 44px; height: 44px; }
-  .sh-dot--key { width: 30px; height: 30px; }
 }
 
 /* /brands/: inventory varies by store */
 .sh-same { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 70px); align-items: start; }
 .sh-same__q { font: 880 clamp(1.7rem, 1.1rem + 2vw, 2.8rem)/.98 var(--f-display); font-stretch: 114%; text-transform: uppercase; color: var(--ink); }
+/* the question is sized to its column (a .fitcol; --fit from parts.mjs fitEm), so it stays within three lines */
+@media (min-width: 861px) { .sh-same__q { font-size: min(clamp(1.7rem, 1.1rem + 2vw, 2.8rem), 100cqi / var(--fit, 1)); } }
 .sh-same__a p { font-size: 18px; color: var(--text-ink-2); max-width: 56ch; }
 .sh-same__a a { color: #3d6b16; font-weight: 600; }
 .sh-same__a .btns { margin-top: 20px; }

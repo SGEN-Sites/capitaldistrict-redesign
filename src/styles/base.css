@@ -20,6 +20,8 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 input, select, textarea { font: inherit; color: inherit; }
 h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: 700; line-height: 1.1; text-wrap: balance; }
 p { margin: 0 0 1em; text-wrap: pretty; }
+li, dd, figcaption, blockquote, small, .status__txt { text-wrap: pretty; } /* no lone last word where the browser supports it */
+.zine__t, .flyer__t, .ct-mpost__t, .ct-rack__t, .sh-brand__name, .gcard__t, .track__t, .sp-tix__who b, .co-pass__brand, .st-res__name, .h-flyer__sub { text-wrap: balance; } /* card titles: even lines, no stranded last word */
 ul, ol { margin: 0; padding: 0; }
 table { border-collapse: collapse; }
 ::selection { background: var(--lime); color: var(--ink); }
@@ -52,6 +54,15 @@ main { display: block; outline: none; }
 .dh--lg { font-size: var(--fs-lg); }
 .dh--md { font-size: var(--fs-md); }
 .dh--sm { font-size: var(--fs-sm); line-height: .95; }
+/* sized to its column: the column is a size container (.fitcol, or container-type set by the layout) and --fit is the em
+   width the words need to stay within three lines (parts.mjs fitEm), so a long heading in a narrow column shrinks
+   before it runs a fourth line. Phones stack every layout and keep the plain sizes. */
+.fitcol { container-type: inline-size; }
+@media (min-width: 761px) {
+  .dh--fit.dh--lg { font-size: max(24px, min(var(--fs-lg), 100cqi / var(--fit))); }
+  .dh--fit.dh--md { font-size: max(24px, min(var(--fs-md), 100cqi / var(--fit))); }
+  .dh--fit.dh--sm { font-size: max(22px, min(var(--fs-sm), 100cqi / var(--fit))); }
+}
 .dh--inline .dh__a, .dh--inline .dh__b { display: inline; }
 .dh__tag { /* one graffiti tag per heading at most */
   display: inline-block; font-family: var(--f-tag); font-weight: 400; font-stretch: normal; text-transform: none; letter-spacing: 0;
@@ -87,18 +98,49 @@ main { display: block; outline: none; }
 .lede .tlink, .prose .tlink { min-height: 0; display: inline; }
 .tlink:hover { text-decoration: underline; }
 
-/* ---------- stickers (die-cut slaps) ---------- */
+/* ---------- stickers: die-cut slaps. src/scripts/sticker.js makes them elastic: it drives --sx/--sy (drag offset),
+   --lift (0..1), --lean/--tx/--ty (swing), --peel (curled corner, px) and data-corner. The drop shadow deepens and
+   softens as the sticker lifts. The face is clipped where a corner curls; the flap is that corner's back. ---------- */
 .sticker {
-  --rot: -4deg; display: inline-block; position: relative; padding: .42em .8em .38em; border-radius: 10px;
-  background: var(--lime); color: var(--ink); font: 900 14px/1 var(--f-display); font-stretch: 112%; letter-spacing: .04em; text-transform: uppercase;
-  box-shadow: 0 0 0 3px #f6faf7, 0 10px 24px -8px rgba(0, 0, 0, .7); transform: rotate(var(--rot)); transition: transform var(--d-2) var(--ease-spring);
+  --rot: -4deg; --pad: .46em .86em .4em; --back: #e8eeea;
+  position: relative; display: inline-block; vertical-align: middle; color: var(--ink);
+  font: 900 18px/1 var(--f-display); font-stretch: 112%; letter-spacing: .04em; text-transform: uppercase;
+  transform: translate(var(--sx, 0px), var(--sy, 0px)) perspective(700px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)) rotate(calc(var(--rot) + var(--lean, 0deg))) scale(calc(1 + var(--lift, 0) * .1));
+  filter: drop-shadow(0 calc(6px + var(--lift, 0) * 20px) calc(8px + var(--lift, 0) * 16px) rgba(0, 0, 0, calc(.55 - var(--lift, 0) * .17))) drop-shadow(0 1.5px 1.5px rgba(0, 0, 0, .4));
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
 }
 .sticker--tilt { --rot: -6deg; }
-.sticker::after { /* the peel */
-  content: ''; position: absolute; right: -3px; top: -3px; width: 14px; height: 14px; background: linear-gradient(225deg, var(--night) 50%, #dfe8e3 50%); border-bottom-left-radius: 6px; opacity: 0; transition: opacity var(--d-1);
+.sticker__face {
+  position: relative; display: block; padding: var(--pad); border: .19em solid #f6faf7; border-radius: .62em;
+  background: var(--lime); white-space: nowrap; overflow: hidden; clip-path: var(--clip, none);
 }
-.sticker:hover { transform: rotate(calc(var(--rot) * -.4)) scale(1.06); }
-.sticker:hover::after { opacity: 1; }
+.sticker__face::after { /* gloss: a sheen band that slides as the sticker tilts */
+  content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(105deg, transparent 36%, rgba(255, 255, 255, .55) 48%, transparent 60%);
+  background-size: 280% 100%; background-position: var(--shx, 62%) 0; opacity: calc(.28 + var(--lift, 0) * .5); mix-blend-mode: soft-light;
+}
+.sticker__flap { position: absolute; width: var(--peel, 0px); height: var(--peel, 0px); pointer-events: none; display: none; filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, .35)); }
+.sticker.is-live .sticker__flap { display: block; }
+.sticker.is-live { cursor: grab; touch-action: none; }
+.sticker.is-held { cursor: grabbing; z-index: 30; }
+.sticker.is-live:focus-visible { outline: none; }
+.sticker.is-live:focus-visible .sticker__face { box-shadow: 0 0 0 3px var(--ink), 0 0 0 6px var(--lime); }
+.sticker[data-corner="tr"] { --clip: polygon(0 0, calc(100% - var(--peel, 0px)) 0, 100% var(--peel, 0px), 100% 100%, 0 100%); }
+.sticker[data-corner="tl"] { --clip: polygon(var(--peel, 0px) 0, 100% 0, 100% 100%, 0 100%, 0 var(--peel, 0px)); }
+.sticker[data-corner="br"] { --clip: polygon(0 0, 100% 0, 100% calc(100% - var(--peel, 0px)), calc(100% - var(--peel, 0px)) 100%, 0 100%); }
+.sticker[data-corner="bl"] { --clip: polygon(0 0, 100% 0, 100% 100%, var(--peel, 0px) 100%, 0 calc(100% - var(--peel, 0px))); }
+.sticker[data-corner="tr"] .sticker__flap { top: 0; right: 0; background: linear-gradient(225deg, transparent 50%, #a9b4ae 50%, var(--back) 66%, #cdd6d1); }
+.sticker[data-corner="tl"] .sticker__flap { top: 0; left: 0; background: linear-gradient(135deg, transparent 50%, #a9b4ae 50%, var(--back) 66%, #cdd6d1); }
+.sticker[data-corner="br"] .sticker__flap { bottom: 0; right: 0; background: linear-gradient(315deg, transparent 50%, #a9b4ae 50%, var(--back) 66%, #cdd6d1); }
+.sticker[data-corner="bl"] .sticker__flap { bottom: 0; left: 0; background: linear-gradient(45deg, transparent 50%, #a9b4ae 50%, var(--back) 66%, #cdd6d1); }
+.sticker:not(.is-live) { transition: transform var(--d-2) var(--ease-spring); } /* without the script: the old hover lift */
+.sticker:not(.is-live):hover { --lift: .4; --lean: calc(var(--rot) * -1.4); }
+@keyframes stickerSlap { from { opacity: 0; transform: scale(1.55) rotate(-14deg); } 55% { opacity: 1; } to { opacity: 1; transform: none; } }
+/* page-hero sticker with no room after the H1's last letter (phones): sticker.js hangs it just under the line's end and
+   marks the wrapper and the H1 .is-hung. The H1 keeps room for it below (--ph-hang: the sticker's box + 18px, never less
+   than the H1's own margin), so the lede, the status line and the buttons start clear of it. A sticker wider than the
+   screen less 26px (12px each side + rounding) is set smaller to fit (.is-fit, --ph-fs). */
+.ph__in > .ph__h1.is-hung { margin-bottom: var(--ph-hang); }
+.ph__sticker.is-fit > .sticker { font-size: var(--ph-fs); }
 
 /* ---------- glass (only where something varied sits behind it) ---------- */
 .glass { position: relative; background: var(--glass-bg); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-2); border-radius: var(--r-l); isolation: isolate; }
@@ -121,9 +163,10 @@ main { display: block; outline: none; }
 .band--mint .status, .band--lime .status { color: var(--text-ink-2); }
 
 /* ---------- forms ---------- */
-.field { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+/* min-width 0: inside a grid track a control keeps an intrinsic ~200px minimum and pushed two-column rows past their card */
+.field { display: grid; gap: 6px; font-size: 14px; font-weight: 600; min-width: 0; }
 .field input, .field select, .field textarea {
-  min-height: 50px; padding: 12px 16px; border-radius: 14px; border: 1.5px solid var(--line-2); background: rgba(13, 18, 17, .55); color: var(--text); font-weight: 400; font-size: 16px;
+  width: 100%; min-width: 0; min-height: 50px; padding: 12px 16px; border-radius: 14px; border: 1.5px solid var(--line-2); background: rgba(13, 18, 17, .55); color: var(--text); font-weight: 400; font-size: 16px;
 }
 .field textarea { min-height: 120px; resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--lime); box-shadow: 0 0 0 4px var(--lime-16); }

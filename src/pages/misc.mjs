@@ -1,8 +1,8 @@
 // misc.mjs: lab pages for the owner's design reviews (noindex everywhere, never in the sitemap).
 // /lab/reviews/: three layout options for the home page's "NY Dispensary Reviews" section, built with the captured reviews.
-import { band, dh, kicker, esc, href, img, icon } from '../lib/parts.mjs';
+import { band, dh, kicker, esc, href, img, icon, btn, bullet, statusLine } from '../lib/parts.mjs';
 import { page as cap } from '../lib/capture.mjs';
-import { brand } from '../content/site.mjs';
+import { brand, stores, menuUrl } from '../content/site.mjs';
 
 const stars = () => `<span class="rv-stars" aria-label="Five stars">${icon('star')}${icon('star')}${icon('star')}${icon('star')}${icon('star')}</span>`;
 const clean = (t) => String(t).replace(/^[“‘"']+|[”’"']+$/g, '');
@@ -63,7 +63,7 @@ export function pages() {
   <div class="wrap rv-c__grid">
     <div class="rv-c__copy">
       ${kicker('Shout-outs')}${dh('NY Dispensary', 'Reviews', { id: 'rv-c-h' })}
-      <p class="lede">Real words from regulars at our Albany, Clifton Park and Schenectady counters. Drag the top card away, or deal the next one.</p>
+      <p class="lede">What customers say about us on Google. Drag the top card away, or deal the next one.</p>
       <div class="rv-c__ctrl"><button class="btn btn--lime" type="button" data-rv-deal><span>Next review</span>${icon('arrow')}</button><span class="rv-c__count"><b data-rv-c>01</b> / ${String(reviews.length).padStart(2, '0')}</span></div>
       <p><a class="tlink" href="${href('/reviews/')}">Read every review${icon('arrow')}</a></p>
       ${note}
@@ -76,7 +76,7 @@ export function pages() {
   <p class="lede">Three working layouts for the home page's "NY Dispensary Reviews" section, built with the eight Google reviews the home page shows. Pick one and it replaces the current row of cards.</p>
   <p class="lab-jump"><a class="chipbtn" href="#opt-a">A · The Wall</a><a class="chipbtn" href="#opt-b">B · Spotlight</a><a class="chipbtn" href="#opt-c">C · The Deck</a></p></div></section>`;
 
-  return [{
+  return [specialsLab(), {
     path: '/lab/reviews/', type: 'lab', lab: true, noindex: true,
     title: 'Reviews section: three layout options (design lab)',
     description: 'Three working layout options for the reviews section of the Capital District Cannabis redesign.',
@@ -85,4 +85,49 @@ export function pages() {
       + `<div id="opt-b">${label('B', 'Spotlight', 'One review at a time, big; advances on its own, or pick a reviewer.')}${optB}</div>`
       + `<div id="opt-c">${label('C', 'The Deck', 'A stack of cards: drag the top one away or deal the next.')}${optC}</div>`,
   }];
+}
+
+// /lab/specials/: the home page's "Daily Specials" section as it is (A) and two compact layouts (B, C).
+// Same words, links and live store status as the home section; B keeps the lede's first sentence, C drops the lede and
+// the addresses to stay short. Styles in src/styles/sp.css; nothing new in the script (site.js fills every status).
+function specialsLab() {
+  const go = (s) => esc(menuUrl(s.id, 'specials'));
+  const lede = 'A rotating selection of cannabis deals on flower, pre-rolls, edibles, vapes, and more.';
+  // A: the section on the home page today
+  const optA = band(`<div class="band__head"><div class="band__intro">${kicker('Fresh at every store')}${dh('Daily', 'Specials', { id: 'sp-a-h' })}</div>
+  <p class="lede">${esc(lede)} Each store posts its own, so pick the counter you are heading to.</p></div>
+  <div class="h-flyers">${stores.map((s, i) => `<a class="h-flyer" href="${go(s)}" target="_blank" rel="noopener" style="--r:${[-2.5, 1.5, -1.2][i]}deg;--i:${i}" data-tilt>
+    <span class="h-flyer__tape" aria-hidden="true"></span><span class="h-flyer__top">${bullet(s)}<span>${esc(s.city)}</span></span>
+    <span class="h-flyer__big">Specials</span><span class="h-flyer__sub">${esc(s.street)} · ${esc(s.city)}, NY</span>${statusLine(s)}
+    <span class="h-flyer__go">See today’s deals${icon('arrow-ne')}</span></a>`).join('')}</div>
+  <p class="h-deals__more">${btn('All deals by store', '/deals/', { kind: 'ghost' })}</p>`, { tone: 'mint', labelledby: 'sp-a-h', lx: '15%', ly: '0%' });
+
+  // B: store tickets. The heading beside three slim ticket rows, one per store, each with a perforated stub
+  const optB = band(`<div class="sp-b">
+    <div class="sp-b__intro">${kicker('Fresh at every store')}${dh('Daily', 'Specials', { id: 'sp-b-h', size: 'md' })}<p class="sp-b__lede">${esc(lede)}</p>${btn('All deals by store', '/deals/', { kind: 'ghost', size: 'sm' })}</div>
+    <ul class="sp-b__list">${stores.map((s, i) => `<li><a class="sp-tix" href="${go(s)}" target="_blank" rel="noopener" style="--i:${i}">
+      ${bullet(s)}<span class="sp-tix__who"><b>${esc(s.city)}</b><small>${esc(s.street)} · ${esc(s.city)}, NY</small>${statusLine(s)}</span>
+      <span class="sp-tix__go"><span>Specials</span>${icon('arrow-ne')}</span></a></li>`).join('')}</ul>
+  </div>`, { tone: 'mint', labelledby: 'sp-b-h', lx: '15%', ly: '0%', cls: 'sp-band' });
+
+  // C: mini flyers. The taped dark flyers kept, shrunk into one row beside the heading
+  const optC = band(`<div class="sp-c">
+    <div class="sp-c__intro">${kicker('Fresh at every store')}${dh('Daily', 'Specials', { id: 'sp-c-h', size: 'md' })}<p class="sp-c__more"><a class="tlink" href="${href('/deals/')}">All deals by store${icon('arrow')}</a></p></div>
+    <div class="sp-c__flyers">${stores.map((s, i) => `<a class="sp-fly" href="${go(s)}" target="_blank" rel="noopener" style="--r:${[-2, 1.3, -1][i]}deg" data-tilt>
+      <span class="sp-fly__tape" aria-hidden="true"></span><span class="sp-fly__top">${bullet(s)}<span>${esc(s.city)}</span></span>
+      <span class="sp-fly__big">Specials</span>${statusLine(s)}<span class="sp-fly__go">See today’s deals${icon('arrow-ne')}</span></a>`).join('')}</div>
+  </div>`, { tone: 'mint', labelledby: 'sp-c-h', lx: '15%', ly: '0%', cls: 'sp-band' });
+
+  const intro = `<section class="lab-intro"><div class="wrap"><p class="kicker">Design lab</p><h1 class="dh dh--md"><span class="dh__a">Daily Specials</span> <span class="dh__b">Compact options</span></h1>
+  <p class="lede">The home page's "Daily Specials" section as it is today (A) and two compact layouts (B, C). Same words, the same three store links and the same live status. Pick one and it replaces the current section.</p>
+  <p class="lab-jump"><a class="chipbtn" href="#sp-opt-a">A · Today</a><a class="chipbtn" href="#sp-opt-b">B · Store tickets</a><a class="chipbtn" href="#sp-opt-c">C · Mini flyers</a></p></div></section>`;
+  return {
+    path: '/lab/specials/', type: 'lab', lab: true, noindex: true,
+    title: 'Daily Specials: two compact layouts (design lab)',
+    description: 'The Daily Specials section of the Capital District Cannabis redesign as it is and in two compact layouts.',
+    main: intro
+      + `<div id="sp-opt-a">${label('A', 'Today', 'The current section: three tall taped flyers under the heading.')}${optA}</div>`
+      + `<div id="sp-opt-b">${label('B', 'Store tickets', 'The heading beside three slim ticket rows, one per store; about a third of the height.')}${optB}</div>`
+      + `<div id="sp-opt-c">${label('C', 'Mini flyers', 'The taped flyers kept, shrunk into one row beside the heading.')}${optC}</div>`,
+  };
 }

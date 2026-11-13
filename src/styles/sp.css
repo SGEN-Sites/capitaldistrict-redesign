@@ -1,0 +1,66 @@
+/* sp.css: the Daily Specials section, two compact layouts (design lab: /lab/specials/). Prefix sp-. */
+.sp-band.band { padding-block: clamp(56px, 7vw, 96px); }
+
+/* ---------- B: store tickets ---------- */
+/* the tickets hug their words: ~532px wide (the status still fits on one line), not the whole right half */
+.sp-b { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 532px); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.sp-b__intro .dh { margin-bottom: 12px; }
+.sp-b__lede { color: var(--text-ink-2); max-width: 36ch; margin: 0 0 20px; text-wrap: pretty; }
+.sp-b__list { list-style: none; display: grid; gap: 10px; }
+.sp-tix {
+  --stub: 124px; --notch: 10px; /* "SPECIALS" + gap + arrow are 107px: 124px leaves ~8px either side (at 112 the label touched the perforation and the arrow sat 2.4px from the edge, under its 3px hover nudge); the column grew 12px with it, so the status keeps its width */
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) var(--stub); align-items: center; gap: 0 16px;
+  padding: 14px 0 14px 16px; border-radius: 14px; background: var(--ink); color: var(--text); text-decoration: none;
+  rotate: calc((var(--i) - 1) * -.35deg); box-shadow: 0 18px 30px -20px rgba(13, 18, 17, .6);
+  -webkit-mask: radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle var(--notch) at calc(100% - var(--stub)) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat;
+  transition: translate .45s var(--ease-spring), rotate .45s var(--ease-spring), background .3s;
+}
+.sp-tix::after { content: ''; position: absolute; top: 14px; bottom: 14px; right: var(--stub); border-left: 2px dashed rgba(234, 245, 237, .18); }
+.sp-tix:hover, .sp-tix:focus-visible { translate: 8px 0; rotate: 0deg; background: #1d2523; }
+.sp-tix:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.sp-tix .bullet { width: 46px; height: 46px; font-size: 20px; }
+.sp-tix__who { display: grid; gap: 5px; min-width: 0; }
+.sp-tix__who b { font: 880 clamp(19px, 1rem + .45vw, 24px)/1 var(--f-display); font-stretch: 114%; text-transform: uppercase; }
+.sp-tix__who small { font-size: 13.5px; color: var(--text-3); }
+@media (max-width: 359px) { .sp-tix__who b { font-size: 16.5px; font-stretch: 104%; } } /* 320: "Clifton Park" ran to two lines with "Park" alone */
+.sp-tix .status { font-size: 13.5px; color: var(--text-2); }
+.sp-tix__go { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font: 880 14px/1 var(--f-display); font-stretch: 112%; letter-spacing: .04em; text-transform: uppercase; color: var(--lime); }
+.sp-tix__go .ico { width: 16px; height: 16px; transition: translate .3s var(--ease); }
+.sp-tix:hover .sp-tix__go .ico { translate: 3px -3px; }
+@media (max-width: 960px) { .sp-b { grid-template-columns: minmax(0, 1fr); gap: 24px; } .sp-b__list { max-width: 560px; } }
+/* on a dark band (/shop/ and /deals/): the lede in light ink, and on slate the tickets a shade darker than the ground */
+.band--night .sp-b__lede, .band--ink .sp-b__lede, .band--slate .sp-b__lede { color: var(--text-2); }
+.band--slate .sp-tix { background: var(--night); }
+.band--slate .sp-tix:hover, .band--slate .sp-tix:focus-visible { background: var(--ink-2); }
+@media (max-width: 560px) {
+  .sp-tix { --stub: 58px; padding-left: 14px; gap: 0 12px; }
+  .sp-tix .bullet { width: 40px; height: 40px; font-size: 17px; }
+  .sp-tix__go > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .sp-tix__go .ico { width: 20px; height: 20px; }
+}
+
+/* ---------- C: mini flyers ---------- */
+.sp-c { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3.2fr); gap: clamp(24px, 3.5vw, 56px); align-items: center; }
+.sp-c__intro .dh { margin-bottom: 14px; }
+.sp-c__more { margin: 0; }
+.sp-c__flyers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); padding-top: 12px; }
+.sp-fly {
+  position: relative; container-type: inline-size; display: grid; gap: 10px; align-content: start; padding: 26px 18px 18px; border-radius: 6px;
+  background: var(--ink); color: var(--mint); text-decoration: none; rotate: var(--r, 0deg);
+  box-shadow: 0 22px 34px -20px rgba(13, 18, 17, .65); transition: rotate .45s var(--ease-spring), translate .45s var(--ease-spring), box-shadow .35s;
+}
+.sp-fly:hover, .sp-fly:focus-visible { rotate: 0deg; translate: 0 -6px; box-shadow: 0 30px 44px -22px rgba(13, 18, 17, .7), 0 0 0 2px var(--lime); }
+.sp-fly__tape { position: absolute; left: 50%; top: -12px; width: 80px; height: 24px; translate: -50% 0; rotate: 3deg; background: rgba(255, 255, 255, .72); box-shadow: 0 2px 8px rgba(0, 0, 0, .18); }
+.sp-fly__top { display: flex; align-items: center; gap: 10px; font: 700 12px/1 var(--f-body); letter-spacing: .18em; text-transform: uppercase; }
+.sp-fly .bullet { width: 32px; height: 32px; font-size: 14px; }
+.sp-fly__big { font: 900 min(2.6rem, calc(100cqi / 7))/.9 var(--f-display); font-stretch: 128%; text-transform: uppercase; color: var(--lime); white-space: nowrap; }
+.sp-fly .status { font-size: 12.5px; color: var(--text-2); }
+.sp-fly__go { display: inline-flex; align-items: center; gap: 6px; font: 800 13px/1 var(--f-body); color: var(--lime); }
+.sp-fly__go .ico { width: 15px; height: 15px; }
+@media (max-width: 1100px) { .sp-c { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+@media (max-width: 760px) {
+  .sp-c__flyers { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: calc(-1 * var(--gutter)); padding: 22px var(--gutter) 14px; scrollbar-width: none; }
+  .sp-c__flyers::-webkit-scrollbar { display: none; }
+  .sp-fly { flex: 0 0 72%; scroll-snap-align: center; }
+}

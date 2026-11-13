@@ -1,0 +1,87 @@
+/* cave.css: the "Shop <city> by category" band on the store and town pages as a concave carousel, "the cave" (owner
+   request 2026-11-13; markup src/pages/stores.mjs caveCrate(), script src/scripts/cave.js). Ported from the deals wall of
+   an earlier redesign of ours and
+   restyled as this site's record sleeves: square cards, the category art full bleed, the catalogue number top left, the
+   name in the wide display face and "Shop now" in lime at the foot, as in the crate (components.css .sleeve).
+   cave.js sets .cave-on and hangs each card on the arc (transform, opacity, visibility, z-index, and --cave-d: 0 for the
+   centred card, 1 for a card or more away), so the side cards come closer and turn in, under a night veil. The stage
+   runs the full width of the screen (--cave-vw, set by the script) and fades into the band at its left and right
+   (--cave-fade: narrower on phones, where the neighbours only peek beside the centred card); a pool of the band's lime
+   light lies on the floor under the centred card. Geometry lives here: --cave-w, the card's side (74vw on phones up to
+   405px wide, so the neighbours peek, then 300px, then a quarter of the screen up to 380px; the script reads the card's width and the image sizes in
+   stores.mjs follow it), and --cave-h, the stage's height over the card's side (room for the neighbours' nearer edges
+   and the floor). Without the script the cards are the crate they replace: a grid, a swipe row on phones; the
+   controls stay hidden. Every colour is a token (the shadows' black and the edge mask's alpha aside, as elsewhere). */
+.cave { --cave-w: min(74vw, max(300px, 25vw), 380px); --cave-h: 1.26; --cave-fade: 12%; position: relative; }
+
+/* ---------- the card: a record sleeve ---------- */
+.cave__panel { position: relative; aspect-ratio: 1; }
+.cave__card { --cave-pad: clamp(14px, 6.2cqi, 24px); position: absolute; inset: 0; display: block; overflow: hidden; border-radius: 14px; background: var(--night-2); color: var(--text); text-decoration: none; container-type: inline-size; -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 30px 46px -26px rgba(0, 0, 0, .92); }
+.cave__art { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; pointer-events: none; -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+  filter: saturate(.94) brightness(.94); transition: scale var(--d-3) var(--ease), filter var(--d-2) var(--ease); }
+/* a soft shade under the number, a deeper one rising from the foot under the name and "Shop now" */
+.cave__shade { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--night-2) 52%, transparent), transparent 24%),
+    linear-gradient(0deg, color-mix(in srgb, var(--night-2) 94%, transparent) 0%, color-mix(in srgb, var(--night-2) 72%, transparent) 24%, color-mix(in srgb, var(--night-2) 28%, transparent) 42%, transparent 60%); }
+.cave__no { position: absolute; left: var(--cave-pad); top: var(--cave-pad); font: 700 13px/1 var(--f-body); letter-spacing: .18em; font-variant-numeric: tabular-nums; color: var(--text-2); }
+/* sized from the card's own width (it is a container): "CONCENTRATES" is 10.2 times the font size wide at this width */
+.cave__name { position: absolute; left: var(--cave-pad); right: var(--cave-pad); bottom: calc(var(--cave-pad) + 26px); font: 900 min(34px, calc((100cqi - 2 * var(--cave-pad)) / 10.6))/1 var(--f-display); font-stretch: 118%; text-transform: uppercase; }
+.cave__go { position: absolute; left: var(--cave-pad); bottom: var(--cave-pad); display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; line-height: 1; color: var(--lime); transition: gap var(--d-2) var(--ease); }
+.cave__go .ico { width: 15px; height: 15px; }
+/* the sleeve's edge (a hairline over the art) and, with the script, the night veil over a side card */
+.cave__card::before { content: ''; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none; box-shadow: inset 0 0 0 1px var(--line), inset 0 1px 0 rgba(255, 255, 255, .07); }
+.cave-on .cave__card::after { content: ''; position: absolute; inset: 0; z-index: 3; border-radius: inherit; pointer-events: none; background: var(--night-2); opacity: calc(var(--cave-d, 0) * .36); }
+.cave__card:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
+@media (hover: hover) {
+  .cave:not(.cave-on) .cave__card:hover .cave__art, .cave-on .cave__panel[aria-current] .cave__card:hover .cave__art { scale: 1.05; filter: none; }
+  .cave:not(.cave-on) .cave__card:hover .cave__go, .cave-on .cave__panel[aria-current] .cave__card:hover .cave__go { gap: 10px; }
+  .cave-on .cave__panel:not([aria-current]) .cave__card:hover::after { opacity: calc(var(--cave-d, 0) * .14); }
+}
+
+/* ---------- the wall (with the script): the cards hung on the arc, the eye level with their middles ---------- */
+.cave-on .cave__stage { position: relative; width: var(--cave-vw, 100vw); margin-left: calc(50% - var(--cave-vw, 100vw) / 2); height: calc(var(--cave-w) * var(--cave-h)); overflow: hidden;
+  touch-action: pan-y; cursor: grab; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--cave-fade), #000 calc(100% - var(--cave-fade)), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 var(--cave-fade), #000 calc(100% - var(--cave-fade)), transparent 100%); }
+.cave-on.is-dragging .cave__stage, .cave-on.is-dragging .cave__stage * { cursor: grabbing; }
+/* the wall's keyboard focus shows on the centred card: the stage's own outline would fade into its masked edges */
+.cave-on .cave__stage:focus-visible { outline: none; }
+.cave-on .cave__stage:focus-visible .cave__panel[aria-current] .cave__card { outline: 2px solid var(--lime); outline-offset: 4px; }
+.cave-on .cave__wall { position: absolute; inset: 0; perspective-origin: 50% 46%; }
+.cave-on .cave__panel { position: absolute; left: 50%; top: 46%; width: var(--cave-w); height: var(--cave-w); aspect-ratio: auto; margin: calc(var(--cave-w) / -2) 0 0 calc(var(--cave-w) / -2);
+  -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+/* the floor: a pool of the band's lime key light under the centred card (the earlier build's floor reflection is left
+   out here: a sleeve's words sit at its foot, so a reflection would mirror them) */
+.cave-on .cave__stage::before { content: ''; position: absolute; left: 50%; top: calc(46% + var(--cave-w) / 2); width: calc(var(--cave-w) * 1.9); height: calc(var(--cave-w) * .34); translate: -50% -42%; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--lime) 22%, transparent), color-mix(in srgb, var(--lime) 7%, transparent) 55%, transparent); }
+/* until the script hangs the wall, its height is kept, so nothing below jumps */
+.js .cave:not(.cave-on) .cave__stage { min-height: calc(var(--cave-w) * var(--cave-h)); }
+
+/* ---------- under the wall: previous / counter / next (the home events carousel's controls) ---------- */
+.cave__controls { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 1.6vw, 18px); margin-top: clamp(2px, 1vw, 12px); }
+.cave__btn { width: 48px; height: 48px; flex: none; display: grid; place-items: center; padding: 0; border-radius: 50%; border: 1px solid var(--line-2); background: color-mix(in srgb, var(--night-2) 50%, transparent); color: var(--text); cursor: pointer;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: border-color var(--d-1), color var(--d-1), background-color var(--d-1), scale var(--d-1); }
+.cave__btn:hover { border-color: var(--lime); color: var(--lime); background-color: var(--lime-08); }
+.cave__btn:active { scale: .94; }
+.cave__btn:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.cave__btn .ico { width: 20px; height: 20px; }
+.cave__count { display: flex; align-items: center; gap: 14px; margin: 0; font: 700 13px/1 var(--f-body); letter-spacing: .14em; font-variant-numeric: tabular-nums; color: var(--text-3); }
+.cave__count b { min-width: 2ch; font: 850 21px/1 var(--f-display); font-stretch: 112%; letter-spacing: .02em; color: var(--text); }
+.cave__bar { position: relative; display: block; width: clamp(80px, 10vw, 150px); height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.cave__bar i { position: absolute; inset: 0; border-radius: inherit; transform-origin: 0 50%; transform: scaleX(var(--cave-p, .1)); background: linear-gradient(90deg, var(--lime-lo), var(--lime)); transition: transform var(--d-2) var(--ease); }
+
+/* ---------- without the script: the crate it replaces, a grid (five across, four on tablets) and a swipe row on phones ---------- */
+.cave:not(.cave-on) .cave__wall { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); }
+@media (max-width: 1100px) { .cave:not(.cave-on) .cave__wall { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 860px) {
+  .cave:not(.cave-on) .cave__wall { display: flex; gap: 14px; margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; }
+  .cave:not(.cave-on) .cave__wall::-webkit-scrollbar { display: none; }
+  .cave:not(.cave-on) .cave__panel { flex: 0 0 min(64vw, 260px); scroll-snap-align: center; }
+}
+
+/* ---------- phones ---------- */
+@media (max-width: 760px) {
+  .cave { --cave-fade: 4%; }
+  .cave__btn { width: 44px; height: 44px; }
+}

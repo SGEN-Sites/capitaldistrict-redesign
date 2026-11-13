@@ -8,10 +8,14 @@
 .topbar__store:hover { background: var(--lime-08); }
 .topbar__store b { color: var(--lime); font-weight: 600; }
 .topbar__store .status { font-size: 13px; }
+.topbar__store .status__txt { white-space: nowrap; } /* base.css gives the status text-wrap: pretty, which turned wrapping back on inside this one-line button */
 .topbar__links { margin: 0; display: flex; gap: 18px; justify-content: flex-end; }
-.topbar__links a { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.topbar__links a { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .topbar__links a:hover { color: var(--lime); }
 @media (max-width: 1099px) { .topbar__lic { display: none; } .topbar__in { grid-template-columns: auto 1fr; } }
+/* 761-899: the store line and the phone fill the bar (the phone wrapped to "(518) 901-" / "7107"); Rewards and Events
+   stay one tap away in the menu and the footer */
+@media (max-width: 899px) { .topbar__links a:not([data-store-tel]) { display: none; } }
 @media (max-width: 760px) { .topbar { display: none; } }
 
 /* ---------- header ---------- */
@@ -23,7 +27,7 @@
 .hdr.is-scrolled::before, .hdr.is-solid::before, .t-page:not(.has-hero) .hdr::before { opacity: 1; }
 .hdr.is-hidden { transform: translateY(calc(-100% - var(--topbar-h))); }
 .hdr__in { position: relative; height: 100%; width: min(100% - 2 * var(--gutter), var(--wrap-wide)); margin-inline: auto; display: flex; align-items: center; gap: 28px; }
-.hdr__logo { flex: none; display: block; width: clamp(170px, 15vw, 230px); }
+.hdr__logo { flex: none; display: flex; align-items: center; min-height: 44px; width: clamp(170px, 15vw, 230px); } /* a 44px tap target around the 28px-tall logo */
 .hdr__logo img { width: 100%; height: auto; filter: drop-shadow(0 2px 10px rgba(0, 0, 0, .45)); }
 .nav { flex: 1; display: flex; justify-content: center; }
 .nav__list { list-style: none; display: flex; gap: 4px; align-items: center; }
@@ -89,10 +93,11 @@
 @keyframes megaIn { from { opacity: 0; transform: translateY(-8px) scale(.985); } }
 
 /* ---------- drawer (phones and tablets) ---------- */
-.drawer { position: fixed; inset: calc(var(--hdr-h) + var(--topbar-h)) 0 0; z-index: var(--z-drawer); background: rgba(13, 18, 17, .97); overflow-y: auto; overscroll-behavior: contain; animation: drawerIn .4s var(--ease) both; }
+.drawer { position: fixed; inset: calc(var(--hdr-h) + var(--topbar-h)) 0 0; z-index: var(--z-drawer); background: var(--night-2); overflow-y: auto; overscroll-behavior: contain; animation: drawerIn .4s var(--ease) both; } /* opaque: the hero showed through behind the links */
 .drawer__in { width: min(100% - 2 * var(--gutter), 640px); margin-inline: auto; padding: 18px 0 calc(40px + env(safe-area-inset-bottom)); display: grid; gap: 8px; }
 .drawer__store { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 14px; border-radius: var(--r-m); border: 1px solid var(--line-2); background: var(--lime-08); }
-.drawer__store span { flex: 1; display: grid; gap: 2px; }
+/* only the words column: a plain "span" also stretched the letter badge into an oval and stacked the status dot over its text */
+.drawer__store > span:not(.bullet) { flex: 1; min-width: 0; display: grid; gap: 2px; }
 .drawer__store small { font-size: 12px; color: var(--text-3); text-transform: uppercase; letter-spacing: .12em; }
 .drawer__grp { border-bottom: 1px solid var(--line); }
 .drawer__grp summary { list-style: none; display: flex; align-items: center; justify-content: space-between; min-height: 60px; font: 850 24px/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; cursor: pointer; }
@@ -115,13 +120,14 @@ body.drawer-open { overflow: hidden; }
 .gate__bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(70% 60% at 50% 45%, rgba(13, 18, 17, .25), rgba(13, 18, 17, .88)), linear-gradient(180deg, transparent 50%, rgba(161, 207, 110, .08)); }
 .gate__beam { position: absolute; left: 50%; bottom: -10%; width: 140vmax; height: 140vmax; translate: -50% 0; background: conic-gradient(from 180deg at 50% 100%, transparent 0 168deg, rgba(161, 207, 110, .12) 176deg, transparent 184deg 360deg); animation: beamSweep 9s var(--ease-io) infinite alternate; mix-blend-mode: screen; }
 .gate__card { position: relative; width: min(100%, 560px); padding: clamp(28px, 5vw, 48px); text-align: center; border-radius: var(--r-xl); }
+.gate__sticker { font-size: 24px; }
 .gate__logo { width: 250px; margin: 0 auto 26px; }
 .gate__q { font: 880 clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem)/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; margin: 18px 0 26px; }
 .gate__btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .gate__btns .btn { min-width: 170px; }
 .gate__no { margin-top: 18px; color: #f2b48a; font-weight: 600; }
 .gate__stores { display: grid; gap: 10px; text-align: left; }
-.gate__store { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: var(--r-m); background: rgba(13, 18, 17, .55); border: 1px solid var(--line-2); transition: border-color var(--d-1), transform var(--d-2) var(--ease), background var(--d-1); }
+.gate__store { display: flex; align-items: center; gap: 14px; padding: 14px 16px; text-align: left; border-radius: var(--r-m); background: rgba(13, 18, 17, .55); border: 1px solid var(--line-2); transition: border-color var(--d-1), transform var(--d-2) var(--ease), background var(--d-1); } /* left: name, street and status line up with the status dot (a button centres by default) */
 .gate__store:hover, .gate__store:focus-visible { border-color: var(--lime); transform: translateX(4px); background: rgba(13, 18, 17, .8); }
 .gate__store > span:not(.bullet) { flex: 1; display: grid; gap: 2px; }
 .gate__store b { font-size: 17px; }
@@ -135,7 +141,10 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 /* ---------- store switcher ---------- */
 .smodal { position: fixed; inset: 0; z-index: var(--z-modal); display: grid; place-items: center; padding: 18px; }
 .smodal__scrim { position: absolute; inset: 0; background: rgba(8, 11, 10, .72); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); animation: fadeIn .3s both; }
-.smodal__card { position: relative; width: min(100%, 1040px); max-height: calc(100dvh - 36px); overflow-y: auto; padding: clamp(24px, 4vw, 40px); border-radius: var(--r-xl); animation: modalIn .5s var(--ease) both; background: linear-gradient(135deg, rgba(31, 41, 38, .92), rgba(20, 26, 25, .9)); }
+/* the card stays put and its contents scroll inside it: when the card itself scrolled, the glass's lit edge
+   (.glass::before) scrolled with the list and its rounded outline cut across a store card */
+.smodal__card { position: relative; width: min(100%, 1040px); max-height: calc(100dvh - 36px); display: flex; flex-direction: column; border-radius: var(--r-xl); animation: modalIn .5s var(--ease) both; background: linear-gradient(135deg, rgba(31, 41, 38, .92), rgba(20, 26, 25, .9)); }
+.smodal__scroll { position: relative; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: clamp(24px, 4vw, 40px); border-radius: inherit; }
 .smodal__x { position: absolute; right: 16px; top: 16px; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-2); }
 .smodal__x:hover { border-color: var(--lime); color: var(--lime); }
 .smodal__h { font: 880 var(--fs-md)/.95 var(--f-display); font-stretch: 112%; text-transform: uppercase; margin-bottom: 10px; }
@@ -151,15 +160,19 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 .mini:hover { border-color: var(--line-2); }
 .mini.is-mine { border-color: var(--lime); box-shadow: var(--shadow-lime); }
 .mini.is-mine::after { content: 'Your store'; position: absolute; top: -11px; right: 16px; padding: 4px 10px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font: 700 11px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; }
-.mini__head { display: flex; gap: 12px; align-items: center; }
-.mini__head > div { min-width: 0; }
-/* sized from the card's own width (it is a container): "SCHENECTADY," is one unbreakable word, 8.8x the font size wide */
-.mini__name { font: 850 min(20px, calc((100cqi - 50px) / 9.2))/1 var(--f-display); font-stretch: 110%; text-transform: uppercase; margin-bottom: 6px; }
+/* badge + name on the first row, the status across the card's full width below (beside the badge it was squeezed
+   into four short lines). The name keeps ", NY" with a no-break space, so it is sized from the card's own width
+   (the card is a container): "SCHENECTADY, NY" is about 10.7x the font size wide. */
+.mini__head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 12px; }
+.mini__head > div { display: contents; }
+.mini__head .status { grid-column: 1 / -1; }
+.mini__name { font: 850 min(20px, calc((100cqi - 50px) / 11.2))/1.05 var(--f-display); font-stretch: 110%; text-transform: uppercase; margin: 0; }
 .mini__addr { margin: 0; color: var(--text-2); font-size: 15px; }
 .mini__links { margin: 0; display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; }
 .mini__links a { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; text-decoration: none; color: var(--text); }
 .mini__links a:hover { color: var(--lime); }
 .mini__links .ico { color: var(--lime); width: 16px; height: 16px; }
+@container (max-width: 250px) { .mini__links { display: grid; gap: 0; } } /* narrow cards: phone and Directions always on their own rows, so the three cards line up */
 .mini__cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
 .mini__cta > .btn { width: 100%; min-width: 0; padding-inline: 12px; }
 @container (max-width: 380px) { .mini__cta { grid-template-columns: 1fr; } }
@@ -195,6 +208,7 @@ html.gate-open, html.gate-open body { overflow: hidden; }
    The bar shows the store's badge (the header chip carries the city) and keeps the name for screen readers. */
 @media (max-width: 560px) {
   .pickbar__store { flex: none; }
+  .pickbar__store .bullet { width: 44px; height: 44px; font-size: 19px; } /* the badge is the whole button here: a 44px target, the size of the round buttons beside it */
   .pickbar__store > span:not(.bullet) { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .pickbar__acts { margin-left: auto; }
 }
@@ -202,7 +216,8 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 
 /* ---------- footer ---------- */
 .ftr { position: relative; background: var(--night-2); padding-bottom: var(--bottom-stack); }
-.ftr__finale.band { padding: clamp(160px, 13vw, 200px) 0 clamp(60px, 8vw, 110px); overflow: hidden; }
+.ftr__finale.band { padding: clamp(160px, 13vw, 200px) 0 clamp(60px, 8vw, 110px); overflow: hidden; } /* the top keeps room for The Pass's drips (~118px) */
+.ftr--flush .ftr__finale.band { padding-top: clamp(42px, 13vw - 118px, 82px); } /* no drips above (the 404, the labs): the same space less the drips' 118px */
 .ftr__alley { width: 100%; height: 100%; object-fit: cover; opacity: .5; filter: saturate(1.05); }
 .ftr__finale .band__clip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13, 18, 17, .96) 0%, rgba(13, 18, 17, .78) 46%, rgba(13, 18, 17, .5)), linear-gradient(180deg, var(--night) 0%, transparent 22%, transparent 70%, var(--night-2) 100%); }
 /* heading block on top, the three store cards across the full row below (side by side they were 180-228px wide) */
@@ -224,7 +239,7 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 .ftr__col summary::-webkit-details-marker { display: none; }
 .ftr__col summary .ico { display: none; }
 .ftr__col ul { list-style: none; display: grid; gap: 2px; }
-.ftr__col a { display: inline-flex; min-height: 34px; align-items: center; text-decoration: none; color: var(--text-2); font-size: 15px; }
+.ftr__col a { display: inline-flex; min-height: 34px; min-width: 44px; align-items: center; text-decoration: none; color: var(--text-2); font-size: 15px; } /* min-width: "CBD" and "Blog" were 31px wide */
 .ftr__col a:hover { color: var(--lime); }
 @media (max-width: 1099px) { .ftr__main { grid-template-columns: 1fr 1fr; } .ftr__brand { grid-column: 1 / -1; } }
 @media (max-width: 640px) {
@@ -242,16 +257,24 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 .ftr__areas summary small { font: 400 14px var(--f-body); text-transform: none; color: var(--text-3); flex: 1; }
 .ftr__areas summary .ico { color: var(--lime); transition: transform var(--d-2) var(--ease); }
 .ftr__areas[open] summary .ico { transform: rotate(45deg); }
+@media (max-width: 560px) { /* the count goes under the heading instead of being squeezed beside it */
+  .ftr__areas summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; row-gap: 6px; padding-block: 14px; }
+  .ftr__areas summary small { grid-column: 1; grid-row: 2; }
+  .ftr__areas summary .ico { grid-column: 2; grid-row: 1 / span 2; }
+}
 .ftr__areas ul { list-style: none; columns: 4 180px; column-gap: 24px; padding: 4px 0 24px; }
-.ftr__areas a { display: inline-flex; min-height: 34px; align-items: center; text-decoration: none; color: var(--text-2); font-size: 15px; }
+.ftr__areas a { display: inline-flex; min-height: 34px; min-width: 44px; align-items: center; text-decoration: none; color: var(--text-2); font-size: 15px; }
 .ftr__areas a:hover { color: var(--lime); }
+/* phones: 44px tap targets; top-aligned so each row is exactly the link (no extra line-box space under it) */
+@media (max-width: 640px) { .ftr__areas a { min-height: 44px; vertical-align: top; } }
 .ftr__legal { display: grid; gap: 14px; padding: 28px 0; font-size: 14px; color: var(--text-3); }
 .ftr__lic { margin: 0; }
+.ftr__licno { white-space: nowrap; } /* a licence number never breaks at its hyphens ("OCM-" / "CAURD-23-000028") */
 .ftr__warn { border: 1.5px solid var(--line-2); border-radius: var(--r-m); padding: 18px 20px; color: var(--text-2); }
 .ftr__warn p { margin: 0 0 .6em; }
 .ftr__warn p:last-child { margin: 0; }
 .ftr__warn a { color: var(--lime); }
 .ftr__bottom { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; align-items: center; padding: 18px 0 34px; border-top: 1px solid var(--line); font-size: 14px; color: var(--text-3); }
 .ftr__bottom p { margin: 0; }
-.ftr__bottom a { color: var(--text-2); }
+.ftr__bottom a { color: var(--text-2); display: inline-flex; align-items: center; min-height: 44px; } /* 44px tap targets (they were 16px tall) */
 .ftr__preview { padding: 6px 14px; border-radius: var(--pill); border: 1px dashed var(--line-2); color: var(--text-2); }

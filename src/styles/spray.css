@@ -1,0 +1,23 @@
+/* spray.css: the hero spray can (home.mjs .h-can; src/scripts/spray.js draws the mist on its own canvas).
+   The lean and the bob move from the image to .h-can__body, the wrapper of the image and the nozzle marker, so the
+   marker rides every transform the image does and its box is the emission point in every frame. Moved as they were:
+   the shared bob keyframes animate `rotate`, so while the bob runs it overrides the 14deg (exactly as it did on the
+   image: the can shows its photo lean plus -2..3deg) and the 14deg shows under reduced motion only. spray.js reads
+   the real on-screen rotation every frame, so the jet stays at right angles to the can either way. */
+.h-can { pointer-events: auto; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; transition: scale .32s var(--ease-spring); }
+.h-can__body { display: block; position: relative; rotate: 14deg; animation: bob 7s var(--ease-io) infinite alternate; }
+.float.h-can img { rotate: none; animation: none; -webkit-user-drag: none; -webkit-touch-callout: none; }
+/* the spray hole on the actuator cap, measured on obj-spraycan (442.8, 27.7 of 560 x 945): invisible, 2px, centred */
+.h-can__nozzle { position: absolute; left: 79.07%; top: 2.93%; width: 2px; height: 2px; margin: -1px 0 0 -1px; opacity: 0; pointer-events: none; }
+/* pressed: the can dips (spring back on release) and hisses while it sprays; `scale` and `rotate` stay free on .h-can
+   (site.js parallax owns its `translate`, the phone pass owns its `transform`) */
+.h-can.is-spraying { scale: .965; animation: canHiss .11s linear infinite; }
+@keyframes canHiss { 0%, 100% { rotate: 0deg; } 25% { rotate: -.6deg; } 75% { rotate: .6deg; } }
+/* phones: home.css hides the can at 520px and under; it comes back smaller, centred in the gap between the hero
+   buttons (32px above the deck) and the sleeve's Est. sticker, over the record (the .float phone scale of .62 still
+   applies: about 52px wide on screen, its centre 26px below the deck's top) */
+@media (max-width: 520px) { .h-can { display: block; width: 84px; right: 3%; top: -45px; } }
+@media (prefers-reduced-motion: reduce) {
+  .h-can__body, .h-can.is-spraying { animation: none; }
+  .h-can, .h-can.is-spraying { scale: none; transition: none; }
+}

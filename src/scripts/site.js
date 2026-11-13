@@ -29,7 +29,7 @@
     const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
     return { day: day < 0 ? new Date().getDay() : day, mins: (parseInt(get('hour'), 10) % 24) * 60 + parseInt(get('minute'), 10) };
   }
-  const fmt = (m) => { let h = Math.floor(m / 60), mm = m % 60; const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return h + (mm ? ':' + String(mm).padStart(2, '0') : ':00') + ' ' + ap; };
+  const fmt = (m) => { let h = Math.floor(m / 60), mm = m % 60; const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return h + (mm ? ':' + String(mm).padStart(2, '0') : ':00') + ' ' + ap; }; // a no-break space: "9:00 AM" never splits
   // mirrors the live store selector: "Open • Order until 8:30 pm" / "Pre-Orders Closed • Order at 9:00AM"
   function statusOf(s) {
     const n = nyNow(); const [o, c] = s.hours[n.day]; const open = n.mins >= o * 60 && n.mins < c * 60; const cut = c * 60 - 30;
@@ -53,7 +53,7 @@
     const s = byId(id);
     root.setAttribute('data-store', s.id);
     $$('[data-menu]').forEach((a) => { a.href = menuUrl(s, a.getAttribute('data-menu')); });
-    $$('[data-store-name]').forEach((el) => { el.textContent = el.closest('.chip') ? s.city : s.name; });
+    $$('[data-store-name]').forEach((el) => { el.textContent = el.closest('.chip') ? s.city : s.name.replace(/ (\S{1,4})$/, ' $1'); }); // "NY" never alone on a line
     $$('[data-store-phone]').forEach((el) => { el.textContent = s.phone; });
     $$('[data-store-tel]').forEach((a) => { a.href = 'tel:' + s.tel; });
     $$('[data-store-directions]').forEach((a) => { a.href = s.directions; });
@@ -169,12 +169,14 @@
 
   /* ---------------- sticky pickup bar: past the hero, gone at the footer, while typing, or for the session ---------------- */
   const bar = $('[data-pickbar]'); const ftr = $('[data-ftr]');
-  let footerIn = false, typing = false, barOff = ss.get('cdc.bar') === 'off';
-  function hideBar(force) { if (!bar) return; bar.classList.remove('is-on'); root.style.setProperty('--bottom-stack', '0px'); if (force) bar.dataset.force = '1'; }
+  let footerIn = false, typing = false, barOff = ss.get('cdc.bar') === 'off', barWant = false;
+  function hideBar(force) { if (!bar) return; barWant = false; bar.classList.remove('is-on'); root.style.setProperty('--bottom-stack', '0px'); if (force) bar.dataset.force = '1'; }
   function evalBar() {
     if (!bar || barOff) return; delete bar.dataset.force;
     const on = W.scrollY > W.innerHeight * 0.72 && !footerIn && !typing && (!drawer || drawer.hidden) && (!modal || modal.hidden) && !root.classList.contains('gate-open');
-    if (on) { bar.hidden = false; requestAnimationFrame(() => bar.classList.add('is-on')); root.style.setProperty('--bottom-stack', (bar.offsetHeight || 80) + 'px'); } else { bar.classList.remove('is-on'); root.style.setProperty('--bottom-stack', '0px'); }
+    barWant = on;
+    // the class goes on a frame later; a jump to the footer can turn the bar off before that frame, so it checks again
+    if (on) { bar.hidden = false; requestAnimationFrame(() => { if (barWant) bar.classList.add('is-on'); }); root.style.setProperty('--bottom-stack', (bar.offsetHeight || 80) + 'px'); } else { bar.classList.remove('is-on'); root.style.setProperty('--bottom-stack', '0px'); }
   }
   if (bar) {
     bar.hidden = false;
@@ -182,6 +184,16 @@
     if (ftr && 'IntersectionObserver' in W) new IntersectionObserver((en) => { footerIn = en[0].isIntersecting; evalBar(); }, { rootMargin: '0px 0px -30% 0px' }).observe(ftr);
     d.addEventListener('focusin', (e) => { if (e.target.matches('input, textarea, select')) { typing = true; evalBar(); } });
     d.addEventListener('focusout', (e) => { if (e.target.matches('input, textarea, select')) { typing = false; W.setTimeout(evalBar, 120); } });
+  }
+
+  /* ---------------- footer link columns: folded on phones (their headings open them there), open on wider screens
+     (where the headings are plain labels). Without JS they stay open. ---------------- */
+  const ftrCols = $$('.ftr__col');
+  if (ftrCols.length && W.matchMedia) {
+    const narrow = W.matchMedia('(max-width: 640px)');
+    const fold = () => ftrCols.forEach((c) => { c.open = !narrow.matches; });
+    if (narrow.matches) fold();
+    if (narrow.addEventListener) narrow.addEventListener('change', fold); else if (narrow.addListener) narrow.addListener(fold);
   }
 
   /* ---------------- scroll loop: header state, bar, parallax, record + tape velocity ---------------- */

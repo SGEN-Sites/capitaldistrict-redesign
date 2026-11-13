@@ -2,7 +2,7 @@
 // Our Purpose / A Different Experience, NY Dispensary Reviews, FAQs, News Letter / Sign Up & Save), re-ordered into the
 // adopted dispensary spine: hero with the store, categories, store picker, order ahead, specials, story, proof, events,
 // learn, FAQ, sign up. New words are neutral glue only (section labels, one-line descriptions, button labels).
-import { band, dh, kicker, btn, menuBtn, sticker, crate, vinyl, floatObj, tape, faqList, shoutouts, tracklist, postCard, flyer, signUp, storeCard, bullet, statusLine, esc, href, img, icon, asset } from '../lib/parts.mjs';
+import { band, dh, kicker, btn, menuBtn, sticker, crate, vinyl, floatObj, tape, faqList, faqSection, shoutouts, tracklist, postCard, flyer, signUp, storeCard, bullet, statusLine, esc, href, img, icon, asset } from '../lib/parts.mjs';
 import { orgLd, storeLd } from '../lib/layout.mjs';
 import { page as cap, allPages } from '../lib/capture.mjs';
 import { brand, stores, menuUrl } from '../content/site.mjs';
@@ -57,7 +57,7 @@ export function home() {
         <div class="h-sleeve__pick" role="group" aria-label="Choose your store">${stores.map((s) => `<button type="button" class="h-pick" data-set-store="${s.id}" data-store-card="${s.id}" aria-label="Switch to ${esc(s.name)}"><span class="bullet" aria-hidden="true">${s.letter}</span><span class="h-pick__name">${esc(s.city)}</span></button>`).join('')}</div>
         <div class="h-sleeve__cta">${menuBtn('all', 'Shop this store', { size: 'sm' })}<a class="btn btn--ghost btn--sm h-sleeve__tel" href="tel:${stores[0].tel}" data-store-tel>${icon('phone')}<span data-store-phone>${esc(stores[0].phone)}</span></a></div>
       </div>
-      ${floatObj('obj-spraycan', { cls: 'h-can', depth: 0.18, sizes: '220px' })}
+      <div class="float h-can" data-depth="0.18" data-spray aria-hidden="true"><span class="h-can__body">${img('obj-spraycan', { decorative: true, sizes: '220px' })}<i class="h-can__nozzle"></i></span></div>
     </div>
   </div>
   <a class="h-scroll" href="#h-shop" aria-label="Scroll to Shop By Category"><span></span></a>
@@ -66,13 +66,13 @@ export function home() {
   // ---------- 2-3. tapes + Shop By Category (the crate) ----------
   const catHead = blocks('shop-categories').find((b) => b.t === 'h2')?.text || 'Shop By Category';
   const shop = band(`<div class="band__head">
-    <div class="band__intro">${kicker('The crate')}${dh(catHead.split(' ').slice(0, 2).join(' '), catHead.split(' ').slice(2).join(' '), { id: 'h-shop-h' })}</div>
+    <div class="band__intro">${kicker('The crate')}${dh(catHead.split(' ').slice(0, 2).join(' '), catHead.split(' ').slice(2).join(' '), { id: 'h-shop-h', cls: 'dh--inline' })}</div>
     <p class="lede" data-reveal>Flip through the crate. Every sleeve opens that shelf of the live menu for your store, stocked and ready to add to your cart.</p>
   </div>${crate()}<div class="h-shop__foot" data-reveal>${menuBtn('all', 'Shop all products', { kind: 'ghost' })}${menuBtn('specials', 'Today’s specials', { kind: 'ghost' })}<a class="tlink" href="${href('/brands/')}">Brands we carry${icon('arrow')}</a></div>`,
   { tone: 'night', lit: true, spot: true, id: 'h-shop', cls: 'h-shop', lx: '18%', ly: '8%', labelledby: 'h-shop-h', after: floatObj('obj-bud-a', { cls: 'h-bud', depth: 0.22, sizes: '260px' }) });
 
   // ---------- 4. Where Ya Shopping? (store selection) ----------
-  const pick = band(`<div class="band__head"><div class="band__intro">${kicker('Three stores, one crew')}${dh('Where Ya', 'Shopping?', { id: 'h-stores-h' })}</div>
+  const pick = band(`<div class="band__head"><div class="band__intro">${kicker('Three stores, one crew')}${dh('Where Ya', 'Shopping?', { id: 'h-stores-h', cls: 'dh--inline' })}</div>
     <p class="lede" data-reveal>Pick your store once. Every Shop button on the site follows it, straight to that store’s menu, specials and cart.</p></div>
   <div class="grid grid--3 h-stores">${stores.map((s, i) => storeCard(s, { cls: 'h-scard' }).replace('data-reveal', `data-reveal style="--i:${i}"`)).join('')}</div>
   <p class="h-stores__more" data-reveal><a class="tlink" href="${href('/store-locator/')}">Find the closest store to your town${icon('arrow')}</a> <a class="tlink" href="${href('/visit-us/')}">Areas we serve${icon('arrow')}</a></p>`,
@@ -97,23 +97,20 @@ export function home() {
   </div>
 </div>`, { tone: 'night', lit: true, spot: true, id: 'h-ahead', labelledby: 'h-ahead-h', lx: '80%', ly: '30%' });
 
-  // ---------- 6. specials: three street flyers ----------
-  const specials = band(`<div class="band__head"><div class="band__intro">${kicker('Fresh at every store')}${dh('Daily', 'Specials', { id: 'h-deals-h' })}</div>
-  <p class="lede" data-reveal>A rotating selection of cannabis deals on flower, pre-rolls, edibles, vapes, and more. Each store posts its own, so pick the counter you are heading to.</p></div>
-  <div class="h-flyers">${stores.map((s, i) => `<a class="h-flyer" href="${esc(menuUrl(s.id, 'specials'))}" target="_blank" rel="noopener" style="--r:${[-2.5, 1.5, -1.2][i]}deg;--i:${i}" data-reveal data-tilt>
-    <span class="h-flyer__tape" aria-hidden="true"></span>
-    <span class="h-flyer__top">${bullet(s)}<span>${esc(s.city)}</span></span>
-    <span class="h-flyer__big">Specials</span>
-    <span class="h-flyer__sub">${esc(s.street)} · ${esc(s.city)}, NY</span>
-    ${statusLine(s)}
-    <span class="h-flyer__go">See today’s deals${icon('arrow-ne')}</span>
-  </a>`).join('')}</div>
-  <p class="h-deals__more" data-reveal>${btn('All deals by store', '/deals/', { kind: 'ghost' })}</p>`, { tone: 'mint', id: 'h-deals', labelledby: 'h-deals-h', lx: '15%', ly: '0%' });
+  // ---------- 6. specials: store tickets (the owner's pick from /lab/specials/, option B; styles in sp.css) ----------
+  const specials = band(`<div class="sp-b">
+    <div class="sp-b__intro">${kicker('Fresh at every store')}${dh('Daily', 'Specials', { id: 'h-deals-h', size: 'md' })}<p class="sp-b__lede" data-reveal>A rotating selection of cannabis deals on flower, pre-rolls, edibles, vapes, and more.</p>${btn('All deals by store', '/deals/', { kind: 'ghost', size: 'sm' })}</div>
+    <ul class="sp-b__list">${stores.map((s, i) => `<li data-reveal style="--i:${i}"><a class="sp-tix" href="${esc(menuUrl(s.id, 'specials'))}" target="_blank" rel="noopener" style="--i:${i}" aria-label="Today’s specials at ${esc(s.name)} (opens the live menu in a new tab)">
+      ${bullet(s)}<span class="sp-tix__who"><b>${esc(s.city)}</b><small>${esc(s.street)} · ${esc(s.city)}, NY</small>${statusLine(s)}</span>
+      <span class="sp-tix__go"><span>Specials</span>${icon('arrow-ne')}</span></a></li>`).join('')}</ul>
+  </div>`, { tone: 'mint', id: 'h-deals', labelledby: 'h-deals-h', lx: '15%', ly: '0%', cls: 'sp-band' });
 
   // ---------- 7. Our Purpose: the hall of fame (real in-store photos) under a flashlight ----------
   const pa = purpose.find((b) => b.t === 'h2')?.text || 'Our Purpose';
   const pb = purpose.find((b) => b.t === 'h3')?.text || 'A Different Experience';
-  const story = `<section class="h-story" id="h-story" aria-labelledby="h-story-h">
+  // a band in its own tone (band--night-2, the ground .h-story paints), so build.mjs seams it like every other band:
+  // the neon cut out of the specials above, the overspray into the reviews below
+  const story = `<section class="h-story band band--night-2" id="h-story" aria-labelledby="h-story-h">
   <div class="h-wall" data-wall aria-hidden="true">
     <div class="h-wall__dark">${img('wall-mural', { decorative: true, sizes: '100vw' })}</div>
     <div class="h-wall__lit">${img('wall-mural', { decorative: true, sizes: '100vw' })}</div>
@@ -134,32 +131,62 @@ export function home() {
   </div>
 </section>`;
 
-  // ---------- 8. reviews ----------
+  // ---------- 8. reviews: The Deck (the owner's pick from /lab/reviews/, option C; behaviour in site.js [data-rv-deck], styles in rv.css) ----------
   const revHead = blocks('review-slider').find((b) => b.t === 'h2')?.text || 'NY Dispensary Reviews';
-  const proof = band(`<div class="band__head"><div class="band__intro">${kicker('Shout-outs')}${dh(revHead.split(' ').slice(0, 2).join(' '), revHead.split(' ').slice(2).join(' '), { id: 'h-rev-h' })}</div>
-  <p class="h-rev__links" data-reveal><a class="tlink" href="${href('/reviews/')}">Read every review${icon('arrow')}</a></p></div>${shoutouts(reviews)}`,
-  { tone: 'ink', id: 'h-reviews', labelledby: 'h-rev-h' });
+  const TONES = ['mint', 'lime', 'paper', 'ink'];
+  const five = `<span class="rv-stars" aria-label="Five stars">${icon('star').repeat(5)}</span>`;
+  const deck = reviews.map((r) => ({ text: String(r.text).replace(/^[“‘"']+|[”’"']+$/g, ''), name: r.name }));
+  const proof = band(`<div class="rv-c__grid">
+    <div class="rv-c__copy">
+      ${kicker('Shout-outs')}${dh(revHead.split(' ').slice(0, 2).join(' '), revHead.split(' ').slice(2).join(' '), { id: 'h-rev-h' })}
+      <p class="lede" data-reveal>What customers say about us on Google. Drag the top card away, or deal the next one.</p>
+      <div class="rv-c__ctrl"><button class="btn btn--lime" type="button" data-rv-deal><span>Next review</span>${icon('arrow')}</button><span class="rv-c__count"><b data-rv-c>01</b> / ${String(deck.length).padStart(2, '0')}</span></div>
+      <p class="h-rev__links"><a class="tlink" href="${href('/reviews/')}">Read every review${icon('arrow')}</a></p>
+      <p class="rv-note">Google reviews as published on the ${esc(brand.short)} website, captured November 2026.</p>
+    </div>
+    <div class="rv-c__deck" data-rv-deck aria-live="polite">${deck.map((r, i) => `<figure class="rv-c__card rv-c__card--${TONES[i % 4]}" style="--pos:${i}" data-k="${i}">${five}<blockquote>${esc(r.text)}</blockquote><figcaption>${esc(r.name)}</figcaption></figure>`).join('')}</div>
+  </div>`,
+  { tone: 'ink', lit: true, spot: true, lx: '75%', ly: '35%', cls: 'rv-c', id: 'h-reviews', labelledby: 'h-rev-h' });
 
-  // ---------- 9. events: real flyers on the wall ----------
-  const ev = band(`<div class="band__head"><div class="band__intro">${kicker('Pop-ups, parties, car meets')}${dh('Events', '& Culture', { id: 'h-ev-h' })}</div>
-  <p class="lede" data-reveal>Block parties, boat parties, grand openings and brand pop-ups. The latest from the event calendar.</p></div>
-  <div class="grid grid--4 h-events">${events.map((e, i) => flyer({ ...e, when: e.when }, { i })).join('')}</div>
-  <p class="h-ev__more" data-reveal>${btn('All events', '/events/', { kind: 'ghost' })}</p>`,
-  { tone: 'night', lit: true, sheet: true, id: 'h-events', labelledby: 'h-ev-h', lx: '50%', ly: '0%', after: floatObj('obj-boombox', { cls: 'h-boom', depth: 0.16, sizes: '340px' }) });
+  // ---------- 9. events: real flyers on the wall, as a gradient carousel ----------
+  // The same taped flyer() cards, one per slide (its reveal/tilt hooks dropped: the carousel moves the card). Script:
+  // src/scripts/gcarousel.js (3D row, drag/wheel/keys/buttons, band tinted from the active poster's majority colour);
+  // styles: src/styles/gcarousel.css. Without JS the slides stay a plain swipe row and the controls stay hidden.
+  // Compact: md heading, the lede and "All events" in the words column beside the stage.
+  const evCard = (e, i) => flyer({ ...e, when: e.when }, { i, cls: 'gcar__flyer' }).replace(/^<article\b[^>]*>/, (t) => t.replace(/\s+data-(?:reveal|tilt)(?:="[^"]*")?/g, ''));
+  const evMore = `<p class="gcar-split__more" data-reveal>${btn('All events', '/events/', { kind: 'ghost' })}</p>`;
+  const evCar = events.length ? `<div class="gcar" id="h-ev-car" role="region" aria-roledescription="carousel" aria-label="Recent events" data-gcar data-reveal>
+    <div class="gcar__stage"><div class="gcar__track">${events.map((e, i) => `<div class="gcar__slide" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${events.length}" data-gcar-slide>${evCard(e, i)}</div>`).join('')}</div></div>
+    <p class="sr" aria-live="polite" aria-atomic="true" data-gcar-live></p>
+  </div>` : '';
+  // previous / counter / next: under the words beside the stage on desktop, under the stage on tablets and phones
+  // (gcarousel.css); gcarousel.js finds them in the carousel's band
+  const evCtrl = events.length ? `<div class="gcar__ctrl" data-gcar-ctrl data-reveal hidden>
+      <button class="gcar__btn" type="button" aria-label="Previous event" aria-controls="h-ev-car" data-gcar-prev>${icon('arrow-l')}</button>
+      <p class="gcar__count" aria-hidden="true"><b data-gcar-now>01</b><i class="gcar__bar"><i></i></i><span>${String(events.length).padStart(2, '0')}</span></p>
+      <button class="gcar__btn" type="button" aria-label="Next event" aria-controls="h-ev-car" data-gcar-next>${icon('arrow')}</button>
+    </div>` : '';
+  const evGlow = '<div class="gcar-glow" data-gcar-glow><i class="gcar-glow__a"></i><i class="gcar-glow__b"></i><i class="gcar-glow__c"></i></div>';
+  // owner, 2026-11-13: the carousel on the left, the words stacked on the right (in the markup the words come first,
+  // so the heading still reads before the carousel; phones stack words then carousel). The controls sit with the words,
+  // so the two columns end level (the stage alone beside the words, not the stage plus a row of controls)
+  const ev = band(`<div class="gcar-split">
+  <div class="gcar-split__words">${kicker('Pop-ups, parties, car meets')}${dh('Events', '& Culture', { id: 'h-ev-h', size: 'md' })}
+  <p class="lede" data-reveal>Block parties, boat parties, grand openings and brand pop-ups. The latest from the event calendar.</p>${evMore}${evCtrl}</div>
+  <div class="gcar-split__media">${evCar}</div>
+  </div>`,
+  { tone: 'night', lit: true, sheet: true, id: 'h-events', cls: 'gcar-band', labelledby: 'h-ev-h', lx: '50%', ly: '0%', backdrop: evGlow, after: floatObj('obj-boombox', { cls: 'h-boom', depth: 0.1, sizes: '340px' }) }); // a gentler drift: it sits between the deck and the events kicker
 
   // ---------- 10. learn ----------
   const learn = band(`<div class="band__head"><div class="band__intro">${kicker('From the blog')}${dh('Learn', 'The Culture', { id: 'h-learn-h' })}</div>
   <div class="btns" data-reveal>${btn('Cannabis 101', '/learn/', { kind: 'ghost' })}${btn('All articles', '/blog/', { kind: 'ghost' })}</div></div>
   <div class="grid grid--3">${posts.map((p, i) => postCard(p, { i })).join('')}</div>`, { tone: 'ink', id: 'h-learn', labelledby: 'h-learn-h' });
 
-  // ---------- 11. FAQ ----------
+  // ---------- 11. FAQ (the shared FAQ section, parts.mjs faqSection: every FAQ on the site uses this layout) ----------
   const faqHead = blocks('faq-section').find((b) => b.t === 'h2')?.text || 'FAQs';
-  const faq = band(`<div class="h-faq">
-    <div class="h-faq__head">${kicker('Good to know')}<h2 class="dh dh--lg" id="h-faq-h" data-reveal="stretch"><span class="dh__a">${esc(faqHead)}</span></h2>
-      <p class="lede" data-reveal>New York rules, what to bring and how to shop. More answers on the <a class="tlink" href="${href('/faq/')}">FAQ page</a>.</p>
-      ${vinyl({ name: 'faq', cls: 'h-faq__vinyl' })}</div>
-    ${faqList(faqs, { openFirst: true })}
-  </div>`, { tone: 'night', lit: true, id: 'h-faq', labelledby: 'h-faq-h', lx: '10%', ly: '20%' });
+  const faq = band(faqSection({ kicker: 'Good to know', heading: faqHead, size: 'lg', id: 'h-faq-h', items: faqs, vinyl: true, name: 'faq',
+    lede: `New York rules, what to bring and how to shop. More answers on the <a class="tlink" href="${href('/faq/')}">FAQ page</a>.`, ledeHtml: true }),
+  { tone: 'night', lit: true, id: 'h-faq', labelledby: 'h-faq-h', lx: '10%', ly: '20%' });
 
   const main = [hero, tape(), shop, pick, ahead, specials, story, proof, ev, learn, faq, signUp({ text: nlText })].join('\n');
   return {

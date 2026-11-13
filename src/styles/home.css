@@ -31,7 +31,7 @@
 .h-h1 .dh__b { background: var(--foil); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: foil 9s linear infinite; }
 .h-lede { font-size: clamp(1.05rem, .98rem + .42vw, 1.32rem); color: var(--text-2); max-width: 44ch; margin: 0 0 30px; }
 .h-est { position: absolute; right: -16px; top: -18px; z-index: 2; }
-.h-est .sticker { --rot: 9deg; font-size: 15px; }
+.h-est .sticker { --rot: 9deg; font-size: 21px; }
 .h-deck { position: relative; height: min(660px, 72vh); min-height: 520px; }
 .h-vinyl { position: absolute; width: min(620px, 44vw); right: -2%; top: calc(50% - min(310px, 22vw)); z-index: 1; cursor: grab; }
 .h-vinyl.is-scratching { cursor: grabbing; }
@@ -53,7 +53,7 @@
 .h-sleeve { container-type: inline-size; } /* layout containment only: the overhanging sticker is not clipped */
 @container (max-width: 335px) { .h-sleeve__cta { grid-template-columns: minmax(0, 1fr); } } /* side by side each needs ~160px for a one-line label; below that, one full-width button per row */
 .h-sleeve__tel .ico { color: var(--lime); }
-.h-can { right: 4%; top: 2%; width: 150px; z-index: 4; }
+.h-can { right: 4%; top: 15%; width: 150px; z-index: 4; } /* low enough that its up-left mist plume stays in the hero, below the header */
 .h-can img { rotate: 14deg; }
 .h-scroll { position: absolute; left: 50%; bottom: 96px; translate: -50% 0; width: 30px; height: 48px; border-radius: 16px; border: 1.5px solid var(--line-2); display: grid; justify-items: center; padding-top: 8px; z-index: 3; }
 .h-scroll span { width: 4px; height: 9px; border-radius: 2px; background: var(--lime); animation: hScroll 1.8s var(--ease) infinite; }
@@ -78,11 +78,26 @@
 
 /* ---------- 2-3. shop by category ---------- */
 .h-shop { padding-top: calc(var(--sec) + 30px); z-index: 1; }
+/* "SHOP BY CATEGORY" on one line across the row (stacked it left the right side empty). It is 12.15x its size wide,
+   so the size is capped to the row: one line from 561px up; phones keep two lines */
+.h-shop .band__intro { max-width: none; }
+.h-shop .band__head .lede { max-width: 62ch; }
+@media (min-width: 561px) { .h-shop .band__intro .dh { white-space: nowrap; font-size: min(var(--fs-lg), calc(min(100vw - 2 * var(--gutter), var(--wrap)) / 12.6)); } }
 .h-shop__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 36px; }
 .h-bud { left: -1%; top: -40px; width: 210px; }
 @media (max-width: 760px) { .h-bud { width: 150px; left: -40px; top: -30px; } }
+/* tablets: at 210px top-left the bud reached 170px into the band, over "The crate" kicker (106-122px down at 768-1024),
+   and smaller it hid under the tape (65px between tape and kicker on the left). It sits on the right instead, under the
+   tape's high end, beside the one-line heading. */
+@media (min-width: 761px) and (max-width: 1024px) { .h-bud { left: auto; right: 1%; top: 64px; width: 128px; } }
 
 /* ---------- 4. stores ---------- */
+/* "WHERE YA SHOPPING?" on one line across the row, as Shop by Category (stacked, it left the row's right side empty).
+   It is about 14.4x its size wide, so the size is capped to the row (the head is the size container) from 561px up;
+   phones keep two lines */
+#h-stores .band__intro { max-width: none; }
+#h-stores .band__head { container-type: inline-size; }
+@media (min-width: 561px) { #h-stores .band__intro .dh { white-space: nowrap; font-size: min(var(--fs-lg), 100cqi / 14.6); } }
 .h-stores__more { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 30px 0 0; }
 
 /* ---------- 5. shop ahead ---------- */
@@ -101,6 +116,19 @@
 .h-tt__btn:hover { border-color: var(--lime); color: var(--lime); }
 .h-tt__k { position: absolute; z-index: 2; left: 22px; top: 24px; padding: 8px 14px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font: 800 12px/1 var(--f-display); font-stretch: 112%; letter-spacing: .08em; text-transform: uppercase; rotate: -4deg; box-shadow: 0 0 0 3px #f6faf7; }
 @media (max-width: 1000px) { .h-ahead { grid-template-columns: 1fr; } .h-ahead__media { max-width: 640px; } }
+/* 1001-1280px: two equal columns leave the square frame far shorter than the heading plus the steps (at 1180 the words
+   stood 765px beside a 510px frame), so the heading runs across the top and the steps and buttons stand beside the
+   frame; 1001-1100px also drops the steps' decorative icons for room */
+@media (min-width: 1001px) and (max-width: 1280px) {
+  .h-ahead { grid-template-areas: "k k" "h h" "t m" "b m"; row-gap: 0; align-items: start; }
+  .h-ahead__words { display: contents; }
+  .h-ahead__words > .kicker { grid-area: k; justify-self: start; }
+  .h-ahead__words > .dh { grid-area: h; margin-bottom: 26px; }
+  .h-ahead__words > .tracks { grid-area: t; margin: 0; }
+  .h-ahead__words > .btns { grid-area: b; margin-top: 26px; }
+  .h-ahead__media { grid-area: m; }
+}
+@media (min-width: 1001px) and (max-width: 1100px) { .h-ahead .track__ic { display: none; } }
 
 /* ---------- 6. specials ---------- */
 .h-flyers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 34px); padding-top: 14px; }
@@ -130,11 +158,14 @@
 .h-wall.is-auto .h-wall__lit { animation: hWall 16s var(--ease-io) infinite alternate; }
 @keyframes hWall { 0% { --wx: 82%; --wy: 30%; } 35% { --wx: 58%; --wy: 62%; } 70% { --wx: 90%; --wy: 74%; } 100% { --wx: 66%; --wy: 24%; } }
 .h-wall::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13, 18, 17, .9) 0%, rgba(13, 18, 17, .35) 50%, transparent 80%), linear-gradient(180deg, var(--night) 0%, transparent 16%, transparent 84%, var(--night-2) 100%); pointer-events: none; }
-.h-story__in { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
+/* the words get the wider column and one-line headings, so the panel stands about as tall as the photos beside it */
+.h-story__in { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
 .h-story__words { padding: clamp(26px, 3vw, 44px); background: linear-gradient(135deg, rgba(31, 41, 38, .66), rgba(20, 26, 25, .42)); }
 .h-story__words p { color: var(--text-2); }
-.h-story__h3 { font: 850 clamp(1.4rem, 1.05rem + 1.1vw, 2.1rem)/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; margin: 0 0 16px; color: var(--mint); }
-.h-gallery { position: relative; min-height: clamp(420px, 40vw, 580px); }
+.h-story__words .dh { font-size: var(--fs-md); }
+.h-story__words p:not(.kicker) { font-size: 16px; line-height: 1.65; }
+.h-story__h3 { font: 850 clamp(1.25rem, 1rem + .8vw, 1.75rem)/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; margin: 0 0 16px; color: var(--mint); }
+.h-gallery { position: relative; min-height: clamp(480px, 46vw, 580px); } /* 1101-1280px: the long purpose text stood ~230px taller than a 440px gallery */
 .h-frame { position: absolute; margin: 0; padding: 12px 12px 42px; background: #f2f6f4; border-radius: 4px; box-shadow: 0 50px 80px -34px rgba(0, 0, 0, .95); }
 .h-frame img { width: 100%; height: auto; border-radius: 2px; }
 .h-frame--mural { width: 84%; right: 0; top: 0; rotate: 2.2deg; }
@@ -144,21 +175,28 @@
 @keyframes hGlare { 0% { background-position: 120% 0; } 60%, 100% { background-position: -60% 0; } }
 .h-tape { position: absolute; left: 50%; top: -14px; width: 120px; height: 30px; translate: -50% 0; rotate: -3deg; background: rgba(200, 240, 155, .78); box-shadow: 0 2px 8px rgba(0, 0, 0, .3); }
 .h-gotbud { position: absolute; right: 6%; bottom: 6%; z-index: 3; }
-.h-gotbud .sticker { --rot: 8deg; font-size: clamp(18px, 1rem + .6vw, 26px); text-transform: none; font-family: var(--f-tag); font-weight: 400; font-stretch: normal; letter-spacing: 0; padding: .3em .7em .4em; }
-@media (max-width: 1000px) { .h-story__in { grid-template-columns: 1fr; } .h-gallery { min-height: 0; aspect-ratio: 1 / .95; } }
+.h-gotbud .sticker { --rot: 8deg; --pad: .3em .7em .4em; font-size: clamp(22px, 1rem + .9vw, 32px); text-transform: none; font-family: var(--f-tag); font-weight: 400; font-stretch: normal; letter-spacing: 0; }
+@media (max-width: 1100px) { .h-story__in { grid-template-columns: 1fr; } .h-gallery { min-height: 0; aspect-ratio: 1 / .95; } .h-story__words p:not(.kicker) { max-width: 70ch; } }
+/* phones: the frames scale with the gallery but the mural's caption line and the collage's tape do not, so in the
+   square-ish gallery the collage covered "IN STORE: THE MURAL WALL"; a taller gallery sets the collage, tape and
+   all, just under the caption (as on desktop, where the two frames do not overlap) */
+@media (max-width: 760px) { .h-gallery { aspect-ratio: 1 / 1.1; } }
+@media (max-width: 400px) { .h-gallery { aspect-ratio: 1 / 1.16; } }
 
 /* ---------- 8-10 ---------- */
 .h-rev__links { margin: 0; }
 .h-events { align-items: start; }
-.h-boom { right: 2%; top: -150px; width: 300px; }
+/* the boombox stands across the reviews -> events seam, centred on it (top: minus half its height, the cut-out being
+   about 1.65x as wide as tall), sized so it clears the deck above and the events kicker below (the deck now stands as
+   tall as its cards, with no empty box under them) */
+.h-boom { right: 2%; top: clamp(-82px, -5.7vw, -64px); width: clamp(220px, 18.75vw, 270px); }
 .h-ev__more { margin: 40px 0 0; }
 @media (max-width: 1000px) { .h-boom { width: 210px; top: -100px; } }
+/* stacked layouts: the boombox stands on the seam line under the deck, so the reviews band keeps room for it */
+@media (max-width: 1000px) { #h-reviews { padding-bottom: calc(var(--sec) + 56px); } }
+@media (max-width: 760px) { #h-reviews { padding-bottom: calc(var(--sec) + 30px); } }
 
-/* ---------- 11. FAQ ---------- */
-.h-faq { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: clamp(30px, 5vw, 80px); align-items: start; }
-.h-faq__head { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 30px); }
-.h-faq__vinyl { width: 260px; margin-top: 36px; }
-@media (max-width: 1000px) { .h-faq { grid-template-columns: 1fr; } .h-faq__head { position: static; } .h-faq__vinyl { display: none; } }
+/* ---------- 11. FAQ: the shared FAQ section (.faqsec in components.css), one layout for every FAQ on the site ---------- */
 
 /* ---------- phone pass: long rows become swipe rows ---------- */
 @media (max-width: 1000px) { .h-tt { aspect-ratio: 4 / 3; } .h-tt video { object-position: 100% 50%; transform: scale(1.06); } }
@@ -169,6 +207,9 @@
   .h-events > * { flex-basis: 74%; }
   .h-story { padding-bottom: calc(var(--sec) + 10px); }
 }
+/* phones: a pair of buttons that cannot share a row stacks full width, as the hero's do (stacked at their own widths
+   they made a ragged left edge) */
+@media (max-width: 560px) { .h-shop__foot .btn, .h-ahead .btns .btn, .h-story__words .btns .btn { flex: 1 1 100%; } }
 
 /* ---------- cinematic scroll-driven transitions (progressive: browsers with view timelines, motion allowed) ---------- */
 @supports (animation-timeline: view()) {

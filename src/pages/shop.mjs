@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { pageHero, band, dh, kicker, btn, menuBtn, crate, vinyl, floatObj, faqList, tracklist, richHtml, signUp, bullet, statusLine, hoursTable, esc, href, img, mediaImg, icon, menuLink } from '../lib/parts.mjs';
+import { pageHero, band, dh, kicker, btn, menuBtn, crate, vinyl, floatObj, faqList, faqSection, fitEm, tracklist, richHtml, signUp, bullet, storeName, statusLine, hoursTable, esc, href, img, mediaImg, icon, menuLink } from '../lib/parts.mjs';
 import { storeLd } from '../lib/layout.mjs';
 import { page as cap, allPages, decode } from '../lib/capture.mjs';
 import { brand, stores, storeById, categories, menuUrl, ORIGIN } from '../content/site.mjs';
@@ -63,7 +63,7 @@ function nowShopping(o = {}) {
   <div class="sh-now__id">
     <span class="sh-now__rec" aria-hidden="true"><span class="bullet" data-store-letter>${esc(d.letter)}</span></span>
     <div class="sh-now__who">
-      <p class="sh-now__k">You’re shopping at</p>
+      <p class="sh-now__k">You’re shopping&nbsp;at</p>
       <p class="sh-now__name" data-store-name>${esc(d.name)}</p>
       ${statusCurrent()}
     </div>
@@ -81,54 +81,48 @@ function nowShopping(o = {}) {
 </div>`;
 }
 
-// a store tile: the store photo with a glass panel over it. ctas: html (fixed-store buttons)
-function storeTile(s, i, ctas, o = {}) {
-  return `<article class="sh-store${o.cls ? ' ' + o.cls : ''}" data-store-card="${s.id}" data-reveal style="--i:${i}">
-  <div class="sh-store__in" data-tilt>
-    <div class="sh-store__media">${img(s.photo, { alt: s.photoAlt, sizes: '(min-width: 1000px) 31vw, 92vw' })}</div>
-    <span class="sh-store__bul">${bullet(s)}<span class="sh-store__mine">${icon('check')}Your store</span></span>
-    <div class="sh-store__body glass">
-      <h3 class="sh-store__name">${esc(s.city)}</h3>
-      ${statusLine(s)}
-      <p class="sh-store__addr">${icon('pin')}<span>${esc(s.street)}, ${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</span></p>
-      ${o.extra || ''}
-      <div class="sh-store__cta">${ctas}</div>
-      ${o.set === false ? '' : `<button class="sh-store__set" type="button" data-set-store="${s.id}">${icon('check')}<span>Make ${esc(s.city)} my store</span></button>`}
-    </div>
+// a store card: the shared store card (.scard, components.css; the one home, the store pages and About use), carrying
+// this lane's fixed-store buttons. o: { cta (two .btn, the card's equal button grid), links (text links under them),
+// extra (rows after the address), pick (the whole card picks the store, as on home) }
+function storeTile(s, i, o = {}) {
+  return `<article class="scard sh-scard" data-store-card="${s.id}"${o.pick ? ' data-pick-card' : ''} data-reveal style="--i:${i}">
+  <div class="scard__media">${img(s.photo, { alt: s.photoAlt, sizes: '(min-width: 1061px) 31vw, (min-width: 701px) 46vw, 92vw' })}<span class="scard__bullet">${bullet(s)}${o.pick ? '' : `<span class="sh-scard__mine">${icon('check')}Your store</span>`}</span></div>
+  <div class="scard__body">
+    <h3 class="scard__name">${storeName(s)}</h3>
+    ${statusLine(s)}
+    <p class="scard__addr">${icon('pin')}<span>${esc(s.street)}, ${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</span></p>
+    ${o.extra || ''}
+    <div class="scard__cta">${o.cta}</div>
+    ${o.links ? `<p class="scard__links">${o.links}</p>` : ''}
   </div>
 </article>`;
 }
-const infoBtn = (s, label = 'Store info') => `<a class="btn btn--ghost btn--sm" href="${href(s.page)}"><span>${esc(label)}</span>${icon('arrow')}</a>`;
+const infoLink = (s, label = 'Store info') => `<a href="${href(s.page)}">${esc(label)}${icon('arrow')}</a>`;
+const specialsLink = (s) => `<a href="${esc(menuUrl(s.id, 'specials'))}" target="_blank" rel="noopener" aria-label="${esc(s.city)} specials (opens the live menu in a new tab)">Specials${icon('arrow-ne')}</a>`;
+const pickBtn = (s) => `<button class="btn btn--ghost btn--sm pick" type="button" data-set-store="${s.id}"><span class="pick__off">Make ${esc(s.city)} my store</span><span class="pick__on">${icon('check')}Your store</span></button>`;
 const dirBtn = (s, label = 'Directions') => `<a class="btn btn--ghost btn--sm" href="${esc(s.directions)}" target="_blank" rel="noopener" aria-label="${esc(label)}: ${esc(s.name)} (opens Google Maps)"><span>${esc(label)}</span>${icon('route')}</a>`;
 
-// a ticket stub per store: today's specials on that store's live menu (fixed store)
-function ticket(s, i, o = {}) {
-  return `<div class="sh-tix${o.sm ? ' sh-tix--sm' : ''}" data-reveal style="--i:${i};--r:${[-1.4, 1.1, -0.7][i % 3]}deg">
-  <a class="sh-tix__in" href="${esc(menuUrl(s.id, 'specials'))}" target="_blank" rel="noopener" data-tilt aria-label="Today’s Specials at ${esc(s.name)} (opens the live menu in a new tab)">
-    <span class="sh-tix__main">
-      <span class="sh-tix__top">${bullet(s)}<span>${esc(s.city)}</span></span>
-      <span class="sh-tix__big">Today’s Specials</span>
-      <span class="sh-tix__addr">${esc(s.street)}, ${esc(s.city)}, ${esc(s.region)} ${esc(s.zip)}</span>
-      ${statusLine(s)}
-    </span>
-    <span class="sh-tix__stub" aria-hidden="true"><span class="sh-tix__no">${esc(s.letter)}</span><span class="sh-tix__go">Shop deals${icon('arrow-ne')}</span></span>
-  </a>
-</div>`;
-}
+// today's specials per store: the shared store tickets (.sp-b / .sp-tix, sp.css; the home page's Daily Specials), each
+// one opening that store's specials on its live menu (fixed store). intro: the words beside the tickets
+const spTix = (s, i) => `<li data-reveal style="--i:${i}"><a class="sp-tix" href="${esc(menuUrl(s.id, 'specials'))}" target="_blank" rel="noopener" style="--i:${i}" aria-label="Today’s Specials at ${esc(s.name)} (opens the live menu in a new tab)">
+      ${bullet(s)}<span class="sp-tix__who"><b>${esc(s.city)}</b><small>${esc(s.street)} · ${esc(`${s.city}, ${s.region} ${s.zip}`).replace(/ /g, ' ')}</small>${statusLine(s)}</span>
+      <span class="sp-tix__go"><span>Specials</span>${icon('arrow-ne')}</span></a></li>`;
+const tickets = (intro, o = {}) => `<div class="sp-b${o.cls ? ' ' + o.cls : ''}">
+    <div class="sp-b__intro">${intro}</div>
+    <ul class="sp-b__list">${stores.map(spTix).join('')}</ul>
+  </div>`;
 
 // a reading layout: a sticky aside beside a prose column
 const readLayout = (aside, body, o = {}) => `<div class="sh-read${o.cls ? ' ' + o.cls : ''}"><aside class="sh-read__aside" data-reveal>${aside}</aside><div class="sh-read__body" data-reveal style="--i:1">${body}</div></div>`;
 
-// FAQ: a sticky heading beside the list
+// FAQ: the shared FAQ section (parts.mjs faqSection, the home FAQ's layout: sticky heading column, record, accordion)
 function faqBlock(heading, items, o = {}) {
-  return `<div class="sh-faq">
-  <div class="sh-faq__aside" data-reveal>${kicker(o.kicker || "It's Simple")}${dh(heading[0], heading[1], { size: 'md', id: o.id })}${o.text ? `<p class="sh-faq__txt">${esc(o.text)}</p>` : ''}${o.cta ? `<div class="btns">${o.cta}</div>` : ''}</div>
-  ${faqList(capFaqs(items), { openFirst: true, cls: 'sh-faq__list' })}
-</div>`;
+  return faqSection({ kicker: o.kicker || "It's Simple", heading, id: o.id, lede: o.text || '', cta: o.cta || '', items: capFaqs(items), name: 'faq', vinyl: o.vinyl });
 }
 
 // the ordering steps (store, browse, cart, checkout, pickup): one source for /shop/ and /how-to-order/
-const cutoff = (s, day) => { const c = s.hours[day][1] * 60 - 30; const h = Math.floor(c / 60) % 12 || 12; return `${h}:${String(c % 60).padStart(2, '0')} PM`; };
+// times keep a no-break space before AM / PM, so "9" and "PM" never sit on two lines (DESIGN.md: "AM" stays with its time)
+const cutoff = (s, day) => { const c = s.hours[day][1] * 60 - 30; const h = Math.floor(c / 60) % 12 || 12; return `${h}:${String(c % 60).padStart(2, '0')} PM`; };
 const ORDER_UNTIL = cutoff(stores[0], 1); // Monday to Saturday (9 PM close)
 const ORDER_UNTIL_SUN = cutoff(stores[0], 0); // Sunday (6 PM close)
 function steps(o = {}) {
@@ -137,7 +131,7 @@ function steps(o = {}) {
     { title: 'Pick your store', icon: 'pin', text: more ? 'Albany, Clifton Park or Schenectady. Choose it with the store chip at the top of any page, and every Shop button on this site follows your pick.' : 'Albany, Clifton Park or Schenectady. Every Shop button on this site follows the store you pick.', cta: more ? `<button class="btn btn--ghost btn--sm" type="button" data-open-store><span>Pick a store</span>${icon('chev')}</button>` : '' },
     { title: 'Browse by category', icon: 'leaf', text: `${categories.map((c) => c.name).slice(0, -1).join(', ')} and ${categories[categories.length - 1].name}, each one a shelf on your store’s live menu.`, cta: more ? menuBtn('all', 'Browse the menu', { kind: 'ghost', size: 'sm' }) : '' },
     { title: 'Add to your cart', icon: 'bag', text: more ? `Add what you like. Your cart stays with the store you picked. ${brand.separateCarts}` : 'Add what you like. Your cart stays with the store you picked.' },
-    { title: 'Check out, choose pickup', icon: 'check', text: more ? `Check out on the live menu and choose pickup. Pre-orders close 30 minutes before closing: until ${ORDER_UNTIL} Monday to Saturday and until ${ORDER_UNTIL_SUN} on Sunday.` : `Check out on the live menu and choose pickup. Pre-orders close 30 minutes before closing, so ${ORDER_UNTIL} on a 9 PM night.` },
+    { title: 'Check out, choose pickup', icon: 'check', text: more ? `Check out on the live menu and choose pickup. Pre-orders close 30 minutes before closing: until ${ORDER_UNTIL} Monday to Saturday and until ${ORDER_UNTIL_SUN} on Sunday.` : `Check out on the live menu and choose pickup. Pre-orders close 30 minutes before closing, so ${ORDER_UNTIL} on a 9 PM night.` },
     { title: 'Pick up with your 21+ ID', icon: 'id', text: `Bring a valid government-issued photo ID that shows you are 21 or older. The stores accept ${brand.payment}.`, cta: more ? btn('What to expect at pickup', '/pickup/', { kind: 'ghost', size: 'sm' }) : '' },
   ];
 }
@@ -235,7 +229,7 @@ function brandDirectory() {
     <ul class="sh-az__legend" aria-label="Store key">${stores.map((s) => `<li><span class="sh-dot sh-dot--key" aria-hidden="true">${esc(s.letter)}</span>${esc(s.city)}</li>`).join('')}</ul>
     <p class="sh-az__stamp">${icon('cal')}<span>${list.length} brands, ${listings} store listings, as listed on the live menus, ${STAMP}</span></p>
   </div>
-  <div class="sh-az__chips" data-filter-group="sh-az-list" role="group" aria-label="Filter brands by first letter">
+  <div class="sh-az__chips" data-filter-group="sh-az-list" role="group" aria-label="Filter brands by first letter" style="--chips:${groups.length + 1};--chips-half:${Math.ceil((groups.length + 1) / 2)}">
     <button class="chipbtn" type="button" data-filter="all" aria-pressed="true">All</button>
     ${groups.map((g) => `<button class="chipbtn" type="button" data-filter="${g.letter}" aria-pressed="false" aria-label="Brands starting with ${g.letter === 'num' ? 'a number' : label(g.letter)}">${label(g.letter)}</button>`).join('')}
   </div>
@@ -300,32 +294,32 @@ function shopHub() {
     faqOf('/location/albany', /^Can I shop for weed if I'm from out of state/),
   ];
   const main = pageHero({
-    kicker: 'Order ahead', title: ['Shop the', 'Live Menu'], img: 'store-mural', crumbs, sticker: 'Pickup at the counter',
+    kicker: 'Order ahead', title: ['Shop the', 'Live Menu'], img: 'store-mural', crumbs, sticker: 'Pickup at the counter', cls: 'sh-ph sh-ph--long',
     lede: 'Shop the live menu of your Capital District Cannabis store: Albany, Clifton Park or Schenectady. Fill your cart, check out for pickup and grab it at the counter with your ID.',
     ctas: menuBtn('all', 'Shop now') + menuBtn('specials', 'Specials', { kind: 'ghost' }),
   })
   + band(`<div class="sh-head"><div>${kicker('Where Ya Shopping?')}${dh('Pick your', 'Store', { id: 'sh-pick-h' })}</div>
     <p class="lede" data-reveal>Every Shop button on this site follows your store. Switch any time, or shop a store directly from its card.</p></div>
     ${nowShopping()}
-    <div class="sh-stores">${stores.map((s, i) => storeTile(s, i, shopAt(s, 'all', 'Shop menu', { aria: `Shop the ${s.city} menu` }) + shopAt(s, 'specials', 'Specials', { kind: 'ghost', aria: `${s.city} specials` }) + infoBtn(s))).join('')}</div>`,
+    <div class="sh-stores">${stores.map((s, i) => storeTile(s, i, { pick: true, cta: shopAt(s, 'all', 'Shop menu', { aria: `Shop the ${s.city} menu` }) + pickBtn(s), links: specialsLink(s) + infoLink(s) })).join('')}</div>`,
   { tone: 'ink', id: 'sh-pick', labelledby: 'sh-pick-h', backdrop: backdrop('wall-mural-wide', 'deep') })
   + band(`<div class="sh-head"><div>${kicker('The crate')}${dh('Shop By', 'Category', { id: 'sh-crate-h' })}</div>
     <p class="lede" data-reveal>Flip through the crate. Each sleeve opens that shelf of your store’s live menu, ready to add to your cart.</p></div>
     ${crate()}
     <div class="sh-crate__foot" data-reveal>${menuBtn('all', 'Shop all products', { kind: 'ghost' })}<a class="tlink sh-tap" href="${href('/brands/')}">Brands we carry${icon('arrow')}</a></div>`,
-  { tone: 'night', lit: true, spot: true, sheet: true, id: 'sh-crate', labelledby: 'sh-crate-h', lx: '20%', ly: '10%', cls: 'sh-lift', after: floatObj('obj-spraycan', { style: 'right:3%;bottom:-110px;width:min(150px,16vw)', depth: 0.14, sizes: '160px' }) })
-  + band(`<div class="sh-dealstrip">
-    <div class="sh-dealstrip__words">${kicker('Specials')}${dh('Deals at', 'Every Store', { size: 'md', id: 'sh-deals-h' })}
-      <p>Each store posts its own specials on its live menu. Pick a counter and see today’s deals.</p>
-      <div class="btns">${btn('All deals by store', '/deals/', { kind: 'ghost' })}</div></div>
-    <div class="sh-tixrow sh-tixrow--sm">${stores.map((s, i) => ticket(s, i, { sm: true })).join('')}</div>
-  </div>`, { tone: 'slate', id: 'sh-deals', labelledby: 'sh-deals-h' })
+  { tone: 'night', lit: true, spot: true, sheet: true, id: 'sh-crate', labelledby: 'sh-crate-h', lx: '20%', ly: '10%', cls: 'sh-lift', after: floatObj('obj-spraycan', { style: 'right:3%;bottom:-60px;width:min(130px,13vw)', depth: 0.14, sizes: '160px' }) })
+  + band(tickets(`${kicker('Specials')}${dh('Deals at', 'Every Store', { size: 'md', id: 'sh-deals-h' })}
+      <p class="sp-b__lede" data-reveal>Each store posts its own specials on its live menu. Pick a counter and see today’s deals.</p>
+      ${btn('All deals by store', '/deals/', { kind: 'ghost', size: 'sm' })}`),
+  { tone: 'slate', id: 'sh-deals', labelledby: 'sh-deals-h', cls: 'sp-band' })
+  // the heading sits above the record, so the record's column stands about as tall as the five steps beside it (the
+  // record used to float mid-column beside the heading and the steps); phones keep heading, steps, then the record
   + band(`<div class="sh-steps">
-    <div class="sh-steps__words">${kicker('How it works')}${dh('Order', 'Ahead', { id: 'sh-steps-h' })}
-      ${tracklist(steps())}
+    <div class="sh-steps__deck">${kicker('How it works')}${dh('Order', 'Ahead', { id: 'sh-steps-h' })}
+      <div class="sh-steps__rec" data-reveal>${vinyl({ name: 'shop', cls: 'sh-vinyl' })}<p class="sh-steps__cap">Side A: five steps from the couch to the counter</p></div></div>
+    <div class="sh-steps__words">${tracklist(steps())}
       <div class="btns sh-steps__cta" data-reveal>${menuBtn('all', 'Start an order')}${btn('How to order', '/how-to-order/', { kind: 'ghost' })}</div></div>
-    <div class="sh-steps__deck" data-reveal>${vinyl({ name: 'shop', cls: 'sh-vinyl' })}<p class="sh-steps__cap">Side A: five steps from the couch to the counter</p></div>
-  </div>`, { tone: 'mint', id: 'sh-steps', labelledby: 'sh-steps-h', lx: '80%', ly: '10%' })
+  </div>`, { tone: 'mint', id: 'sh-steps', labelledby: 'sh-steps-h', lx: '20%', ly: '10%' })
   + band(faqBlock(['Any Questions?', "We've Got Answers"], faqs, { id: 'sh-faq-h', kicker: "It's Simple", text: 'Ordering, pickup, payment and ID, straight from our store FAQs.', cta: btn('Pickup details', '/pickup/', { kind: 'ghost', size: 'sm' }) }),
     { tone: 'ink', lit: true, spot: true, id: 'sh-faq', labelledby: 'sh-faq-h', lx: '12%', ly: '20%' })
   + signUp();
@@ -355,15 +349,14 @@ function deals() {
   const [h2a, ...h2b] = dealH2.split(' Deals');
 
   const main = pageHero({
-    kicker: 'Deals & specials', title: ['Deals &', 'Specials'], img: 'wall-mural-wide', crumbs, sticker: 'Three stores',
+    kicker: 'Deals & specials', title: ['Deals &', 'Specials'], img: 'wall-mural-wide', crumbs, sticker: 'Three stores', cls: 'sh-ph',
     lede: 'Every store runs its own specials on its live menu. Pick your counter and see today’s deals, then stack points with the loyalty program.',
     ctas: menuBtn('specials', 'Shop specials') + btn('Loyalty program', '/loyalty-program/', { kind: 'ghost' }),
   })
-  + band(`<div class="sh-head"><div>${kicker('Pick your counter')}${dh('Today’s', 'Specials', { id: 'sh-tix-h' })}</div>
-    <p class="lede" data-reveal>Tear off a ticket. Each one opens that store’s specials on the live menu, with its own prices and its own cart.</p></div>
-    <div class="sh-tixrow">${stores.map((s, i) => ticket(s, i)).join('')}</div>
-    <p class="sh-note" data-reveal>${icon('bag')}<span>${esc(brand.separateCarts)}</span></p>`,
-  { tone: 'night', lit: true, spot: true, id: 'sh-tix', labelledby: 'sh-tix-h', lx: '70%', ly: '0%', cls: 'sh-lift', after: floatObj('obj-spraycan', { style: 'right:4%;bottom:-120px;width:min(140px,15vw)', depth: 0.14, sizes: '160px' }) })
+  + band(tickets(`${kicker('Pick your counter')}${dh('Today’s', 'Specials', { size: 'md', id: 'sh-tix-h' })}
+      <p class="sp-b__lede" data-reveal>Tear off a ticket. Each one opens that store’s specials on the live menu, with its own prices and its own cart.</p>
+      <p class="sh-note" data-reveal>${icon('bag')}<span>${esc(brand.separateCarts)}</span></p>`),
+  { tone: 'night', lit: true, spot: true, id: 'sh-tix', labelledby: 'sh-tix-h', lx: '70%', ly: '0%', cls: 'sh-lift sp-band', after: floatObj('obj-spraycan', { style: 'right:4%;bottom:-100px;width:min(110px,10vw)', depth: 0.14, sizes: '160px' }) })
   + band(readLayout(
     `<figure class="sh-read__photo" data-tilt>${img(albany.photo, { alt: albany.photoAlt, sizes: '(min-width: 900px) 36vw, 92vw' })}<figcaption>${bullet(albany)}<span>${esc(albany.street)}, ${esc(albany.city)}</span></figcaption></figure>
      ${srcTag('From the Albany store page')}
@@ -382,16 +375,16 @@ function deals() {
     <div class="sh-loyal__words" data-reveal style="--i:1">${kicker('Loyalty tie-in')}
       <h2 class="dh dh--md" id="sh-loy-h" data-reveal="stretch"><span class="dh__a">${esc(loyH2.split(' with ')[0])}</span>${loyH2.includes(' with ') ? ` <span class="sh-dh2__sub">${esc('with ' + loyH2.split(' with ').slice(1).join(' with '))}</span>` : ''}</h2>
       ${loy.blocks.filter((b) => b.t === 'p').map((p) => `<p>${capHtml(p.html || esc(p.text))}</p>`).join('')}
-      <p class="sh-loyal__faq"><b>${esc(loyFaq.q)}</b> ${esc(loyFaq.a)}</p>
-      <div class="btns">${btn('Join the loyalty program', '/loyalty-program/')}${menuBtn('specials', 'Shop specials', { kind: 'ghost' })}</div>
     </div>
+    <div class="sh-loyal__more" data-reveal style="--i:2"><p class="sh-loyal__faq"><b>${esc(loyFaq.q)}</b> ${esc(loyFaq.a)}</p>
+      <div class="btns">${btn('Join the loyalty program', '/loyalty-program/')}${menuBtn('specials', 'Shop specials', { kind: 'ghost' })}</div></div>
   </div>`, { tone: 'mint', id: 'sh-loy', labelledby: 'sh-loy-h', lx: '85%', ly: '15%' })
-  + band(`<div class="sh-head"><div>${kicker('Fine print')}${dh('Before you', 'Stack Deals', { size: 'md', id: 'sh-fine-h' })}</div></div>
+  + band(`<div class="sh-head"><div>${kicker('Fine print')}${dh('Before you', 'Stack Deals', { size: 'md', id: 'sh-fine-h', cls: 'dh--inline' })}</div></div>
     <div class="sh-fine">
       <div class="sh-fine__item" data-reveal style="--i:0">${icon('id')}<h3>21+ with valid ID</h3><p>${esc(bare(idFaq.a))}</p>${srcTag('Store FAQ')}</div>
       <div class="sh-fine__item" data-reveal style="--i:1">${icon('leaf')}<h3>Purchase limits</h3>${capHtml(limits.html) || `<p>${esc(limits.a)}</p>`}${srcTag('Store FAQ')}</div>
       <div class="sh-fine__item" data-reveal style="--i:2">${icon('pin')}<h3>Deals are per store</h3><p>Each store has its own specials page on the live menu, and inventory can vary by store. Check your store’s specials before you head out.</p></div>
-    </div>`, { tone: 'slate', id: 'sh-fine', labelledby: 'sh-fine-h' })
+    </div>`, { tone: 'slate', id: 'sh-fine', labelledby: 'sh-fine-h', tight: true })
   + signUp();
   return {
     path: '/deals/', type: 'deals', crumbs, main,
@@ -407,7 +400,7 @@ function howToOrder() {
   const idFaq = faqOf('/location/clifton-park', /^Do I need an ID/);
   const faqs = [
     faqOf('/visit-us', /^Can I place an online order/),
-    { q: 'When do pre-orders close?', a: `Pre-orders close 30 minutes before closing. Monday to Saturday the stores are open 9 AM to 9 PM, so the live menu takes pre-orders until ${ORDER_UNTIL}. On Sunday the stores are open 10 AM to 6 PM, so pre-orders close at ${ORDER_UNTIL_SUN}.` },
+    { q: 'When do pre-orders close?', a: `Pre-orders close 30 minutes before closing. Monday to Saturday the stores are open 9 AM to 9 PM, so the live menu takes pre-orders until ${ORDER_UNTIL}. On Sunday the stores are open 10 AM to 6 PM, so pre-orders close at ${ORDER_UNTIL_SUN}.` },
     { q: 'Can I move my cart to another store?', a: brand.separateCarts },
     faqOf('/visit-us', /^Do all of your locations offer the same menu/),
     faqOf('/location/albany', /^What forms of payment/),
@@ -415,7 +408,7 @@ function howToOrder() {
     faqOf('/location/albany', /^Can I shop for weed if I'm from out of state/),
   ];
   const main = pageHero({
-    kicker: 'How to order', title: ['How to', 'Order'], spray: 'ahead', img: 'turntable', crumbs, sticker: 'Five steps',
+    kicker: 'How to order', title: ['How to', 'Order'], spray: 'ahead', img: 'turntable', crumbs, sticker: 'Five steps', cls: 'sh-ph',
     lede: 'Five steps from the couch to the counter: pick your store, browse the live menu, fill your cart, check out for pickup and bring your ID.',
     ctas: menuBtn('all', 'Start an order') + btn('Pickup details', '/pickup/', { kind: 'ghost' }),
   })
@@ -436,12 +429,12 @@ function howToOrder() {
       <div class="sh-need__card" data-reveal style="--i:1"><span class="sh-need__ic">${icon('cash')}</span><h3 class="sh-need__t">A way to pay</h3><p>We accept ${esc(brand.payment)} at all three stores.</p></div>
       <div class="sh-need__card" data-reveal style="--i:2"><span class="sh-need__ic">${icon('clock')}</span><h3 class="sh-need__t">Time to spare</h3><p>Pre-orders close 30 minutes before closing: ${ORDER_UNTIL} Monday to Saturday, ${ORDER_UNTIL_SUN} on Sunday.</p></div>
       <div class="sh-need__card" data-reveal style="--i:3"><span class="sh-need__ic">${icon('bag')}</span><h3 class="sh-need__t">The right store</h3><p>${esc(brand.separateCarts)}</p></div>
-    </div>`, { tone: 'mint', id: 'sh-need', labelledby: 'sh-need-h', lx: '20%', ly: '0%' })
+    </div>`, { tone: 'mint', id: 'sh-need', labelledby: 'sh-need-h', lx: '20%', ly: '0%', tight: true })
   + band(`<div class="sh-head"><div>${kicker('Step two')}${dh('Pick a', 'Shelf', { id: 'sh-shelf-h' })}</div>
     <p class="lede" data-reveal>Your next click lands on products. Every sleeve opens that category on your store’s live menu.</p></div>
     ${crate()}
     <div class="sh-crate__foot" data-reveal>${menuBtn('all', 'Shop all products')}${menuBtn('specials', 'Specials', { kind: 'ghost' })}</div>`,
-  { tone: 'night', lit: true, spot: true, id: 'sh-shelf', labelledby: 'sh-shelf-h', lx: '80%', ly: '10%', cls: 'sh-lift', after: floatObj('obj-bud-a', { style: 'left:3%;bottom:-100px;width:min(170px,16vw)', depth: 0.16, sizes: '180px' }) })
+  { tone: 'night', lit: true, spot: true, id: 'sh-shelf', labelledby: 'sh-shelf-h', lx: '80%', ly: '10%', cls: 'sh-lift', after: floatObj('obj-bud-a', { cls: 'sh-float-dn', style: 'left:3%;bottom:-100px;width:min(170px,16vw)', depth: 0.16, sizes: '180px' }) })
   + band(faqBlock(['Any Questions?', "We've Got Answers"], faqs, { id: 'sh-faq-h', text: 'Ordering ahead, store by store.', cta: menuBtn('all', 'Start an order', { size: 'sm' }) }),
     { tone: 'ink', id: 'sh-faq', labelledby: 'sh-faq-h' })
   + signUp();
@@ -474,7 +467,7 @@ function pickup() {
     { title: 'Collect your order', icon: 'bag', text: 'Your budtender hands it over. Questions about a product? Ask before you head out.' },
   ];
   const main = pageHero({
-    kicker: 'In-store pickup', title: ['Pickup at', 'the Counter'], img: 'store-albany', crumbs, sticker: '21+ with ID',
+    kicker: 'In-store pickup', title: ['Pickup at', 'the Counter'], img: 'store-albany', crumbs, sticker: '21+ with ID', cls: 'sh-ph',
     lede: 'Ordered ahead? Here is what to bring and what happens when you pull up to Albany, Clifton Park or Schenectady.',
     ctas: menuBtn('all', 'Start an order') + btn('How to order', '/how-to-order/', { kind: 'ghost' }),
   })
@@ -486,10 +479,12 @@ function pickup() {
       <div class="sh-bring__card glass" data-tilt data-reveal style="--i:2"><span class="sh-bring__ic">${icon('pin')}</span><h3>The right store</h3><p>${esc(bare(anyLoc.a))}</p></div>
     </div>`,
   { tone: 'night', lit: true, spot: true, id: 'sh-bring', labelledby: 'sh-bring-h', backdrop: backdrop('m-2024-05-image-1', 'soft'), lx: '75%', ly: '10%' })
-  + band(`<div class="sh-howto">
+  // four short steps: the heading and the pull quote run across the top and the steps sit two to a row beneath, so no
+  // column stands half empty (sh-howto--wide in shop.css)
+  + band(`<div class="sh-howto sh-howto--wide">
     <div class="sh-howto__aside" data-reveal>${kicker('At the counter')}${dh('Side B', 'Pickup', { size: 'md', id: 'sh-pk-h' })}
       <figure class="sh-pull"><span class="sh-pull__k">${icon('mic')}Straight from our store FAQs</span><p class="sh-pull__q">${esc(deliv[0].q)}</p><blockquote>${esc(deliv[0].a)}</blockquote><figcaption>Clifton Park and Schenectady store pages</figcaption></figure></div>
-    <div class="sh-howto__list">${tracklist(pickSteps, { side: 'B' })}</div>
+    <div class="sh-howto__list">${tracklist(pickSteps, { side: 'B', cls: 'tracks--2' })}</div>
   </div>`, { tone: 'ink', sheet: true, id: 'sh-pk', labelledby: 'sh-pk-h' })
   + band(`<div class="sh-limits">
     <div class="sh-limits__head">${kicker('Know your limits')}${dh('Per Day', 'in New York', { size: 'md', id: 'sh-lim-h' })}</div>
@@ -499,9 +494,10 @@ function pickup() {
   </div>`, { tone: 'mint', id: 'sh-lim', labelledby: 'sh-lim-h', lx: '80%', ly: '0%' })
   + band(`<div class="sh-head"><div>${kicker('Store by store')}${dh('Pickup', 'Notes', { id: 'sh-notes-h' })}</div>
     <p class="lede" data-reveal>Address, hours, phone and directions for each counter. Open daily, with pre-orders closing 30 minutes before close.</p></div>
-    <div class="sh-stores sh-stores--pick">${stores.map((s, i) => storeTile(s, i, shopAt(s, 'all', 'Shop this store', { aria: `Shop the ${s.city} menu` }) + dirBtn(s) + infoBtn(s), {
-    set: false,
-    extra: `<p class="sh-store__addr">${icon('phone')}<a href="tel:${s.tel}">${esc(s.phone)}</a></p><p class="sh-store__near">${icon('route')}<span>${esc(s.near[0].toUpperCase() + s.near.slice(1))}</span></p>${hoursTable(s)}`,
+    <div class="sh-stores">${stores.map((s, i) => storeTile(s, i, {
+    cta: shopAt(s, 'all', 'Shop this store', { aria: `Shop the ${s.city} menu` }) + dirBtn(s),
+    links: infoLink(s),
+    extra: `<p class="scard__addr">${icon('phone')}<a href="tel:${s.tel}">${esc(s.phone)}</a></p><p class="scard__addr sh-scard__near">${icon('route')}<span>${esc(s.near[0].toUpperCase() + s.near.slice(1))}</span></p>${hoursTable(s)}`,
   })).join('')}</div>`,
   { tone: 'night', lit: true, spot: true, sheet: true, id: 'sh-notes', labelledby: 'sh-notes-h', lx: '50%', ly: '0%', cls: 'sh-lift', after: floatObj('obj-boombox', { style: 'right:3%;bottom:-90px;width:min(220px,18vw)', depth: 0.12, sizes: '240px' }) })
   + band(faqBlock(['Any Questions?', "We've Got Answers"], faqs, { id: 'sh-faq-h', text: 'Pickup, ID, payment and returns, from our store FAQs.', cta: menuBtn('all', 'Start an order', { size: 'sm' }) }),
@@ -524,7 +520,7 @@ function brandsPage() {
   const sameMenu = faqOf('/visit-us', /^Do all of your locations offer the same menu/);
   const partners = PARTNERS.map(partner);
   const main = pageHero({
-    kicker: 'On the shelf', title: [a, b.join(' ')], img: 'm-2025-10-img-6712', crumbs, sticker: `${menuBrands().length} brands`,
+    kicker: 'On the shelf', title: [a, b.join(' ')], img: 'm-2025-10-img-6712', crumbs, sticker: `${menuBrands().length} brands`, cls: 'sh-ph',
     lede: 'Our brand partners up top, then an A to Z of every brand the three live menus listed, each one linked straight to that brand’s shelf.',
     ctas: menuBtn('all', 'Shop all products') + btn('Our brand partners', '/our-brands/', { kind: 'ghost' }),
   })
@@ -535,11 +531,11 @@ function brandsPage() {
   + band(`<div class="sh-head"><div>${kicker('A to Z')}${dh('Every Brand', 'on the Menus', { id: 'sh-az-h' })}</div>
     <p class="lede" data-reveal>Filter by letter, then tap a store letter to open that brand on the store’s live menu.</p></div>
     ${brandDirectory()}`,
-  { tone: 'night', lit: true, spot: true, sheet: true, id: 'sh-azb', labelledby: 'sh-az-h', lx: '85%', ly: '5%', cls: 'sh-lift', after: floatObj('obj-bud-b', { style: 'right:4%;bottom:-120px;width:min(130px,13vw)', depth: 0.16, sizes: '140px' }) })
+  { tone: 'night', lit: true, spot: true, sheet: true, id: 'sh-azb', labelledby: 'sh-az-h', lx: '85%', ly: '5%', cls: 'sh-lift', after: floatObj('obj-bud-b', { style: 'right:4%;bottom:-40px;width:min(130px,13vw)', depth: 0.16, sizes: '140px' }) })
   + band(`<div class="sh-same">
-    <div data-reveal>${kicker('Store to store')}<h2 class="sh-same__q" id="sh-same-h">${esc(sameMenu.q)}</h2></div>
+    <div class="fitcol" data-reveal>${kicker('Store to store')}<h2 class="sh-same__q" id="sh-same-h" style="--fit:${fitEm(sameMenu.q)}">${esc(sameMenu.q)}</h2></div>
     <div class="sh-same__a" data-reveal style="--i:1">${capHtml(sameMenu.html) || `<p>${esc(sameMenu.a)}</p>`}<div class="btns">${menuBtn('all', 'Shop your store')}${menuBtn('specials', 'Specials', { kind: 'ghost' })}</div></div>
-  </div>`, { tone: 'mint', id: 'sh-same', labelledby: 'sh-same-h', lx: '15%', ly: '0%' })
+  </div>`, { tone: 'mint', id: 'sh-same', labelledby: 'sh-same-h', lx: '15%', ly: '0%', tight: true })
   + signUp();
   return {
     path: '/brands/', type: 'brands', crumbs, main,
@@ -557,17 +553,17 @@ function ourBrands() {
   const partners = PARTNERS.map(partner);
   const [a, ...b] = h2.split(' ');
   const main = pageHero({
-    kicker: 'Brand partners', title: ['Our', 'Brands'], img: 'm-2025-03-clifton-park-interior', crumbs, sticker: 'Made in New York',
+    kicker: 'Brand partners', title: ['Our', 'Brands'], img: 'm-2025-03-clifton-park-interior', crumbs, sticker: 'Made in New York', cls: 'sh-ph',
     lede: 'The New York brands we feature, with the story behind each one and a straight line to their shelf at all three stores.',
     ctas: btn('Brands we carry, A to Z', '/brands/') + menuBtn('all', 'Shop all products', { kind: 'ghost' }),
   })
-  + band(`<div class="sh-head"><div>${kicker('Now on our shelves')}${dh(a, b.join(' '), { id: 'sh-ob-h' })}</div></div>
+  + band(`<div class="sh-head"><div>${kicker('Now on our shelves')}${dh(a, b.join(' '), { id: 'sh-ob-h', cls: 'dh--inline' })}</div></div>
     <div class="sh-stories">${partners.map((p, i) => partnerTile(p, i, { long: true, logo: logos[i] })).join('')}</div>`,
   { tone: 'ink', id: 'sh-ob', labelledby: 'sh-ob-h', backdrop: backdrop('wall-mural', 'deep') })
   + band(`<div class="sh-head"><div>${kicker('Where to buy')}${dh('Shop by', 'Store', { size: 'md', id: 'sh-wb-h' })}</div>
     <p class="lede" data-reveal>Each button opens the brand’s page on that store’s live menu.</p></div>
     <div class="sh-matrix">${partners.map((p, i) => `<div class="sh-matrix__row" data-reveal style="--i:${i}"><p class="sh-matrix__name">${esc(p.name)}</p>${shopNowAt(p.slug, p.name, { label: 'Shop at', kind: 'ghost' })}</div>`).join('')}</div>`,
-  { tone: 'mint', id: 'sh-wb', labelledby: 'sh-wb-h', lx: '80%', ly: '10%' })
+  { tone: 'mint', id: 'sh-wb', labelledby: 'sh-wb-h', lx: '80%', ly: '10%', tight: true })
   + signUp();
   return {
     path: '/our-brands/', type: 'brands', crumbs, main,
@@ -607,31 +603,37 @@ function brandDetail(slug) {
     : `<div class="sh-line__cols">${lineP.map((x, i) => `<div class="sh-line__col" data-reveal style="--i:${i}"><span class="sh-line__no">A${i + 1}</span><p>${capHtml(x.html || esc(x.text))}</p></div>`).join('')}</div>`;
 
   const main = pageHero({
-    kicker: p.kick || 'Now Available at Capital District Cannabis', title: name, img: HERO_ART[slug] || 'wall-mural', crumbs,
+    kicker: p.kick || 'Now Available at Capital District Cannabis', title: name, img: HERO_ART[slug] || 'wall-mural', crumbs, cls: 'sh-ph',
     lede: pg.description || '',
     ctas: shopNowAt(slug, name, { cls: 'sh-shopat--hero' }),
   })
+  // the logo is slapped across the hero seam. A band that ends with a cut-out (.float) hanging up gets that seam drawn
+  // inside it, one layer under its objects (build.mjs seams(), dv.css .dv-in), so the empty .float here puts the seam
+  // under the slap (z-index 5 in shop.css) instead of over it
   + band(`<div class="sh-bstory">
     <div class="sh-slap" data-reveal><div class="sh-slap__in" data-tilt>${mediaImg(p.logo.src, { alt: p.logo.alt || `${name} logo`, sizes: '(min-width: 900px) 340px, 60vw' })}</div></div>
     <div class="sh-bstory__words" data-reveal style="--i:1">${kicker('The story')}
       ${p.intro ? `<p class="sh-bstory__lede">${capHtml(p.intro.html || esc(p.intro.text))}</p>` : ''}
       <div class="btns">${site ? btn(site.text, site.href, { kind: 'ghost' }) : ''}<a class="tlink sh-tap" href="#sh-where">Where to buy${icon('arrow')}</a></div>
     </div>
-  </div>`, { tone: 'ink', cls: 'sh-bstory-band', id: 'sh-story' })
-  + band(`<div class="sh-head"><div>${kicker('Liner notes')}${dh(...split2(h2(reviews)), { size: 'md', id: 'sh-rv-h' })}</div></div>
+  </div>`, { tone: 'ink', cls: 'sh-bstory-band', id: 'sh-story', after: '<div class="float sh-seam-under" style="top:0" aria-hidden="true"></div>' })
+  + band(`<div class="sh-head"><div>${kicker('Liner notes')}${dh(...split2(h2(reviews)), { size: 'md', id: 'sh-rv-h', cls: 'dh--inline' })}</div></div>
     <div class="sh-notes">${reviews.blocks.filter((b) => b.t === 'p').map((x, i) => `<div class="sh-noteq glass" data-tilt data-reveal style="--i:${i}"><span class="sh-noteq__ic">${icon('star')}</span><p>${capHtml(x.html || esc(x.text))}</p></div>`).join('')}</div>`,
   { tone: 'night', lit: true, spot: true, sheet: true, id: 'sh-rv', labelledby: 'sh-rv-h', lx: '75%', ly: '10%', backdrop: pics[0] ? `${mediaImg(pics[0].src, { decorative: true, cls: 'sh-bd', sizes: '100vw' })}<span class="sh-bd-shade sh-bd-shade--deep"></span>` : '' })
-  + band(`<div class="sh-head"><div>${kicker('The lineup')}${dh(...split2(h2(line)), { size: 'md', id: 'sh-ln-h' })}</div></div>
+  + band(`<div class="sh-head"><div>${kicker('The lineup')}${dh(...split2(h2(line)), { size: 'md', id: 'sh-ln-h', cls: 'dh--inline' })}</div></div>
     ${productLine}
     ${shopNowAt(slug, name, { cls: 'sh-shopat--line' })}`,
   { tone: 'mint', id: 'sh-ln', labelledby: 'sh-ln-h', lx: '85%', ly: '0%' })
   + (pics.length ? band(`<div class="sh-gal">${pics.map((x, i) => `<figure class="sh-frame" data-reveal style="--i:${i};--r:${[-2.4, 1.8, -1.2, 2.2][i % 4]}deg"><span class="sh-frame__in" data-tilt>${mediaImg(x.src, { alt: x.alt || '', sizes: '(min-width: 900px) 24vw, 46vw' })}</span></figure>`).join('')}</div>`,
     { tone: 'slate', id: 'sh-gal', cls: 'sh-gal-band' }) : '')
-  + band(faqBlock(split2(h2(faqMod)), faqs, { id: 'sh-faq-h', kicker: 'Good to know', cta: shopNowAt(slug, name, { label: 'Shop', kind: 'ghost' }) }),
+  // the record only beside a list of four or more: beside three short answers the column (heading, the three store
+  // buttons and the record) stood far taller than the list (parts.mjs faqSection: the record is off where the column
+  // already holds links taller than the list)
+  + band(faqBlock(split2(h2(faqMod)), faqs, { id: 'sh-faq-h', kicker: 'Good to know', cta: shopNowAt(slug, name, { label: 'Shop', kind: 'ghost' }), vinyl: faqs.length >= 4 }),
     { tone: 'ink', id: 'sh-faq', labelledby: 'sh-faq-h' })
   + band(`<div class="sh-head"><div>${kicker(whereKick || brand.name)}${dh(...split2(h2(where)), { size: 'md', id: 'sh-where-h' })}</div>
     ${whereText ? `<p class="lede" data-reveal>${capHtml(whereText.html || esc(whereText.text))}</p>` : ''}</div>
-    <div class="sh-stores">${stores.map((s, i) => storeTile(s, i, shopAt(s, 'brands/' + slug, `Shop ${name}`, { aria: `Shop ${name} at ${s.city}` }) + dirBtn(s, dirLabel) + infoBtn(s), { set: false })).join('')}</div>`,
+    <div class="sh-stores">${stores.map((s, i) => storeTile(s, i, { cta: shopAt(s, 'brands/' + slug, `Shop ${name}`, { aria: `Shop ${name} at ${s.city}` }) + dirBtn(s, dirLabel), links: infoLink(s) })).join('')}</div>`,
   { tone: 'night', lit: true, spot: true, sheet: true, id: 'sh-where', labelledby: 'sh-where-h', lx: '20%', ly: '0%', cls: 'sh-lift', after: floatObj('obj-bud-a', { style: 'right:3%;bottom:-100px;width:min(160px,15vw)', depth: 0.14, sizes: '180px' }) })
   + signUp();
   return {

@@ -25,6 +25,11 @@
 /* stacked sheets: from the second band on, a band overlaps the one before by its corner radius */
 .band--sheet { margin-top: calc(-1 * var(--r-xl)); border-radius: var(--r-xl) var(--r-xl) 0 0; box-shadow: 0 -30px 60px -30px rgba(0, 0, 0, .7); }
 .band--sheet > .band__clip { border-radius: inherit; }
+/* a band with little in it (a heading and one row of links or buttons) keeps less padding, so it never reads as an
+   empty slab between two full sections */
+.band--tight { padding: calc(var(--sec) * .52) 0; }
+.band--tight .band__head, .band--tight .st-head, .band--tight .sh-head { margin-bottom: clamp(20px, 2vw, 24px); }
+@media (max-width: 760px) { .band--tight { padding: 56px 0; } } /* phones: room for the seams' drips and tears */
 .band__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px 40px; margin-bottom: clamp(32px, 4vw, 56px); }
 .band__head .dh { margin: 0; }
 .band__head .lede { margin: 0; }
@@ -47,16 +52,21 @@
 .ph__h1 { max-width: 15ch; margin-bottom: 18px; }
 .ph__lede { color: var(--text-2); font-size: clamp(1.05rem, .98rem + .4vw, 1.28rem); max-width: 58ch; margin: 0 0 26px; }
 .ph__ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-.ph__sticker { position: absolute; right: 0; top: 0; }
+/* sticker.js pins it just after the heading's last letter, lightly overlapping it; without the script it sits top right */
+.ph__sticker { position: absolute; left: 0; top: 0; z-index: 3; }
+.ph__sticker .sticker { font-size: clamp(19px, 1rem + .8vw, 30px); }
+html:not(.js) .ph__sticker { left: auto; right: 0; }
+.js .ph__sticker:not(.is-placed) { visibility: hidden; }
+.ph__sticker.is-slapped { animation: stickerSlap .6s var(--ease-spring) both; }
+.ph { overflow-x: clip; } /* the sticker's slap-in (1.55x) and a drag near the edge must never widen the page; vertical stays open */
 @keyframes phBeam { from { transform: translateX(-12%) rotate(-4deg); } to { transform: translateX(8%) rotate(3deg); } }
 @media (max-width: 760px) {
   .ph { min-height: 0; padding-top: calc(var(--hdr-h) + 38px); }
   .ph__img { width: 100% !important; opacity: .42; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, transparent 100%); }
-  .ph__sticker { display: none; }
 }
 .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; color: var(--text-3); margin-bottom: 22px; }
 .crumbs li + li::before { content: '/'; margin-right: 6px; color: var(--line-2); }
-.crumbs a { color: var(--text-2); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.crumbs a { color: var(--text-2); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; } /* 'Home' and 'Shop' were 37 and 32px wide */
 .crumbs ol { align-items: center; }
 .crumbs a:hover { color: var(--lime); }
 
@@ -65,8 +75,11 @@
 .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-@media (max-width: 1000px) { .grid--3, .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1000px) { .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1100px) { .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } } /* four columns at 1001-1100 squeezed card text to ~18 characters a line */
 @media (max-width: 640px) { .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; } }
+/* three-up grids at two columns (641-1000): a lone last card sits centred at a column's width, not beside an empty cell */
+@media (min-width: 641px) and (max-width: 1000px) { .grid--3 > :last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - clamp(14px, 2vw, 24px)) / 2); } }
 
 /* ---------- the record crate: category sleeves, each one opens products on the live menu ---------- */
 .crate { position: relative; perspective: 1400px; }
@@ -132,7 +145,9 @@
 /* ---------- floating cut-outs (front plane), crossing seams ---------- */
 .float { position: absolute; z-index: var(--z-float); pointer-events: none; will-change: transform; }
 .float img { width: 100%; height: auto; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .65)) drop-shadow(0 0 30px rgba(161, 207, 110, .18)); animation: bob 7s var(--ease-io) infinite alternate; }
-@media (max-width: 760px) { .float { transform: scale(.62); } }
+/* phones: cut-outs placed by class shrink; those hung on a seam by an inline offset are fitted to the seam's gap in fix.css
+   (shrinking those too left 35-50px specks) */
+@media (max-width: 760px) { .float:not([style*="top:-"], [style*="top: -"], [style*="bottom:-"], [style*="bottom: -"]) { transform: scale(.62); } }
 
 /* ---------- crossing tapes (the live site's marquee, rebuilt) ---------- */
 .tapes { position: relative; height: 150px; margin: -75px 0; z-index: 6; pointer-events: none; overflow: hidden; }
@@ -150,6 +165,7 @@
 .faq__item[open] { border-color: var(--lime-32); background: rgba(13, 18, 17, .7); }
 .faq__item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 22px; min-height: 64px; font-weight: 600; font-size: 17px; }
 .faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary > span { text-wrap: balance; } /* a question's last word ("York?") never sits alone */
 .faq__pm { position: relative; width: 30px; height: 30px; flex: none; border-radius: 50%; border: 1.5px solid var(--line-2); transition: transform var(--d-2) var(--ease), background var(--d-1), border-color var(--d-1); }
 .faq__pm::before, .faq__pm::after { content: ''; position: absolute; left: 50%; top: 50%; width: 12px; height: 1.6px; background: currentColor; translate: -50% -50%; }
 .faq__pm::after { rotate: 90deg; transition: rotate var(--d-2) var(--ease); }
@@ -162,6 +178,18 @@
 .band--mint .faq__item[open] { background: #fff; border-color: rgba(42, 49, 48, .3); }
 .band--mint .faq__a { color: var(--text-ink-2); }
 .band--mint .faq__a a { color: #3d6b16; }
+/* FAQ section, one layout on every page (the home FAQ's, parts.mjs faqSection): a sticky heading column, its heading
+   sized to the column, a short lede and buttons, and beside a long list the spinning record; the accordion in the wider
+   column. Below 1000px: one column, the record hidden. */
+.faqsec { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: clamp(30px, 5vw, 80px); align-items: start; }
+.faqsec__head { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 30px); container-type: inline-size; }
+.faqsec__sub { margin: 4px 0 18px; font: 800 17px/1.2 var(--f-display); font-stretch: 108%; text-transform: uppercase; color: var(--text-2); }
+.band--mint .faqsec__sub, .band--lime .faqsec__sub { color: var(--text-ink-2); }
+.faqsec__cta { margin-top: 4px; }
+.faqsec__head .dh + .lede { margin-top: 20px; } /* as under a band head (phones had 10px) */
+.faqsec__deck { position: relative; width: min(100%, 260px); margin-top: 36px; }
+.faqsec__lbl { position: absolute; left: 50%; bottom: -16px; translate: -50% 0; white-space: nowrap; padding: 9px 15px; border-radius: var(--pill); background: var(--ink); color: var(--mint); font: 700 12px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; box-shadow: 0 10px 24px -10px rgba(0, 0, 0, .6); }
+@media (max-width: 1000px) { .faqsec { grid-template-columns: minmax(0, 1fr); } .faqsec__head { position: static; } .faqsec__deck { display: none; } }
 
 /* ---------- shout-outs (captured reviews) ---------- */
 .shouts { position: relative; }
@@ -180,6 +208,7 @@
 
 /* ---------- track list (steps) ---------- */
 .tracks { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; counter-reset: t; }
+@media (min-width: 1000px) { .tracks--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } } /* a list that runs the band's full width: two to a row */
 .track { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px; align-items: start; padding: 22px 24px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .45); transition: border-color var(--d-1), transform var(--d-2) var(--ease), background var(--d-1); }
 .track:hover { border-color: var(--lime-32); transform: translateX(6px); background: rgba(13, 18, 17, .7); }
 .track__no { font: 900 34px/1 var(--f-display); font-stretch: 120%; color: var(--lime); min-width: 2.2ch; }
@@ -187,7 +216,8 @@
 .track p { margin: 0; color: var(--text-2); }
 .track p + .btn, .track .btn { margin-top: 14px; }
 .track__ic { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 50%; background: var(--lime-08); color: var(--lime); }
-@media (max-width: 640px) { .track { grid-template-columns: auto minmax(0, 1fr); gap: 14px; padding: 18px; } .track__ic { display: none; } .track__no { font-size: 28px; } }
+@media (max-width: 640px) { .track { grid-template-columns: auto minmax(0, 1fr); gap: 14px; padding: 18px; } .track__ic { display: none; } .track__no { font-size: 28px; } .track__t { font-size: 18px; } }
+@media (max-width: 400px) { .track { grid-template-columns: minmax(0, 1fr); gap: 6px; } .track__no { font-size: 24px; } } /* small phones: the number above, the step text and its button get the full width */
 .band--mint .track { background: rgba(255, 255, 255, .6); border-color: rgba(42, 49, 48, .14); }
 .band--mint .track__no { color: #4e7d22; }
 .band--mint .track p { color: var(--text-ink-2); }
@@ -232,8 +262,10 @@ a.gcard:hover .gcard__go .ico { transform: translateX(4px); }
 .flyer:hover { transform: rotate(0deg) translateY(-6px); }
 .flyer a { display: grid; text-decoration: none; color: inherit; background: #f4f7f5; color: var(--text-ink); border-radius: 6px; padding: 12px 12px 18px; box-shadow: 0 30px 50px -26px rgba(0, 0, 0, .9); }
 .flyer__tape { position: absolute; left: 50%; top: -12px; width: 96px; height: 26px; translate: -50% 0; rotate: -4deg; background: rgba(200, 240, 155, .82); box-shadow: 0 2px 6px rgba(0, 0, 0, .25); z-index: 2; }
-.flyer__art { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: var(--ink); }
-.flyer__art img { width: 100%; height: 100%; object-fit: cover; }
+/* the client's real flyers run their words to the edges: shown whole (2:3, the shape of most of them; another shape is
+   matted by the flyer's own paper), never cropped (4:5 cover cut "15% OFF YOUR PURCHASE!" off the Halloween flyer) */
+.flyer__art { display: block; aspect-ratio: 2 / 3; overflow: hidden; border-radius: 3px; background: none; }
+.flyer__art img { width: 100%; height: 100%; object-fit: contain; }
 .flyer__ph { display: grid; place-items: center; height: 100%; padding: 18px; text-align: center; font: 900 24px/1 var(--f-display); font-stretch: 116%; text-transform: uppercase; color: var(--lime); }
 .flyer__body { display: grid; gap: 6px; padding: 14px 4px 0; }
 .flyer__when, .flyer__where { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; font-weight: 600; color: var(--text-ink-2); }
@@ -258,7 +290,7 @@ a.gcard:hover .gcard__go .ico { transform: translateX(4px); }
 .prose th, .prose td { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; }
 
 /* ---------- sign up band ---------- */
-.band--signup { padding: clamp(70px, 8vw, 120px) 0 clamp(80px, 9vw, 130px); }
+.band--signup { padding: clamp(70px, 8vw, 120px) 0 clamp(80px, 9vw, 130px); overflow-x: clip; } /* its drifting light (limeDrift, ±3%) must not widen the page; the drips below stay visible */
 .band--signup::before { background: radial-gradient(45% 80% at 85% 10%, rgba(255, 255, 255, .5), transparent 70%), radial-gradient(40% 60% at 10% 100%, rgba(42, 49, 48, .16), transparent 70%); opacity: 1; animation: limeDrift 14s var(--ease-io) infinite alternate; }
 .signup { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
 .signup__lede { color: var(--text-ink-2); font-size: 18px; max-width: 46ch; }
@@ -273,7 +305,7 @@ a.gcard:hover .gcard__go .ico { transform: translateX(4px); }
 
 /* ---------- areas grid ---------- */
 .areas { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-.areas a { display: flex; align-items: center; gap: 10px; min-height: 58px; padding: 10px 16px; border-radius: 14px; border: 1px solid var(--line); background: rgba(13, 18, 17, .45); text-decoration: none; transition: border-color var(--d-1), background var(--d-1), transform var(--d-2) var(--ease); }
+.areas a { display: flex; align-items: center; gap: 10px; height: 100%; min-height: 58px; padding: 10px 16px; border-radius: 14px; border: 1px solid var(--line); background: rgba(13, 18, 17, .45); text-decoration: none; transition: border-color var(--d-1), background var(--d-1), transform var(--d-2) var(--ease); }
 .areas a span { flex: 1; font-weight: 600; }
 .areas a small { color: var(--text-3); font-size: 13px; }
 .areas a .ico { color: var(--lime); width: 16px; height: 16px; transition: transform var(--d-2) var(--ease); }
@@ -306,9 +338,10 @@ a.gcard:hover .gcard__go .ico { transform: translateX(4px); }
 .scard__bullet { position: absolute; left: 16px; top: 16px; }
 .scard__bullet .bullet { width: 48px; height: 48px; font-size: 21px; }
 .scard__body { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 22px; }
-.scard__name { font: 880 min(26px, calc((100cqi - 44px) / 10.6))/1 var(--f-display); /* the card is a container: "SCHENECTADY," fits any card width */ font-stretch: 114%; text-transform: uppercase; }
+.scard__name { font: 880 min(26px, calc((100cqi - 44px) / 12.6))/1 var(--f-display); /* the card is a container; ", NY" keeps a no-break space, so "SCHENECTADY, NY" (12x the size) fits on one line */ font-stretch: 114%; text-transform: uppercase; }
 .scard__addr { margin: 0; display: flex; gap: 10px; align-items: flex-start; color: var(--text-2); }
 .scard__addr .ico { color: var(--lime); margin-top: 3px; }
+@media (max-width: 359px) { .scard__addr { font-size: 14.5px; } } /* 320: "Schenectady, NY 12303" fits one line beside the pin (was 3 short lines) */
 .scard__addr a { color: inherit; display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; }
 .scard__cta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; padding-top: 8px; }
 .scard__cta > .btn { width: 100%; min-width: 0; padding-inline: 14px; }

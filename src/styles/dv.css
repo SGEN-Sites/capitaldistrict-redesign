@@ -1,0 +1,168 @@
+/* dv.css: section dividers (divider() in src/pages/lab-dividers.mjs; design lab /lab/dividers/). Prefix dv-.
+   A divider is a zero-height strip between two bands: the layout never moves, it takes no clicks, and each kind clips
+   its own art to the page width. The art paints a neighbouring band's colour across the seam (--dv-a: the band above,
+   --dv-b: the band below). Loops pause off screen (.is-off) and the one-shot moments wait for .is-on (both set by
+   src/scripts/dv.js); without the script every seam shows its finished state. All motion is off under reduced motion. */
+
+.dv-seam { position: relative; z-index: 6; height: 0; pointer-events: none; container-type: inline-size; }
+.dv-seam * { pointer-events: none; }
+.dv-seam__probe { position: absolute; left: 0; top: -80px; width: 1px; height: 160px; }
+.dv-seam svg { position: absolute; left: 0; width: 100%; max-width: none; overflow: hidden; }
+.dv-seam.is-off * { animation-play-state: paused !important; }
+
+/* The seam belongs to the divider: where the art continues a band's colour across the seam, that band's light and
+   vignette fade out toward the seam, so the painted colour meets a flat ground (no visible line). */
+.band:has(+ .dv-seam--torn)::before, .band:has(+ .dv-seam--torn)::after,
+.band:has(+ .dv-seam--spray)::before, .band:has(+ .dv-seam--spray)::after,
+.band:has(+ .dv-seam--tape)::before, .band:has(+ .dv-seam--tape)::after,
+.band:has(+ .dv-seam--neon)::before, .band:has(+ .dv-seam--neon)::after {
+  -webkit-mask-image: linear-gradient(#000 calc(100% - 150px), transparent); mask-image: linear-gradient(#000 calc(100% - 150px), transparent);
+}
+.dv-seam--sky + .band::before, .dv-seam--sky + .band::after {
+  -webkit-mask-image: linear-gradient(transparent, #000 150px); mask-image: linear-gradient(transparent, #000 150px);
+}
+
+/* ---------- A. torn: a ripped wheat-paste poster edge ---------- */
+.dv-seam--torn { --dv-lip: #d7e0db; }
+.dv-seam--from-light.dv-seam--torn { --dv-lip: #fbfdfc; }
+.dv-torn { top: -6px; height: 80px; }
+.dv-torn__lip { fill: var(--dv-lip); }
+.dv-torn__face { fill: var(--dv-a); }
+.dv-torn__shade { flood-color: #000; flood-opacity: .44; }
+.dv-torn__shade--hard { flood-opacity: .3; }
+.dv-seam--to-light .dv-torn__shade { flood-color: #141a19; flood-opacity: .28; }
+.dv-seam--to-light .dv-torn__shade--hard { flood-opacity: .22; }
+
+/* ---------- B. spray: a fat-cap line sprayed over the seam ---------- */
+@property --dv-p { syntax: '<percentage>'; inherits: false; initial-value: 115%; }
+/* the paint: lime between two dark bands; where a light band meets a dark one, the dark band is the one sprayed on */
+.dv-seam--spray { --dv-paint: var(--lime); }
+.dv-seam--spray.dv-seam--to-light { --dv-paint: var(--dv-a); }
+.dv-seam--spray.dv-seam--from-light { --dv-paint: var(--dv-b); }
+.dv-seam--spray.dv-seam--from-light.dv-seam--to-light { --dv-paint: var(--ink); }
+/* sprays on from the left: a soft-edged mask sweeps across (the painted svg is drawn once, only the mask moves) */
+.dv-spray { position: absolute; left: 0; right: 0; top: -46px; height: 140px; --dv-p: 115%;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(var(--dv-p) - 14%), transparent var(--dv-p)); mask-image: linear-gradient(90deg, #000 calc(var(--dv-p) - 14%), transparent var(--dv-p)); }
+.dv-spray svg { top: 0; height: 100%; }
+.dv-spray__paint { will-change: transform; }
+.dv-spray__ink { flood-color: var(--dv-paint); }
+.dv-spray__dots { fill: none; stroke: var(--dv-paint); stroke-linecap: round; opacity: .85; }
+.dv-spray__run { fill: var(--dv-paint); transform-box: fill-box; transform-origin: 50% 0; }
+.dv-js .dv-seam--spray:not(.is-on) .dv-spray { --dv-p: 0%; }
+.dv-js .dv-seam--spray:not(.is-on) .dv-spray__run { scale: 1 .1; }
+.dv-seam--spray.is-on .dv-spray { animation: dvSprayOn 1.3s cubic-bezier(.45, .05, .4, 1) both; }
+.dv-seam--spray.is-on .dv-spray__run { transition: scale 3.6s cubic-bezier(.2, .75, .3, 1) var(--dl, 0s); }
+@keyframes dvSprayOn { from { --dv-p: 0%; } to { --dv-p: 115%; } }
+
+/* ---------- C. tape: a strip of lime tape becomes the edge ---------- */
+.dv-seam--tape { --dv-drop: min(3.5cqw, 52px); --dv-th: clamp(42px, 3.4vw, 54px); }
+.dv-tape { position: absolute; left: 0; right: 0; top: -2px; height: calc(var(--dv-drop) + var(--dv-th) + 46px); overflow: hidden; }
+/* the band above fills the wedge between the seam and the tape (its lower edge tucks 6px under the tape) */
+.dv-tape__wedge { position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--dv-drop) + 12px); background: var(--dv-a); clip-path: polygon(0 0, 100% 0, 100% 8px, 0 calc(100% - 4px)); }
+/* the strip's top edge runs from (0, drop) to (100%, 0): it pivots on its top centre, half the drop down */
+.dv-tape__strip {
+  position: absolute; left: 50%; top: calc(2px + var(--dv-drop) / 2); width: 112%; height: var(--dv-th); translate: -50% 0; transform-origin: 50% 0;
+  rotate: -2deg; rotate: calc(atan2(var(--dv-drop), 100cqw) * -1);
+  display: flex; align-items: center; overflow: hidden; color: var(--ink);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) 20%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, .13)), repeating-linear-gradient(90deg, rgba(42, 49, 48, .045) 0 1px, transparent 1px 4px), var(--lime);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), inset 0 -1px 0 rgba(0, 0, 0, .12), 0 18px 26px -14px rgba(0, 0, 0, .85), 0 3px 6px -2px rgba(0, 0, 0, .45);
+}
+.dv-tape__strip .tape__track { font-size: clamp(17px, 1.45vw, 22px); }
+.dv-seam--to-light .dv-tape__strip, .dv-seam--from-light .dv-tape__strip { background-color: var(--ink); color: var(--lime); }
+
+/* ---------- D. sky: the band below rises into a Capital Region skyline ---------- */
+.dv-seam--sky { --dv-sh: clamp(70px, 9cqw, 130px); }
+.dv-sky { height: var(--dv-sh); top: calc(var(--dv-sh) * -120 / 124); }
+.dv-sky__g0 { stop-color: var(--lime); stop-opacity: .17; }
+.dv-sky__g1 { stop-color: var(--lime); stop-opacity: 0; }
+.dv-sky__far { fill: var(--dv-b); fill: color-mix(in srgb, var(--dv-b) 60%, var(--dv-a)); }
+.dv-sky__near { fill: var(--dv-b); }
+.dv-sky__rim { fill: none; stroke: var(--lime); stroke-opacity: .45; stroke-width: 1.2; stroke-linecap: round; }
+.dv-sky__lit { fill: var(--lime); opacity: .78; }
+.dv-sky__dim { fill: var(--mint); opacity: .3; }
+.dv-sky__tw { fill: var(--lime-hi); opacity: .9; animation: dvTwinkle var(--du, 9s) steps(1, end) var(--dl, 0s) infinite; }
+/* a light band below makes a daylight skyline: its windows are dark */
+.dv-seam--to-light .dv-sky__lit, .dv-seam--to-light .dv-sky__tw { fill: var(--dv-a); opacity: .45; }
+.dv-seam--to-light .dv-sky__dim { fill: var(--dv-a); opacity: .2; }
+.dv-sky__beacon { fill: var(--lime-hi); animation: dvBeacon 2.8s var(--ease-io) infinite; }
+@keyframes dvTwinkle { 0%, 100% { opacity: .9; } 46% { opacity: 0; } 71% { opacity: .55; } 83% { opacity: .9; } }
+@keyframes dvBeacon { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+
+/* ---------- E. neon: an angled cut lined with a neon tube ---------- */
+.dv-seam--neon { --dv-d: min(4.4cqw, 64px); --dv-glow: 161, 207, 110; }
+.dv-neon { position: absolute; left: 0; right: 0; top: -60px; height: calc(var(--dv-d) + 250px); overflow: hidden; }
+/* the band above fills the wedge down to the cut: from 1px below the seam at the left to the full depth at the right */
+.dv-neon__wedge { position: absolute; left: 0; top: 58px; width: 100%; height: calc(var(--dv-d) + 3px); background: var(--dv-a); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 3px); }
+.dv-neon__line { position: absolute; left: 50%; top: calc(61px + var(--dv-d) / 2); width: 108%; height: 0; translate: -50% 0; rotate: 2.4deg; rotate: atan2(var(--dv-d), 100cqw); --j1: 38%; --j2: 69.5%; }
+.dv-neon__lit { position: absolute; inset: 0; }
+.dv-neon__seg {
+  position: absolute; top: -2.5px; height: 5px; border-radius: 3px; background: linear-gradient(#fbfff3, #d9f6ad 62%, #b6e07c);
+  box-shadow: 0 0 1px 1px rgba(214, 246, 170, .9), 0 0 6px 2px rgba(var(--dv-glow), .95), 0 0 16px 5px rgba(var(--dv-glow), .6), 0 0 40px 12px rgba(var(--dv-glow), .28), 0 0 96px 28px rgba(var(--dv-glow), .12);
+}
+/* the clear clips that hold the tube to the wall */
+.dv-neon__clip { position: absolute; top: -6px; width: 3px; height: 12px; margin-left: -1.5px; border-radius: 1px; background: linear-gradient(90deg, rgba(20, 26, 25, .55), rgba(232, 255, 214, .35) 50%, rgba(20, 26, 25, .55)); box-shadow: 0 0 0 1px rgba(0, 0, 0, .18); }
+.dv-neon__seg--1 { left: 0; width: calc(var(--j1) - 15px); }
+.dv-neon__seg--2 { left: calc(var(--j1) + 15px); width: calc(var(--j2) - var(--j1) - 30px); }
+.dv-neon__seg--3 { left: calc(var(--j2) + 15px); right: 0; }
+/* electrode caps: where two runs meet, each ends in a short dark cap */
+.dv-neon__cap { position: absolute; top: -3px; width: 8px; height: 6px; border-radius: 3px; background: linear-gradient(#56625f, #1d2423 60%, #2c3534); box-shadow: 0 0 0 1px rgba(0, 0, 0, .35); }
+.dv-neon__cap--1 { left: calc(var(--j1) - 15px); }
+.dv-neon__cap--2 { left: calc(var(--j1) + 7px); }
+.dv-neon__cap--3 { left: calc(var(--j2) - 15px); }
+.dv-neon__cap--4 { left: calc(var(--j2) + 7px); }
+/* the light the tube throws on the wall below the cut and on the band above it */
+.dv-neon__spill { position: absolute; left: 0; right: 0; top: 0; height: 170px; background: linear-gradient(rgba(var(--dv-glow), .2), rgba(var(--dv-glow), .075) 34%, rgba(var(--dv-glow), .02) 70%, transparent); }
+.dv-neon__spill--up { top: auto; bottom: 0; height: 60px; background: linear-gradient(0deg, rgba(var(--dv-glow), .13), transparent); }
+.dv-js .dv-seam--neon:not(.is-on) .dv-neon__lit { opacity: .08; }
+.dv-seam--neon.is-on .dv-neon__lit { animation: dvNeonOn 1.5s steps(1, end) both, dvNeonHum 4.8s var(--ease-io) 1.5s infinite alternate; }
+.dv-seam--neon.is-on .dv-neon__seg--2 { animation: dvNeonOn 1.9s steps(1, end) .25s both; }
+@keyframes dvNeonOn { 0% { opacity: .08; } 7% { opacity: 1; } 10% { opacity: .2; } 14% { opacity: .95; } 17% { opacity: .3; } 26% { opacity: 1; } 29% { opacity: .5; } 33%, 100% { opacity: 1; } }
+@keyframes dvNeonHum { to { opacity: .86; } }
+
+/* ---------- F. record: the edge of a giant record ---------- */
+.dv-seam--record { --dv-rh: clamp(60px, 9.72cqw, 150px); --dv-vinyl: #0b0f0e; --dv-groove: #fff; }
+/* rising out of a light band, the record is coloured vinyl in that band's colour, with dark grooves */
+.dv-seam--record.dv-seam--to-light { --dv-vinyl: var(--dv-b); --dv-groove: #0b0f0e; }
+.dv-rec { height: var(--dv-rh); top: calc(var(--dv-rh) * -.6); }
+.dv-rec__vinyl { fill: var(--dv-vinyl); }
+.dv-rec__r0 { stop-color: var(--lime); stop-opacity: .14; }
+.dv-rec__r1 { stop-color: var(--lime-hi); stop-opacity: 1; }
+.dv-rec__s0 { stop-color: #fff; stop-opacity: 0; }
+.dv-rec__s1 { stop-color: #fff; stop-opacity: .07; }
+.dv-rec__grooves ellipse { fill: none; stroke: var(--dv-groove); stroke-width: .7; vector-effect: non-scaling-stroke; }
+.dv-rec__rim { fill: none; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.dv-rec__rim--glow { stroke-width: 6; opacity: .5; }
+.dv-rec__sheen { translate: 820px 0; animation: dvSheen 26s var(--ease-io) infinite alternate; }
+.dv-rec__streak { opacity: .075; }
+.dv-rec__streak--2 { opacity: .055; }
+.dv-rec__streaks { transform-origin: 720px 267.7px; animation: dvStreak 26s var(--ease-io) infinite alternate; }
+@keyframes dvSheen { from { translate: 380px 0; } to { translate: 1180px 0; } }
+@keyframes dvStreak { from { rotate: -4deg; } to { rotate: 4deg; } }
+
+/* scroll-linked where the browser has view timelines: the far row of the skyline drifts, the record's sheen follows */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .dv-sky { view-timeline-name: --dv-sky; }
+    .dv-sky__far { animation: dvFar linear both; animation-timeline: --dv-sky; animation-range: cover; }
+    .dv-rec { view-timeline-name: --dv-rec; }
+    .dv-rec__sheen { animation: dvSheen linear both; animation-timeline: --dv-rec; animation-range: cover; }
+    .dv-rec__streaks { animation: dvStreak linear both; animation-timeline: --dv-rec; animation-range: cover; }
+  }
+}
+@keyframes dvFar { from { translate: 0 -7px; } to { translate: 0 7px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .dv-seam *, .dv-seam .dv-neon__lit { animation: none !important; transition: none !important; }
+  .dv-seam .dv-spray__run { scale: none !important; }
+  .dv-seam .dv-spray { --dv-p: 115% !important; }
+}
+
+/* ---------- the lab page ---------- */
+.dv-demo .band__head { margin-bottom: 0; }
+
+/* a seam drawn inside a band, one layer under that band's cut-out (a bud, a can, a boombox hanging across the seam):
+   build.mjs places it at the band's top (the cut-out hangs up) or bottom (it hangs down); floats sit at --z-float (5) */
+.dv-in { position: absolute; left: 0; right: 0; height: 0; z-index: 4; pointer-events: none; }
+.dv-in--top { top: 0; }
+.dv-in--bottom { bottom: 0; }
+.dv-in > .dv-seam { position: absolute; left: 0; right: 0; top: 0; z-index: auto; }

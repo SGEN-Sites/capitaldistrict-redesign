@@ -7,7 +7,32 @@
 .st-hero .crumbs a { display: inline-flex; align-items: center; min-height: 44px; }
 .st-ph .ph__h1 { font-size: clamp(min(2.2rem, 9.2vw), .9rem + 4.3vw, 5.3rem); max-width: 17ch; } /* "RECREATIONAL" is 9.3x the size wide: the floor gives way below ~383px */
 .st-ph--long .ph__h1 { font-size: clamp(1.6rem, .78rem + 3.25vw, 4.05rem); max-width: 21ch; }
+/* a store title too long for three lines here ("Recreational Cannabis Dispensary & Delivery in Albany, NY" ran five) gets
+   the width and the size it needs to stay within three (pageHero fit; --fit from parts.mjs fitEm). Phones keep the size. */
+@media (min-width: 761px) {
+  .st-ph .ph__in { container-type: inline-size; }
+  .st-ph .ph__h1.dh--fit { font-size: min(clamp(min(2.2rem, 9.2vw), .9rem + 4.3vw, 5.3rem), 100cqi / var(--fit)); max-width: max(17ch, var(--fit) * 1em); }
+  .st-ph--long .ph__h1.dh--fit { font-size: min(clamp(1.6rem, .78rem + 3.25vw, 4.05rem), 100cqi / var(--fit)); max-width: max(21ch, var(--fit) * 1em); } /* town titles */
+}
 .st-ph .ph__lede { max-width: 64ch; }
+
+/* ---------- headings ---------- */
+/* phones: a two-tone heading's last short word is held to the word before it ("Schuylerville, NY": stores.mjs holdLast),
+   so no line ends on a lone "NY"; where that held run would be wider than the column at the heading's size, the size
+   gives way to fit it (stores.mjs phoneFit sets st-u and --u, the run's em width; --st-col is the column, less the
+   padding of a glass card around the heading) */
+@media (max-width: 760px) {
+  .dh--lg.st-u { font-size: min(var(--fs-lg), calc((var(--st-col, 100vw - 2 * var(--gutter))) / var(--u))); }
+  .dh--md.st-u { font-size: min(var(--fs-md), calc((var(--st-col, 100vw - 2 * var(--gutter))) / var(--u))); }
+  .dh--sm.st-u { font-size: min(var(--fs-sm), calc((var(--st-col, 100vw - 2 * var(--gutter))) / var(--u))); }
+  .st-things__intro { --st-col: calc(100vw - 2 * var(--gutter) - 2 * clamp(24px, 3.4vw, 50px)); }
+  .st-visit { --st-col: calc(100vw - 2 * var(--gutter) - 2 * clamp(26px, 4vw, 58px)); }
+  .st-panel { --st-col: calc(100vw - 2 * var(--gutter) - 2 * clamp(26px, 4vw, 56px)); }
+}
+/* a short two-tone heading alone in its row ("Get Directions", "Our Other Stores", the town pages' "Shop By Category")
+   runs on one line from 561px up, its halves inline (dh--inline): stacked, it left the row's right side empty (the
+   home Shop by Category's rule). Under 561px it wraps as the words fall. */
+@media (min-width: 561px) { .st-one { white-space: nowrap; } }
 .st-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 22px; font-size: 16px; }
 .st-meta .status { min-height: 44px; }
 .st-meta a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--text); text-decoration: none; font-weight: 500; }
@@ -19,6 +44,8 @@
 .prose.st-prose > * + * { margin-top: 1em; }
 .prose.st-prose > h3 { margin-top: 1.6em; }
 .prose.st-prose > h4 { margin-top: 1.4em; font-size: clamp(1.05rem, .98rem + .35vw, 1.22rem); color: var(--lime); text-transform: uppercase; letter-spacing: .02em; }
+
+.st-nb { white-space: nowrap; } /* a highway's name ("I-87", "NY-5") never breaks at its hyphen (stores.mjs nbHwy) */
 
 /* ---------- map well: a street-grid ground with a lit pin behind the (transparent until loaded) map iframe, so the
    frame never reads as an empty box while Google Maps loads or when it is blocked ---------- */
@@ -32,6 +59,8 @@
 
 /* ---------- town grids: the shared area links, given a little more room per town ---------- */
 .st-areas .areas { grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); }
+/* every link fills its cell, so a row stays even when one name runs two lines ("New Baltimore Service Area") */
+.st-areas .areas a { height: 100%; }
 
 /* ---------- backdrops: art in the clipped back plane, a shade so glass and type stay legible ---------- */
 .st-bd { opacity: .62; }
@@ -40,23 +69,29 @@
   linear-gradient(180deg, var(--night) 0%, rgba(20, 26, 25, .35) 22%, rgba(20, 26, 25, .45) 70%, var(--night) 100%); }
 
 /* ---------- store pages: at a glance (photo + hours glass + words + map) ---------- */
-.st-glance { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(36px, 6vw, 96px); align-items: start; }
-.st-photo { position: relative; margin: 0 0 64px; }
-.st-photo__img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--r-l); box-shadow: var(--shadow-2); }
+/* even columns: the photo stretches to the height of the words beside it (no empty block under it), and the map
+   runs full width underneath; the store copy differs in length per store, so nothing here assumes a height */
+.st-glance { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(30px, 5vw, 80px) clamp(36px, 6vw, 96px); align-items: stretch; }
+.st-glance__body { align-self: start; }
+.st-glance__map { grid-column: 1 / -1; }
+.st-glance__map .map { aspect-ratio: auto; height: clamp(260px, 24vw, 340px); }
+.st-photo { position: relative; margin: 0 0 64px; display: flex; flex-direction: column; }
+.st-photo__img { width: 100%; flex: 1 1 auto; min-height: 460px; object-fit: cover; border-radius: var(--r-l); box-shadow: var(--shadow-2); }
 .st-photo__tag { position: absolute; left: 18px; top: 18px; }
 .st-hours { position: absolute; left: clamp(-26px, -1.6vw, -8px); right: 14%; bottom: -54px; padding: 18px 22px 10px; background: linear-gradient(150deg, rgba(20, 26, 25, .86), rgba(20, 26, 25, .66)); }
 .st-hours__h { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; font: 800 15px/1.2 var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: .02em; }
 .st-hours__h .ico { color: var(--lime); }
+@media (max-width: 359px) { .st-hours__h { font-size: 14px; font-stretch: 100%; } .st-hours__h .ico { display: none; } } /* 320: 4 lines of ~11 characters */
 .st-hours .status { margin-bottom: 4px; }
 .st-glance__body .dh { margin-bottom: 26px; }
 .st-glance__prose { max-width: 64ch; }
-.st-glance__prose > p:first-child { font-size: clamp(1.1rem, 1rem + .4vw, 1.3rem); color: var(--text); line-height: 1.6; }
+.st-glance__prose > p:first-child { font-size: clamp(1.05rem, .98rem + .3vw, 1.2rem); color: var(--text); line-height: 1.6; }
 .st-glance__prose h3 { margin-top: 1.4em; }
-.st-glance .btns { margin: 26px 0 30px; }
+.st-glance .btns { margin: 26px 0 0; }
 @media (max-width: 900px) {
   .st-glance { grid-template-columns: minmax(0, 1fr); }
   .st-photo { max-width: 560px; margin-bottom: 0; }
-  .st-photo__img { aspect-ratio: 4 / 3.4; }
+  .st-photo__img { aspect-ratio: 4 / 3.4; min-height: 0; flex: none; }
   /* on a phone the hours card sits under the photo, overlapping only its bottom edge */
   .st-hours { position: relative; left: auto; right: auto; bottom: auto; margin: -44px 12px 0; }
 }
@@ -67,8 +102,12 @@
 .st-note { display: inline-flex; align-items: center; gap: 8px; margin: 0; color: var(--text-2); font-size: 15px; }
 .st-note .ico { color: var(--lime); }
 
-/* ---------- deals (the mint "lights on" band): words + a taped print ---------- */
-.st-deals { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(36px, 6vw, 96px); align-items: center; }
+/* ---------- deals (the mint "lights on" band): the heading across the band, then the words beside a taped print ---------- */
+.st-deals { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "head head" "words print"; gap: clamp(20px, 2.4vw, 32px) clamp(36px, 6vw, 96px); align-items: center; }
+.st-deals__head { grid-area: head; }
+.st-deals__head .dh { margin: 0; }
+.st-deals__words { grid-area: words; }
+.st-print-wrap { grid-area: print; }
 .st-deals .prose { color: var(--text-ink-2); max-width: 62ch; }
 .st-deals .prose a { color: #3d6b16; }
 .st-deals .btns { margin-top: 28px; }
@@ -79,7 +118,7 @@
 .st-print figcaption .bullet { width: 32px; height: 32px; font-size: 14px; }
 .st-print__tape { position: absolute; left: 50%; top: -14px; width: 116px; height: 30px; translate: -50% 0; rotate: -6deg; background: rgba(161, 207, 110, .78); box-shadow: 0 2px 6px rgba(0, 0, 0, .18); }
 .st-print__sticker { position: absolute; right: -16px; top: 26px; }
-@media (max-width: 860px) { .st-deals { grid-template-columns: minmax(0, 1fr); } .st-print-wrap { width: min(86%, 360px); } .st-print__sticker { right: -6px; } }
+@media (max-width: 860px) { .st-deals { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "words" "print"; } .st-print-wrap { width: min(86%, 360px); margin-top: 16px; } .st-print__sticker { right: -6px; } }
 
 /* ---------- glass cards and panels over imagery ---------- */
 .st-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 20px 40px; margin-bottom: clamp(30px, 4vw, 54px); }
@@ -92,17 +131,28 @@
 @media (max-width: 1000px) { .st-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .st-cards { grid-template-columns: minmax(0, 1fr); } }
 
-/* ---------- reader: a prose column beside a sticky aside ---------- */
-.st-read { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 100px); align-items: start; }
-.st-read__aside { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 28px); display: grid; gap: 24px; }
-.st-read__aside .dh { margin: 0; }
-.st-read__aside .kicker { margin: 0; }
-.st-read__main { max-width: 68ch; }
+/* ---------- reader: the heading across the row, then the prose beside the store pass, which stays in view beside a long
+   text. (The heading used to stack four lines in a narrow aside above the pass, beside two short paragraphs: a large
+   empty area. The owner: "make this look more compact".) ---------- */
+.st-read { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); grid-template-areas: "head head" "main aside"; gap: clamp(20px, 2.4vw, 34px) clamp(32px, 6vw, 100px); align-items: start; }
+.st-read__head { grid-area: head; }
+.st-read__head .kicker { margin-bottom: 14px; }
+.st-read__head .dh { margin: 0; }
+.st-read__aside { grid-area: aside; position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 28px); }
+.st-read__main { grid-area: main; max-width: 68ch; }
 .st-read__main > :first-child { margin-top: 0; }
 .st-callout { font-size: clamp(1.2rem, 1rem + .8vw, 1.6rem); color: var(--lime) !important; }
 .st-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .st-links .tlink { min-height: 44px; }
-@media (max-width: 900px) { .st-read { grid-template-columns: minmax(0, 1fr); } .st-read__aside { position: static; } }
+@media (max-width: 900px) { .st-read { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "main" "aside"; } .st-read__aside { position: static; } }
+/* a long text (st-read--long) runs in two columns under the heading, the store pass beside the heading */
+@media (min-width: 901px) {
+  .st-read--long { grid-template-areas: "head aside" "main main"; align-items: end; }
+  .st-read--long .st-read__aside { position: static; }
+  .st-read--long .st-read__main { max-width: none; columns: 2 24em; column-gap: clamp(32px, 4vw, 64px); }
+  .st-read--long .st-read__main > :is(h3, h4) { break-after: avoid; }
+}
+@media (min-width: 901px) and (max-width: 1100px) { .st-read--long { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } } /* room for the pass's two buttons side by side */
 
 /* the store pass (aside on readers, beside town text) */
 .st-pass { display: grid; gap: 14px; padding: 22px; border-radius: var(--r-l); border: 1px solid var(--line); background: linear-gradient(160deg, rgba(161, 207, 110, .1), rgba(13, 18, 17, .6) 55%); }
@@ -115,21 +165,33 @@
 /* ---------- things to do / places to stay: glass over a backdrop ---------- */
 .st-things { display: grid; gap: 16px; }
 .st-things + .st-things { margin-top: clamp(40px, 5vw, 70px); }
-.st-things__intro { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(18px, 4vw, 64px); align-items: start; padding: clamp(24px, 3.4vw, 50px); }
+/* the intro glass, two ways (stores.mjs thingsBand picks by the text's length), the heading sized to its column within
+   three lines (.fitcol, dh fit) either way:
+   --side: one short paragraph beside the heading, the heading's column the wider, the two ending level;
+   --stack: a longer text under a heading that crosses the card, in two balanced columns (a paragraph may run on into
+   the second column, so the two end level). */
+.st-things__intro { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(16px, 2vw, 26px) clamp(18px, 4vw, 64px); align-items: center; padding: clamp(24px, 3.4vw, 50px); }
 .st-things__intro .dh, .st-things__bare .dh { margin: 0; }
 .st-things__intro .kicker { margin-bottom: 14px; }
 .st-things__intro .prose { font-size: 17px; max-width: none; }
-.st-things__intro--long { grid-template-columns: minmax(0, 1fr); }
-.st-things__intro--long .dh { max-width: 26ch; }
-.st-things__intro--long .prose { columns: 2 24em; column-gap: clamp(28px, 4vw, 56px); }
-.st-things__intro--long .prose > p { break-inside: avoid-column; }
+@media (min-width: 861px) {
+  .st-things__intro--side { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+  .st-things__intro--stack .prose { columns: 2 22em; column-gap: clamp(28px, 4vw, 56px); }
+  .st-things__intro--stack .prose > :first-child { margin-top: 0; }
+}
 .st-things__bare { margin-bottom: 4px; }
 .st-things__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .st-things__grid--n1 { grid-template-columns: minmax(0, 1fr); }
-.st-things__grid--n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .st-things__grid--n4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+/* five or more in threes: a last row of two shares the width (no empty third cell), a last row of one runs across */
+@media (min-width: 1101px) {
+  .st-things__grid--n3 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .st-things__grid--n3 > * { grid-column: span 2; }
+  .st-things__grid--n3 > :nth-child(3n + 1):nth-last-child(2), .st-things__grid--n3 > :nth-child(3n + 2):last-child { grid-column: span 3; }
+  .st-things__grid--n3 > :nth-child(3n + 1):last-child { grid-column: 1 / -1; }
+}
 @media (max-width: 1100px) { .st-things__grid--n3, .st-things__grid--n4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 860px) { .st-things__intro { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 641px) and (max-width: 1100px) { .st-things__grid--n3 > :nth-child(odd):last-child { grid-column: 1 / -1; } }
 .st-tip { display: grid; gap: 10px; align-content: start; padding: 22px 22px 24px; }
 .st-tip__t { margin: 0; font: 850 19px/1.08 var(--f-display); font-stretch: 110%; text-transform: uppercase; }
 .st-tip p { margin: 0; color: var(--text-2); font-size: 16px; line-height: 1.6; }
@@ -147,6 +209,13 @@
 .st-routeband__addr { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--text-2); font-size: 15px; }
 .st-routeband__addr > span:not(.bullet) { display: grid; }
 .st-routeband__addr b { color: var(--text); }
+/* side by side, the map stands the height of the route beside it (a small map used to leave the column empty under it) */
+@media (min-width: 901px) {
+  .st-routeband:not(.st-routeband--solo) { align-items: stretch; }
+  .st-routeband__map { position: static; grid-template-rows: minmax(0, 1fr) auto; }
+  .st-routeband__map .st-mapbox { display: grid; }
+  .st-routeband__map .map { aspect-ratio: auto; min-height: 320px; }
+}
 .st-route__h { margin: 34px 0 10px; font: 850 clamp(1.2rem, 1rem + .6vw, 1.5rem)/1.1 var(--f-display); font-stretch: 108%; text-transform: uppercase; }
 .st-route { list-style: none; margin: 26px 0; padding: 0; counter-reset: st-step; }
 .st-route > li { position: relative; padding: 8px 0 24px 62px; min-height: 52px; color: var(--text-2); counter-increment: st-step; }
@@ -166,19 +235,32 @@
 @media (max-width: 900px) { .st-routeband { grid-template-columns: minmax(0, 1fr); } .st-routeband__map { position: static; } }
 @media (max-width: 640px) { .st-route--cards { grid-template-columns: minmax(0, 1fr); } }
 
-/* ---------- FAQ: heading aside + the shared accordion ---------- */
-.st-faq { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
-.st-faq__head { position: sticky; top: calc(var(--hdr-h) + var(--topbar-h) + 28px); }
-.st-faq__head .dh { margin-bottom: 14px; }
-.st-faq__sub { margin: 18px 0 0; font: 800 17px/1.2 var(--f-display); font-stretch: 108%; text-transform: uppercase; color: var(--text-2); }
-.band--mint .st-faq__sub { color: var(--text-ink-2); }
-@media (max-width: 900px) { .st-faq { grid-template-columns: minmax(0, 1fr); } .st-faq__head { position: static; } }
+/* ---------- featured reviews: The Deck (rv.css, stores.mjs reviewDeck). rv.css caps the copy column's heading at one
+   size for the home's "NY Dispensary Reviews"; the captured store and town headings run to 46 characters ("Dispensary
+   Near Hoosick Falls, NY Mall Reviews"), so here the heading is fitted to the column within three lines (dh fit; the
+   copy column is rv.css's size container) ---------- */
+@media (min-width: 901px) { .st-rv .rv-c__copy .dh--fit.dh--md { font-size: max(24px, min(var(--fs-md), 100cqi / var(--fit))); } }
+.st-rv .rv-c__copy > .btns { margin: 4px 0 0; }
+/* a short copy column (st-rv--short) beside the deck: on narrow desktops the deck takes the wider column, so its cards
+   are wide enough that the longest review does not stand twice the copy's height */
+@media (min-width: 901px) and (max-width: 1199px) { .st-rv--short .rv-c__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
 
-/* ---------- visit us today: one glass card over a photo ---------- */
-.st-visit { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 64px); padding: clamp(26px, 4vw, 58px); }
+/* ---------- FAQ: the shared FAQ section (.faqsec in components.css, parts.mjs faqSection) ---------- */
+
+/* ---------- visit us today: one glass card over a photo, its two columns ending near each other whatever the store's
+   text (stores.mjs picks by its length). A long text (st-visit--long) runs under a heading that crosses the card; a
+   shorter one keeps its heading, sized to the column; a short one also takes the actions under it, out of the facts. ---------- */
+.st-visit { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "words facts"; gap: clamp(18px, 2vw, 28px) clamp(24px, 4vw, 64px); padding: clamp(26px, 4vw, 58px); }
+.st-visit--long { grid-template-areas: "head head" "words facts"; }
+.st-visit__head { grid-area: head; }
+.st-visit__head .dh { margin: 0; }
+.st-visit__words { grid-area: words; }
+.st-visit__facts { grid-area: facts; }
 .st-visit__words .prose { max-width: 60ch; font-size: 17px; }
 .st-visit__words .prose h3 { margin-top: 1.5em; }
+.st-visit__words > .btns { margin-top: 26px; }
 .st-visit__facts { display: grid; gap: 14px; align-content: start; align-self: start; padding: clamp(20px, 2.4vw, 30px); border-radius: var(--r-m); background: rgba(13, 18, 17, .5); border: 1px solid var(--line); }
+@media (max-width: 359px) { .st-visit { padding: 18px; } .st-visit__facts { padding: 14px; } } /* 320: the facts column was 190px, "Get Directions" ran to two lines */
 .st-visit__facts p { margin: 0; }
 .st-visit__find, .st-visit__label { display: flex; gap: 10px; align-items: flex-start; }
 .st-visit__find .ico, .st-visit__label .ico { color: var(--lime); margin-top: 4px; }
@@ -187,7 +269,7 @@
 .st-visit__hours { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
 .st-visit__hours li { padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--text); }
 .st-visit__facts .btns { margin-top: 6px; }
-@media (max-width: 900px) { .st-visit { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 900px) { .st-visit { grid-template-columns: minmax(0, 1fr); grid-template-areas: "words" "facts"; } .st-visit--long { grid-template-areas: "head" "words" "facts"; } }
 
 /* ---------- towns we serve, grouped by nearest store ---------- */
 .st-towns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(34px, 4vw, 52px) clamp(20px, 3vw, 40px); }
@@ -210,14 +292,15 @@
 .st-mapc { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-content: start; }
 /* wraps: when the name and the Directions button cannot share a line, the button drops below instead of widening the page */
 .st-mapc figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.st-mapc figcaption > span:not(.bullet) { flex: 1 1 160px; display: grid; min-width: 0; }
+.st-mapc figcaption > span:not(.bullet) { flex: 1 1 200px; display: grid; min-width: 0; } /* room for "SCHENECTADY, NY" (it no longer breaks before NY); Directions drops below first */
 .st-mapc b { font: 850 17px/1.1 var(--f-display); font-stretch: 110%; text-transform: uppercase; }
 .st-mapc small { color: var(--text-3); font-size: 14px; }
 @media (max-width: 900px) { .st-maps { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- licence strip ---------- */
 .st-lic { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; margin: clamp(28px, 4vw, 44px) 0 0; padding: 14px 20px; border-radius: var(--r-m); border: 1px dashed var(--line-2); color: var(--text-2); font-size: 15px; }
-.st-lic span { display: inline-flex; align-items: center; gap: 8px; }
+.st-lic span { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; }
+.st-lic b { white-space: nowrap; } /* a licence number never breaks at its hyphens ("OCM-CAURD- / 23-000028" on phones) */
 .st-lic .ico { color: var(--lime); }
 .st-lic b { color: var(--text); letter-spacing: .03em; }
 
@@ -227,6 +310,14 @@
 .st-frame__tag { position: absolute; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 10px; padding: 7px 18px 7px 7px; border-radius: var(--pill); background: rgba(13, 18, 17, .74); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font-weight: 600; font-size: 15px; }
 .st-why .prose { font-size: 17px; }
 .st-why .btns { margin-top: 26px; }
+/* side by side, the photo stretches to the height of the words beside it (no empty band above and below it); stacked
+   (860px and down) it keeps its 4:3 */
+@media (min-width: 861px) {
+  .st-why { align-items: stretch; }
+  .st-why .split__media { display: flex; }
+  .st-why .st-frame { flex: 1 1 auto; min-height: 340px; }
+  .st-why .st-frame__img { position: absolute; inset: 0; height: 100%; aspect-ratio: auto; }
+}
 .st-near { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(30px, 5vw, 80px); align-items: center; }
 .st-near__words .prose { max-width: 60ch; font-size: 17px; }
 .st-near__words .btns { margin-top: 26px; }
@@ -235,12 +326,28 @@
 .st-plate b { color: var(--text); font-weight: 650; }
 .st-near__h { margin: 26px 0 10px; font: 850 clamp(1.15rem, 1rem + .5vw, 1.4rem)/1.1 var(--f-display); font-stretch: 108%; text-transform: uppercase; }
 @media (max-width: 900px) { .st-near { grid-template-columns: minmax(0, 1fr); } }
+/* beside a short text (st-near--short, stores.mjs) the store card lies on its side, photo beside the details, so the
+   two columns end together instead of a tall card beside a few lines */
+@media (min-width: 901px) {
+  .st-near--short { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); }
+  .st-near--short .scard { flex-direction: row; }
+  .st-near--short .scard__media { flex: 0 0 40%; aspect-ratio: auto; }
+  .st-near--short .scard__body { container-type: inline-size; }
+  .st-near--short .scard__name { font-size: min(26px, 100cqi / 12.6); }
+  .st-near--short .scard__cta { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* ---------- store locator ---------- */
 .st-loc { display: grid; gap: 18px; }
 .st-loc__search { max-width: 680px; }
 .st-loc__search .field { font-size: 15px; }
 .st-loc__search .field input { min-height: 64px; padding-left: 54px; font-size: 18px; background: rgba(13, 18, 17, .65) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1cf6e' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='m16 16 4 4'/%3E%3C/svg%3E") no-repeat 18px center / 22px 22px; }
+/* phones: the example in the field ("Try Troy, Saratoga Springs or 12065") was cut off under 430px; at 16px (no zoom on
+   focus), a narrower icon inset and a hair of tracking it fits a 360px screen */
+@media (max-width: 480px) { .st-loc__search .field input { font-size: 16px; padding-left: 44px; padding-right: 8px; letter-spacing: -.01em; background-position: 13px center; background-size: 20px 20px; } }
+/* while it is empty the search field keeps no room for its clear button (Chromium reserves it even when hidden); the
+   button comes back with the first letter typed */
+.st-loc__search input:placeholder-shown::-webkit-search-cancel-button { display: none; }
 .st-loc__hint { margin: 0; color: var(--text-3); font-size: 14px; }
 .st-loc__empty { margin: 0; padding: 18px 20px; border-radius: var(--r-m); border: 1px solid var(--lime-32); background: var(--lime-08); color: var(--text); }
 .st-loc__empty a { color: var(--lime); }

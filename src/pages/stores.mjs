@@ -3,8 +3,8 @@
 // only chooses order and layout. New words are UI labels (buttons, small headings), the three meta descriptions the
 // live pages never had, and the five card titles on /visit-us/ (each card quotes a captured sentence).
 import {
-  pageHero, band, dh, kicker, btn, sticker, storeCard, hoursTable, mapEmbed, crate, floatObj, faqList, shoutouts,
-  glassCard, richHtml, signUp, areaGrid, bullet, statusLine, esc, href, img, imgInfo, mediaImg, icon,
+  pageHero, band, dh, fitEm, kicker, btn, sticker, storeCard, hoursTable, mapEmbed, crate, floatObj, faqList, faqSection,
+  glassCard, richHtml, signUp, areaGrid, bullet, statusLine, storeName, esc, href, img, imgInfo, mediaImg, icon,
 } from '../lib/parts.mjs';
 import { storeLd } from '../lib/layout.mjs';
 import { brand, stores, storeById, menuUrl, categories, ORIGIN, DEFAULT_STORE } from '../content/site.mjs';
@@ -48,10 +48,29 @@ function split2(text) {
   if (cut < 1) cut = Math.min(w.length - 1, Math.max(1, Math.ceil(w.length * 0.55)));
   return [w.slice(0, cut).join(' '), w.slice(cut).join(' ')];
 }
+// a display line never ends on a lone short word ("NY", "Mall?", "Ann?": four letters or fewer, its punctuation aside,
+// the text-overflow audit's rule): the last word is held to the one before it with a no-break space
+const holdLast = (t) => String(t).replace(/\s+(?=[\p{L}\p{N}]{1,4}[^\p{L}\p{N}\s]*$)/u, '\u00a0');
+const hold2 = ([a, b]) => [holdLast(a), b ? holdLast(b) : b];
+// the em width of the widest run a heading cannot break (a word, or words held together), measured as parts.mjs fitEm
+// measures one word: an apostrophe (.22em) stands in for the no-break space (.215em). Rendered, it runs 3-6% under.
+const runEm = (...ts) => Math.max(0, ...ts.flatMap((t) => String(t || '').split(/[ \t\n]+/)).filter(Boolean).map((r) => fitEm(r.replace(/\u00a0/g, "'"))));
+// phones: a heading whose widest held run ("SCHUYLERVILLE, NY") would be wider than the column at its size gives way
+// (st-u, stores.css: the size is capped at the column over --u). It tags the first display heading in `html` (a dh()
+// heading, or the one inside a shared section such as faqSection); the variable joins any style dh() already set.
+function phoneFit(html, a, b) {
+  const u = runEm(a, b);
+  const at = String(html).search(/<h\d class="dh /);
+  if (u < 9 || at < 0) return html;
+  const tag = html.slice(at, html.indexOf('>', at) + 1);
+  let t = tag.replace(/^<(h\d) class="dh /, '<$1 class="dh st-u ');
+  t = /\bstyle="/.test(t) ? t.replace(/\bstyle="/, `style="--u:${u};`) : t.replace(/^<(h\d)\b/, `<$1 style="--u:${u}"`);
+  return html.slice(0, at) + t + html.slice(at + tag.length);
+}
 function capDh(text, o = {}) {
   const t = String(text).trim();
-  const [a, b] = split2(t);
-  return dh(a, b, { ...o, size: o.size || (t.length > 46 ? 'sm' : t.length > 26 ? 'md' : 'lg') });
+  const [a, b] = hold2(split2(t));
+  return phoneFit(dh(a, b, { ...o, size: o.size || (t.length > 46 ? 'sm' : t.length > 26 ? 'md' : 'lg') }), a, b);
 }
 
 // ---------- captured rich HTML ----------
@@ -82,11 +101,15 @@ function pre(html, sid) {
     return `<a href="${esc(menuUrl(DEFAULT_STORE, target))}" data-menu="${target}" target="_blank" rel="noopener">`;
   });
 }
-const rich = (html, sid) => richHtml(pre(html, sid));
+// a highway's name never breaks at its hyphen ("I- / 87" on phones): I-87, US-9, NY-5 E... are held in a no-wrap span
+// (st-nb, stores.css), in the text between tags only; the words stay as captured
+const HWY = /\b(?:I|US|NY|SR)-\d+[A-Z]?\b/g;
+const nbHwy = (html) => String(html).split(/(<[^>]*>)/).map((x) => (x.startsWith('<') ? x : x.replace(HWY, '<span class="st-nb">$&</span>'))).join('');
+const rich = (html, sid) => richHtml(nbHwy(pre(html, sid)));
 // a run of captured blocks as HTML: p and li keep their captured rich HTML, headings become h3 (raw: FAQ answers,
 // which faqList passes through richHtml itself)
 function bodyHtml(blocks, sid, raw = false) {
-  const one = (b) => (b.html != null ? (raw ? pre(b.html, sid) : rich(b.html, sid)) : esc(b.text));
+  const one = (b) => (b.html != null ? (raw ? nbHwy(pre(b.html, sid)) : rich(b.html, sid)) : nbHwy(esc(b.text)));
   let out = ''; let list = [];
   const flush = () => { if (list.length) { out += `<ul>${list.join('')}</ul>`; list = []; } };
   for (const b of blocks) {
@@ -156,7 +179,7 @@ function capBtn(b, s, o = {}) {
   return btn(b.text, b.href, { kind: o.kind || 'ghost' });
 }
 const passCard = (s, label) => `<div class="st-pass" data-reveal style="--i:2">
-  <div class="st-pass__top">${bullet(s)}<div><p class="st-pass__name">${esc(s.name)}</p>${statusLine(s)}</div></div>
+  <div class="st-pass__top">${bullet(s)}<div><p class="st-pass__name">${storeName(s)}</p>${statusLine(s)}</div></div>
   <p class="st-pass__addr">${icon('pin')}<span>${esc(addr(s))}</span></p>
   <div class="st-pass__cta">${shopBtn(s, label || `Shop ${s.city}`, { size: 'sm' })}${callBtn(s, { size: 'sm', label: s.phone })}</div>
 </div>`;
@@ -222,15 +245,150 @@ function readerBand(L, s, o = {}) {
     const tag = group ? 'h4' : 'h3';
     return `<${tag}>${esc(x.h.text)}</${tag}>${bodyHtml(x.body, s.id)}`;
   }).join('');
-  return band(`<div class="st-read">
-  <aside class="st-read__aside">${kicker(kick ? kick.text : '')}${capDh(first.h.text, { size: first.h.text.length > 46 ? 'sm' : 'md' })}${o.pass === false ? '' : passCard(s, o.passLabel)}</aside>
+  // the heading runs across the row (two lines, not four stacked in a narrow aside). A short text sits beside the store
+  // pass in a tight band; a long one (900 characters or more) runs in two columns under the heading, the pass beside the
+  // heading (st-read, st-read--long in stores.css)
+  const short = main.replace(/<[^>]+>/g, '').length < 900;
+  return band(`<div class="st-read${short ? '' : ' st-read--long'}">
+  <div class="st-read__head fitcol">${kicker(kick ? kick.text : '')}${capDh(first.h.text, { size: first.h.text.length > 46 ? 'sm' : 'md', fit: true })}</div>
   <div class="prose st-prose st-read__main" data-reveal>${main}</div>
-</div>`, { tone: o.tone });
+  ${o.pass === false ? '' : `<aside class="st-read__aside">${passCard(s, o.passLabel)}</aside>`}
+</div>`, { tone: o.tone, tight: short });
 }
 
 const isItem = (b) => b.t === 'li' || (b.t === 'p' && /^\s*(?:<a [^>]*>\s*)?<(?:b|strong)>/i.test(b.html || ''));
+
+// ---------- things to do, told as a story (the store pages) ----------
+// A store page's "things to do" text, place by place: on wide screens a sticky photo stage beside the chapters
+// (src/scripts/story.js), on phones and without JS a photo card per chapter (src/styles/story.css). The captured words
+// are cut, never changed: a chapter opens at the first sentence that names its place (`at`, as captured: Albany's
+// paragraphs name two places each) or at its captured sub-heading (`sub`), and the build checks that the chapters
+// joined are the captured text (fail closed). Each place photo is a real photograph of that place from Wikimedia
+// Commons (registry "pl-*" with author, licence and source, credited under the photo; docs/MEDIA.md). A place with no
+// free photo gets a map-pin card and its name only (img: ''). The closing chapter is the store on the client's own
+// photo: `store` is its caption as the text writes it, or true when the text has no "stop by" words (then the store's
+// street). Captured sub-headings after the story (`posts`) become photo postcards. A page whose text does not match its
+// entry (every town page) keeps the cards in thingsBand.
+const STORY = {
+  albany: {
+    head: /^Things to Do Near Capital District Cannabis & Wellness in Albany$/,
+    chapters: [
+      { at: 'Washington Park', img: 'pl-washington-park' },
+      { at: 'Albany Pine Bush Preserve', img: 'pl-pine-bush' },
+      { at: 'New York State Capitol and Empire State Plaza', img: 'pl-capitol-plaza' },
+      { at: 'New York State Museum', img: 'pl-state-museum', pos: '42% 50%' },
+      { at: 'Colonie Center', img: 'pl-colonie-center', pos: '78% 50%' },
+      { at: 'Crossgates Mall', img: 'pl-crossgates', pos: '46% 50%' },
+      { at: 'stop by', store: '997 Central Avenue' },
+    ],
+    posts: [{ sub: /University at Albany/, img: 'pl-ualbany' }, { sub: /Albany International Airport/, img: 'pl-alb-airport' }],
+  },
+  schenectady: {
+    head: /^What Is Our Weed Dispensary Near\?$/,
+    chapters: [
+      { sub: /^Proctors Theatre\b/, img: 'pl-proctors' },
+      { sub: /^Central Park Rose Garden\b/, img: '' },
+      { sub: /^The Edison Downtown\b/, img: '' },
+      { sub: /^Museum of Innovation and Science\b/, img: 'pl-misci', pos: '44% 50%' },
+      { store: true },
+    ],
+    posts: [],
+  },
+};
+const STAGE_SIZES = '(min-width: 1280px) 720px, 58vw';
+const CARD_SIZES = '(min-width: 760px) 46vw, 92vw';
+const plainOf = (h) => String(h).replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&#8217;/g, '’').replace(/\s+/g, ' ').trim();
+// a captured paragraph's HTML cut where one sentence ends and the next begins (a capital, a quote or a link)
+const sentencesOf = (h) => String(h).trim().split(/(?<=[.!?])\s+(?=[A-Z“"<])/);
+// (a display line never ends on a lone short word: holdLast, beside capDh above, also holds "Mall", "Ave" and "Near?")
+// the credit under a Commons photo: author (to the file page), licence (to its deed), source
+function storyCredit(id, tag = 'p') {
+  const r = imgInfo(need(id));
+  if (!r.photo || !r.credit || !r.license || !r.source) throw new Error('stores: no credit or licence for ' + id);
+  const lic = /^public domain$/i.test(r.license) ? 'public domain' : `<a href="${esc(r.licenseUrl)}" target="_blank" rel="license noopener">${esc(r.license)}</a>`;
+  return `<${tag} class="story-credit">Photo: <a href="${esc(r.source)}" target="_blank" rel="noopener">${esc(r.credit)}</a>, ${lic}, via Wikimedia Commons</${tag}>`;
+}
+const storyPin = () => '<span class="story-pin" aria-hidden="true"><span class="story-pin__mark">' + icon('pin') + '</span></span>';
+// the chapters of a store page's things text, or null when the page has no story entry or its text does not match it
+function storyOf(secs, s) {
+  const cfg = STORY[s.id]; const top = secs[0];
+  if (!cfg || !top || top.sub || !cfg.head.test(top.h.text.trim()) || secs.slice(1).some((x) => !x.sub)) return null;
+  const fail = (m) => { throw new Error(`stores: things story (${s.id}): ${m}`); };
+  // 1. the heading's own paragraphs: the intro, then a chapter at the first sentence naming each `at`
+  const ats = cfg.chapters.filter((c) => c.at); const atCh = []; const intro = []; let into = intro;
+  for (const b of top.body) {
+    if (b.t !== 'p' || b.html == null) fail(`a ${b.t} block in the text`);
+    let run = null;
+    for (const sen of sentencesOf(b.html)) {
+      const c = ats[atCh.length];
+      if (c && plainOf(sen).includes(c.at)) { const ch = { ...c, paras: [] }; atCh.push(ch); into = ch.paras; run = null; }
+      if (!run) { run = []; into.push(run); }
+      run.push(sen);
+    }
+  }
+  if (atCh.length < ats.length) fail(`"${ats[atCh.length].at}" is not in the text`);
+  const cut = [intro, ...atCh.map((c) => c.paras)].flat().map((r) => r.join(' ')).join(' ');
+  if (plainOf(cut) !== plainOf(top.body.map((b) => b.html).join(' '))) fail('the chapters do not add up to the captured text');
+  // 2. the captured sub-headings: chapters in captured order, then postcards; none may be left over
+  const subs = secs.slice(1); const used = new Set(); let lastSub = -1; let atI = 0;
+  const claim = (re) => { const i = subs.findIndex((x, xi) => !used.has(xi) && re.test(x.h.text.trim())); if (i < 0) fail('no sub-heading matches ' + re); used.add(i); return i; };
+  const list = cfg.chapters.map((c) => {
+    const pic = c.store ? s.photo : c.img;
+    if (c.at) {
+      const ch = atCh[atI++]; const name = c.store || c.at;
+      if (!plainOf(ch.paras.flat().join(' ')).includes(name)) fail(`"${name}" is not in its chapter`);
+      return { ...ch, name, pic, titleHtml: `<span class="story-ch__name">${esc(holdLast(name))}</span>`, html: ch.paras.map((r) => `<p>${rich(r.join(' '), s.id)}</p>`).join('') };
+    }
+    if (c.sub) {
+      const i = claim(c.sub); if (i < lastSub) fail('chapters out of captured order'); lastSub = i;
+      const t = subs[i].h.text.trim(); const m = t.match(/^(.+?)(: | – | - )(.+)$/);
+      const titleHtml = m ? `<span class="story-ch__name">${esc(holdLast(m[1]))}</span><span class="sr">${esc(m[2])}</span><span class="story-ch__tag">${esc(holdLast(m[3]))}</span>` : `<span class="story-ch__name">${esc(holdLast(t))}</span>`;
+      return { ...c, name: m ? m[1] : t, pic, titleHtml, html: bodyHtml(subs[i].body, s.id) };
+    }
+    if (c.store !== true) fail('a chapter with neither at, sub nor store');
+    return { ...c, name: s.street, pic, titleHtml: `<span class="story-ch__name">${esc(holdLast(s.street))}</span>`, html: '' };
+  });
+  const posts = cfg.posts.map((p) => { const i = claim(p.sub); if (i < lastSub) fail('postcards out of captured order'); return { ...p, title: subs[i].h.text.trim(), body: subs[i].body }; });
+  if (used.size !== subs.length) fail('a captured sub-heading has no place in the story');
+  list.forEach((c, i) => { c.no = c.store ? s.letter : String(i + 1).padStart(2, '0'); c.credit = c.pic && !c.store ? storyCredit(c.pic) : ''; });
+  return { top, intro, list, posts };
+}
+function storyBand(secs, s, o = {}) {
+  const st = storyOf(secs, s);
+  if (!st) return null;
+  const n = st.list.length; const hid = `story-${s.id}-h`;
+  const art = (c, sizes, cls, deco) => (c.pic ? img(need(c.pic), { decorative: deco, alt: c.store ? s.photoAlt : undefined, sizes, cls, style: c.pos ? `object-position:${c.pos}` : null }) : storyPin());
+  const [ha, hb] = hold2(split2(st.top.h.text)); // the captured heading in its white and lime halves, as capDh cuts it
+  // the heading is sized to its column and kept within three lines (fit). A long one (Albany's, 64 characters) runs
+  // across the band with the intro under it; a short one keeps the intro beside it on wide screens, where the two end
+  // level (story.css)
+  const long = fitEm(ha, hb) > 18;
+  const head = `<div class="story-head${long ? ' story-head--long' : ''}"><div class="story-head__h fitcol">${dh(ha, hb, { size: 'md', id: hid, fit: true })}</div>${st.intro.length ? `<div class="story-intro" data-reveal>${st.intro.map((r) => `<p>${rich(r.join(' '), s.id)}</p>`).join('')}</div>` : ''}</div>`;
+  const chapter = (c, i) => {
+    const id = `story-${s.id}-${i + 1}`;
+    const no = c.store ? bullet(s) : `<span>${c.no}</span><span class="story-ch__of">/ ${String(n).padStart(2, '0')}</span>`;
+    const visit = c.store ? `<p class="story-store"><b>${storeName(s)}</b>${statusLine(s)}</p><div class="btns">${shopBtn(s, `Shop ${s.city}`)}${btn('Get Directions', s.directions, { kind: 'ghost' })}</div>` : '';
+    return `<li class="story-ch${c.store ? ' story-ch--store' : ''}${c.pic ? '' : ' story-ch--pin'}" id="${id}" data-story-ch data-no="${esc(c.no)}" data-name="${esc(holdLast(c.name))}"${c.store ? ' data-store' : ''}>
+  <div class="story-ch__pic">
+    <div class="story-ch__head"><div class="story-ch__media" data-reveal="develop">${art(c, CARD_SIZES, 'story-ch__img', false)}</div><div class="story-ch__cap" data-reveal><p class="story-ch__no" aria-hidden="true">${no}</p><h3 class="story-ch__t" id="${id}-t">${c.titleHtml}</h3></div></div>
+    ${c.credit}
+  </div>
+  <div class="story-ch__body" data-reveal>${c.html}${visit}</div>
+</li>`;
+  };
+  const stage = `<div class="story-stage" data-story-stage>
+  <div class="story-stage__frame" aria-hidden="true">${st.list.map((c, i) => `<div class="story-stage__shot${i === 0 ? ' is-on is-near' : i < 3 ? ' is-near' : ''}${c.pic ? '' : ' story-stage__shot--pin'}" data-shot>${art(c, STAGE_SIZES, 'story-stage__img', true)}</div>`).join('')}<span class="story-stage__shade"></span><span class="story-stage__bars">${st.list.map(() => '<i data-bar></i>').join('')}</span><p class="story-stage__cap"><span class="story-stage__no" data-story-no>${esc(st.list[0].no)}</span><span class="story-stage__name" data-story-name>${esc(holdLast(st.list[0].name))}</span></p></div>
+  <div class="story-stage__credit" data-story-credit>${st.list[0].credit}</div>
+</div>`;
+  const posts = st.posts.length ? `<div class="story-posts">${st.posts.map((p, i) => `<article class="story-post" data-reveal style="--i:${i}"><figure class="story-post__fig"><div class="story-post__media">${img(need(p.img), { sizes: '(min-width: 900px) 40vw, 92vw', cls: 'story-post__img' })}</div>${storyCredit(p.img, 'figcaption')}</figure><h3 class="story-post__t">${esc(holdLast(p.title))}</h3><div class="story-post__body">${bodyHtml(p.body, s.id)}</div></article>`).join('')}</div>` : '';
+  return band(`<div class="story" data-story>${head}<div class="story-grid"><ol class="story-chs">${st.list.map(chapter).join('')}</ol>${stage}</div>${posts}</div>`,
+    { tone: o.tone, lit: true, spot: true, backdrop: backdrop(o.img || 'wall-mural-wide'), lx: '20%', ly: '10%', cls: 'story-band', labelledby: hid });
+}
+
 function thingsBand(secs, s, o = {}) {
   if (!secs.length) return '';
+  const story = storyBand(secs, s, o); // the store pages (null everywhere else: the cards below)
+  if (story) return story;
   const groups = [];
   for (const x of secs) { if (!x.sub || !groups.length) groups.push({ top: x, subs: [] }); else groups[groups.length - 1].subs.push(x); }
   const html = groups.map((g, gi) => {
@@ -239,15 +397,23 @@ function thingsBand(secs, s, o = {}) {
       ...items.map((b) => `<p>${rich(b.html, s.id)}</p>`),
       ...g.subs.map((x) => `<h3 class="st-tip__t">${esc(x.h.text)}</h3>${bodyHtml(x.body, s.id)}`),
     ].map((inner, i) => `<article class="st-tip glass" data-tilt data-reveal style="--i:${i % 4}">${inner}</article>`);
-    const head = `<div class="st-things__h">${gi === 0 && o.kick ? kicker(o.kick) : ''}${capDh(g.top.h.text, { size: 'sm', tag: gi === 0 ? 'h2' : 'h3' })}</div>`;
-    // a heading with no words of its own needs no glass; three or more paragraphs set in two columns under the heading
+    // the heading is sized to its column and kept within three lines (a .fitcol and dh fit)
+    const head = `<div class="st-things__h fitcol">${gi === 0 && o.kick ? kicker(o.kick) : ''}${capDh(g.top.h.text, { size: 'sm', tag: gi === 0 ? 'h2' : 'h3', fit: true })}</div>`;
+    // a heading with no words of its own needs no glass. One short paragraph (250 characters or fewer) sits beside the
+    // heading, the two ending level; a longer text runs under a heading that crosses the card, in two balanced columns
+    // (st-things__intro--side / --stack in stores.css). Beside a long text the heading stacked six lines in a narrow
+    // column, and beside a short one it stood taller than the words.
+    const chars = text.map((b) => b.text || '').join(' ').length;
+    const side = text.length === 1 && chars <= 250;
     const intro = text.length
-      ? `<div class="st-things__intro glass${text.length > 2 ? ' st-things__intro--long' : ''}" data-reveal>${head}<div class="prose st-prose">${bodyHtml(text, s.id)}</div></div>`
+      ? `<div class="st-things__intro glass st-things__intro--${side ? 'side' : 'stack'}" data-reveal>${head}<div class="prose st-prose">${bodyHtml(text, s.id)}</div></div>`
       : `<div class="st-things__bare" data-reveal>${head}</div>`;
     const cols = cards.length >= 5 ? 3 : cards.length; // 1-4 cards sit in one row, five or more wrap in threes
     return `<div class="st-things">${intro}${cols ? `<div class="st-things__grid st-things__grid--n${cols}">${cards.join('')}</div>` : ''}</div>`;
   }).join('');
-  return band(html, { tone: o.tone, lit: true, spot: true, backdrop: backdrop(o.img || 'wall-mural-wide'), lx: '20%', ly: '10%' });
+  // no cards: the band is only the intro glass, so it stands about as tall as the glass (tight), not twice that
+  const tight = groups.every((g) => !g.subs.length && !g.top.body.some(isItem));
+  return band(html, { tone: o.tone, lit: true, spot: true, tight, backdrop: backdrop(o.img || 'wall-mural-wide'), lx: '20%', ly: '10%' });
 }
 
 function routeBand(secs, s, o = {}) {
@@ -256,32 +422,57 @@ function routeBand(secs, s, o = {}) {
     const lis = x.body.map((b, i) => (b.t === 'li' ? i : -1)).filter((i) => i >= 0);
     const a = lis.length ? lis[0] : x.body.length; const z = lis.length ? lis[lis.length - 1] + 1 : x.body.length;
     const before = x.body.slice(0, a); const steps = x.body.slice(a, z); const after = x.body.slice(z);
-    const sub = x.sub ? `<h3 class="st-route__h">${esc(x.h.text)}</h3>` : xi === 0 ? capDh(x.h.text, { size: x.h.text.length > 46 ? 'sm' : 'md' }) : `<h3 class="st-route__h">${esc(x.h.text)}</h3>`;
+    const sub = x.sub ? `<h3 class="st-route__h">${esc(x.h.text)}</h3>` : xi === 0 ? capDh(x.h.text, { size: x.h.text.length > 46 ? 'sm' : 'md', fit: true }) : `<h3 class="st-route__h">${esc(x.h.text)}</h3>`;
     return `${sub}${before.length ? `<div class="prose st-prose" data-reveal>${bodyHtml(before, s.id)}</div>` : ''}${steps.length ? `<ol class="st-route${o.cards ? ' st-route--cards' : ''}">${steps.map((b, i) => (b.t === 'li' ? `<li data-reveal style="--i:${i % 6}">${rich(b.html, s.id)}</li>` : `<li class="st-route__note">${bodyHtml([b], s.id)}</li>`)).join('')}</ol>` : ''}${after.length ? `<div class="prose st-prose" data-reveal>${bodyHtml(after, s.id)}</div>` : ''}`;
   }).join('');
   const acts = `<div class="btns" data-reveal>${btn('Get Directions', o.directions || s.directions)}${callBtn(s)}</div>`;
-  if (o.map === false) return band(`<div class="st-routeband st-routeband--solo"><div class="st-routeband__words">${words}${acts}</div></div>`, { tone: o.tone });
+  if (o.map === false) return band(`<div class="st-routeband st-routeband--solo"><div class="st-routeband__words fitcol">${words}${acts}</div></div>`, { tone: o.tone });
+  // the heading is sized to the words column and the map stretches to the column's height (st-routeband in stores.css)
   return band(`<div class="st-routeband">
-  <div class="st-routeband__words">${words}${acts}</div>
+  <div class="st-routeband__words fitcol">${words}${acts}</div>
   <div class="st-routeband__map">${mapBox(s)}<p class="st-routeband__addr">${bullet(s)}<span><b>${esc(brand.name)}</b>${esc(addr(s))}</span></p></div>
 </div>`, { tone: o.tone });
 }
 
+// the shared FAQ section (parts.mjs faqSection, the home FAQ's layout), the captured heading cut into its two tones
 function faqBand(F, o = {}) {
   if (!F || !F.items.length) return '';
-  return band(`<div class="st-faq">
-  <div class="st-faq__head">${kicker(F.kick || '')}${capDh(F.head, { size: F.head.length > 30 ? 'sm' : 'md' })}${F.sub ? `<h3 class="st-faq__sub">${esc(F.sub)}</h3>` : ''}</div>
-  <div class="st-faq__list">${faqList(F.items, { openFirst: true })}</div>
-</div>`, { tone: o.tone, lit: true, spot: o.tone !== 'mint', id: o.id || null });
+  const [fa, fb] = hold2(split2(F.head));
+  return band(phoneFit(faqSection({ kicker: F.kick || '', heading: [fa, fb], sub: F.sub || '', items: F.items, name: 'faq' }), fa, fb),
+    { tone: o.tone, lit: true, spot: o.tone !== 'mint', id: o.id || null });
+}
+
+// featured reviews: The Deck, the site's featured-reviews component (as on the home page: rv.css, site.js [data-rv-deck]):
+// the captured heading, buttons and reviews word for word, the top card dragged away or dealt. The heading is sized to
+// the copy column within three lines (st-rv in stores.css; the town headings run to 46 characters).
+const RV_TONES = ['mint', 'lime', 'paper', 'ink'];
+function reviewDeck(R, list, o = {}) {
+  if (!list.length) return '';
+  const id = 'st-rev-h';
+  // a short copy column (a two-line heading, no captured button: Albany's "Check Out Reviews") gives the deck the wider
+  // column on narrow desktops, so the longest review's card is not twice the copy's height (st-rv--short, stores.css)
+  const short = !R.btns.length && (R.head ? R.head.text.length : 0) <= 26;
+  const five = `<span class="rv-stars" aria-label="Five stars">${icon('star').repeat(5)}</span>`;
+  const cards = list.map((r, i) => `<figure class="rv-c__card rv-c__card--${RV_TONES[i % 4]}" style="--pos:${i}" data-k="${i}">${five}<blockquote>${esc(String(r.text).replace(/^[“‘"']+|[”’"']+$/g, ''))}</blockquote><figcaption>${esc(r.name)}</figcaption></figure>`).join('');
+  return band(`<div class="rv-c__grid">
+  <div class="rv-c__copy">
+    ${kicker('Shout-outs')}${R.head ? capDh(R.head.text, { size: 'md', id, fit: true }) : ''}
+    <p class="lede" data-reveal>What customers say about us on Google. Drag the top card away, or deal the next one.</p>
+    <div class="rv-c__ctrl"><button class="btn btn--lime" type="button" data-rv-deal><span>Next review</span>${icon('arrow')}</button><span class="rv-c__count"><b data-rv-c>01</b> / ${String(list.length).padStart(2, '0')}</span></div>
+    ${R.btns.length ? `<div class="btns">${R.btns.map((b) => btn(b.text, b.href, { kind: 'ghost' })).join('')}</div>` : ''}
+    <p class="rv-note">Reviews as published on the ${esc(brand.short)} website, captured November 2026.</p>
+  </div>
+  <div class="rv-c__deck" data-rv-deck aria-live="polite">${cards}</div>
+</div>`, { tone: o.tone, lit: true, spot: true, lx: '75%', ly: '35%', cls: `rv-c st-rv${short ? ' st-rv--short' : ''}`, labelledby: R.head ? id : null });
 }
 
 const storesRow = () => `<div class="st-stores">${stores.map((s) => storeCard(s)).join('')}</div>`;
-const mapsRow = () => `<div class="st-maps">${stores.map((s) => `<figure class="st-mapc">${mapBox(s)}<figcaption>${bullet(s)}<span><b>${esc(s.name)}</b><small>${esc(addr(s))}</small></span><a class="btn btn--ghost btn--sm" href="${esc(s.directions)}" target="_blank" rel="noopener"><span>Directions</span>${icon('arrow-ne')}</a></figcaption></figure>`).join('')}</div>`;
+const mapsRow = () => `<div class="st-maps">${stores.map((s) => `<figure class="st-mapc">${mapBox(s)}<figcaption>${bullet(s)}<span><b>${storeName(s)}</b><small>${esc(addr(s))}</small></span><a class="btn btn--ghost btn--sm" href="${esc(s.directions)}" target="_blank" rel="noopener"><span>Directions</span>${icon('arrow-ne')}</a></figcaption></figure>`).join('')}</div>`;
 function townsGrouped(idp) {
   return `<div class="st-towns">${stores.map((s, i) => {
     const list = towns().filter((t) => t.store === s.id);
     return `<div class="st-towns__grp${s.id === DEFAULT_STORE ? ' st-towns__grp--wide' : ''}">
-  <div class="st-towns__head" data-reveal style="--i:${i}">${bullet(s)}<h3 id="${idp}-${s.id}">Nearest store: ${esc(s.name)}</h3><span class="st-towns__n">${list.length} ${list.length === 1 ? 'town' : 'towns'}</span><a class="tlink" href="${href(s.page)}">Store details${icon('arrow')}</a></div>
+  <div class="st-towns__head" data-reveal style="--i:${i}">${bullet(s)}<h3 id="${idp}-${s.id}">Nearest store: ${storeName(s)}</h3><span class="st-towns__n">${list.length} ${list.length === 1 ? 'town' : 'towns'}</span><a class="tlink" href="${href(s.page)}">Store details${icon('arrow')}</a></div>
   <div class="st-areas">${areaGrid(list.map((t) => ({ label: t.name, href: t.path, meta: t.short })))}</div>
 </div>`;
   }).join('')}</div>`;
@@ -296,10 +487,10 @@ function locationsHub() {
   const F = partsOf(acc);
   const T = toner();
   const main = [
-    pageHero({ kicker: 'Where Ya Shopping?', title: split2(c.h1), img: need('store-mural'), crumbs: CR.location, cls: 'st-hero', sticker: 'Est. 2022',
+    pageHero({ kicker: 'Where Ya Shopping?', title: hold2(split2(c.h1)), img: need('store-mural'), crumbs: CR.location, cls: 'st-hero', sticker: 'Est. 2022',
       ctas: btn('Store locator', '/store-locator/') + btn('Plan your visit', '/visit-us/', { kind: 'ghost' }) }),
     band(`<div class="st-head"><div>${kicker('Three stores')}${dh('Albany, Clifton Park', '& Schenectady', { size: 'md' })}</div><p class="lede">${esc(brand.separateCarts)}</p></div>${storesRow()}`, { tone: T('ink'), sheet: true, after: floatObj('obj-spraycan', { cls: 'st-float', style: 'top:-150px;right:6%;width:min(9vw,120px)', depth: 0.1, sizes: '120px' }) }),
-    band(`<div class="st-head">${dh('Get', 'Directions', { size: 'md' })}</div>${mapsRow()}`, { tone: T('night'), lit: true, spot: true }),
+    band(`<div class="st-head">${dh('Get', 'Directions', { size: 'md', cls: 'dh--inline st-one' })}</div>${mapsRow()}`, { tone: T('night'), lit: true, spot: true }),
     townsBand({ tone: T('ink'), idp: 'loc-towns' }),
     faqBand({ kick: '', head: F.head.text, items: acc.blocks.filter((b) => b.t === 'faq') }, { tone: T('mint') }),
     signUp(),
@@ -309,6 +500,34 @@ function locationsHub() {
     description: c.description || 'Capital District Cannabis & Wellness dispensary locations in Albany (997 Central Ave), Clifton Park (1508 US-9) and Schenectady (1650 Crane St), NY. Hours, directions and the live menu for each store.',
     jsonld: stores.map(storeLd), main,
   };
+}
+
+// ---------- the category cave (store and town pages; owner request 2026-11-13: "for location page category, can we
+// convert them into concave carousel? we've already done that in the past so you can just port that") ----------
+// The crate's ten record sleeves hung on a concave wall (styles cave.css, script cave.js; ported from the deals wall
+// of an earlier redesign of ours). Every card is one of crate()'s own sleeves, re-hung: its link is crate()'s link
+// byte for byte (the href pinned to this store's menu, target, rel, the aria-label; a data-menu only where a crate
+// follows the visitor's store), with only its class changed; the card keeps the sleeve's art (sized for the card),
+// number, name and "Shop now". It fails closed if crate() changes shape. labelledby: the id of the band's heading.
+const CAVE_SIZES = '(max-width: 405px) 74vw, (max-width: 1200px) 300px, (min-width: 1201px) clamp(300px, 25vw, 380px), 380px'; // cave.css --cave-w
+function caveCrate(s, labelledby) {
+  const sleeves = [...crate({ store: s.id }).matchAll(/<a class="sleeve"([^>]*)>([\s\S]*?)<\/a>/g)];
+  if (sleeves.length !== categories.length) throw new Error(`stores: cave: crate() gave ${sleeves.length} sleeves for ${categories.length} categories`);
+  const bit = (html, re, what) => { const m = html.match(re); if (!m) throw new Error(`stores: cave: no ${what} in a crate() sleeve`); return m[1]; };
+  const n = sleeves.length;
+  const panels = sleeves.map(([, at, inner], i) => {
+    const art = bit(inner, /(<img [^>]*>)/, 'image').replace(/ sizes="[^"]*"/, ` sizes="${CAVE_SIZES}"`).replace(' class="sleeve__art"', ' class="cave__art"');
+    return `<div class="cave__panel" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${n}"><a class="cave__card"${at}>${art}<span class="cave__shade"></span><span class="cave__no">${bit(inner, /<span class="sleeve__no">([^<]*)<\/span>/, 'number')}</span><span class="cave__name">${bit(inner, /<span class="sleeve__name">([^<]*)<\/span>/, 'name')}</span><span class="cave__go">${bit(inner, /<span class="sleeve__go">([\s\S]*?)<\/span>/, '"Shop now"')}</span></a></div>`;
+  });
+  return `<div class="cave" data-cave data-reveal role="region" aria-roledescription="carousel" aria-labelledby="${labelledby}">
+  <div class="cave__stage"><div class="cave__wall">${panels.join('')}</div></div>
+  <div class="cave__controls" data-cave-ctrl hidden>
+    <button class="cave__btn" type="button" data-cave-prev aria-label="Previous category">${icon('arrow-l')}</button>
+    <p class="cave__count" aria-hidden="true"><b data-cave-n>01</b><i class="cave__bar"><i></i></i><span>${String(n).padStart(2, '0')}</span></p>
+    <button class="cave__btn" type="button" data-cave-next aria-label="Next category">${icon('arrow')}</button>
+  </div>
+  <p class="sr" aria-live="polite" aria-atomic="true" data-cave-live></p>
+</div>`;
 }
 
 // ---------- 2. the three store pages ----------
@@ -339,10 +558,14 @@ function storePage(s) {
 
   // hero: captured kicker + H1, live status, address, phone
   const meta = `<span class="st-meta">${statusLine(s)}<a href="${esc(s.directions)}" target="_blank" rel="noopener">${icon('pin')}<span>${esc(capAddr ? capAddr.text : addr(s))}</span></a><a href="tel:${s.tel}">${icon('phone')}<span>${esc(capPhone ? capPhone.text : s.phone)}</span></a></span>`;
-  const hero = pageHero({ kicker: kick, title: split2(c.h1), lede: meta, ledeHtml: true, img: need(look.hero), crumbs: CR.store(s), cls: 'st-hero st-ph', sticker: 'Open daily',
+  const hero = pageHero({ kicker: kick, title: hold2(split2(c.h1)), lede: meta, ledeHtml: true, img: need(look.hero), crumbs: CR.store(s), cls: 'st-hero st-ph', sticker: 'Open daily', fit: true,
     ctas: btn(`Shop ${s.city}`, menuUrl(s.id, 'all')) + btn('Get Directions', s.directions, { kind: 'ghost' }) + callBtn(s, { label: 'Call' }) + setBtn(s) });
 
-  // at a glance: the store photo with its hours on glass, the captured intro + visit words, the map
+  // at a glance: the store photo with its hours on glass, the captured intro + visit words, the map. The address heading
+  // keeps the street whole on one line (its number never alone: "997 / Central Ave" on a 360px phone) and the city line
+  // on two at most, sized to the column (fit, the column a .fitcol) and on phones to the street (phoneFit)
+  const gStreet = s.street.replace(/ /g, '\u00a0'); const gCity = holdLast(`${s.city}, ${s.region} ${s.zip}`);
+  const glanceHead = phoneFit(dh(gStreet, gCity, { size: 'md', fit: Math.max(runEm(gStreet), fitEm(gCity.replace(/\u00a0/g, ' ').replace(/ (\S+)$/, "'$1"))) }), gStreet, gCity);
   const G = M.glance ? partsOf(M.glance) : null;
   // the short "Albany Dispensary Hours | Open Early & Late:" label, not the paragraph that mentions "daily hours"
   const hoursP = G ? G.body.find((b) => b.t === 'p' && /hours/i.test(b.text) && b.text.length <= 70) : null;
@@ -353,25 +576,27 @@ function storePage(s) {
     <span class="st-photo__tag">${sticker(s.name)}</span>
     <figcaption class="st-hours glass"><p class="st-hours__h">${icon('clock')}<span>${esc(hoursP ? hoursP.text : 'Open daily')}</span></p>${statusLine(s)}${hoursTable(s)}</figcaption>
   </figure>
-  <div class="st-glance__body">
-    ${dh(s.street, `${s.city}, ${s.region} ${s.zip}`, { size: 'md' })}
+  <div class="st-glance__body fitcol">
+    ${glanceHead}
     <div class="prose st-prose st-glance__prose" data-reveal>${glanceWords}</div>
     <div class="btns" data-reveal>${G ? G.btns.map((b) => capBtn(b, s, { kind: 'lime' })).join('') : btn('Get Directions', s.directions)}${callBtn(s)}</div>
-    ${mapBox(s)}
   </div>
+  <div class="st-glance__map" data-reveal>${mapBox(s)}</div>
 </div>`, { tone: T('ink'), sheet: true, after: floatObj('obj-bud-a', { cls: 'st-float', style: 'top:-118px;right:7%;width:min(15vw,200px)', depth: 0.12, sizes: '200px' }) });
 
-  // shop this store by category (the captured category heading where the page had one)
+  // shop this store by category (the captured category heading where the page had one), the sleeves on the cave (caveCrate)
   const crHead = M.cats ? partsOf(M.cats).head.text : null;
-  const crateBand = band(`<div class="band__head"><div>${crHead ? capDh(crHead, { size: 'md' }) : dh(`Shop ${s.city}`, 'by category', { size: 'md' })}<p class="st-note">${icon('pin')}Every sleeve opens the ${esc(s.name)} menu.</p></div><div class="btns">${M.popular ? shopBtn(s, M.popular.blocks[0].text, { kind: 'ghost', target: 'flower' }) : ''}${M.deals ? '' : shopBtn(s, `${s.city} specials`, { kind: 'ghost', target: 'specials' })}${shopBtn(s, `Shop all ${s.city}`)}</div></div>${crate({ store: s.id })}`, { tone: T('night'), lit: true, spot: true });
+  const crateBand = band(`<div class="band__head"><div>${crHead ? capDh(crHead, { size: 'md', id: 'st-cats-h' }) : dh(`Shop ${s.city}`, 'by category', { size: 'md', id: 'st-cats-h' })}<p class="st-note">${icon('pin')}Every sleeve opens the ${esc(s.name)} menu.</p></div><div class="btns">${M.popular ? shopBtn(s, M.popular.blocks[0].text, { kind: 'ghost', target: 'flower' }) : ''}${M.deals ? '' : shopBtn(s, `${s.city} specials`, { kind: 'ghost', target: 'specials' })}${shopBtn(s, `Shop all ${s.city}`)}</div></div>${caveCrate(s, 'st-cats-h')}`, { tone: T('night'), lit: true, spot: true });
 
   // deals (captured, Albany): the mint "lights on" band
   let deals = '';
   if (M.deals) {
     const D = partsOf(M.deals);
     const pic = D.imgs[0] ? mediaImg(D.imgs[0].src, { alt: D.imgs[0].alt, sizes: '380px' }) : img(need(s.photo), { alt: s.photoAlt, sizes: '380px' });
+    // the heading runs across the band, so the print stands beside the prose alone (st-deals in stores.css)
     deals = band(`<div class="st-deals">
-  <div class="st-deals__words">${D.kick ? kicker(D.kick) : ''}${capDh(D.head.text, { size: 'md' })}<div class="prose st-prose" data-reveal>${bodyHtml(D.body, s.id)}</div><div class="btns" data-reveal>${D.btns.map((b) => shopBtn(s, b.text, { target: 'specials', kind: 'ink' })).join('')}</div></div>
+  <div class="st-deals__head">${D.kick ? kicker(D.kick) : ''}${capDh(D.head.text, { size: 'md' })}</div>
+  <div class="st-deals__words"><div class="prose st-prose" data-reveal>${bodyHtml(D.body, s.id)}</div><div class="btns" data-reveal>${D.btns.map((b) => shopBtn(s, b.text, { target: 'specials', kind: 'ink' })).join('')}</div></div>
   <div class="st-print-wrap" data-reveal style="--i:2"><figure class="st-print"><span class="st-print__tape" aria-hidden="true"></span>${pic}<figcaption>${bullet(s)}<span>${esc(s.street)}</span></figcaption><span class="st-print__sticker">${sticker('Specials')}</span></figure></div>
 </div>`, { tone: T('mint'), lit: true, lx: '80%', ly: '30%' });
   }
@@ -398,14 +623,13 @@ function storePage(s) {
   // reviews (captured)
   let reviews = '';
   if (M.reviews) {
-    const R = partsOf(M.reviews);
-    reviews = band(`<div class="st-head">${capDh(R.head.text, { size: 'md' })}${R.btns.map((b) => btn(b.text, b.href, { kind: 'ghost' })).join('')}</div>${shoutouts(M.reviews.blocks.filter((b) => b.t === 'review'))}`, { tone: T('night'), lit: true });
+    reviews = reviewDeck(partsOf(M.reviews), M.reviews.blocks.filter((b) => b.t === 'review'), { tone: T('night') });
   }
 
   // FAQs: the accordion, plus any question the long text asks that the accordion does not
   const F = partsOf(M.faq);
   const norm = (q) => q.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-  const items = M.faq.blocks.filter((b) => b.t === 'faq').map((f) => ({ q: f.q, a: f.a, html: pre(f.html, s.id) }));
+  const items = M.faq.blocks.filter((b) => b.t === 'faq').map((f) => ({ q: f.q, a: f.a, html: nbHwy(pre(f.html, s.id)) }));
   const seen = new Set(items.map((f) => norm(f.q)));
   for (const f of (L.faq ? L.faq.items : [])) if (!seen.has(norm(f.q))) { items.push(f); seen.add(norm(f.q)); }
   const faq = faqBand({ kick: F.kick, head: F.head.text, sub: L.faq && L.faq.head ? L.faq.head.h.text : '', items }, { tone: T(M.deals ? 'ink' : 'mint') });
@@ -416,15 +640,23 @@ function storePage(s) {
   const findP = V.body.find((b) => b.t === 'p' && /^find us at/i.test(b.text));
   const vWords = V.body.filter((b) => b.t === 'p' && b !== label && b !== findP);
   const vActs = V.btns.length ? V.btns.map((b) => capBtn(b, s, { kind: /directions/i.test(b.text) ? 'ghost' : 'lime' })).join('') : btn('Get Directions', s.directions, { kind: 'ghost' }) + shopBtn(s, `Shop ${s.city}`);
-  const visit = band(`<div class="st-visit glass" data-reveal>
-  <div class="st-visit__words">${kicker(V.kick)}${capDh(V.head.text, { size: 'md' })}<div class="prose st-prose">${bodyHtml(vWords, s.id)}${L.visit.map((x) => `<h3>${esc(x.h.text)}</h3>${bodyHtml(x.body, s.id)}`).join('')}</div></div>
-  <div class="st-visit__facts">${findP ? `<p class="st-visit__find">${icon('pin')}<span>${rich(findP.html, s.id)}</span></p>` : ''}${label ? `<p class="st-visit__label">${icon('clock')}<span>${esc(label.text)}</span></p>` : ''}<ul class="st-visit__hours">${V.body.filter((b) => b.t === 'li').map((b) => `<li>${esc(b.text)}</li>`).join('')}</ul>${statusLine(s)}<div class="btns">${vActs}</div></div>
+  // both columns end near each other whatever the store's text: a long text (over 600 characters) runs under a heading
+  // that crosses the card; a shorter one keeps its heading, sized to the column; a short one (under 400) also takes the
+  // actions under it, out of the facts (st-visit in stores.css)
+  const vText = [...vWords, ...L.visit.flatMap((x) => [x.h, ...x.body])].map((b) => b.text || '').join(' ');
+  const vLong = vText.length > 600; const vShort = vText.length < 400;
+  const vHead = `${kicker(V.kick)}${capDh(V.head.text, { size: 'md', fit: !vLong })}`;
+  const vActsHtml = `<div class="btns">${vActs}</div>`;
+  const visit = band(`<div class="st-visit glass${vLong ? ' st-visit--long' : ''}" data-reveal>
+  ${vLong ? `<div class="st-visit__head">${vHead}</div>` : ''}
+  <div class="st-visit__words${vLong ? '' : ' fitcol'}">${vLong ? '' : vHead}<div class="prose st-prose">${bodyHtml(vWords, s.id)}${L.visit.map((x) => `<h3>${esc(x.h.text)}</h3>${bodyHtml(x.body, s.id)}`).join('')}</div>${vShort ? vActsHtml : ''}</div>
+  <div class="st-visit__facts">${findP ? `<p class="st-visit__find">${icon('pin')}<span>${rich(findP.html, s.id)}</span></p>` : ''}${label ? `<p class="st-visit__label">${icon('clock')}<span>${esc(label.text)}</span></p>` : ''}<ul class="st-visit__hours">${V.body.filter((b) => b.t === 'li').map((b) => `<li>${esc(b.text)}</li>`).join('')}</ul>${statusLine(s)}${vShort ? '' : vActsHtml}</div>
 </div>`, { tone: T('night'), lit: true, backdrop: backdrop(look.visit), lx: '30%', ly: '20%' });
 
   // nearby towns, the other two stores, licence
   const mine = towns().filter((t) => t.store === s.id);
-  const near = band(`<div class="st-head"><div>${kicker(`Served by ${s.name}`)}${dh('Towns', 'We Serve', { size: 'md' })}</div>${btn(`All ${towns().length} towns`, '/visit-us/#towns', { kind: 'ghost' })}</div><div class="st-areas">${areaGrid(mine.map((t) => ({ label: t.name, href: t.path, meta: t.short })))}</div>`, { tone: T('ink'), sheet: true });
-  const others = band(`<div class="st-head">${dh('Our Other', 'Stores', { size: 'md' })}</div><div class="st-stores st-stores--two">${stores.filter((x) => x.id !== s.id).map((x) => storeCard(x)).join('')}</div>${licStrip(s)}`, { tone: T('slate') });
+  const near = band(`<div class="st-head"><div>${kicker(`Served by ${s.name}`)}${dh('Towns', 'We Serve', { size: 'md' })}</div>${btn(`All ${towns().length} towns`, '/visit-us/#towns', { kind: 'ghost' })}</div><div class="st-areas">${areaGrid(mine.map((t) => ({ label: t.name, href: t.path, meta: t.short })))}</div>`, { tone: T('ink'), sheet: true, tight: true });
+  const others = band(`<div class="st-head">${dh('Our Other', 'Stores', { size: 'md', cls: 'dh--inline st-one' })}</div><div class="st-stores st-stores--two">${stores.filter((x) => x.id !== s.id).map((x) => storeCard(x)).join('')}</div>${licStrip(s)}`, { tone: T('slate') });
 
   return {
     path: s.page, title: c.title, description: c.description, type: 'store', crumbs: CR.store(s), ogImage: og(s.photo),
@@ -440,17 +672,17 @@ function locatorPage() {
   const kick = (ban.blocks.find((b) => b.t === 'p') || {}).text || '';
   const T = toner();
   const storeRows = stores.map((s, i) => `<li class="st-res st-res--store" data-town="${esc(`${s.name} ${s.city} ${s.street} ${s.zip}`)}" data-reveal style="--i:${i}">
-    <div class="st-res__top">${bullet(s)}<div><h3 class="st-res__name">${esc(s.name)}</h3>${statusLine(s)}</div></div>
+    <div class="st-res__top">${bullet(s)}<div><h3 class="st-res__name">${storeName(s)}</h3>${statusLine(s)}</div></div>
     <p class="st-res__addr">${icon('pin')}<span>${esc(addr(s))}</span></p>
     <p class="st-res__acts">${shopBtn(s, `Shop ${s.city}`, { size: 'sm' })}<a class="btn btn--ghost btn--sm" href="${href(s.page)}"><span>Store details</span>${icon('arrow')}</a></p>
   </li>`).join('');
   const townRows = towns().map((t, i) => { const s = storeById(t.store); return `<li data-town="${esc(`${t.name} ${s.city} ${s.zip}`)}" data-reveal style="--i:${i % 6}"><a class="st-res st-res--town" href="${href(t.path)}">
     <span class="st-res__name">${esc(t.name)}</span>
-    <span class="st-res__near">${bullet(s)}<span>Nearest store: <b>${esc(s.name)}</b></span></span>
+    <span class="st-res__near">${bullet(s)}<span>Nearest store: <b>${storeName(s)}</b></span></span>
     <span class="st-res__drive">${esc(t.drive)}</span>
     <span class="st-res__go">Town guide${icon('arrow')}</span></a></li>`; }).join('');
   const main = [
-    pageHero({ kicker: kick, title: split2(c.h1), img: need('alley'), crumbs: CR.locator, cls: 'st-hero',
+    pageHero({ kicker: kick, title: hold2(split2(c.h1)), img: need('alley'), crumbs: CR.locator, cls: 'st-hero',
       ctas: btn('All locations', '/location/') + btn('Plan your visit', '/visit-us/', { kind: 'ghost' }) }),
     band(`<div class="st-loc">
   <div class="st-loc__search" data-locator="st-results"><label class="field"><span>Town or ZIP</span><input type="search" placeholder="Try Troy, Saratoga Springs or 12065" autocomplete="off" aria-describedby="st-loc-hint"></label></div>
@@ -458,7 +690,7 @@ function locatorPage() {
   <p class="st-loc__empty" data-locator-empty hidden role="status">No match yet. Try a town name or a store ZIP (12205, 12065, 12303), or see <a href="${href('/location/')}">all locations</a>.</p>
   <ul class="st-results" id="st-results">${storeRows}${townRows}</ul>
 </div>`, { tone: T('ink'), sheet: true, after: floatObj('obj-bud-a', { cls: 'st-float', style: 'top:-120px;right:6%;width:min(14vw,190px)', depth: 0.12, sizes: '190px' }) }),
-    band(`<div class="st-head">${dh('Get', 'Directions', { size: 'md' })}</div>${mapsRow()}`, { tone: T('night'), lit: true, spot: true }),
+    band(`<div class="st-head">${dh('Get', 'Directions', { size: 'md', cls: 'dh--inline st-one' })}</div>${mapsRow()}`, { tone: T('night'), lit: true, spot: true }),
     signUp(),
   ].join('\n');
   return {
@@ -488,7 +720,7 @@ function visitHub() {
   ];
   const T = toner();
   const main = [
-    pageHero({ kicker: 'Plan your visit', title: split2(c.h1), img: need('m-2025-08-image-1'), crumbs: CR.visit, cls: 'st-hero',
+    pageHero({ kicker: 'Plan your visit', title: hold2(split2(c.h1)), img: need('m-2025-08-image-1'), crumbs: CR.visit, cls: 'st-hero',
       ctas: btn('Find your store', '#stores') + btn('Towns we serve', '#towns', { kind: 'ghost' }) }),
     band(`<div class="st-head"><div>${kicker('Before you go')}${dh('Plan Your', 'Visit', { size: 'md' })}</div>${btn('Order ahead and pickup', '/pickup/', { kind: 'ghost' })}</div><div class="st-plan">${cards.map((x, i) => glassCard({ ...x, i })).join('')}</div>`, { tone: T('night'), sheet: true, lit: true, spot: true, backdrop: backdrop('wall-mural-wide'), after: floatObj('obj-boombox', { cls: 'st-float', style: 'top:-96px;right:5%;width:min(17vw,230px)', depth: 0.1, sizes: '230px' }) }),
     band(`<div class="st-head"><div>${kicker('Where Ya Shopping?')}${dh('Three', 'Stores', { size: 'md' })}</div><p class="lede">${esc(brand.separateCarts)}</p></div>${storesRow()}`, { tone: T('ink'), id: 'stores' }),
@@ -515,24 +747,26 @@ function townPage(t) {
   const L = longM ? longform(longM.blocks, s) : { lead: [], prose: [], faq: null, things: [], route: [], visit: [] };
   const crumbs = CR.town(t);
 
-  const hero = pageHero({ kicker: t.kick, title: split2(t.h1), lede: rich(t.lede.html, s.id), ledeHtml: true, img: need(look.hero), crumbs, cls: 'st-hero st-ph st-ph--long',
+  const hero = pageHero({ kicker: t.kick, title: hold2(split2(t.h1)), lede: rich(t.lede.html, s.id), ledeHtml: true, img: need(look.hero), crumbs, cls: 'st-hero st-ph st-ph--long', fit: true,
     ctas: shopBtn(s, 'Order Ahead') + (t.dir ? btn('Get Directions', t.dir, { kind: 'ghost' }) : '') });
 
-  const crateBand = band(`<div class="band__head"><div>${catsM ? capDh(partsOf(catsM).head.text, { size: 'md' }) : dh('Shop By', 'Category', { size: 'md' })}<p class="st-note">${icon('pin')}Every sleeve opens the ${esc(s.name)} menu.</p></div>${shopBtn(s, `Shop all ${s.city}`, { kind: 'ghost' })}</div>${crate({ store: s.id })}`,
+  // a short category heading ("Shop By Category") runs on one line beside its button, as on the home page (st-one)
+  const catHead = catsM ? partsOf(catsM).head.text : 'Shop By Category'; const oneCat = catHead.length <= 18 ? 'dh--inline st-one' : '';
+  const crateBand = band(`<div class="band__head"><div>${capDh(catHead, { size: 'md', id: 'st-cats-h', cls: oneCat })}<p class="st-note">${icon('pin')}Every sleeve opens the ${esc(s.name)} menu.</p></div>${shopBtn(s, `Shop all ${s.city}`, { kind: 'ghost' })}</div>${caveCrate(s, 'st-cats-h')}`,
     { tone: T('ink'), sheet: true, after: floatObj('obj-bud-b', { cls: 'st-float', style: 'top:-128px;right:6%;width:min(9vw,130px)', depth: 0.12, sizes: '130px' }) });
 
   let why = '';
   if (whyM) {
     const W = partsOf(whyM);
     const media = `<figure class="st-frame">${img(need(look.town), { alt: look.townAlt, sizes: '(min-width: 860px) 45vw, 92vw', cls: 'st-frame__img' })}<span class="st-frame__tag">${bullet(s)}<span>${esc(s.name)}</span></span></figure>`;
-    const body = `${W.kick ? kicker(W.kick) : ''}${W.head ? capDh(W.head.text, { size: 'md' }) : ''}<div class="prose st-prose">${bodyHtml([...W.pre, ...W.body], s.id)}</div><div class="btns">${W.btns.map((b) => capBtn(b, s)).join('')}</div>`;
-    why = band(`<div class="split st-why"><div class="split__media" data-reveal="develop">${media}</div><div class="split__body" data-reveal>${body}</div></div>`, { tone: T('night'), lit: true, spot: true });
+    // the heading is sized to the words column and the photo stretches to the column's height (st-why in stores.css)
+    const body = `${W.kick ? kicker(W.kick) : ''}${W.head ? capDh(W.head.text, { size: 'md', fit: true }) : ''}<div class="prose st-prose">${bodyHtml([...W.pre, ...W.body], s.id)}</div><div class="btns">${W.btns.map((b) => capBtn(b, s)).join('')}</div>`;
+    why = band(`<div class="split st-why"><div class="split__media" data-reveal="develop">${media}</div><div class="split__body fitcol" data-reveal>${body}</div></div>`, { tone: T('night'), lit: true, spot: true });
   }
 
   let reviews = '';
   if (revM) {
-    const R = partsOf(revM);
-    reviews = band(`<div class="st-head">${R.head ? capDh(R.head.text, { size: 'md' }) : ''}${R.btns.map((b) => btn(b.text, b.href, { kind: 'ghost' })).join('')}</div>${shoutouts(revM.blocks.filter((b) => b.t === 'review'))}`, { tone: T('slate') });
+    reviews = reviewDeck(partsOf(revM), revM.blocks.filter((b) => b.t === 'review'), { tone: T('slate') });
   }
 
   const reader = readerBand(L, s, { tone: T('ink'), passLabel: 'Order Ahead' });
@@ -551,13 +785,17 @@ function townPage(t) {
   };
   const plate = C ? C.body.filter((b) => b.t === 'p' && b.text.length <= 60) : [];
   const cWords = C ? C.body.filter((b) => !(b.t === 'p' && b.text.length <= 60)) : [];
-  const near = band(`<div class="st-near">
-  <div class="st-near__words" data-reveal>${C ? kicker(C.kick) : ''}${C && C.head ? capDh(C.head.text, { size: 'md' }) : dh('Your', 'Nearest Store', { size: 'md' })}${cWords.length ? `<div class="prose st-prose">${bodyHtml(cWords, s.id)}</div>` : ''}${plate.length ? `<p class="st-plate">${bullet(s)}<span>${plate.map((b, i) => (i === 0 ? `<b>${esc(fixLine(b.text))}</b>` : `<span>${esc(fixLine(b.text))}</span>`)).join('')}</span></p>` : ''}${L.visit.map((x) => `<h3 class="st-near__h">${esc(x.h.text)}</h3><div class="prose st-prose">${bodyHtml(x.body, s.id)}</div>`).join('')}<div class="btns">${C ? C.btns.map((b) => capBtn(b, s, { kind: 'ghost' })).join('') : ''}${shopBtn(s, 'Order Ahead')}</div></div>
+  // beside a short text the store card lies on its side (photo beside the details), so the two columns end together
+  // (st-near--short in stores.css); a sub-heading with its own paragraph counts as about 160 characters of height
+  const nearText = [C && C.kick, C && C.head && C.head.text, ...cWords, ...plate, ...L.visit.flatMap((x) => [x.h, ...x.body])].map((b) => (typeof b === 'string' ? b : (b && b.text) || '')).join(' ');
+  const nearShort = nearText.length + L.visit.length * 160 < 470;
+  const near = band(`<div class="st-near${nearShort ? ' st-near--short' : ''}">
+  <div class="st-near__words fitcol" data-reveal>${C ? kicker(C.kick) : ''}${C && C.head ? capDh(C.head.text, { size: 'md', fit: true }) : dh('Your', 'Nearest Store', { size: 'md', fit: true })}${cWords.length ? `<div class="prose st-prose">${bodyHtml(cWords, s.id)}</div>` : ''}${plate.length ? `<p class="st-plate">${bullet(s)}<span>${plate.map((b, i) => (i === 0 ? `<b>${esc(fixLine(b.text))}</b>` : `<span>${esc(fixLine(b.text))}</span>`)).join('')}</span></p>` : ''}${L.visit.map((x) => `<h3 class="st-near__h">${esc(x.h.text)}</h3><div class="prose st-prose">${bodyHtml(x.body, s.id)}</div>`).join('')}<div class="btns">${C ? C.btns.map((b) => capBtn(b, s, { kind: 'ghost' })).join('') : ''}${shopBtn(s, 'Order Ahead')}</div></div>
   <div class="st-near__card">${storeCard(s)}</div>
 </div>`, { tone: T('ink'), sheet: true });
 
   const others = towns().filter((x) => x.store === s.id && x !== t).sort((a, b) => a.mins - b.mins).slice(0, 6);
-  const more = band(`<div class="st-head"><div>${kicker(`Also served by ${s.name}`)}${dh('Towns', 'We Serve', { size: 'md' })}</div>${btn(`All ${towns().length} towns`, '/visit-us/#towns', { kind: 'ghost' })}</div>${others.length ? `<div class="st-areas">${areaGrid(others.map((x) => ({ label: x.name, href: x.path, meta: x.short })))}</div>` : ''}`, { tone: T('night') });
+  const more = band(`<div class="st-head"><div>${kicker(`Also served by ${s.name}`)}${dh('Towns', 'We Serve', { size: 'md' })}</div>${btn(`All ${towns().length} towns`, '/visit-us/#towns', { kind: 'ghost' })}</div>${others.length ? `<div class="st-areas">${areaGrid(others.map((x) => ({ label: x.name, href: x.path, meta: x.short })))}</div>` : ''}`, { tone: T('night'), tight: true });
 
   return {
     path: t.path, title: p.title, description: p.description || t.lede.text, type: 'town', crumbs, ogImage: og(look.town),

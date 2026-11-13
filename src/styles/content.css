@@ -19,19 +19,28 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
 .no-js .ct-filter { display: none; }
 
 /* ---------- article + event heroes: long captured titles get a calmer size ---------- */
-.ct-ahero { padding-bottom: clamp(120px, 12vw, 180px); }
-.ct-ahero .ph__h1 { font-size: clamp(1.7rem, 1.05rem + 2.75vw, 3.6rem); max-width: 22ch; line-height: .96; overflow-wrap: break-word; hyphens: auto; }
+/* the hero keeps the shared .ph bottom padding: the article's cover no longer reaches up into it (see .ct-cover) */
+.ct-ahero .ph__h1 { font-size: min(clamp(1.7rem, 1.05rem + 2.75vw, 3.6rem), 6.9vw); max-width: 22ch; line-height: .96; overflow-wrap: break-word; hyphens: auto; } /* 6.9vw: on phones under ~410px a long word and a short last one ("CONCENTRATES 101:") still share a line */
+/* desktop and tablet: a long title stays within three lines (pageHero fit: --fit from parts.mjs fitEm, as the stores
+   lane sizes its town heroes) and over the hero's dark left three quarters, clear of the photo's own lettering: it sizes
+   down to fit 75% of the width, and only below 22px does it take more width. Phones keep the size above. */
+@media (min-width: 761px) {
+  .ct-ahero .ph__in { container-type: inline-size; }
+  .ct-ahero .ph__h1.dh--fit { font-size: clamp(22px, 75cqi / var(--fit), clamp(1.7rem, 1.05rem + 2.75vw, 3.6rem)); max-width: min(100%, max(75%, var(--fit) * 1em)); }
+}
 .ct-ahero .ph__lede { max-width: none; }
-.ct-ahero.ct-ehero { padding-bottom: clamp(48px, 5vw, 76px); }
 .ct-ehero .ph__img { filter: blur(30px) saturate(1.35); scale: 1.18; opacity: .62; }
 .ct-chero .ph__h1 { overflow-wrap: break-word; }
+/* phones: the "40 articles" sticker has no room after "EDUCATION" and hangs below the line (sticker.js), so the lede
+   starts clear of it */
+@media (max-width: 760px) { .ct-bhero .ph__h1 { margin-bottom: 44px; } }
 
 /* ---------- article ---------- */
-.ct-artband { padding-top: 0; }
 .ct-article { display: grid; grid-template-columns: minmax(0, 270px) minmax(0, 1fr); gap: clamp(32px, 5vw, 84px); align-items: start; }
-.ct-aside { position: sticky; top: calc(var(--topbar-h) + var(--hdr-h) + 28px); display: grid; gap: 18px; padding-top: clamp(40px, 4vw, 60px); }
+.ct-aside { position: sticky; top: calc(var(--topbar-h) + var(--hdr-h) + 28px); display: grid; gap: 18px; }
 .ct-main { min-width: 0; }
-.ct-cover { position: relative; z-index: 2; margin: calc(-1 * clamp(96px, 10vw, 150px)) 0 clamp(36px, 4vw, 58px); border-radius: var(--r-l); overflow: hidden; aspect-ratio: 16 / 9; background: var(--ink-2); box-shadow: 0 50px 90px -40px rgba(0, 0, 0, .95), 0 0 0 1px rgba(255, 255, 255, .06); }
+/* the cover opens the article band, below the hero's seam: pulled up across it, the divider was painted over the photo */
+.ct-cover { position: relative; margin: 0 0 clamp(36px, 4vw, 58px); border-radius: var(--r-l); overflow: hidden; aspect-ratio: 16 / 9; background: var(--ink-2); box-shadow: 0 50px 90px -40px rgba(0, 0, 0, .95), 0 0 0 1px rgba(255, 255, 255, .06); }
 .ct-cover img { width: 100%; height: 100%; object-fit: cover; }
 .ct-prose { max-width: 68ch; }
 /* the shared .prose p { margin: 0 } outranks .prose > * + *, so the reading rhythm is restored inside ct- wrappers */
@@ -71,8 +80,7 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
   .ct-toc--top { display: block; }
 }
 
-/* ---------- shop the category ---------- */
-.ct-shopband { padding: clamp(100px, 11vw, 170px) 0; }
+/* ---------- shop the category (the shared band padding, like every other section) ---------- */
 .ct-shop { max-width: 660px; margin-left: auto; padding: clamp(26px, 3.4vw, 46px); }
 .ct-shop .dh { overflow-wrap: break-word; }
 .ct-shop .dh { margin-bottom: 14px; }
@@ -82,7 +90,6 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
 .ct-storepick b { color: var(--text); font-weight: 600; }
 .ct-storepick__btn { min-height: 44px; padding: 0 4px; color: var(--lime); font-weight: 600; text-decoration: underline; text-underline-offset: .22em; }
 @media (max-width: 760px) {
-  .ct-shopband { padding: 72px 0; }
   .ct-shop { margin-left: 0; }
 }
 
@@ -106,15 +113,28 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
 .ct-coverstory { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: clamp(18px, 2.4vw, 32px); align-items: stretch; }
 .ct-also { display: grid; gap: 14px; align-content: start; }
 .ct-also__t { margin-bottom: 2px; }
-.ct-mpost { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; align-items: center; padding: 12px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .5); text-decoration: none; transition: border-color var(--d-1), background var(--d-1), transform var(--d-2) var(--ease); }
+.ct-mpost { display: grid; grid-template-columns: clamp(76px, 22%, 112px) minmax(0, 1fr); gap: 16px; align-items: center; padding: 12px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .5); text-decoration: none; transition: border-color var(--d-1), background var(--d-1), transform var(--d-2) var(--ease); }
 .ct-mpost:hover, .ct-mpost:focus-visible { border-color: var(--lime-32); background: rgba(13, 18, 17, .8); transform: translateX(4px); }
 .ct-mpost__art { display: block; aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: var(--slate); }
 .ct-mpost__art img { width: 100%; height: 100%; object-fit: cover; }
 .ct-mpost__body { display: grid; gap: 6px; }
 .ct-mpost__cat { font: 700 11px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; color: var(--lime); }
-.ct-mpost__t { font: 800 16px/1.16 var(--f-display); font-stretch: 104%; }
+.ct-mpost__t { font: 800 16px/1.16 var(--f-display); font-stretch: 86%; }
 .ct-mpost__d { font-size: 13px; color: var(--text-3); }
 @media (max-width: 1000px) { .ct-coverstory { grid-template-columns: minmax(0, 1fr); } }
+/* side by side, the "Also new" list ends level with the cover story: its three cards share the column's height and each
+   thumbnail runs the card's height */
+@media (min-width: 1001px) {
+  .ct-also { grid-template-rows: auto; grid-auto-rows: minmax(0, 1fr); align-content: stretch; }
+  .ct-also .ct-mpost { align-items: stretch; }
+  .ct-also .ct-mpost__art { aspect-ratio: auto; min-height: 76px; }
+  .ct-also .ct-mpost__body { align-content: center; }
+}
+/* a long lead title is sized to its glass panel so it stays within three lines (--fit from parts.mjs fitEm) */
+@media (min-width: 761px) {
+  .ct-feature__panel { container-type: inline-size; }
+  .ct-feature__t { font-size: max(22px, min(clamp(1.45rem, 1.05rem + 1.4vw, 2.35rem), 100cqi / var(--fit, 1))); }
+}
 @media (max-width: 640px) {
   .ct-feature { min-height: 0; align-items: start; }
   .ct-feature__art { position: relative; inset: auto; z-index: 0; aspect-ratio: 4 / 3; }
@@ -142,10 +162,16 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
   .ct-rack .zine__art { aspect-ratio: auto; min-height: 112px; }
   .ct-rack .zine__art img { position: absolute; inset: 0; }
   .ct-rack .zine__body { padding: 14px 16px; gap: 6px; }
-  .ct-rack .zine__t { font-size: 16px; }
+  .ct-rack .zine__t { font-size: 16px; font-stretch: 84%; } /* condensed: a 180px column fits ~17 characters a line */
+}
+@media (max-width: 359px) { /* 320: the 112px picture left the title 138px, 4-5 lines of ~13 characters */
+  .ct-rack .zine__link { grid-template-columns: 76px minmax(0, 1fr); }
+  .ct-rack .zine__art { min-height: 96px; }
+  .ct-rack .zine__body { padding: 12px 10px; }
+  .ct-mpost { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; padding: 10px; }
 }
 @media (max-width: 760px) {
-  .ct-filter, .ct-topics--row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 10px; scroll-snap-type: x proximity; }
+  .ct-filter, .ct-topics--row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 10px; scroll-snap-type: x proximity; scroll-padding-inline: var(--gutter); } /* the snap keeps the gutter: the first chip never sits on the screen edge */
   .ct-filter::-webkit-scrollbar, .ct-topics--row::-webkit-scrollbar { display: none; }
   .ct-filter .chipbtn, .ct-topics--row li { flex: none; scroll-snap-align: start; }
 }
@@ -163,6 +189,9 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
 @media (max-width: 860px) { .ct-topicsband { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- topic archive ---------- */
+/* its spray can hangs down across the seam below, and build.mjs draws that seam inside this band's foot: the band sits
+   over the next one (as the shop lane's .sh-lift) so neither is painted over (the sign-up band is z-index 3) */
+.ct-catband { z-index: 4; }
 .ct-sib { display: grid; gap: 12px; margin-bottom: clamp(30px, 4vw, 50px); }
 .ct-sub { margin: clamp(40px, 5vw, 64px) 0 24px; font: 850 clamp(1.3rem, 1rem + 1vw, 1.9rem)/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
 
@@ -176,7 +205,7 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
 .ct-guide__art img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s var(--ease); }
 .ct-guide:hover .ct-guide__art img { transform: scale(1.06); }
 .ct-guide__panel { margin: 8px; padding: 16px 14px 14px; border-radius: 20px; display: flex; flex-direction: column; gap: 8px; min-height: 206px; }
-.ct-guide__panel .btn { margin-top: auto; }
+.ct-guide__panel .btn { margin-top: auto; width: 100%; padding-inline: 10px; font-size: 13px; letter-spacing: .01em; } /* full width: "Shop Concentrates" fits on one line in a 206px panel */
 .ct-guide__no { font: 700 11px/1 var(--f-body); letter-spacing: .18em; color: var(--text-3); }
 .ct-guide__t { font: 900 clamp(17px, 1.35vw, 21px)/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
 .ct-guide__p { margin: 0; font-size: 14px; color: var(--text-2); }
@@ -184,26 +213,24 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
 .ct-guide__link .ico { width: 15px; height: 15px; transition: transform var(--d-2) var(--ease); }
 .ct-guide__link:hover .ico { transform: translateX(4px); }
 .ct-guide .btn { width: 100%; justify-content: space-between; padding: 0 14px; }
-@media (max-width: 1200px) { .ct-guides { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 760px) {
-  .ct-guides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding: 6px var(--gutter) 14px; gap: 14px; }
+/* ten shelves: five by two; at 1001-1200 four then three and three (a 12-column grid), so no shelf stands alone in a
+   row; up to 1000 a swipe row with the next card peeking */
+@media (max-width: 1200px) {
+  .ct-guides { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .ct-guide { grid-column: span 4; }
+  .ct-guide:nth-child(-n + 4) { grid-column: span 3; }
+}
+@media (max-width: 1000px) {
+  .ct-guides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding: 6px var(--gutter) 14px; gap: 14px; scroll-padding-inline: var(--gutter); }
   .ct-guides::-webkit-scrollbar { display: none; }
   .ct-guide { flex: 0 0 min(76vw, 300px); scroll-snap-align: center; min-height: 420px; }
 }
-.ct-basics { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(30px, 5vw, 90px); align-items: start; }
-.ct-basics__side { position: sticky; top: calc(var(--topbar-h) + var(--hdr-h) + 30px); }
-.ct-basics__p { color: var(--text-ink-2); font-size: 18px; max-width: 40ch; }
-.ct-deck { position: relative; width: min(100%, 360px); margin-top: 30px; }
-.ct-deck__lbl { position: absolute; left: 50%; bottom: -16px; translate: -50% 0; white-space: nowrap; padding: 9px 15px; border-radius: var(--pill); background: var(--ink); color: var(--mint); font: 700 12px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; box-shadow: 0 10px 24px -10px rgba(0, 0, 0, .6); }
-.ct-basics__more { margin-top: 24px; }
-@media (max-width: 900px) {
-  .ct-basics { grid-template-columns: minmax(0, 1fr); }
-  .ct-basics__side { position: static; }
-  .ct-deck { width: min(62vw, 250px); margin: 26px auto 10px; }
-}
+/* "Know the basics": the shared FAQ section (.faqsec in components.css, parts.mjs faqSection) */
 
 /* ---------- events hub ---------- */
-.ct-nextup { min-height: clamp(520px, 50vw, 700px); display: grid; align-items: center; }
+/* as tall as the note it holds: the stage min-height left it about half empty once the seams replaced the overlap of
+   the band below; the padding still clears the spray seams' drips above and below */
+.ct-nextup { padding-block: clamp(76px, 7vw, 104px); }
 .ct-next { max-width: 580px; padding: clamp(26px, 3.4vw, 46px); }
 .ct-next .dh { margin-bottom: 14px; }
 .ct-next__p { margin: 0 0 24px; color: var(--text-2); font-size: 18px; }
@@ -216,36 +243,47 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
 .ct-ttbtn[aria-pressed="true"] .ct-i-play { display: block; }
 .no-js .ct-ttbar { display: none; }
 @media (prefers-reduced-motion: reduce) { .ct-ttbar { display: none; } }
-@media (max-width: 760px) {
-  .ct-nextup { min-height: 0; }
+@media (max-width: 1000px) { /* beside the 580px note the toggle needs a ~900px row; narrower, it sits under the note */
   .ct-ttbar { position: static; margin-top: 18px; }
 }
-.ct-wall { columns: 4 230px; column-gap: clamp(18px, 2.2vw, 30px); margin-top: 34px; }
-.ct-wall > .ct-cell { break-inside: avoid; padding: 16px 0 24px; }
-.ct-wall .flyer__art { aspect-ratio: auto; }
-.ct-wall .flyer__art img { height: auto; }
-.ct-wall .flyer__t { overflow-wrap: anywhere; hyphens: auto; }
+/* the poster wall: whole posters (never cropped) in equal cells, four across from 1200px, three from 900px, two below,
+   in rows that all end level. Each poster sits on its flyer's paper in a frame of one height (the cell width at 0.72,
+   the shape of most of the posters) and a landscape poster hangs across two cells (content.mjs .ct-cell--wide, and the
+   order that keeps the rows full). Rows are centred, so a short last row, or a store filter's, stays balanced. Sizes come
+   from the wall's width (the wrap is a size container). */
+.ct-wallband > .wrap { container-type: inline-size; }
+.ct-wall { --cols: 4; --gap: clamp(18px, 2.2vw, 30px); --pad: 12px; --col: calc((100cqi - (var(--cols) - 1) * var(--gap)) / var(--cols) - .5px); display: flex; flex-wrap: wrap; justify-content: center; column-gap: var(--gap); margin-top: 34px; }
+@media (max-width: 1199px) { .ct-wall { --cols: 3; } }
+@media (max-width: 899px) { .ct-wall { --cols: 2; } }
+.ct-wall > .ct-cell { flex: 0 0 var(--col); padding: 16px 0 24px; }
+.ct-wall > .ct-cell--wide { flex-basis: calc(2 * var(--col) + var(--gap)); }
+.ct-wall .flyer, .ct-wall .flyer > a { height: 100%; }
+.ct-wall .flyer > a { align-content: start; }
+.ct-wall .flyer__art { aspect-ratio: auto; height: calc((var(--col) - 2 * var(--pad)) / .72); background: none; }
+.ct-wall .flyer__art img { object-fit: contain; }
+.ct-wall .flyer__t { overflow-wrap: anywhere; hyphens: auto; font-size: 16px; line-height: 1.04; } /* the caption size of the shared carousel's flyers (gcarousel.css): the longest event names stay within five lines */
 @media (max-width: 640px) {
-  .ct-wall { columns: 2; column-gap: 14px; }
+  .ct-wall { --gap: 14px; --pad: 8px; }
   .ct-wall > .ct-cell { padding: 12px 0 14px; }
   .ct-wall .flyer a { padding: 8px 8px 12px; }
-  .ct-wall .flyer__t { font-size: 14px; }
+  .ct-wall .flyer__t { font-size: 13px; font-stretch: 70%; } /* condensed: two poster columns fit ~20 characters a line */
   .ct-wall .flyer__when, .ct-wall .flyer__where { font-size: 12px; }
   .ct-wall .flyer__body { padding-top: 10px; }
 }
-.ct-rot { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(28px, 5vw, 80px); align-items: start; }
-.ct-rot__p { color: var(--text-ink-2); font-size: 18px; max-width: 40ch; }
+/* the rotation: the intro across the top, the series two to a row beneath (tracks--2) */
+.ct-rot { display: grid; }
+.ct-rot__p { margin: 0; color: var(--text-ink-2); font-size: 18px; max-width: 40ch; }
 .ct-rot__list { display: grid; }
 .ct-rot__a { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2px 14px; min-height: 44px; padding: 6px 0; border-bottom: 1px solid rgba(42, 49, 48, .12); color: var(--text-ink); font-weight: 600; text-decoration: none; }
 .ct-rot__a:last-child { border-bottom: 0; }
 .ct-rot__a:hover, .ct-rot__a:focus-visible { color: #3d6b16; }
 .ct-rot__d { color: var(--text-ink-2); font-size: 14px; font-weight: 400; white-space: nowrap; }
-@media (max-width: 900px) { .ct-rot { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- event page ---------- */
 .ct-evband .band__clip > img { opacity: .55; }
 .ct-event { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(30px, 5vw, 84px); align-items: start; }
 .ct-event--noposter { grid-template-columns: minmax(0, 1fr); }
+.ct-event--wide { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } /* a square or landscape poster */
 .ct-event__media { position: sticky; top: calc(var(--topbar-h) + var(--hdr-h) + 34px); }
 .ct-poster { position: relative; margin: 0; padding: 14px 14px 18px; border-radius: 6px; background: #f4f7f5; rotate: -1.4deg; box-shadow: 0 50px 80px -40px rgba(0, 0, 0, .95), 0 0 0 1px rgba(255, 255, 255, .05); }
 .ct-poster img { width: 100%; height: auto; border-radius: 3px; }
@@ -257,6 +295,7 @@ a.ct-chip:hover, a.ct-chip:focus-visible { background: var(--lime); border-color
 .ct-details__h { color: var(--lime); margin-bottom: 8px; }
 .ct-details dl { margin: 0; display: grid; }
 .ct-details__row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.ct-details dl:last-child .ct-details__row:last-child { border-bottom: 0; } /* nothing below the list: no rule left hanging */
 .ct-details dt { display: inline-flex; align-items: center; gap: 9px; color: var(--text-3); font-size: 14px; }
 .ct-details dt .ico { width: 16px; height: 16px; color: var(--lime); }
 .ct-details dd { margin: 0; color: var(--text); font-weight: 500; }

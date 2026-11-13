@@ -10,6 +10,7 @@ Written by `tools/media-doc.mjs` from `src/content/images.json` and the fal job 
 - **2 generated loops** (`assets/video/turntable-*.mp4`, `mural-*.mp4`): fal Kling 2.5 Turbo Pro image-to-video with the
   first and last frame set to the same still, folded with a short crossfade and encoded with macOS VideoToolbox H.264.
   Higgsfield (Kling 3.0 Pro, Kling 2.5 Turbo) was tried first and refused both jobs for low credit; nothing was charged.
+- **10 photos of real places** from Wikimedia Commons, credited under each photo (see the last section).
 
 Rules used on every generated still: no people, hands or faces; no text, numbers, logos or labels; blank packaging;
 one hard key light from the upper left and a thin lime rim light; shot on black so it composites onto the dark bands.
@@ -47,3 +48,48 @@ Each render was reviewed at full size; the first pre-roll render read as cigaret
 | `skyline` | 3000 x 2946 | `fal-ai/topaz/upscale/image` | `01a1d212-3dfa-70d3-9c8e-afd41a1850a0` | cut-out / edit of file:assets/source/9aef9b13-Img.png |
 | `store-mural` | 3200 x 1800 | `fal-ai/topaz/upscale/image` | `01a1d212-421b-7712-8aa0-dc076c080b05` | cut-out / edit of file:assets/source/68464011-1271851a8965248a7f523021872ea520.png |
 | `store-albany` | 1528 x 2040 | `fal-ai/topaz/upscale/image` | `01a1d212-3d3e-7c40-b6a1-a322292b3ef9` | cut-out / edit of file:assets/source/f85f9346-cdcw-albany.jpeg |
+
+## Photos of real places (Wikimedia Commons): the store pages' "things to do" story
+
+Added by hand on 2026-11-13 (`tools/media-doc.mjs` carries this section over as written and counts these photos apart
+from the client images). Used by `storyBand()` in `src/pages/stores.mjs` on `/location/albany/` and
+`/location/schenectady/` (`/location/clifton-park/` has no "things to do" text in the capture).
+
+A generated image never stands in for a real place, so every place in the story is a real photograph of that place
+from Wikimedia Commons, public domain first and otherwise CC BY / CC BY-SA, credited under the photo on the page
+("Photo: author, licence, via Wikimedia Commons": the author links to the file page, the licence to its deed). A place
+with no free photo of its own gets an illustrated map-pin card with its name only (no distance or other fact). The
+closing chapter of each story is the client's own store photo (`store-albany`, `m-2025-08-image-1`).
+
+- Found and checked with the Commons API (`imageinfo` + `extmetadata`: licence, licence URL, author, date,
+  description) by `private/story/commons-research.mjs`, `commons-more.mjs` and `commons-cats.mjs`; chosen by eye from
+  contact sheets (`private/story-commons/sheets/`). Photos from Albany, Western Australia (the same search words) were
+  left out.
+- The full-size files were downloaded by `private/story/commons-download.mjs` into a private folder (not published), each checked
+  against the SHA-1 the API gives; licence data in `private/story-commons/chosen.json`.
+- Processed by `private/story/process-places.py`: resized only (no crop, no retouch, no AI) to WebP at 1600, 960 and
+  540 px wide (quality 82, stepped down to no lower than 70 to keep the 1600 file near 260 KB), with the attribution
+  embedded as XMP (`dc:creator`, `dc:rights`, `dc:source`, `xmpRights:WebStatement`) and IPTC DigitalSourceType
+  `digitalCapture`. Registry entries `pl-*` in `src/content/images.json` carry `photo: true`, `credit`, `license`,
+  `licenseUrl`, `source` (the Commons file page), `title`, `original` and `sha1`.
+
+| id | place | Commons file | author | licence | taken | original | WebP sizes |
+|---|---|---|---|---|---|---|---|
+| `pl-washington-park` | Washington Park (Albany) | [Tulips in Washington Park.jpg](https://commons.wikimedia.org/wiki/File:Tulips_in_Washington_Park.jpg) | Tim Schapker | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) | 2008-05-06 | 3000 x 2400 | 540: 56 KB, 960: 162 KB, 1600: 393 KB |
+| `pl-pine-bush` | Albany Pine Bush Preserve | [Albany Pine Bush landscape.jpg](https://commons.wikimedia.org/wiki/File:Albany_Pine_Bush_landscape.jpg) | Daniel Case | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | 2015-08-19 | 6048 x 3760 | 540: 50 KB, 960: 132 KB, 1600: 350 KB |
+| `pl-capitol-plaza` | New York State Capitol and Empire State Plaza | [Empire State Plaza at sunset.jpg](https://commons.wikimedia.org/wiki/File:Empire_State_Plaza_at_sunset.jpg) | Sashimi-b | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | 2026-05-29 | 6016 x 4054 | 540: 26 KB, 960: 64 KB, 1600: 137 KB |
+| `pl-state-museum` | New York State Museum (the Cohoes Mastodon) | [Cohoes Mastodon, NYS Museum, Albany, NY.jpg](https://commons.wikimedia.org/wiki/File:Cohoes_Mastodon,_NYS_Museum,_Albany,_NY.jpg) | Skunkworks Photographic | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) | 2011-01-12 | 4288 x 2848 | 540: 27 KB, 960: 62 KB, 1600: 133 KB |
+| `pl-colonie-center` | Colonie Center | [Glowing Colonie Center marquee.jpg](https://commons.wikimedia.org/wiki/File:Glowing_Colonie_Center_marquee.jpg) | Tyler A. McNeil | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | 2021-06-13 | 5033 x 3355 | 540: 17 KB, 960: 35 KB, 1600: 72 KB |
+| `pl-crossgates` | Crossgates Mall | [Crossgates mall.JPG](https://commons.wikimedia.org/wiki/File:Crossgates_mall.JPG) | Flyer84 at English Wikipedia | Public domain (statement on the file page) | uploaded 2007-08-05 | 1898 x 1269 | 540: 37 KB, 960: 83 KB, 1600: 157 KB |
+| `pl-ualbany` | University at Albany (postcard) | [Approaching the Academic Podium UAlbany.jpg](https://commons.wikimedia.org/wiki/File:Approaching_the_Academic_Podium_UAlbany.jpg) | Beyond My Ken | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | 2011-10-28 | 2086 x 1380 | 540: 26 KB, 960: 71 KB, 1600: 157 KB |
+| `pl-alb-airport` | Albany International Airport (postcard) | [Albany International Airport.jpg](https://commons.wikimedia.org/wiki/File:Albany_International_Airport.jpg) | Flyer84 | Public domain (statement on the file page) | uploaded 2007-08-04 | 2048 x 1536 | 540: 45 KB, 960: 98 KB, 1600: 196 KB |
+| `pl-proctors` | Proctors Theatre (Schenectady) | [Proctors schenectady interior.jpg](https://commons.wikimedia.org/wiki/File:Proctors_schenectady_interior.jpg) | Proctors Collaborative Archive | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) | 2015-08-20 | 5952 x 3968 | 540: 47 KB, 960: 114 KB, 1600: 297 KB |
+| `pl-misci` | miSci, Museum of Innovation and Science (Schenectady; a locomotive on display there) | [Great Northern Railway Alco RS-3 No. 299 in Schenectady, New York, August 2015.jpg](https://commons.wikimedia.org/wiki/File:Great_Northern_Railway_Alco_RS-3_No._299_in_Schenectady,_New_York,_August_2015.jpg) | David Wilson | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0) | 2015-08-30 | 2816 x 2112 | 540: 35 KB, 960: 97 KB, 1600: 233 KB |
+
+No free photo of the place itself was found on Commons (keyword searches, the place categories and the Schenectady
+category tree were checked), so these chapters use the map-pin card:
+
+- **Central Park Rose Garden** (Schenectady): Commons has a CC0 photo of Iroquois Lake in the same park, but not of
+  the rose garden; it was not used, since it would stand in for a different spot.
+- **The Edison Downtown** (Schenectady): no photo of the restaurant on Commons; a street view of downtown was not
+  used for the same reason.

@@ -1,0 +1,64 @@
+/* fix.css: the last layer (src/build.mjs loads it after every lane file). Owner rules that must hold over every lane's own
+   layout live here, each with the owner's words. */
+
+/* ---------- CTA groups on phones and tablets ----------
+   Owner, 2026-11-13: "CTAs should match sizes and should utilize full width for mobile views and tablet". Up to 1024 px a
+   group's buttons share its whole width in equal columns. Phones (under 600 px): one button per row. Tablets: one row when
+   every label fits its column on one line, otherwise one button per row (four buttons: two by two when that fits);
+   src/scripts/ctas.js measures the labels and sets --cta-cols, and before it runs tablets take the likely count. A label or
+   link inside a group (the brand pages' "Shop at", a text link) takes a row of its own. The store cards, the header store
+   panels and the hero sleeve already lay out this way with their own container queries (.scard__cta, .mini__cta,
+   .h-sleeve__cta) and are left to them. The list is the same in ctas.js and private/cta-check.mjs. */
+@media (max-width: 1024px) {
+  :is(.btns, .ph__ctas, .gate__btns, .st-pass__cta, .sh-store__cta, .co-roster__go, .sh-now__act, .sh-crate__foot, .h-shop__foot, .sh-shopat, .st-res__acts):has(> .btn) {
+    display: grid; grid-template-columns: repeat(var(--cta-cols, var(--cta-guess, 1)), minmax(0, 1fr)); justify-content: stretch; width: 100%;
+  }
+  :is(.btns, .ph__ctas, .gate__btns, .st-pass__cta, .sh-store__cta, .co-roster__go, .sh-now__act, .sh-crate__foot, .h-shop__foot, .sh-shopat, .st-res__acts):has(> .btn) > .btn { width: 100%; min-width: 0; }
+  :is(.btns, .ph__ctas, .gate__btns, .st-pass__cta, .sh-store__cta, .co-roster__go, .sh-now__act, .sh-crate__foot, .h-shop__foot, .sh-shopat, .st-res__acts):has(> .btn) > :not(.btn) { grid-column: 1 / -1; }
+  /* the measuring pass (ctas.js): each button at its one-line width */
+  .cta-measure { display: flex !important; flex-wrap: nowrap !important; width: max-content !important; }
+  .cta-measure > .btn { flex: none !important; width: max-content !important; min-width: 0 !important; max-width: none !important; white-space: nowrap !important; }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+  :is(.btns, .ph__ctas, .gate__btns, .st-pass__cta, .sh-store__cta, .co-roster__go, .sh-now__act, .sh-crate__foot, .h-shop__foot, .sh-shopat, .st-res__acts):has(> .btn:nth-child(2 of .btn):nth-last-child(1 of .btn)) { --cta-guess: 2; }
+  :is(.btns, .ph__ctas, .gate__btns, .st-pass__cta, .sh-store__cta, .co-roster__go, .sh-now__act, .sh-crate__foot, .h-shop__foot, .sh-shopat, .st-res__acts):has(> .btn:nth-child(3 of .btn):nth-last-child(1 of .btn)) { --cta-guess: 3; }
+  :is(.btns, .ph__ctas, .gate__btns, .st-pass__cta, .sh-store__cta, .co-roster__go, .sh-now__act, .sh-crate__foot, .h-shop__foot, .sh-shopat, .st-res__acts):has(> .btn:nth-child(4 of .btn):nth-last-child(1 of .btn)) { --cta-guess: 2; }
+}
+
+/* ---------- cut-outs on phones and tablets ----------
+   A cut-out hung across a seam with a fixed offset (style="top:-118px" / "bottom:-70px") but sized by the viewport
+   (width: min(15vw, 200px)) drifts off its seam as the screen narrows: at 768 px a 115 px bud hung top:-118px sat wholly
+   inside the section above, over its buttons. Up to 1024 px it sits on its seam instead (owner, 2026-11-13: "place the bud
+   or any objects similar over the dividers"), inside the gap between the two sections' content: never closer than 16 px
+   to either (--pa: the padding above the seam, --pb: below it), centred when the gap allows, and no taller than the gap.
+   Translate composes with the phone scale; the parallax runs only above 760 px. private/float-overlap.mjs checks it. */
+@media (max-width: 1024px) {
+  .float:is([style*="top:-"], [style*="top: -"], [style*="bottom:-"], [style*="bottom: -"]) { --pa: var(--sec); --pb: var(--sec); }
+  .float:is([style*="top:-"], [style*="top: -"]) { top: 0 !important; bottom: auto !important; translate: 0 calc(-1 * clamp(calc(100% - var(--pb) + 16px), 50%, calc(var(--pa) - 16px))); }
+  .float:is([style*="bottom:-"], [style*="bottom: -"]) { bottom: 0 !important; top: auto !important; translate: 0 clamp(calc(100% - var(--pa) + 16px), 50%, calc(var(--pb) - 16px)); }
+  .float:is([style*="top:-"], [style*="top: -"], [style*="bottom:-"], [style*="bottom: -"]) img { display: block; width: auto; max-width: 100%; max-height: calc(var(--pa) + var(--pb) - 32px); margin-inline: auto; }
+  /* hung up from its own section (below the seam) into the one above */
+  .band--tight > .float:is([style*="top:-"], [style*="top: -"]) { --pb: calc(var(--sec) * .52); }
+  .band--tight + .band > .float:is([style*="top:-"], [style*="top: -"]) { --pa: calc(var(--sec) * .52); }
+  .ph + .band > .float:is([style*="top:-"], [style*="top: -"]) { --pa: clamp(44px, 5vw, 70px); }
+  /* hung down from its own section (above the seam) into the next */
+  .band--tight > .float:is([style*="bottom:-"], [style*="bottom: -"]) { --pa: calc(var(--sec) * .52); }
+  .ph > .float:is([style*="bottom:-"], [style*="bottom: -"]) { --pa: clamp(44px, 5vw, 70px); }
+  .band:has(+ .band--tight) > .float:is([style*="bottom:-"], [style*="bottom: -"]) { --pb: calc(var(--sec) * .52); }
+}
+/* the company pages place their seam cut-outs by class (.co-flt in company.css, already centred on the seam on phones):
+   the same fit between 761 and 1024 px, where they kept the desktop offsets (the /reviews/ boombox sat over "Leave a
+   Review" once the hero's buttons ran full width) */
+@media (min-width: 761px) and (max-width: 1024px) {
+  .float.co-flt { --pa: var(--sec); --pb: var(--sec); top: 0 !important; bottom: auto !important; translate: 0 calc(-1 * clamp(calc(100% - var(--pb) + 16px), 50%, calc(var(--pa) - 16px))); }
+  .float.co-flt img { display: block; width: auto; max-width: 100%; max-height: calc(var(--pa) + var(--pb) - 32px); margin-inline: auto; }
+  .band--tight > .float.co-flt { --pb: calc(var(--sec) * .52); }
+  .band--tight + .band > .float.co-flt { --pa: calc(var(--sec) * .52); }
+  .ph + .band > .float.co-flt { --pa: clamp(44px, 5vw, 70px); }
+}
+@media (max-width: 760px) {
+  .band--tight > .float:is([style*="top:-"], [style*="top: -"]) { --pb: 56px; }
+  .band--tight + .band > .float:is([style*="top:-"], [style*="top: -"]) { --pa: 56px; }
+  .band--tight > .float:is([style*="bottom:-"], [style*="bottom: -"]) { --pa: 56px; }
+  .band:has(+ .band--tight) > .float:is([style*="bottom:-"], [style*="bottom: -"]) { --pb: 56px; }
+}

@@ -1,0 +1,134 @@
+/* gcarousel.css: the home events band as a compact "gradient carousel" (prefix gcar; markup in src/pages/home.mjs, motion
+   and colour in src/scripts/gcarousel.js). The taped flyers stand in a row in 3D: the active one centred and square to
+   the viewer, the others turned away round a drum, set back and smaller. Behind them the band is lit by soft, blurred
+   pools of the active poster's own colours: the script measures each poster's majority colour and sets --gc-1 / --gc-2
+   on the band, registered here so they glide from one poster to the next. Geometry lives here as custom properties the
+   script reads (--gc-step, --gc-rot, --gc-turn, --gc-z ...), so each breakpoint tunes its own depth.
+   Compact layout: the md heading with the lede beside it, a stage just tall enough for the cards (it clips sideways
+   only, so shadows fall freely), and one row under it: previous / counter / next centred, "All events" beside them.
+   Without JS: a plain swipe row of the same cards, the controls stay hidden and the glow keeps its neutral default. */
+
+@property --gc-1 { syntax: '<color>'; inherits: true; initial-value: #87a173; }
+@property --gc-2 { syntax: '<color>'; inherits: true; initial-value: #3f6159; }
+
+/* ---------- the band: compact, lit with poster-coloured light (the band's key light takes the poster's colour too) ---------- */
+.gcar-band { --gc-1: #87a173; --gc-2: #3f6159; padding-block: clamp(48px, 7vw, 96px); transition: --gc-1 1.2s cubic-bezier(.33, 0, .2, 1), --gc-2 1.6s cubic-bezier(.33, 0, .2, 1); }
+.gcar-band::before { background: radial-gradient(58% 60% at var(--lx, 50%) var(--ly, 0%), color-mix(in srgb, var(--gc-1) 20%, transparent), color-mix(in srgb, var(--gc-1) 6%, transparent) 42%, transparent 72%); }
+/* the head on one row: md heading left, lede right on the heading's baseline row (stacked on phones, below) */
+.gcar-band .band__head { flex-wrap: nowrap; gap: 12px 48px; margin-bottom: 26px; }
+.gcar-band .band__head .kicker { margin-bottom: 12px; }
+.gcar-band .band__head .lede { flex: 0 1 auto; max-width: 46ch; }
+.gcar-glow { position: absolute; inset: 0; }
+.gcar-glow i, .gcar-glow::before { position: absolute; left: 50%; top: var(--gc-y, 62%); border-radius: 50%; translate: -50% -50%; filter: blur(24px); }
+/* the core: light spilling round the centred card (it stays put; the pools drift) */
+.gcar-glow::before { content: ''; width: min(520px, 52%); aspect-ratio: .95; background: radial-gradient(closest-side, var(--gc-1), color-mix(in srgb, var(--gc-1) 45%, transparent) 55%, transparent); opacity: .5; }
+.gcar-glow__a { width: min(1120px, 100%); aspect-ratio: 1.95; background: radial-gradient(closest-side, var(--gc-1), color-mix(in srgb, var(--gc-1) 62%, transparent) 42%, transparent); opacity: .6; }
+.gcar-glow__b { left: 21%; top: calc(var(--gc-y, 62%) + 8%); width: min(780px, 70%); aspect-ratio: 1.5; background: radial-gradient(closest-side, var(--gc-2), color-mix(in srgb, var(--gc-2) 55%, transparent) 40%, transparent); opacity: .5; }
+.gcar-glow__c { left: 80%; top: calc(var(--gc-y, 62%) - 8%); width: min(660px, 60%); aspect-ratio: 1.4; background: radial-gradient(closest-side, var(--gc-2), color-mix(in srgb, var(--gc-2) 50%, transparent) 38%, transparent); opacity: .4; }
+@media (prefers-reduced-motion: no-preference) {
+  .gcar-band.is-live .gcar-glow i { animation: gcarDriftA 19s var(--ease-io) infinite alternate; }
+  .gcar-band.is-live .gcar-glow__b { animation-name: gcarDriftB; animation-duration: 23s; animation-delay: -7s; }
+  .gcar-band.is-live .gcar-glow__c { animation-duration: 27s; animation-delay: -13s; }
+}
+@keyframes gcarDriftA { from { transform: translate(-4%, 3%) scale(.94); } to { transform: translate(4%, -3%) scale(1.06); } }
+@keyframes gcarDriftB { from { transform: translate(7%, -3%) scale(1.06); } to { transform: translate(-4%, 4%) scale(.92); } }
+
+/* ---------- the carousel: geometry the script reads (lengths in px, angles in deg, all unitless) ---------- */
+/* --gc-turn: 1 turns side cards to face the centred one, -1 turns them away (round a drum) */
+.gcar { --gc-w: clamp(260px, 19vw, 268px); --gc-step: .96; --gc-step2: .52; --gc-rot: 28; --gc-turn: -1; --gc-z: 180; --gc-z2: 80; --gc-scale: .88; --gc-scale2: .05; --gc-persp: 1200; position: relative; }
+.gcar:focus-visible { outline: none; } /* the ring goes on the centred card instead (below) */
+
+/* without JS, and until the script takes over: a swipe row */
+.gcar__stage { position: relative; margin-inline: calc(-1 * var(--gutter)); padding: 18px var(--gutter) 26px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.gcar__stage::-webkit-scrollbar { display: none; }
+.gcar__track { display: flex; gap: clamp(16px, 2vw, 26px); width: max-content; }
+.gcar__slide { display: grid; flex: 0 0 auto; width: var(--gc-w); scroll-snap-align: center; }
+/* the flyer, a touch tighter than on the events wall so the band stays compact */
+.gcar .gcar__flyer { height: 100%; }
+.gcar .gcar__flyer > a { height: 100%; align-content: start; padding: 10px 10px 12px; }
+.gcar .gcar__flyer .flyer__body { gap: 5px; padding: 10px 3px 0; }
+.gcar .gcar__flyer .flyer__when { line-height: 1.25; }
+.gcar .gcar__flyer .flyer__t { font-size: 16px; line-height: 1.04; text-wrap: balance; }
+
+/* with JS: one stack of cards in a perspective box, each placed by the script (transform, opacity, z-index, --gc-d).
+   The stage is only as tall as the cards plus the tape; it clips sideways (the row runs off the screen edges), never
+   up or down, so shadows and the colour spill fall freely (an engine without overflow: clip keeps a padded box) */
+.gcar.is-on .gcar__stage { overflow: hidden; scroll-snap-type: none; padding: 14px 0 44px; touch-action: pan-y; cursor: grab; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+@supports (overflow-x: clip) { .gcar.is-on .gcar__stage { overflow-x: clip; overflow-y: visible; padding-bottom: 16px; } }
+.gcar.is-drag .gcar__stage { cursor: grabbing; }
+.gcar.is-on .gcar__track { display: grid; grid-template-columns: var(--gc-w); justify-content: center; width: auto; gap: 0; perspective: calc(var(--gc-persp) * 1px); }
+.gcar.is-on .gcar__slide { grid-area: 1 / 1; position: relative; transform-origin: 50% 50%; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.gcar.is-moving .gcar__slide { will-change: transform, opacity; }
+.gcar.is-on .gcar__slide:not(.is-active) { cursor: pointer; }
+/* the paper: square when centred, its taped tilt returning as it moves off; side cards dim under a night veil */
+.gcar.is-on .gcar__flyer { transform: rotate(calc(var(--r, 0deg) * var(--gc-d, 0))); transition: translate .45s var(--ease); }
+.gcar.is-on .gcar__slide.is-active .gcar__flyer:hover { translate: 0 -6px; }
+.gcar.is-on .gcar__flyer > a { position: relative; -webkit-user-drag: none; transition: box-shadow .7s var(--ease); }
+.gcar.is-on .gcar__flyer img { -webkit-user-drag: none; pointer-events: none; }
+.gcar.is-on .gcar__flyer > a::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: var(--night-2); opacity: calc(var(--gc-d, 0) * .5); pointer-events: none; }
+.gcar.is-on .gcar__slide:not(.is-active):hover .gcar__flyer > a::after { opacity: calc(var(--gc-d, 0) * .2); }
+.gcar.is-on .gcar__flyer .flyer__tape { opacity: calc(1 - var(--gc-d, 0) * .4); }
+/* the centred card throws the poster's colour on the wall behind it */
+.gcar.is-on .gcar__slide.is-active .gcar__flyer > a { box-shadow: 0 30px 50px -26px rgba(0, 0, 0, .9), 0 16px 64px -18px color-mix(in srgb, var(--gc-1) 55%, transparent); }
+.gcar.is-on:focus-visible .gcar__slide.is-active .gcar__flyer > a { outline: 2px solid var(--lime); outline-offset: 5px; }
+
+/* ---------- one row under the stage: previous / counter / next centred, "All events" at the right ---------- */
+.gcar__foot { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px 20px; }
+.gcar__ctrl { grid-column: 2; display: flex; align-items: center; justify-content: center; gap: clamp(12px, 1.6vw, 18px); }
+.gcar-band .gcar__more { grid-column: 3; justify-self: end; margin: 0; }
+.gcar__more .btn { min-height: 48px; white-space: nowrap; }
+.gcar__btn { width: 48px; height: 48px; flex: none; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-2); background: rgba(13, 18, 17, .5); color: var(--text); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: border-color var(--d-1), color var(--d-1), background var(--d-1), scale var(--d-1); }
+.gcar__btn:hover { border-color: var(--lime); color: var(--lime); background: var(--lime-08); }
+.gcar__btn:active { scale: .94; }
+.gcar__btn:disabled { opacity: .35; cursor: default; border-color: var(--line-2); color: var(--text); background: rgba(13, 18, 17, .5); }
+.gcar__btn .ico { width: 20px; height: 20px; }
+.gcar__count { display: flex; align-items: center; gap: 14px; margin: 0; font: 700 13px/1 var(--f-body); letter-spacing: .14em; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.gcar__count b { min-width: 2ch; font: 850 21px/1 var(--f-display); font-stretch: 112%; letter-spacing: .02em; color: var(--text); }
+.gcar__bar { position: relative; display: block; width: clamp(80px, 10vw, 150px); height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.gcar__bar i { position: absolute; inset: 0; border-radius: inherit; transform-origin: 0 50%; transform: scaleX(var(--gc-p, 0)); background: linear-gradient(90deg, var(--gc-2), var(--gc-1)); transition: transform .5s var(--ease); }
+
+/* ---------- tablet 768-1099, phones up to 767 ---------- */
+@media (max-width: 1099px) {
+  .gcar { --gc-w: clamp(240px, 25vw, 256px); --gc-step: .92; --gc-rot: 26; --gc-z: 160; --gc-persp: 1000; }
+}
+@media (max-width: 767px) {
+  .gcar-band { padding-bottom: 40px; } /* the next band brings its own top padding */
+  .gcar-band .band__head { flex-wrap: wrap; gap: 10px 48px; margin-bottom: 24px; }
+  .gcar-band .band__head .kicker { margin-bottom: 10px; }
+  .gcar-band .band__head .lede { font-size: 14.5px; line-height: 1.45; }
+  .gcar { --gc-w: clamp(220px, 56vw, 232px); --gc-step: .84; --gc-rot: 22; --gc-z: 130; --gc-z2: 60; --gc-scale: .9; --gc-persp: 780; }
+  .gcar .gcar__flyer .flyer__t { font-size: 15px; }
+  .gcar__foot { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 8px; }
+  .gcar__ctrl, .gcar-band .gcar__more { grid-column: 1; justify-self: center; }
+  .gcar__btn { width: 44px; height: 44px; }
+  .gcar__more .btn { min-height: 44px; }
+  .gcar-glow::before { width: 125%; aspect-ratio: .8; }
+  .gcar-glow__a { width: 210%; aspect-ratio: 1.15; }
+  .gcar-glow__b { left: 18%; width: 150%; aspect-ratio: 1; }
+  .gcar-glow__c { left: 84%; width: 130%; aspect-ratio: 1; }
+}
+
+/* ---------- owner, 2026-11-13: carousel on the left, the words stacked on the right ---------- */
+/* The controls (previous / counter / next) sit under "All events" in the words column, so the column beside the stage
+   is the stage alone and the two end level (with the controls under the stage it stood about 170px taller than the
+   words). Tablets and phones stack: the words, the stage, then the controls under it, centred, as before. */
+.gcar-split { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); grid-template-areas: "media words"; gap: clamp(24px, 4vw, 64px); align-items: center; }
+.gcar-split__media { grid-area: media; min-width: 0; }
+.gcar-split__words { grid-area: words; min-width: 0; }
+.gcar-split__words .kicker { margin-bottom: 12px; }
+.gcar-split__words .dh { margin: 0 0 16px; }
+.gcar-split__words .lede { margin: 0 0 24px; max-width: 40ch; }
+.gcar-split__more { margin: 0; }
+.gcar-split__more .btn { min-height: 48px; }
+.gcar-split .gcar__ctrl { justify-content: flex-start; margin-top: 28px; }
+/* the words' box steps aside (display: contents) so its pieces and the stage stack as one column, controls last */
+@media (max-width: 1000px) {
+  .gcar-split { grid-template-columns: minmax(0, 1fr); grid-template-areas: none; gap: 0; }
+  .gcar-split__words { display: contents; }
+  .gcar-split__media { grid-area: auto; order: 1; margin-top: 20px; }
+  .gcar-split .gcar__ctrl { grid-column: 1; order: 2; justify-content: center; margin-top: 0; }
+}
+@media (max-width: 767px) {
+  .gcar-split__words .lede { font-size: 14.5px; line-height: 1.45; margin-bottom: 16px; }
+  .gcar-split__more .btn { min-height: 44px; }
+}

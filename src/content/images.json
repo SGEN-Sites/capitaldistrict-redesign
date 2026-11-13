@@ -4838,6 +4838,376 @@
     }
    ],
    "source": "private/gen/out/loop-mural.result.json"
+  },
+  "pl-washington-park": {
+   "alt": "Red and orange tulips in bloom in Washington Park, Albany, with trees and visitors beyond",
+   "ai": false,
+   "photo": true,
+   "w": 3000,
+   "h": 2400,
+   "files": [
+    {
+     "file": "img/pl-washington-park-540.webp",
+     "w": 540,
+     "h": 432,
+     "bytes": 57342,
+     "q": 70
+    },
+    {
+     "file": "img/pl-washington-park-960.webp",
+     "w": 960,
+     "h": 768,
+     "bytes": 165752,
+     "q": 70
+    },
+    {
+     "file": "img/pl-washington-park-1600.webp",
+     "w": 1600,
+     "h": 1280,
+     "bytes": 402716,
+     "q": 70
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Tulips_in_Washington_Park.jpg",
+   "title": "File:Tulips in Washington Park.jpg",
+   "credit": "Tim Schapker",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "original": "pl-washington-park.jpg",
+   "sha1": "ead921d66c1943152c920f867c3585ec987823c2"
+  },
+  "pl-pine-bush": {
+   "alt": "Meadows and pitch pine stands in the Albany Pine Bush",
+   "ai": false,
+   "photo": true,
+   "w": 6048,
+   "h": 3760,
+   "files": [
+    {
+     "file": "img/pl-pine-bush-540.webp",
+     "w": 540,
+     "h": 336,
+     "bytes": 50798,
+     "q": 78
+    },
+    {
+     "file": "img/pl-pine-bush-960.webp",
+     "w": 960,
+     "h": 597,
+     "bytes": 135596,
+     "q": 70
+    },
+    {
+     "file": "img/pl-pine-bush-1600.webp",
+     "w": 1600,
+     "h": 995,
+     "bytes": 358802,
+     "q": 70
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Albany_Pine_Bush_landscape.jpg",
+   "title": "File:Albany Pine Bush landscape.jpg",
+   "credit": "Daniel Case",
+   "license": "CC BY-SA 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "original": "pl-pine-bush.jpg",
+   "sha1": "c762e1f96678587de3f4294837cfb5decc025940"
+  },
+  "pl-capitol-plaza": {
+   "alt": "The New York State Capitol, the Egg and the Empire State Plaza at sunset",
+   "ai": false,
+   "photo": true,
+   "w": 6016,
+   "h": 4054,
+   "files": [
+    {
+     "file": "img/pl-capitol-plaza-540.webp",
+     "w": 540,
+     "h": 364,
+     "bytes": 26888,
+     "q": 82
+    },
+    {
+     "file": "img/pl-capitol-plaza-960.webp",
+     "w": 960,
+     "h": 647,
+     "bytes": 65720,
+     "q": 82
+    },
+    {
+     "file": "img/pl-capitol-plaza-1600.webp",
+     "w": 1600,
+     "h": 1078,
+     "bytes": 140602,
+     "q": 82
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Empire_State_Plaza_at_sunset.jpg",
+   "title": "File:Empire State Plaza at sunset.jpg",
+   "credit": "Sashimi-b",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "original": "pl-capitol-plaza.jpg",
+   "sha1": "50a21ae871febcdeec6fa4fd782181c2927f5c98"
+  },
+  "pl-state-museum": {
+   "alt": "The Cohoes Mastodon skeleton on display at the New York State Museum",
+   "ai": false,
+   "photo": true,
+   "w": 4288,
+   "h": 2848,
+   "files": [
+    {
+     "file": "img/pl-state-museum-540.webp",
+     "w": 540,
+     "h": 359,
+     "bytes": 27200,
+     "q": 82
+    },
+    {
+     "file": "img/pl-state-museum-960.webp",
+     "w": 960,
+     "h": 638,
+     "bytes": 63136,
+     "q": 82
+    },
+    {
+     "file": "img/pl-state-museum-1600.webp",
+     "w": 1600,
+     "h": 1063,
+     "bytes": 136666,
+     "q": 82
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Cohoes_Mastodon,_NYS_Museum,_Albany,_NY.jpg",
+   "title": "File:Cohoes Mastodon, NYS Museum, Albany, NY.jpg",
+   "credit": "Skunkworks Photographic",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "original": "pl-state-museum.jpg",
+   "sha1": "d775b968d142b680825d39da28eef32a19578c98"
+  },
+  "pl-colonie-center": {
+   "alt": "The Colonie Center marquee glowing at night",
+   "ai": false,
+   "photo": true,
+   "w": 5033,
+   "h": 3355,
+   "files": [
+    {
+     "file": "img/pl-colonie-center-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 16914,
+     "q": 82
+    },
+    {
+     "file": "img/pl-colonie-center-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 36234,
+     "q": 82
+    },
+    {
+     "file": "img/pl-colonie-center-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 73644,
+     "q": 82
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Glowing_Colonie_Center_marquee.jpg",
+   "title": "File:Glowing Colonie Center marquee.jpg",
+   "credit": "Tyler A. McNeil",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "original": "pl-colonie-center.jpg",
+   "sha1": "67a14747bcd5bb6db5f5d4f544601c2d04ffddb2"
+  },
+  "pl-crossgates": {
+   "alt": "The main entrance of Crossgates Mall",
+   "ai": false,
+   "photo": true,
+   "w": 1898,
+   "h": 1269,
+   "files": [
+    {
+     "file": "img/pl-crossgates-540.webp",
+     "w": 540,
+     "h": 361,
+     "bytes": 37588,
+     "q": 82
+    },
+    {
+     "file": "img/pl-crossgates-960.webp",
+     "w": 960,
+     "h": 642,
+     "bytes": 85484,
+     "q": 82
+    },
+    {
+     "file": "img/pl-crossgates-1600.webp",
+     "w": 1600,
+     "h": 1070,
+     "bytes": 161158,
+     "q": 82
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Crossgates_mall.JPG",
+   "title": "File:Crossgates mall.JPG",
+   "credit": "Flyer84 at English Wikipedia",
+   "license": "Public domain",
+   "licenseUrl": "https://commons.wikimedia.org/wiki/File:Crossgates_mall.JPG",
+   "original": "pl-crossgates.jpg",
+   "sha1": "d8d751030337167e0a1a3ffb280ff082a4e84260"
+  },
+  "pl-ualbany": {
+   "alt": "The Academic Podium of the University at Albany, with the Carillon rising above it",
+   "ai": false,
+   "photo": true,
+   "w": 2086,
+   "h": 1380,
+   "files": [
+    {
+     "file": "img/pl-ualbany-540.webp",
+     "w": 540,
+     "h": 357,
+     "bytes": 26192,
+     "q": 82
+    },
+    {
+     "file": "img/pl-ualbany-960.webp",
+     "w": 960,
+     "h": 635,
+     "bytes": 72412,
+     "q": 82
+    },
+    {
+     "file": "img/pl-ualbany-1600.webp",
+     "w": 1600,
+     "h": 1058,
+     "bytes": 160952,
+     "q": 82
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Approaching_the_Academic_Podium_UAlbany.jpg",
+   "title": "File:Approaching the Academic Podium UAlbany.jpg",
+   "credit": "Beyond My Ken",
+   "license": "CC BY-SA 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+   "original": "pl-ualbany.jpg",
+   "sha1": "18a12c185c3eab1b5c3c4eb51c0f86b1a122e8e4"
+  },
+  "pl-alb-airport": {
+   "alt": "The main entrance of Albany International Airport",
+   "ai": false,
+   "photo": true,
+   "w": 2048,
+   "h": 1536,
+   "files": [
+    {
+     "file": "img/pl-alb-airport-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 46198,
+     "q": 82
+    },
+    {
+     "file": "img/pl-alb-airport-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 99928,
+     "q": 82
+    },
+    {
+     "file": "img/pl-alb-airport-1600.webp",
+     "w": 1600,
+     "h": 1200,
+     "bytes": 201026,
+     "q": 82
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Albany_International_Airport.jpg",
+   "title": "File:Albany International Airport.jpg",
+   "credit": "Flyer84",
+   "license": "Public domain",
+   "licenseUrl": "https://commons.wikimedia.org/wiki/File:Albany_International_Airport.jpg",
+   "original": "pl-alb-airport.jpg",
+   "sha1": "de71fb3575c2d066d8d9068eff6a76f643128f96"
+  },
+  "pl-proctors": {
+   "alt": "The restored MainStage auditorium inside Proctors in Schenectady",
+   "ai": false,
+   "photo": true,
+   "w": 5952,
+   "h": 3968,
+   "files": [
+    {
+     "file": "img/pl-proctors-540.webp",
+     "w": 540,
+     "h": 360,
+     "bytes": 48146,
+     "q": 78
+    },
+    {
+     "file": "img/pl-proctors-960.webp",
+     "w": 960,
+     "h": 640,
+     "bytes": 116986,
+     "q": 70
+    },
+    {
+     "file": "img/pl-proctors-1600.webp",
+     "w": 1600,
+     "h": 1067,
+     "bytes": 304348,
+     "q": 70
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Proctors_schenectady_interior.jpg",
+   "title": "File:Proctors schenectady interior.jpg",
+   "credit": "Proctors Collaborative Archive",
+   "license": "CC BY 4.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+   "original": "pl-proctors.jpg",
+   "sha1": "42d689086fa8abe41390d74cf15312335201c98b"
+  },
+  "pl-misci": {
+   "alt": "An ALCO RS-3 locomotive on display at miSci in Schenectady",
+   "ai": false,
+   "photo": true,
+   "w": 2816,
+   "h": 2112,
+   "files": [
+    {
+     "file": "img/pl-misci-540.webp",
+     "w": 540,
+     "h": 405,
+     "bytes": 35934,
+     "q": 82
+    },
+    {
+     "file": "img/pl-misci-960.webp",
+     "w": 960,
+     "h": 720,
+     "bytes": 99628,
+     "q": 82
+    },
+    {
+     "file": "img/pl-misci-1600.webp",
+     "w": 1600,
+     "h": 1200,
+     "bytes": 238100,
+     "q": 82
+    }
+   ],
+   "source": "https://commons.wikimedia.org/wiki/File:Great_Northern_Railway_Alco_RS-3_No._299_in_Schenectady,_New_York,_August_2015.jpg",
+   "title": "File:Great Northern Railway Alco RS-3 No. 299 in Schenectady, New York, August 2015.jpg",
+   "credit": "David Wilson",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "original": "pl-misci.jpg",
+   "sha1": "4b2c8d64f1a7e95db42ed4342f375034f6565c2d"
   }
  },
  "media": {
