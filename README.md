@@ -9,7 +9,7 @@ the live store menu with its products and cart.
 
 ## What is in it
 
-- 157 HTML files: every live content page at its live URL (the blog posts and event pages word for word, the
+- 158 HTML files: every live content page at its live URL (the blog posts and event pages word for word, the
   three store pages, the 40 town pages, loyalty, about, terms), plus new page types: Shop, Deals, How to Order, Pickup,
   Learn (Cannabis 101), FAQ, Reviews and an HTML site map.
 - "Capital Cypher": the Albany skyline after dark, a graffiti hall of fame behind museum glass and a record that never

@@ -5,7 +5,7 @@
 /* breadcrumb links get a 44 px tap height on this lane's heroes (the shared crumbs are 15 px tall: reported) */
 .st-hero .crumbs ol { margin-bottom: 8px; align-items: center; }
 .st-hero .crumbs a { display: inline-flex; align-items: center; min-height: 44px; }
-.st-ph .ph__h1 { font-size: clamp(2.2rem, .9rem + 4.3vw, 5.3rem); max-width: 17ch; }
+.st-ph .ph__h1 { font-size: clamp(min(2.2rem, 9.2vw), .9rem + 4.3vw, 5.3rem); max-width: 17ch; } /* "RECREATIONAL" is 9.3x the size wide: the floor gives way below ~383px */
 .st-ph--long .ph__h1 { font-size: clamp(1.6rem, .78rem + 3.25vw, 4.05rem); max-width: 21ch; }
 .st-ph .ph__lede { max-width: 64ch; }
 .st-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 22px; font-size: 16px; }
@@ -207,9 +207,10 @@
 
 /* ---------- map row ---------- */
 .st-maps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
-.st-mapc { margin: 0; display: grid; gap: 14px; align-content: start; }
-.st-mapc figcaption { display: flex; align-items: center; gap: 12px; }
-.st-mapc figcaption > span:not(.bullet) { flex: 1; display: grid; min-width: 0; }
+.st-mapc { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-content: start; }
+/* wraps: when the name and the Directions button cannot share a line, the button drops below instead of widening the page */
+.st-mapc figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.st-mapc figcaption > span:not(.bullet) { flex: 1 1 160px; display: grid; min-width: 0; }
 .st-mapc b { font: 850 17px/1.1 var(--f-display); font-stretch: 110%; text-transform: uppercase; }
 .st-mapc small { color: var(--text-3); font-size: 14px; }
 @media (max-width: 900px) { .st-maps { grid-template-columns: minmax(0, 1fr); } }

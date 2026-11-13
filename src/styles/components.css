@@ -81,11 +81,12 @@
 .sleeve { --row: 1; }
 @media (min-width: 1101px) { .crate__row > .sleeve:nth-child(n+6) { --row: 2; } .crate__row > .sleeve:nth-child(n+11) { --row: 3; } }
 @media (min-width: 861px) and (max-width: 1100px) { .crate__row > .sleeve:nth-child(n+5) { --row: 2; } .crate__row > .sleeve:nth-child(n+9) { --row: 3; } }
-.sleeve__card { position: absolute; inset: 0; border-radius: 14px; overflow: hidden; background: #050707; box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 24px 40px -22px rgba(0, 0, 0, .9); transform: perspective(900px) rotateX(0) translateY(0); transform-origin: bottom center; transition: transform .7s var(--ease), box-shadow .7s var(--ease); z-index: calc(var(--row) * 2); }
+.sleeve__card { position: absolute; inset: 0; border-radius: 14px; overflow: hidden; background: #050707; box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 24px 40px -22px rgba(0, 0, 0, .9); transform: perspective(900px) rotateX(0) translateY(0); transform-origin: bottom center; transition: transform .7s var(--ease), box-shadow .7s var(--ease); z-index: calc(var(--row) * 2); container-type: inline-size; }
 .sleeve__art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 1.1s var(--ease), filter .7s var(--ease); filter: saturate(.92) brightness(.92); }
 .sleeve__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 7, 7, 0) 40%, rgba(5, 7, 7, .92)); }
 .sleeve__no { position: absolute; left: 14px; top: 12px; font: 700 12px/1 var(--f-body); letter-spacing: .18em; color: var(--text-3); }
-.sleeve__name { position: absolute; left: 14px; right: 14px; bottom: 34px; font: 900 clamp(18px, 1.5vw, 24px)/1 var(--f-display); font-stretch: 118%; text-transform: uppercase; }
+/* sized from the sleeve's own width (the card is a container): "CONCENTRATES" is 10.2x the font size wide */
+.sleeve__name { position: absolute; left: 14px; right: 14px; bottom: 34px; font: 900 min(24px, calc((100cqi - 28px) / 10.6))/1 var(--f-display); font-stretch: 118%; text-transform: uppercase; }
 .sleeve__go { position: absolute; left: 14px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--lime); opacity: .85; transition: opacity var(--d-1), gap var(--d-2) var(--ease); }
 .sleeve__go .ico { width: 14px; height: 14px; }
 .sleeve__disc { /* the record slides out of its sleeve on hover */
@@ -178,15 +179,15 @@
 .shouts__note { font-size: 13px; color: var(--text-3); margin: 6px 0 0; }
 
 /* ---------- track list (steps) ---------- */
-.tracks { list-style: none; display: grid; gap: 12px; counter-reset: t; }
-.track { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: start; padding: 22px 24px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .45); transition: border-color var(--d-1), transform var(--d-2) var(--ease), background var(--d-1); }
+.tracks { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; counter-reset: t; }
+.track { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 20px; align-items: start; padding: 22px 24px; border-radius: var(--r-m); border: 1px solid var(--line); background: rgba(13, 18, 17, .45); transition: border-color var(--d-1), transform var(--d-2) var(--ease), background var(--d-1); }
 .track:hover { border-color: var(--lime-32); transform: translateX(6px); background: rgba(13, 18, 17, .7); }
 .track__no { font: 900 34px/1 var(--f-display); font-stretch: 120%; color: var(--lime); min-width: 2.2ch; }
 .track__t { font: 850 21px/1.05 var(--f-display); font-stretch: 112%; text-transform: uppercase; margin: 4px 0 8px; }
 .track p { margin: 0; color: var(--text-2); }
 .track p + .btn, .track .btn { margin-top: 14px; }
 .track__ic { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 50%; background: var(--lime-08); color: var(--lime); }
-@media (max-width: 640px) { .track { grid-template-columns: auto 1fr; gap: 14px; padding: 18px; } .track__ic { display: none; } .track__no { font-size: 28px; } }
+@media (max-width: 640px) { .track { grid-template-columns: auto minmax(0, 1fr); gap: 14px; padding: 18px; } .track__ic { display: none; } .track__no { font-size: 28px; } }
 .band--mint .track { background: rgba(255, 255, 255, .6); border-color: rgba(42, 49, 48, .14); }
 .band--mint .track__no { color: #4e7d22; }
 .band--mint .track p { color: var(--text-ink-2); }
@@ -305,7 +306,7 @@ a.gcard:hover .gcard__go .ico { transform: translateX(4px); }
 .scard__bullet { position: absolute; left: 16px; top: 16px; }
 .scard__bullet .bullet { width: 48px; height: 48px; font-size: 21px; }
 .scard__body { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 22px; }
-.scard__name { font: 880 26px/1 var(--f-display); font-stretch: 114%; text-transform: uppercase; }
+.scard__name { font: 880 min(26px, calc((100cqi - 44px) / 10.6))/1 var(--f-display); /* the card is a container: "SCHENECTADY," fits any card width */ font-stretch: 114%; text-transform: uppercase; }
 .scard__addr { margin: 0; display: flex; gap: 10px; align-items: flex-start; color: var(--text-2); }
 .scard__addr .ico { color: var(--lime); margin-top: 3px; }
 .scard__addr a { color: inherit; display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; }

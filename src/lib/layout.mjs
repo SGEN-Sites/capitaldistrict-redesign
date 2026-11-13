@@ -202,7 +202,7 @@ export function page(p) {
 <title>${esc(p.title)}</title>
 <meta name="description" content="${esc(p.description || '')}">
 <link rel="canonical" href="${esc(canonical)}">
-${PREVIEW ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta name="theme-color" content="#121716">
+${PREVIEW || p.noindex ? '<meta name="robots" content="noindex, nofollow">\n' : ''}<meta name="theme-color" content="#121716">
 <meta property="og:type" content="${esc(p.ogType || 'website')}">
 <meta property="og:site_name" content="${esc(brand.name)}">
 <meta property="og:title" content="${esc(p.title)}">

@@ -352,4 +352,53 @@
 
   /* ---------------- demo forms never post ---------------- */
   $$('[data-demo-form]').forEach((f) => f.addEventListener('submit', (e) => { e.preventDefault(); const m = $('[data-demo-msg]', f); if (m) { m.classList.add('is-flash'); m.setAttribute('role', 'status'); } toast('Preview build: forms are switched off'); }));
+
+  /* ---------------- reviews: Spotlight (one at a time, auto-advancing, reviewers as tabs) ---------------- */
+  $$('[data-rv-spot]').forEach((g) => {
+    const slides = $$('.rv-b__slide', g), tabs = $$('.rv-b__tab', g), bar = $('.rv-b__bar', g), num = $('[data-rv-n]', g);
+    if (!slides.length) return;
+    const DUR = 7000; let i = 0, timer = 0, paused = false;
+    g.style.setProperty('--rv-dur', DUR / 1000 + 's');
+    function show(n, user) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle('is-on', k === i));
+      tabs.forEach((t, k) => { t.classList.toggle('is-on', k === i); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); t.tabIndex = k === i ? 0 : -1; });
+      if (num) num.textContent = String(i + 1).padStart(2, '0');
+      if (bar) { bar.classList.remove('is-run'); void bar.offsetWidth; if (!RM) bar.classList.add('is-run'); }
+      W.clearTimeout(timer); if (!RM && !paused) timer = W.setTimeout(() => show(i + 1), DUR);
+    }
+    const pause = (on) => { paused = on; g.classList.toggle('is-paused', on); W.clearTimeout(timer); if (!on && !RM) timer = W.setTimeout(() => show(i + 1), DUR / 2); };
+    g.addEventListener('mouseenter', () => pause(true)); g.addEventListener('mouseleave', () => pause(false));
+    g.addEventListener('focusin', () => pause(true)); g.addEventListener('focusout', () => pause(false));
+    const prev = $('[data-rv-prev]', g), next = $('[data-rv-next]', g);
+    if (prev) prev.addEventListener('click', () => show(i - 1, true));
+    if (next) next.addEventListener('click', () => show(i + 1, true));
+    tabs.forEach((t, k) => { t.addEventListener('click', () => show(k, true)); t.addEventListener('keydown', (e) => { if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); show(i + 1, true); tabs[i].focus(); } if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); show(i - 1, true); tabs[i].focus(); } }); });
+    if ('IntersectionObserver' in W) new IntersectionObserver((en) => { if (en[0].isIntersecting) { if (!paused) show(i); } else W.clearTimeout(timer); }, { threshold: 0.3 }).observe(g);
+    else show(0);
+  });
+
+  /* ---------------- reviews: The Deck (drag the top card away, or deal the next) ---------------- */
+  $$('[data-rv-deck]').forEach((deck) => {
+    const cards = $$('.rv-c__card', deck); if (!cards.length) return;
+    const section = deck.closest('section'); const counter = section && $('[data-rv-c]', section); const dealBtn = section && $('[data-rv-deal]', section);
+    let order = cards.map((_, k) => k);
+    function layout() { order.forEach((k, pos) => { const c = cards[k]; c.style.setProperty('--pos', String(Math.min(pos, 4))); c.toggleAttribute('data-pos-hidden', pos > 4); c.style.zIndex = String(50 - pos); c.setAttribute('aria-hidden', pos === 0 ? 'false' : 'true'); }); if (counter) counter.textContent = String(order[0] + 1).padStart(2, '0'); }
+    function deal(dir) {
+      const k = order[0], c = cards[k];
+      c.style.setProperty('--x', (dir * 520) + 'px'); c.style.setProperty('--rot', (dir * 18) + 'deg'); c.style.opacity = '0';
+      W.setTimeout(() => { order = order.slice(1).concat(k); c.style.transition = 'none'; c.style.setProperty('--x', '0px'); c.style.setProperty('--y', '0px'); c.style.setProperty('--rot', '0deg'); layout(); void c.offsetWidth; c.style.transition = ''; c.style.opacity = ''; }, RM ? 0 : 380);
+    }
+    layout();
+    if (dealBtn) dealBtn.addEventListener('click', () => deal(1));
+    let drag = null;
+    deck.addEventListener('pointerdown', (e) => {
+      const c = e.target.closest('.rv-c__card'); if (!c || c !== cards[order[0]]) return;
+      drag = { c, x: e.clientX, y: e.clientY, dx: 0, dy: 0 }; c.classList.add('is-drag'); c.setPointerCapture(e.pointerId);
+    });
+    deck.addEventListener('pointermove', (e) => { if (!drag) return; drag.dx = e.clientX - drag.x; drag.dy = e.clientY - drag.y; drag.c.style.setProperty('--x', drag.dx + 'px'); drag.c.style.setProperty('--y', drag.dy * 0.4 + 'px'); drag.c.style.setProperty('--rot', drag.dx / 18 + 'deg'); });
+    const end = () => { if (!drag) return; const d0 = drag; drag = null; d0.c.classList.remove('is-drag'); if (Math.abs(d0.dx) > 110) deal(d0.dx > 0 ? 1 : -1); else { d0.c.style.setProperty('--x', '0px'); d0.c.style.setProperty('--y', '0px'); d0.c.style.setProperty('--rot', '0deg'); } };
+    deck.addEventListener('pointerup', end); deck.addEventListener('pointercancel', end);
+    deck.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') deal(1); if (e.key === 'ArrowLeft') deal(-1); });
+  });
 })();

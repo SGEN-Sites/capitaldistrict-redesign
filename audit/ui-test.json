@@ -1,0 +1,103 @@
+{
+  "at": "2026-11-13T03:03:01.360Z",
+  "dir": "dist",
+  "pass": 19,
+  "total": 19,
+  "results": [
+    {
+      "name": "phone: 21+ gate shows on first visit",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "phone: \"No, I'm Not\" shows the captured refusal line",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "phone: \"Yes, I Am\" opens the store step",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "phone: picking Schenectady closes the gate and retargets the menu links",
+      "ok": true,
+      "detail": "{\"store\":\"schenectady\",\"gate\":false,\"chip\":\"Schenectady\",\"sleeve\":\"https://capitaldistrictcannabis.com/stores/cd-schenectady-ny/products/flower\"}"
+    },
+    {
+      "name": "phone: pickup bar hidden over the hero",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "phone: pickup bar shows past the hero, inside the screen, with the chosen store's phone",
+      "ok": true,
+      "detail": "{\"on\":true,\"bottom\":830,\"vh\":844,\"tel\":\"tel:5189017107\"}"
+    },
+    {
+      "name": "phone: the pickup bar closes for the session",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "phone: the menu button opens the drawer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "phone: Escape closes the drawer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "phone: no sideways scroll on the home page",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "phone: no script errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop: the gate stays closed once answered",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop: Shop opens its mega menu",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop: Escape closes the mega menu",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop: the store chip opens the switcher",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop: switching to Clifton Park closes the switcher and moves Shop now",
+      "ok": true,
+      "detail": "{\"store\":\"clifton-park\",\"modal\":false,\"shop\":\"https://capitaldistrictcannabis.com/stores/cd-clifton-park-ny\",\"mine\":\"clifton-park\"}"
+    },
+    {
+      "name": "desktop: the hero sleeve switches back to Albany",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop: the record turns",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop: no script errors on the home page",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

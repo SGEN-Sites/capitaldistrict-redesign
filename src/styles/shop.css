@@ -88,6 +88,7 @@
 .sh-tix__in:hover, .sh-tix__in:focus-visible { box-shadow: 0 40px 60px -26px rgba(0, 0, 0, .95), 0 0 0 2px var(--lime); }
 .sh-tix__main { container-type: inline-size; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; align-content: start; padding: 22px 22px 20px; min-width: 0; background: radial-gradient(120% 80% at 0% 0%, rgba(161, 207, 110, .22), transparent 60%); border-radius: 18px 0 0 18px; }
 .sh-tix__main > * { min-width: 0; }
+.sh-tix__top > span:not(.bullet) { min-width: 0; font-size: min(13px, calc((100cqi - 50px) / 10)); } /* "SCHENECTADY" at .18em tracking, beside the 38px badge */
 .sh-tix__top { display: flex; align-items: center; gap: 12px; font: 700 13px/1 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--text-ink-2); }
 .sh-tix__big { font: 900 clamp(1.5rem, 1rem + 1.4vw, 2.5rem)/.88 var(--f-display); font-size: clamp(1.1rem, 15.5cqi, 2.9rem); font-stretch: 122%; text-transform: uppercase; color: var(--ink); margin: 6px 0 2px; }
 .sh-tix__addr { font-size: 14px; color: var(--text-ink-2); overflow-wrap: anywhere; }
@@ -191,7 +192,9 @@
 .sh-limit span { display: block; margin-top: 12px; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--text-ink-2); }
 .sh-limits__txt { display: grid; gap: 12px; padding-left: clamp(18px, 2vw, 28px); border-left: 3px solid var(--ink); }
 .sh-limits__txt p:first-child { margin: 0; font-size: 18px; color: var(--text-ink); max-width: 46ch; }
-@media (max-width: 860px) { .sh-limits { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sh-limits__txt { grid-column: 1 / -1; } }
+@media (max-width: 860px) { .sh-limits { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sh-limits__txt { grid-column: 1 / -1; }
+  .sh-limit { container-type: inline-size; } /* only here: on desktop the limits sit in auto columns, which containment would collapse */
+  .sh-limit b { font-size: min(clamp(3.6rem, 2.2rem + 6vw, 8.6rem), calc(100cqi / 2.7)); } }
 
 /* ---------- deals: loyalty tie-in and fine print ---------- */
 .sh-loyal { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; }

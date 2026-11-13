@@ -82,7 +82,8 @@
 .co-roster__row { display: grid; grid-template-columns: auto minmax(0, 1.25fr) minmax(0, 1.1fr) minmax(0, .9fr) auto; gap: 16px 24px; align-items: center; padding: 20px 24px; border-radius: var(--r-l); border: 1px solid var(--line); background: rgba(13, 18, 17, .5); }
 .co-roster__row:hover { border-color: var(--lime-32); background: rgba(13, 18, 17, .78); }
 .co-roster__no .bullet { width: 58px; height: 58px; font-size: 25px; }
-.co-roster__name h3 { font: 880 clamp(24px, 2.1vw, 34px)/1 var(--f-display); font-stretch: 116%; text-transform: uppercase; margin-bottom: 8px; }
+.co-roster__name { container-type: inline-size; }
+.co-roster__name h3 { font: 880 min(clamp(24px, 2.1vw, 34px), calc(100cqi / 8.6))/1 var(--f-display); font-stretch: 116%; text-transform: uppercase; margin-bottom: 8px; }
 .co-roster__addr, .co-roster__tel { margin: 0; display: flex; gap: 10px; align-items: flex-start; color: var(--text-2); font-size: 15px; }
 .co-roster__addr .ico, .co-roster__tel .ico { color: var(--lime); margin-top: 3px; }
 .co-roster__tel { align-items: center; }

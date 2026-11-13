@@ -50,7 +50,26 @@
   .burger { display: inline-grid; }
   .hdr__in { justify-content: space-between; }
 }
-@media (max-width: 520px) { .chip__txt small { display: none; } .chip { height: 46px; padding-right: 8px; } .chip > .ico { display: none; } .hdr__logo { width: 150px; } }
+/* 1100-1239: the full nav, the chip and Shop now need ~1190px at their roomy spacing; tighten so nothing leaves the screen */
+@media (min-width: 1100px) and (max-width: 1239px) {
+  .hdr__in { gap: 16px; }
+  .hdr__logo { width: 160px; }
+  .nav__list { gap: 2px; }
+  .nav__btn, .nav__link { padding: 0 10px; }
+  .chip__txt small, .chip > .ico { display: none; }
+}
+/* phones: the chip carries the store's city (up to "Schenectady"), so the logo is the part that gives way */
+@media (max-width: 520px) {
+  .hdr__in { gap: 10px; }
+  .hdr__logo { flex: 0 1 150px; width: auto; min-width: 100px; }
+  .chip__txt small { display: none; }
+  .chip { height: 46px; gap: 8px; padding: 0 8px 0 5px; }
+  .chip .bullet { width: 32px; height: 32px; font-size: 14px; }
+  .chip__txt b { font-size: 13px; }
+  .chip > .ico { display: none; }
+  .burger { width: 44px; height: 44px; }
+}
+@media (max-width: 345px) { .chip__txt { display: none; } .chip { padding-right: 5px; } } /* the letter badge alone; the full name is in the pickup bar and the drawer */
 
 /* ---------- mega menus ---------- */
 .mega { position: absolute; left: 0; right: 0; top: calc(100% - 4px); padding-top: 10px; z-index: 2; }
@@ -133,7 +152,9 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 .mini.is-mine { border-color: var(--lime); box-shadow: var(--shadow-lime); }
 .mini.is-mine::after { content: 'Your store'; position: absolute; top: -11px; right: 16px; padding: 4px 10px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font: 700 11px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; }
 .mini__head { display: flex; gap: 12px; align-items: center; }
-.mini__name { font: 850 20px/1 var(--f-display); font-stretch: 110%; text-transform: uppercase; margin-bottom: 6px; }
+.mini__head > div { min-width: 0; }
+/* sized from the card's own width (it is a container): "SCHENECTADY," is one unbreakable word, 8.8x the font size wide */
+.mini__name { font: 850 min(20px, calc((100cqi - 50px) / 9.2))/1 var(--f-display); font-stretch: 110%; text-transform: uppercase; margin-bottom: 6px; }
 .mini__addr { margin: 0; color: var(--text-2); font-size: 15px; }
 .mini__links { margin: 0; display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; }
 .mini__links a { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; text-decoration: none; color: var(--text); }
@@ -152,7 +173,9 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 .pickbar__store small { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); }
 .pickbar__store b { font-size: 15px; }
 .pickbar__status { flex: 1; min-width: 0; }
-.pickbar__status .status { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+/* .status is inline-flex, where text-overflow never applies: let the text itself wrap, two lines at most */
+.pickbar__status .status { display: flex; max-width: 100%; }
+.pickbar__status .status__txt { min-width: 0; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 1.3; }
 .pickbar__acts { display: flex; gap: 6px; align-items: center; flex: none; }
 .pickbar__ic { display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 14px; border-radius: var(--pill); text-decoration: none; font-size: 14px; font-weight: 600; border: 1px solid var(--line-2); }
 .pickbar__ic:hover { border-color: var(--lime); color: var(--lime); }
@@ -168,18 +191,27 @@ html.gate-open, html.gate-open body { overflow: hidden; }
   .pickbar__store b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
 }
 @media (max-width: 420px) { .pickbar__store small { display: none; } .pickbar .btn--sm { padding: 0 14px; } .pickbar { padding-inline: 10px; } }
+/* phones: beside Shop now, Call, Directions and close, the name was cut to one letter ("S.") or crushed to 0px.
+   The bar shows the store's badge (the header chip carries the city) and keeps the name for screen readers. */
+@media (max-width: 560px) {
+  .pickbar__store { flex: none; }
+  .pickbar__store > span:not(.bullet) { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .pickbar__acts { margin-left: auto; }
+}
+@media (max-width: 359px) { .pickbar [data-store-directions] { display: none; } } /* still one tap away: the badge opens the store cards, each with Directions */
 
 /* ---------- footer ---------- */
 .ftr { position: relative; background: var(--night-2); padding-bottom: var(--bottom-stack); }
 .ftr__finale.band { padding: clamp(160px, 13vw, 200px) 0 clamp(60px, 8vw, 110px); overflow: hidden; }
 .ftr__alley { width: 100%; height: 100%; object-fit: cover; opacity: .5; filter: saturate(1.05); }
 .ftr__finale .band__clip::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13, 18, 17, .96) 0%, rgba(13, 18, 17, .78) 46%, rgba(13, 18, 17, .5)), linear-gradient(180deg, var(--night) 0%, transparent 22%, transparent 70%, var(--night-2) 100%); }
-.ftr__top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 64px); align-items: end; position: relative; z-index: 2; }
+/* heading block on top, the three store cards across the full row below (side by side they were 180-228px wide) */
+.ftr__top { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 3.4vw, 44px); position: relative; z-index: 2; }
 .ftr__lede { color: var(--text-2); max-width: 40ch; }
 .ftr__stores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .ftr__stores .mini { background: rgba(13, 18, 17, .66); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .ftr__record { position: absolute; right: -140px; top: -120px; width: 460px; opacity: .55; z-index: 1; pointer-events: none; }
-@media (max-width: 1099px) { .ftr__top { grid-template-columns: 1fr; } .ftr__record { width: 340px; right: -120px; top: -100px; } }
+@media (max-width: 1099px) { .ftr__record { width: 340px; right: -120px; top: -100px; } }
 @media (max-width: 860px) { .ftr__stores { grid-template-columns: 1fr; } .ftr__record { display: none; } }
 .ftr__main { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 30px; padding: 60px 0 34px; border-top: 1px solid var(--line); }
 .ftr__brand { display: grid; gap: 16px; align-content: start; }

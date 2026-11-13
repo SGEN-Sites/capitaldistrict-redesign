@@ -54,8 +54,8 @@ export function home() {
         <p class="h-sleeve__k">Now spinning at</p>
         <p class="h-sleeve__store"><span class="bullet" data-store-letter aria-hidden="true">A</span><b data-store-name>${esc(stores[0].name)}</b></p>
         <p class="h-sleeve__status"><span class="status" data-status-current><i class="status__dot"></i><span class="status__txt">Mon–Sat 9 AM–9 PM · Sun 10 AM–6 PM</span></span></p>
-        <div class="h-sleeve__pick" role="group" aria-label="Choose your store">${stores.map((s) => `<button type="button" class="h-pick" data-set-store="${s.id}" data-store-card="${s.id}"><span class="bullet" aria-hidden="true">${s.letter}</span>${esc(s.city)}</button>`).join('')}</div>
-        <div class="h-sleeve__cta">${menuBtn('all', 'Shop this store', { size: 'sm' })}<a class="h-sleeve__tel" href="tel:${stores[0].tel}" data-store-tel>${icon('phone')}<span data-store-phone>${esc(stores[0].phone)}</span></a></div>
+        <div class="h-sleeve__pick" role="group" aria-label="Choose your store">${stores.map((s) => `<button type="button" class="h-pick" data-set-store="${s.id}" data-store-card="${s.id}" aria-label="Switch to ${esc(s.name)}"><span class="bullet" aria-hidden="true">${s.letter}</span><span class="h-pick__name">${esc(s.city)}</span></button>`).join('')}</div>
+        <div class="h-sleeve__cta">${menuBtn('all', 'Shop this store', { size: 'sm' })}<a class="btn btn--ghost btn--sm h-sleeve__tel" href="tel:${stores[0].tel}" data-store-tel>${icon('phone')}<span data-store-phone>${esc(stores[0].phone)}</span></a></div>
       </div>
       ${floatObj('obj-spraycan', { cls: 'h-can', depth: 0.18, sizes: '220px' })}
     </div>

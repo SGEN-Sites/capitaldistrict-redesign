@@ -71,7 +71,7 @@ for (const p of pages) {
 // the live words this build used, so a clone of the published source rebuilds without the raw capture
 const { writeCaptureSnapshot } = await import(pathToFileURL(path.join(ROOT, 'src/lib/capture.mjs')).href);
 if (writeCaptureSnapshot()) console.log('capture snapshot: src/content/capture.json');
-const listed = pages.filter((p) => !p.redirect && !p.file && p.path);
+const listed = pages.filter((p) => !p.redirect && !p.file && p.path && !p.lab); // lab pages are never listed
 if (PREVIEW) fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
 else {
   fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${ORIGIN}/sitemap.xml\n`);

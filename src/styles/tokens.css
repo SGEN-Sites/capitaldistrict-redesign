@@ -38,7 +38,7 @@
   --fs-body: 17px;
   --lh-body: 1.65;
   --fs-mega: clamp(3.2rem, 1rem + 8.4vw, 9.4rem);
-  --fs-xl: clamp(2.7rem, 1.2rem + 5.6vw, 6.6rem);
+  --fs-xl: clamp(min(2.7rem, 11.3vw), 1.2rem + 5.6vw, 6.6rem); /* the floor only gives way below ~383px, where "QUESTIONS?" needs it */
   --fs-lg: clamp(2.3rem, 1.2rem + 4vw, 5.2rem);
   --fs-md: clamp(1.9rem, 1.15rem + 2.5vw, 3.5rem);
   --fs-sm: clamp(1.45rem, 1.1rem + 1.1vw, 2.15rem);

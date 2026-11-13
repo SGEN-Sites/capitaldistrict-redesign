@@ -66,7 +66,7 @@ main { display: block; outline: none; }
   --bg: var(--lime); --fg: var(--ink); --bd: transparent;
   position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .6em; min-height: 52px; padding: 0 26px;
   border-radius: var(--pill); background: var(--bg); color: var(--fg); border: 1.5px solid var(--bd); text-decoration: none; isolation: isolate; overflow: hidden;
-  font: 650 15px/1 var(--f-body); letter-spacing: .02em; white-space: nowrap; transition: transform var(--d-1) var(--ease), box-shadow var(--d-2) var(--ease), color var(--d-1), background var(--d-1);
+  font: 650 15px/1.15 var(--f-body); letter-spacing: .02em; max-width: 100%; text-align: center; text-wrap: balance; transition: transform var(--d-1) var(--ease), box-shadow var(--d-2) var(--ease), color var(--d-1), background var(--d-1);
 }
 .btn::before { /* fill sweep */
   content: ''; position: absolute; inset: 0; z-index: -1; background: var(--sweep, var(--lime-hi)); transform: translateX(-102%) skewX(-18deg); transform-origin: left; transition: transform .55s var(--ease);

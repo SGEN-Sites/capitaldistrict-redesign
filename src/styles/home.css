@@ -27,7 +27,7 @@
     linear-gradient(180deg, rgba(13, 18, 17, .65) 0%, transparent 22%, transparent 66%, var(--night) 100%); }
 .h-hero__in { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 32px; align-items: center; }
 .h-copy { position: relative; max-width: 740px; }
-.h-h1 { font-size: clamp(3.3rem, 1rem + 6.5vw, 7.3rem); line-height: .84; margin: 0 0 26px; }
+.h-h1 { font-size: clamp(min(3.3rem, 15vw), 1rem + 6.5vw, 7.3rem); line-height: .84; margin: 0 0 26px; }
 .h-h1 .dh__b { background: var(--foil); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: foil 9s linear infinite; }
 .h-lede { font-size: clamp(1.05rem, .98rem + .42vw, 1.32rem); color: var(--text-2); max-width: 44ch; margin: 0 0 30px; }
 .h-est { position: absolute; right: -16px; top: -18px; z-index: 2; }
@@ -40,14 +40,18 @@
 .h-sleeve__store { margin: 0; display: flex; align-items: center; gap: 12px; }
 .h-sleeve__store b { font: 880 clamp(22px, 1.4rem + .5vw, 30px)/1 var(--f-display); font-stretch: 114%; text-transform: uppercase; }
 .h-sleeve__status { margin: 0; }
-.h-sleeve__pick { display: flex; flex-wrap: wrap; gap: 6px; }
-.h-pick { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 5px; border-radius: var(--pill); border: 1px solid var(--line-2); font-size: 14px; font-weight: 600; background: rgba(13, 18, 17, .45); transition: border-color var(--d-1), background var(--d-1), color var(--d-1); }
-.h-pick .bullet { width: 32px; height: 32px; font-size: 13px; }
-.h-pick:hover { border-color: var(--lime); }
-.h-pick.is-mine { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+/* the store picker: one tidy three-segment control (equal segments, letter over name), then an equal-width action pair */
+.h-sleeve__pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 18px; background: rgba(13, 18, 17, .5); border: 1px solid var(--line); container-type: inline-size; }
+.h-pick { display: grid; justify-items: center; align-content: center; gap: 6px; min-height: 72px; padding: 10px 4px 9px; border-radius: 14px; color: var(--text-2); transition: background var(--d-1), color var(--d-1), box-shadow var(--d-1); }
+.h-pick .bullet { width: 30px; height: 30px; font-size: 13px; }
+.h-pick__name { font-size: min(13px, calc(((100cqi - 8px) / 3 - 8px) / 6.6)); font-weight: 600; /* "Schenectady" is 6.35x the size wide; a third of the control, less padding */ line-height: 1.15; text-align: center; white-space: nowrap; }
+.h-pick:hover { background: var(--lime-08); color: var(--text); }
+.h-pick.is-mine { background: var(--lime); color: var(--ink); box-shadow: 0 8px 22px -10px rgba(161, 207, 110, .8); }
 .h-pick.is-mine .bullet { background: var(--ink); }
-.h-sleeve__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 4px; }
-.h-sleeve__tel { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: none; font-weight: 600; font-size: 15px; }
+.h-sleeve__cta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 4px; }
+.h-sleeve__cta > .btn { width: 100%; min-width: 0; padding-inline: 12px; }
+.h-sleeve { container-type: inline-size; } /* layout containment only: the overhanging sticker is not clipped */
+@container (max-width: 335px) { .h-sleeve__cta { grid-template-columns: minmax(0, 1fr); } } /* side by side each needs ~160px for a one-line label; below that, one full-width button per row */
 .h-sleeve__tel .ico { color: var(--lime); }
 .h-can { right: 4%; top: 2%; width: 150px; z-index: 4; }
 .h-can img { rotate: 14deg; }
@@ -100,12 +104,13 @@
 
 /* ---------- 6. specials ---------- */
 .h-flyers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 34px); padding-top: 14px; }
-.h-flyer { position: relative; display: grid; gap: 12px; align-content: start; padding: 30px 26px 26px; border-radius: 6px; background: var(--ink); color: var(--mint); text-decoration: none; rotate: var(--r, 0deg); box-shadow: 0 30px 60px -30px rgba(20, 26, 25, .9), 0 0 0 1px rgba(255, 255, 255, .04) inset; transition: rotate .6s var(--ease-spring), box-shadow .6s var(--ease); }
+.h-flyer { position: relative; container-type: inline-size; display: grid; gap: 12px; align-content: start; padding: 30px 26px 26px; border-radius: 6px; background: var(--ink); color: var(--mint); text-decoration: none; rotate: var(--r, 0deg); box-shadow: 0 30px 60px -30px rgba(20, 26, 25, .9), 0 0 0 1px rgba(255, 255, 255, .04) inset; transition: rotate .6s var(--ease-spring), box-shadow .6s var(--ease); }
 .h-flyer::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background-image: var(--grain); opacity: .14; pointer-events: none; mix-blend-mode: overlay; }
 .h-flyer:hover { rotate: 0deg; box-shadow: 0 40px 70px -30px rgba(20, 26, 25, .95), 0 0 0 2px var(--lime) inset; }
 .h-flyer__tape { position: absolute; left: 50%; top: -13px; width: 104px; height: 28px; translate: -50% 0; rotate: 3deg; background: rgba(255, 255, 255, .72); box-shadow: 0 2px 8px rgba(0, 0, 0, .18); }
 .h-flyer__top { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; }
-.h-flyer__big { font: 900 clamp(2.5rem, 1.6rem + 2.2vw, 3.8rem)/.88 var(--f-display); font-stretch: 128%; text-transform: uppercase; color: var(--lime); margin: 8px 0 2px; }
+/* sized from the flyer's own width (the word is about 6.64 em wide at this width axis), so it can never outgrow it */
+.h-flyer__big { font: 900 min(3.8rem, calc(100cqi / 7))/.88 var(--f-display); font-stretch: 128%; white-space: nowrap; text-transform: uppercase; color: var(--lime); margin: 8px 0 2px; }
 .h-flyer__sub { color: var(--text-2); font-size: 15px; }
 .h-flyer .status { color: var(--text-2); }
 .h-flyer__go { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--lime); font-weight: 700; }
