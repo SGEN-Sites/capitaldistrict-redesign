@@ -1,6 +1,6 @@
-// crate-stack-test.mjs: prove the category crate's records slide out from BEHIND the cards: a hovered row-2 record tucks
-// behind the row-1 card above it (visible only in the gap), and a hovered row-1 record rises from behind its own card.
-//   node tools/crate-stack-test.mjs [--dir dist] [--path /]
+// crate-stack-test.mjs: prove the category crate's record layering: a hovered row-2 record rises OVER the row-1 card above
+// it but stays behind its own card; a hovered row-1 record rises from behind its own card.
+//   node tools/crate-stack-test.mjs [--dir dist] [--path /] [--w 1440] [--url https://host/base]
 // Writes private/shots/crate/*.png and prints PASS/FAIL per check (exit 1 on any FAIL).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,7 +20,8 @@ await new Promise((r) => server.listen(0, r));
 // --url https://host/base  tests a deployed copy instead of the local build
 const base = (val('--url', '') || `http://localhost:${server.address().port}`).replace(/\/$/, '');
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+const W = Number(val('--w', '1440'));
+const ctx = await browser.newContext({ viewport: { width: W, height: 900 } });
 await ctx.route((u) => !String(u).startsWith(base), (r) => r.abort());
 await ctx.addInitScript(() => { try { localStorage.setItem('cdc.age', '1'); localStorage.setItem('cdc.store', 'albany'); } catch (e) {} });
 const p = await ctx.newPage();
@@ -51,13 +52,13 @@ const card2 = await rect('.crate .sleeve__card', cols);
 const cx = disc2.x + disc2.w / 2;
 check('row 2: the record rose (its top is above its own card)', disc2.y < card2.y - 10, { discTop: Math.round(disc2.y), cardTop: Math.round(card2.y) });
 const inAbove = await topAt(cx, Math.max(disc2.y + 12, above.b - 24));
-check('row 2: inside the row-1 card where the record overlaps, the CARD is on top', inAbove === 'card:0', inAbove);
+check('row 2: inside the row-1 card where the record overlaps, the RECORD is on top (it overlaps row 1)', inAbove === 'disc:' + cols, inAbove);
 const gapY = (above.b + card2.y) / 2;
 const inGap = disc2.y < gapY ? await topAt(cx, gapY) : 'record does not reach the gap';
-check('row 2: in the gap between the rows, the record shows (it tucks behind the card above)', inGap === 'disc:' + cols, inGap);
+check('row 2: in the gap between the rows, the record shows', inGap === 'disc:' + cols, inGap);
 const inOwn = await topAt(cx, card2.y + 30);
 check('row 2: inside its own card, the CARD is on top of its record', inOwn === 'card:' + cols, inOwn);
-await p.locator('.crate').screenshot({ path: path.join(OUT, 'row2-hover.png') });
+await p.locator('.crate').screenshot({ path: path.join(OUT, `row2-hover-${W}.png`) });
 
 // row 1: hover the first card; its record must rise from behind it
 await p.mouse.move(5, 5); await p.waitForTimeout(700);
@@ -70,7 +71,7 @@ const above1 = await topAt(cx1, card1.y - 12);
 check('row 1: just above the card, the record shows', above1 === 'disc:0', above1);
 const inside1 = await topAt(cx1, card1.y + 24);
 check('row 1: inside the card, the CARD is on top of its record (it rises from behind)', inside1 === 'card:0', inside1);
-await p.locator('.crate').screenshot({ path: path.join(OUT, 'row1-hover.png') });
+await p.locator('.crate').screenshot({ path: path.join(OUT, `row1-hover-${W}.png`) });
 
 await browser.close(); server.close();
 console.log(fails ? `${fails} FAIL` : 'ALL PASS');

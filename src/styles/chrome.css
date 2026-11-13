@@ -127,7 +127,7 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 @keyframes fadeIn { from { opacity: 0; } }
 
 /* mini store card (switcher, footer) */
-.mini { position: relative; display: grid; gap: 12px; padding: 20px; border-radius: var(--r-m); background: rgba(13, 18, 17, .55); border: 1px solid var(--line); transition: border-color var(--d-1), transform var(--d-2) var(--ease); }
+.mini { position: relative; display: flex; flex-direction: column; container-type: inline-size; gap: 12px; padding: 20px; border-radius: var(--r-m); background: rgba(13, 18, 17, .55); border: 1px solid var(--line); transition: border-color var(--d-1), transform var(--d-2) var(--ease); }
 .mini:hover { border-color: var(--line-2); transform: translateY(-3px); }
 .mini.is-mine { border-color: var(--lime); box-shadow: var(--shadow-lime); }
 .mini.is-mine::after { content: 'Your store'; position: absolute; top: -11px; right: 16px; padding: 4px 10px; border-radius: var(--pill); background: var(--lime); color: var(--ink); font: 700 11px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; }
@@ -138,7 +138,9 @@ html.gate-open, html.gate-open body { overflow: hidden; }
 .mini__links a { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; text-decoration: none; color: var(--text); }
 .mini__links a:hover { color: var(--lime); }
 .mini__links .ico { color: var(--lime); width: 16px; height: 16px; }
-.mini__cta { display: flex; flex-wrap: wrap; gap: 8px; }
+.mini__cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+.mini__cta > .btn { width: 100%; min-width: 0; padding-inline: 12px; }
+@container (max-width: 380px) { .mini__cta { grid-template-columns: 1fr; } }
 
 /* ---------- sticky pickup bar ---------- */
 .pickbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-bar); padding: 0 var(--gutter) calc(14px + env(safe-area-inset-bottom)); pointer-events: none; transform: translateY(130%); transition: transform .6s var(--ease); }
